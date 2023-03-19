@@ -21,20 +21,7 @@ const tagManagerArgs = {
 //TagManager.initialize(tagManagerArgs)
 
 const meta = {
-  title: 'CheckMate',
-  description: 'Easily check if the messages you received are scams',
-  canonical: 'https://checkmate.sg',
-  meta: {
-    charset: 'utf-8',
-    property: {
-      "og:title": 'CheckMate',
-      "og:url": "https://checkmate.sg",
-      "og:description": 'Easily check if the messages you received are scams.',
-      "og:image": "https://checkmate.sg/logo.jpg",
-      "og:type": "website",
-      "og:locale": "en_GB"
-    }
-  }
+  
 };
 
 

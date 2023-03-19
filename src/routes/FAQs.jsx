@@ -53,7 +53,7 @@ const FAQ = () => {
               />
             </div>
           </summary>
-          <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 flex flex-col gap-y-2">
+          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 flex flex-col gap-y-2">
             <p>When you send a message to CheckMate for checking, the following happens:</p>
             <h3 className="font-bold underline">Matching</h3>
             <p>First, we match your message against existing messages in our database, to see if there is a match. We consider matches after stripping away phone numbers from the messages.</p>
@@ -98,7 +98,7 @@ const FAQ = () => {
                 </ol>
               </li>
             </ol>
-          </p>
+          </div>
         </details>
         <details open={isOpen['become-a-fact-checker']} onToggle={(e) => toggleDetails('become-a-fact-checker', e.target.open)} className="w-full ring-1 ring-checkGray" id="become-a-fact-checker">
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
@@ -110,13 +110,13 @@ const FAQ = () => {
               />
             </div>
           </summary>
-          <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 flex flex-col gap-y-4">
+          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 flex flex-col gap-y-4">
             <p>We're glad to hear that you're interested in helping to combat fake news and scams! </p>
             <p>To get started, please reach out to us @ <a href="mailto:checkmate@better.sg" className="underline text-checkPurple">checkmate@better.sg</a> </p>
             <p>We appreciate you helping us in this effort and look forward to working with you.</p>
             {/** hidden for now <img src={qrFc} className="self-center" />
             <span className="self-center">QR Code to CheckMate's fact-checker bot</span>*/}
-          </p>
+          </div>
         </details>
         <details open={isOpen['what-data-collected']} onToggle={(e) => toggleDetails('what-data-collected', e.target.open)} className="w-full ring-1 ring-checkGray" id="what-data-collected">
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
@@ -128,10 +128,10 @@ const FAQ = () => {
               />
             </div>
           </summary>
-          <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600">
+          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600">
             <p>Messaging the CheckMate bot is like messaging someone in Whatsapp. CheckMate will only receive <span className="underline font-bold">your number</span> and the <span className="underline font-bold">message you are sending it</span>.</p>
             <p>For more information you can view our <Link to="privacy-policy" className="font-bold text-checkPurple underline">Privacy Policy</Link>.</p> 
-          </p>
+          </div>
         </details>
         <details open={isOpen['how-collaborate-with-scamshield']} onToggle={(e) => toggleDetails('how-collaborate-with-scamshield', e.target.open)} className="w-full ring-1 ring-checkGray" id="how-collaborate-with-scamshield">
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
@@ -143,12 +143,12 @@ const FAQ = () => {
               />
             </div>
           </summary>
-          <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 space-y-4">
+          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 space-y-4">
             <p>CheckMate is an independent, non-government initiative by the non-profit organization <a href="https://better.sg">better.sg</a>. We understand that combating scams and dubious messages requires a collaborative approach to safeguard everyone. That's why we've partnered with <a href="https://www.scamshield.org.sg/">ScamShield</a>.</p>
             <p>When you send in a message, and our CheckMates identify it as a scam, we will ask for your consent to share that specific message anonymously with ScamShield. If you agree, ScamShield includes the message in the national scams database in order to help fight scams in Singapore.</p>
             <p>Your consent is sought for each individual message. You may choose to share some messages with Scam Shield, while deciding not to share others. We will seek your consent for every message separately.</p>
             <p>As for your privacy, rest assured that no other information CheckMate has access to will be shared. Your phone number and identity will remain anonymous.</p>
-          </p>
+          </div>
         </details>
 
         <details open={isOpen['what-is-scamshield']} onToggle={(e) => toggleDetails('what-is-scamshield', e.target.open)} className="w-full ring-1 ring-checkGray" id="what-is-scamshield">
@@ -163,9 +163,9 @@ const FAQ = () => {
             </div>
             </Link>
           </summary>
-          <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 space-y-4">
+          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 space-y-4">
             <p><a href="https://www.scamshield.org.sg/">ScamShield</a> is an anti-scam product developed by the National Crime Prevention Council and Open Government Products.</p>
-          </p>
+          </div>
         </details>
       </div>
 
