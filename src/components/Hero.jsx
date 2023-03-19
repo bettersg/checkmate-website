@@ -29,8 +29,8 @@ const Hero = () => {
         >
           <div className="flex flex-row justify-between items-center w-full">
             <h1 className="flex-1 font-poppins font-semibold ss:text-[64px] text-[48px] text-checkPurple ss:leading-[100.8px] leading-[75px]">
-              World's Fastest<br className="sm:block hidden" />{" "}
-              Fact-Checker
+              You flag,<br className="sm:block hidden" />{" "}
+              We check
             </h1>
           </div>
 

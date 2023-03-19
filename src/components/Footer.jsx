@@ -18,7 +18,7 @@ const Footer = () => (
     
     <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-white">
       <p className="flex flex-col md:flex-row gap-x-2 items-center font-poppins font-normal text-center text-[18px] leading-[27px] text-checkWhite">
-        <span className="flex flex-row gap-x-2 items-center">A <a href="http://better.sg/"><img src={bettersg} /></a> initiative, </span>in collaboration with <a href="https://www.scamshield.org.sg/"><img src={scamshield} /></a>
+        <span className="flex flex-row gap-x-2 items-center">A <a href="http://better.sg/"><img src={bettersg} /></a> initiative</span>{/**, </span>in collaboration with <a href="https://www.scamshield.org.sg/"><img src={scamshield} /></a>*/}
       </p>
 
       <div className="flex flex-col md:flex-row md:mt-0 mt-6 gap-y-2">

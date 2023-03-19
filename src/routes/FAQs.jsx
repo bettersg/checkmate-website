@@ -1,14 +1,20 @@
 import React from "react"
 import styles from "../style";
 import { faqIcon, qrFc, arrowButtonRight, arrowButtonUp } from "../assets";
+import { Link, useNavigate   } from "react-router-dom";
 
 const FAQ = () => {
-  const [isOpenQ1, setIsOpenQ1] = React.useState(false);
-  const [isOpenQ2, setIsOpenQ2] = React.useState(false);
-  const [isOpenQ3, setIsOpenQ3] = React.useState(false);
-  const [isOpenQ4, setIsOpenQ4] = React.useState(false);
-  const [isOpenQ5, setIsOpenQ5] = React.useState(false);
-  const [isOpenQ6, setIsOpenQ6] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState({});
+  const navigate = useNavigate();
+  const [isOpenMap, setIsOpenMap] = React.useState({});
+
+  const toggleDetails = (questionNumber, isOpen) => {
+    setIsOpenMap({ ...isOpenMap, [questionNumber]: isOpen });
+    if (isOpen) {
+      navigate(`/faq#${questionNumber}`);
+    }
+  };
+
 
   return (
     <div id="faq" className={`flex flex-col items-center`}>
@@ -23,13 +29,13 @@ const FAQ = () => {
       </div>
 
       <div className="flex flex-col space-y-6 px-12 pb-24 font-poppins xl:max-w-[1280px] w-full items-center">
-        <details open={isOpenQ1} onToggle={() => setIsOpenQ1(!isOpenQ1)} className="w-full ring-1 ring-checkGray">
+        <details open={isOpen['is-checkmate-free-to-us']} onToggle={(e) => toggleDetails('is-checkmate-free-to-us', e.target.open)} className="w-full ring-1 ring-checkGray" id="is-checkmate-free-to-us">
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
             <div className="flex flex-row justify-between items-center">
               <span className="p-3">Is CheckMate free to use?</span>
               <img
-                className={isOpenQ1 ? "bg-checkPurple rounded-full p-3 mr-4" : "bg-checkWhite rounded-full p-3 shadow-md border-checkGray border mr-4"}
-                src={isOpenQ1 ? arrowButtonUp : arrowButtonRight}
+                className={isOpen['is-checkmate-free-to-us'] ? "bg-checkPurple rounded-full p-3 mr-4" : "bg-checkWhite rounded-full p-3 shadow-md border-checkGray border mr-4"}
+                src={isOpen['is-checkmate-free-to-us'] ? arrowButtonUp : arrowButtonRight}
               />
             </div>
           </summary>
@@ -37,13 +43,13 @@ const FAQ = () => {
             <span className="font-bold">Absolutely!</span> CheckMate is free to use and free for life.
           </p>
         </details>
-        <details open={isOpenQ2} onToggle={() => setIsOpenQ2(!isOpenQ2)} className="w-full ring-1 ring-checkGray">
+        <details open={isOpen['how-does-checkmate-work']} onToggle={(e) => toggleDetails('how-does-checkmate-work', e.target.open)} className="w-full ring-1 ring-checkGray" id="how-does-checkmate-work">
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
             <div className="flex flex-row justify-between items-center">
               <span className="p-3">How does CheckMate work?</span>
               <img
-                className={isOpenQ2 ? "bg-checkPurple rounded-full p-3 mr-4" : "bg-checkWhite rounded-full p-3 shadow-md border-checkGray border mr-4"}
-                src={isOpenQ2 ? arrowButtonUp : arrowButtonRight}
+                className={isOpen['how-does-checkmate-work'] ? "bg-checkPurple rounded-full p-3 mr-4" : "bg-checkWhite rounded-full p-3 shadow-md border-checkGray border mr-4"}
+                src={isOpen['how-does-checkmate-work'] ? arrowButtonUp : arrowButtonRight}
               />
             </div>
           </summary>
@@ -94,46 +100,46 @@ const FAQ = () => {
             </ol>
           </p>
         </details>
-        <details open={isOpenQ3} onToggle={() => setIsOpenQ3(!isOpenQ3)} className="w-full ring-1 ring-checkGray">
+        <details open={isOpen['become-a-fact-checker']} onToggle={(e) => toggleDetails('become-a-fact-checker', e.target.open)} className="w-full ring-1 ring-checkGray" id="become-a-fact-checker">
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
             <div className="flex flex-row justify-between items-center">
               <span className="p-3">How can I help and become a fact-checker?</span>
               <img
-                className={isOpenQ3 ? "bg-checkPurple rounded-full p-3 mr-4" : "bg-checkWhite rounded-full p-3 shadow-md border-checkGray border mr-4"}
-                src={isOpenQ3 ? arrowButtonUp : arrowButtonRight}
+                className={isOpen['become-a-fact-checker'] ? "bg-checkPurple rounded-full p-3 mr-4" : "bg-checkWhite rounded-full p-3 shadow-md border-checkGray border mr-4"}
+                src={isOpen['become-a-fact-checker'] ? arrowButtonUp : arrowButtonRight}
               />
             </div>
           </summary>
           <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 flex flex-col gap-y-4">
             <p>We're glad to hear that you're interested in helping to combat fake news and scams! </p>
-            <p>To get started, you can scan the QR code (as shown below) and follow the onboarding instructions provided by our CheckMate bot. The bot will guide you through the process of becoming a fact-checker. </p>
+            <p>To get started, please reach out to us @ <a href="mailto:checkmate@better.sg" className="underline text-checkPurple">checkmate@better.sg</a> </p>
             <p>We appreciate you helping us in this effort and look forward to working with you.</p>
-            <img src={qrFc} className="self-center" />
-            <span className="self-center">QR Code to CheckMate's fact-checker bot</span>
+            {/** hidden for now <img src={qrFc} className="self-center" />
+            <span className="self-center">QR Code to CheckMate's fact-checker bot</span>*/}
           </p>
         </details>
-        <details open={isOpenQ4} onToggle={() => setIsOpenQ4(!isOpenQ4)} className="w-full ring-1 ring-checkGray">
+        <details open={isOpen['what-data-collected']} onToggle={(e) => toggleDetails('what-data-collected', e.target.open)} className="w-full ring-1 ring-checkGray" id="what-data-collected">
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
             <div className="flex flex-row justify-between items-center">
               <span className="p-3">What kind of data can CheckMate sees and collect from me?</span>
               <img
-                className={isOpenQ4 ? "bg-checkPurple rounded-full p-3 mr-4" : "bg-checkWhite rounded-full p-3 shadow-md border-checkGray border mr-4"}
-                src={isOpenQ4 ? arrowButtonUp : arrowButtonRight}
+                className={isOpen['what-data-collected'] ? "bg-checkPurple rounded-full p-3 mr-4" : "bg-checkWhite rounded-full p-3 shadow-md border-checkGray border mr-4"}
+                src={isOpen['what-data-collected'] ? arrowButtonUp : arrowButtonRight}
               />
             </div>
           </summary>
           <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600">
             <p>Messaging the CheckMate bot is like messaging someone in Whatsapp. CheckMate will only receive <span className="underline font-bold">your number</span> and the <span className="underline font-bold">message you are sending it</span>.</p>
-            <p>For more information you can view our Privacy Policy.</p> {/** TODO: LINK TO PRIVACY POLICY **/}
+            <p>For more information you can view our <Link to="privacy-policy" className="font-bold text-checkPurple underline">Privacy Policy</Link>.</p> 
           </p>
         </details>
-        <details open={isOpenQ5} onToggle={() => setIsOpenQ5(!isOpenQ5)} className="w-full ring-1 ring-checkGray">
+        <details open={isOpen['how-collaborate-with-scamshield']} onToggle={(e) => toggleDetails('how-collaborate-with-scamshield', e.target.open)} className="w-full ring-1 ring-checkGray" id="how-collaborate-with-scamshield">
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
             <div className="flex flex-row justify-between items-center">
               <span className="p-3">How does CheckMate collaborate with ScamShield?</span>
               <img
-                className={isOpenQ5 ? "bg-checkPurple rounded-full p-3 mr-4" : "bg-checkWhite rounded-full p-3 shadow-md border-checkGray border mr-4"}
-                src={isOpenQ5 ? arrowButtonUp : arrowButtonRight}
+                className={isOpen['how-collaborate-with-scamshield'] ? "bg-checkPurple rounded-full p-3 mr-4" : "bg-checkWhite rounded-full p-3 shadow-md border-checkGray border mr-4"}
+                src={isOpen['how-collaborate-with-scamshield'] ? arrowButtonUp : arrowButtonRight}
               />
             </div>
           </summary>
@@ -145,15 +151,17 @@ const FAQ = () => {
           </p>
         </details>
 
-        <details open={isOpenQ6} onToggle={() => setIsOpenQ6(!isOpenQ6)} className="w-full ring-1 ring-checkGray">
+        <details open={isOpen['what-is-scamshield']} onToggle={(e) => toggleDetails('what-is-scamshield', e.target.open)} className="w-full ring-1 ring-checkGray" id="what-is-scamshield">
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
+            <Link to="/faq#what-is-scamshield">
             <div className="flex flex-row justify-between items-center">
               <span className="p-3">What is ScamShield?</span>
               <img
-                className={isOpenQ6 ? "bg-checkPurple rounded-full p-3 mr-4" : "bg-checkWhite rounded-full p-3 shadow-md border-checkGray border mr-4"}
-                src={isOpenQ6 ? arrowButtonUp : arrowButtonRight}
+                className={isOpen['what-is-scamshield'] ? "bg-checkPurple rounded-full p-3 mr-4" : "bg-checkWhite rounded-full p-3 shadow-md border-checkGray border mr-4"}
+                src={isOpen['what-is-scamshield'] ? arrowButtonUp : arrowButtonRight}
               />
             </div>
+            </Link>
           </summary>
           <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 space-y-4">
             <p><a href="https://www.scamshield.org.sg/">ScamShield</a> is an anti-scam product developed by the National Crime Prevention Council and Open Government Products.</p>
