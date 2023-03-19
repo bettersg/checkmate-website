@@ -1,12 +1,16 @@
 import React from "react"
 import styles from "../style";
 import { faqIcon, qrFc, arrowButtonRight, arrowButtonUp } from "../assets";
-import { Link, useNavigate   } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useEffect, useRef } from 'react';
 
 const FAQ = () => {
-  const [isOpen, setIsOpen] = React.useState({});
+  
   const navigate = useNavigate();
+  const detailsRef = useRef({});
+  const location = useLocation();
   const [isOpenMap, setIsOpenMap] = React.useState({});
+  const [isOpen, setIsOpen] = React.useState({});
 
   const toggleDetails = (questionNumber, isOpen) => {
     setIsOpenMap({ ...isOpenMap, [questionNumber]: isOpen });
@@ -15,6 +19,19 @@ const FAQ = () => {
     }
   };
 
+  useEffect(() => {
+    // Get the fragment from the current URL
+    const fragment = location.hash;
+
+    // If a fragment exists, try to open the corresponding details element
+    if (fragment) {
+      const questionNumber = fragment.substr(1);
+      const details = detailsRef.current[questionNumber];
+      if (details) {
+        details.open = true;
+      }
+    }
+  }, [location]);
 
   return (
     <div id="faq" className={`flex flex-col items-center`}>
@@ -29,7 +46,12 @@ const FAQ = () => {
       </div>
 
       <div className="flex flex-col space-y-6 px-12 pb-24 font-poppins xl:max-w-[1280px] w-full items-center">
-        <details open={isOpen['is-checkmate-free-to-us']} onToggle={(e) => toggleDetails('is-checkmate-free-to-us', e.target.open)} className="w-full ring-1 ring-checkGray" id="is-checkmate-free-to-us">
+        <details 
+          ref={(el) => (detailsRef.current['is-checkmate-free-to-us'] = el)}
+          open={isOpen['is-checkmate-free-to-us']} 
+          onToggle={(e) => toggleDetails('is-checkmate-free-to-us', e.target.open)} 
+          className="w-full ring-1 ring-checkGray" id="is-checkmate-free-to-us"
+        >
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
             <div className="flex flex-row justify-between items-center">
               <span className="p-3">Is CheckMate free to use?</span>
@@ -43,7 +65,12 @@ const FAQ = () => {
             <span className="font-bold">Absolutely!</span> CheckMate is free to use and free for life.
           </p>
         </details>
-        <details open={isOpen['how-does-checkmate-work']} onToggle={(e) => toggleDetails('how-does-checkmate-work', e.target.open)} className="w-full ring-1 ring-checkGray" id="how-does-checkmate-work">
+        <details 
+          ref={(el) => (detailsRef.current['how-does-checkmate-work'] = el)}
+          open={isOpen['how-does-checkmate-work']} 
+          onToggle={(e) => toggleDetails('how-does-checkmate-work', e.target.open)} 
+          className="w-full ring-1 ring-checkGray" id="how-does-checkmate-work"
+        >
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
             <div className="flex flex-row justify-between items-center">
               <span className="p-3">How does CheckMate work?</span>
@@ -100,7 +127,12 @@ const FAQ = () => {
             </ol>
           </div>
         </details>
-        <details open={isOpen['become-a-fact-checker']} onToggle={(e) => toggleDetails('become-a-fact-checker', e.target.open)} className="w-full ring-1 ring-checkGray" id="become-a-fact-checker">
+        <details 
+          ref={(el) => (detailsRef.current['become-a-fact-checker'] = el)}
+          open={isOpen['become-a-fact-checker']} 
+          onToggle={(e) => toggleDetails('become-a-fact-checker', e.target.open)} 
+          className="w-full ring-1 ring-checkGray" id="become-a-fact-checker"
+        >
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
             <div className="flex flex-row justify-between items-center">
               <span className="p-3">How can I help and become a fact-checker?</span>
@@ -118,7 +150,12 @@ const FAQ = () => {
             <span className="self-center">QR Code to CheckMate's fact-checker bot</span>*/}
           </div>
         </details>
-        <details open={isOpen['what-data-collected']} onToggle={(e) => toggleDetails('what-data-collected', e.target.open)} className="w-full ring-1 ring-checkGray" id="what-data-collected">
+        
+        <details 
+          ref={(el) => (detailsRef.current['what-data-collected'] = el)}
+          open={isOpen['what-data-collected']} onToggle={(e) => toggleDetails('what-data-collected', e.target.open)} 
+          className="w-full ring-1 ring-checkGray" id="what-data-collected"
+        >
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
             <div className="flex flex-row justify-between items-center">
               <span className="p-3">What kind of data can CheckMate sees and collect from me?</span>
@@ -133,7 +170,13 @@ const FAQ = () => {
             <p>For more information you can view our <Link to="privacy-policy" className="font-bold text-checkPurple underline">Privacy Policy</Link>.</p> 
           </div>
         </details>
-        <details open={isOpen['how-collaborate-with-scamshield']} onToggle={(e) => toggleDetails('how-collaborate-with-scamshield', e.target.open)} className="w-full ring-1 ring-checkGray" id="how-collaborate-with-scamshield">
+        
+        <details 
+          ref={(el) => (detailsRef.current['how-collaborate-with-scamshield'] = el)}
+          open={isOpen['how-collaborate-with-scamshield']} 
+          onToggle={(e) => toggleDetails('how-collaborate-with-scamshield', e.target.open)} 
+          className="w-full ring-1 ring-checkGray" id="how-collaborate-with-scamshield"
+        >
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
             <div className="flex flex-row justify-between items-center">
               <span className="p-3">How does CheckMate collaborate with ScamShield?</span>
@@ -151,7 +194,12 @@ const FAQ = () => {
           </div>
         </details>
 
-        <details open={isOpen['what-is-scamshield']} onToggle={(e) => toggleDetails('what-is-scamshield', e.target.open)} className="w-full ring-1 ring-checkGray" id="what-is-scamshield">
+        <details 
+          ref={(el) => (detailsRef.current['what-is-scamshield'] = el)}
+          open={isOpen['what-is-scamshield']} 
+          onToggle={(e) => toggleDetails('what-is-scamshield', e.target.open)} 
+          className="w-full ring-1 ring-checkGray" id="what-is-scamshield"
+        >
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
             <Link to="/faq#what-is-scamshield">
             <div className="flex flex-row justify-between items-center">
