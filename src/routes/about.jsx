@@ -23,7 +23,7 @@ const About = () => {
               <p className="text-xl">CheckMate is a crowdsourced system that monitors messages sent in to our CheckMate bot, funnels those that need verification to our CheckMates, and replies users once we are confident on our categorisation of the message. It was borne out of a mix of boredom (on our part), and widespread misinformation during the pandemic. More recently, we decided to take on scams as well, due to their increasing prevalance in Singapore and around the world.</p>
             </div>
             <div className="w-full md:w-1/2">
-              <h2 className="text-checkPurple font-poppins font-bold ss:text-[24px] text-[20px] pb-2">Who are the CheckMates</h2>
+              <h2 className="text-checkPurple font-poppins font-bold ss:text-[24px] text-[20px] pb-2">Who are the CheckMates?</h2>
               <p className="text-xl">We rely on our CheckMates, a network of volunteers who help us to vote on new messages that are received by the CheckMate bot. Our CheckMates come from all walks of life, but they are united by a common purpose - to help counter misinformation and scams in the community.</p>
             </div>
           </div>
@@ -75,7 +75,7 @@ const About = () => {
           <div className="w-2/3 flex flex-col gap-y-4">
             <h1 className="text-checkPurple font-poppins font-bold ss:text-[32px] text-[24px]">Our Partner</h1>
             <h2 className="text-checkPurple font-bold ss:text-[24px] text-[20px]"><a href="https://www.scamshield.org.sg/">ScamShield</a></h2>
-            <p className="font-poppins text-xl">We're partnering with ScamShield, an anti-scam product developed by the National Crime Prevention Council and Open Government Products in collaboration with the Singapore Police Force. You can find out more about our collaboration here.</p>  {/** TODO: to be linked to the relevant FAQ section */}
+            <p className="font-poppins text-xl">We're partnering with ScamShield, an anti-scam product developed by the National Crime Prevention Council and Open Government Products in collaboration with the Singapore Police Force. You can find out more about our collaboration <a href="/faq#how-collaborate-with-scamshield">here</a>.</p>  {/** TODO: to be linked to the relevant FAQ section */}
           </div>
           <a href="https://www.scamshield.org.sg/" className="w-1/3 flex flex-col items-center px-8">
             <img src={scamshield1} />

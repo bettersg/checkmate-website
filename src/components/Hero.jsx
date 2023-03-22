@@ -30,12 +30,12 @@ const Hero = () => {
           <div className="flex flex-row justify-between items-center w-full">
             <h1 className="flex-1 font-poppins font-semibold ss:text-[64px] text-[48px] text-checkPurple ss:leading-[100.8px] leading-[75px]">
               You flag,<br className="sm:block hidden" />{" "}
-              We check
+              we check
             </h1>
           </div>
 
           <p className={`${styles.paragraph} text-checkPurple max-w-[470px] mt-5`}>
-            Not sure a message is legit? Let us help you check it!
+            Not sure if a message is legit? Let us help you check it!
           </p>
 
           <div className=" mb-2 mt-5 sm:mt-8 cursor-pointer">
