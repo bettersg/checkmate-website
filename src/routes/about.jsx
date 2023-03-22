@@ -75,7 +75,7 @@ const About = () => {
           <div className="w-2/3 flex flex-col gap-y-4">
             <h1 className="text-checkPurple font-poppins font-bold ss:text-[32px] text-[24px]">Our Partner</h1>
             <h2 className="text-checkPurple font-bold ss:text-[24px] text-[20px]"><a href="https://www.scamshield.org.sg/">ScamShield</a></h2>
-            <p className="font-poppins text-xl">We're partnering with ScamShield, an anti-scam product developed by the National Crime Prevention Council and Open Government Products in collaboration with the Singapore Police Force. You can find out more about our collaboration <a href="/faq#how-collaborate-with-scamshield">here</a>.</p>  {/** TODO: to be linked to the relevant FAQ section */}
+            <p className="font-poppins text-xl">We're partnering with ScamShield, an anti-scam product developed by the National Crime Prevention Council and Open Government Products in collaboration with the Singapore Police Force. You can find out more about our collaboration <a href="/faq#how-collaborate-with-scamshield">here</a>.</p>  {/** TODO: Not sure linking like this works, got to check it and make it underlined too*/}
           </div>
           <a href="https://www.scamshield.org.sg/" className="w-1/3 flex flex-col items-center px-8">
             <img src={scamshield1} />
