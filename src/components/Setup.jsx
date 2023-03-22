@@ -10,7 +10,7 @@ const Setup = () => (
       {/** first image block on the left */}
       <div className="flex flex-col text-checkWhite justify-center items-center w-[430px]">
         <img src={setup01} />
-        <span className="font-poppins text-xl text-center font-normal">You can add the CheckMate bot to your Whatsapp by scanning the QR code above, clicking on <a href="https://bit.ly/add-checkmate">this link</a>, or by sending a message to +6580432188</span> {/** TODO: Link not underlined */}
+        <span className="font-poppins text-xl text-center font-normal">You can add the CheckMate bot to your Whatsapp by scanning the QR code above, clicking on <a href="https://bit.ly/add-checkmate" className="underline">this link</a>, or by sending a message to +6580432188</span> 
       </div>
 
       {/** Linking arrow */}
