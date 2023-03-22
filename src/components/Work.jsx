@@ -4,9 +4,6 @@ import { work01, work02, work03, work04, arrowWork } from "../assets"
 const Stats = () => (
   <section className={`${styles.flexCenter} flex-row flex-wrap sm:mb-20 mb-6`}>
     <div className="flex flex-col justify-center text-center">
-      <h1 className="flex-1 font-poppins font-semibold ss:text-[64px] text-[48px] text-checkPurple text-center pt-10">
-        I've set it up! But I'm still not sure how it works...
-      </h1>
       <h2 className="flex-1 font-poppins font-semibold ss:text-[48px] text-[36px] text-checkPurple text-center pt-10">
         Received a dubious message that you're not sure about?
       </h2>
