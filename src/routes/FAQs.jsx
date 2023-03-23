@@ -105,13 +105,13 @@ const FAQ = () => {
             <ol className="list-decimal pl-6">
               <li>If more than 50% of all votes cast so far are on any one category, it is assigned that category</li>
               <li>If the votes on scams and suspicious activity combined are greater than 50%, we assign it whichever of the two categories has more votes</li>
-              <li>If none of these thresholds are exceed, that means there is little agreement among checkers. It is automatically categorised as "unsure"</li>
+              <li>If none of these thresholds are exceeded, that means there is little agreement among checkers. It is automatically categorised as "unsure"</li>
               <li>Determine whether message should be considered assessed. There are three different thresholds for this
                 <ol className="list-alpha pl-6">
                   <li>If the message has been categorised either as scam or as suspicious, it is considered assessed if <strong>&gt;20%</strong> of CheckMates have voted. This lower threshold is because:
                     <ol className="list-roman pl-6">
-                      <li>It allows provide a fast response to counter scams</li>
-                      <li>We're more confident in our CheckMates getting this assessment right</li>
+                      <li>It enables a fast response to counter scams</li>
+                      <li>Scams are relative easy to assess, so we're more confident in our CheckMates getting this assessment right</li>
                     </ol>
                   </li>
                   <li>If our CheckMates are unsure of the message, we only consider it assessed if <strong>&gt;80%</strong> of CheckMates have voted. This high threshold is because we want to give our checkers more time to reach a consensus.</li>
@@ -192,8 +192,8 @@ const FAQ = () => {
           </summary>
           <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 space-y-4">
             <p>CheckMate is an independent, non-government initiative by the non-profit organization <a href="https://better.sg">better.sg</a>. We understand that combatting scams and dubious messages requires a collaborative approach to safeguard everyone. That's why we've partnered with <a href="https://www.scamshield.org.sg/">ScamShield</a>.</p>
-            <p>When you send in a message, and our CheckMates identify it as a scam, we will ask for your consent to share that specific message anonymously with ScamShield. If you agree, ScamShield includes the message in the national scams database in order to help fight scams in Singapore.</p>
-            <p>Your consent is sought for each individual message. You may choose to share some messages with Scam Shield, while deciding not to share others. We will seek your consent for every message separately.</p>
+            <p>When you send in a message, and our CheckMates identify it as a scam, we will ask for your consent to share that specific message anonymously with ScamShield. If you agree, ScamShield will include the message in the national scams database in order to help fight scams in Singapore.</p>
+            <p>Your consent is sought for each individual message. You may choose to share some messages with ScamShield, while deciding not to share others. We will seek your consent for every message separately.</p>
             <p>As for your privacy, rest assured that no other information CheckMate has access to will be shared. Your phone number and identity will remain anonymous.</p>
           </div>
         </details>

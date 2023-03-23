@@ -16,7 +16,7 @@ const About = () => {
       <div className="bg-checkWhite text-checkBlack w-full flex flex-col gap-x-4 p-12 items-center">
         <div className="flex flex-col xl:max-w-[1280px] w-full mx-auto">
           <h1 className="text-checkPurple font-poppins font-bold ss:text-[32px] text-[24px]">Our Mission Statement</h1>
-          <p className="font-poppins text-xl">In a world where misinformation and scams are commonplace, CheckMate harnesses the power of crowdsourcing with our CheckMates, a network of trusted volunteers who help verify dubious messages that you might come across on messaging platforms.</p>
+          <p className="font-poppins text-xl">In a world where misinformation and scams are commonplace, CheckMate harnesses the power of crowdsourcing with our CheckMates, a network of trusted volunteers who help verify dubious messages that you might come across.</p>
 
           <div className="flex flex-col md:flex-row w-full pt-12 gap-x-8 pb-8">
             <div className="w-full md:w-1/2">
@@ -25,7 +25,7 @@ const About = () => {
             </div>
             <div className="w-full md:w-1/2">
               <h2 className="text-checkPurple font-poppins font-bold ss:text-[24px] text-[20px] pb-2">Who are the CheckMates?</h2>
-              <p className="text-xl">We rely on our CheckMates, a network of volunteers who help us to vote on new messages that are received by the CheckMate bot. Our CheckMates come from all walks of life, but they are united by a common purpose - to help counter misinformation and scams in the community.</p>
+              <p className="text-xl">We rely on our CheckMates, a network of volunteers who help us vote on new messages that are received by the CheckMate bot. Our CheckMates come from all walks of life, but they are united by a common purpose - to help counter misinformation and scams in the community.</p>
             </div>
           </div>
         </div>
