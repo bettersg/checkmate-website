@@ -1,16 +1,44 @@
 import { useState } from "react";
 
+import { auth } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from 'firebase/auth';
+
 import { close, logo, menu } from "../assets";
 import { navLinks } from "../constants";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {               
+    signOut(auth).then(() => {
+    // Sign-out successful.
+        navigate("/login");
+        toast('Signed out successfully', {
+          position: toast.POSITION.BOTTOM_CENTER
+        })
+    }).catch((error) => {
+    // An error happened.
+    console.log(error)
+      toast.error('Error during logout, contact your admin', {
+        position: toast.POSITION.BOTTOM_CENTER
+      })
+    });
+  }
 
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar ">
+      <ToastContainer />
       <Link to="/">
         <div className="flex flex-row gap-x-2 items-center">
           <img src={logo} width="64px"/>
@@ -32,6 +60,17 @@ const Navbar = () => {
         ))}
       </ul>
 
+      {user ? 
+      <Link to="/logout">
+        <div className="text-checkPurple font-poppins font-normal cursor-pointer text-xl sm:flex hidden" onClick={handleLogout}>Logout</div>
+      </Link>
+      :
+      <Link to="/login">
+        <div className="text-checkPurple font-poppins font-normal cursor-pointer text-xl sm:flex hidden">Login</div>
+      </Link>
+      }
+      
+
       <div className="sm:hidden flex flex-1 justify-end items-center">
         <img
           src={toggle ? close : menu}
@@ -52,12 +91,27 @@ const Navbar = () => {
                 key={nav.id}
                 className={`font-poppins font-medium cursor-pointer text-[16px] ${
                   active === nav.title ? "text-checkBlack" : "text-checkBlack"
-                } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
+                } ${index === navLinks.length - 1 ? "mb-4" : "mb-4"}`}
                 onClick={() => setActive(nav.title)}
               >
                 <Link to={`${nav.id}`}>{nav.title}</Link>
               </li>
             ))}
+            {user ? 
+              <li
+                key='logout'
+                className={`font-poppins font-medium cursor-pointer text-[16px] text-checkBlack mb-4"`}
+              >
+                <Link to="/login">Logout</Link>
+              </li>
+            :
+              <li
+                key='login'
+                className={`font-poppins font-medium cursor-pointer text-[16px] text-checkBlack mb-4"`}
+              >
+                <Link to="/login">Login</Link>
+              </li>
+            }
           </ul>
         </div>
       </div>
