@@ -21,6 +21,7 @@ const Dashboard = () => {
     return (
         <div id="dashboard" className="flex flex-col items-start mt-4 ml-4 min-h-[600px]">
             <div className="text-xl font-poppins font-semibold text-checkPurple">Welcome <span className='text-checkBlack font-normal'>{user?.email}</span></div>
+            <div className='mt-48 text-xl font-bold'>Cool content soon to come</div>
         </div>
     );
 };
