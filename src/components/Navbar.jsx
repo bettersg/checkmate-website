@@ -7,25 +7,38 @@ import { signOut } from 'firebase/auth';
 import { close, logo, menu } from "../assets";
 import { navLinks } from "../constants";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
   const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
 
   const handleLogout = () => {               
     signOut(auth).then(() => {
     // Sign-out successful.
-        navigate("/");
-        console.log("Signed out successfully")
+        navigate("/login");
+        toast('Signed out successfully', {
+          position: toast.POSITION.BOTTOM_CENTER
+        })
     }).catch((error) => {
     // An error happened.
+    console.log(error)
+      toast.error('Error during logout, contact your admin', {
+        position: toast.POSITION.BOTTOM_CENTER
+      })
     });
   }
 
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar ">
+      <ToastContainer />
       <Link to="/">
         <div className="flex flex-row gap-x-2 items-center">
           <img src={logo} width="64px"/>

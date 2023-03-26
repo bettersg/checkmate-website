@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import {  signInWithEmailAndPassword   } from 'firebase/auth';
 import { auth } from '../firebase';
-import { NavLink, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuthState } from "react-firebase-hooks/auth";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
@@ -30,6 +31,7 @@ const Login = () => {
 
     return (
         <div id="login" className="flex flex-col items-center justify-center min-h-[600px]">
+            <ToastContainer />
             <main >        
                 <section>
                     <div>                                            
@@ -67,7 +69,11 @@ const Login = () => {
                                 >      
                                     Login                                                                  
                                 </button>
-                            </div>                               
+                            </div>    
+
+                            <div className='underline text-checkPurple text-sm'>
+                                <Link to="/reset">Forgot your password?</Link>
+                            </div>                           
                         </form>
                                                    
                     </div>
