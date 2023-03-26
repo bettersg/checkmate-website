@@ -6,6 +6,8 @@ import NoMatch from "./routes/404"
 import PrivacyPolicy from "./routes/privacy";
 import FAQ from "./routes/FAQs";
 import About from "./routes/about"
+import Login from "./routes/login"
+import Dashboard from "./routes/dashboard"
 
 const App = () => (
   <div className="bg-primary w-full">    
@@ -16,6 +18,8 @@ const App = () => (
         <Route path="about" element={<About />}></Route>
         <Route path="privacy-policy" element={<PrivacyPolicy />} />
         <Route path="faq" element={<FAQ />} />
+        <Route path="login" element={<Login />} />
+        <Route path="dashboard" element={<Dashboard />} />
 
         <Route path="*" element={<NoMatch />} />
       </Route>
