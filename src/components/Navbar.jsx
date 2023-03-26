@@ -23,6 +23,7 @@ const Navbar = () => {
   const handleLogout = () => {               
     signOut(auth).then(() => {
     // Sign-out successful.
+        navigate('/login')
         toast('Signed out successfully', {
           position: toast.POSITION.BOTTOM_CENTER
         })
@@ -60,9 +61,7 @@ const Navbar = () => {
       </ul>
 
       {user ? 
-      <Link to="/login">
         <div className="text-checkPurple font-poppins font-normal cursor-pointer text-xl sm:flex hidden" onClick={handleLogout}>Logout</div>
-      </Link>
       :
       <Link to="/login">
         <div className="text-checkPurple font-poppins font-normal cursor-pointer text-xl sm:flex hidden">Login</div>
@@ -100,8 +99,9 @@ const Navbar = () => {
               <li
                 key='logout'
                 className={`font-poppins font-medium cursor-pointer text-[16px] text-checkBlack mb-4"`}
+                onClick={handleLogout}
               >
-                <Link to="/login">Logout</Link>
+                Logout
               </li>
             :
               <li
