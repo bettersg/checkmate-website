@@ -5,7 +5,7 @@ const Stats = () => (
   <section className={`${styles.flexCenter} flex-row flex-wrap sm:mb-20 mb-6`}>
     <div className="flex flex-col justify-center text-center">
       <h2 className="flex-1 font-poppins font-semibold ss:text-[48px] text-[36px] text-checkPurple text-center pt-10">
-        Received a dubious message that you're not sure about?
+        Received a dubious message you're not sure about?
       </h2>
       <h2 className="flex-1 font-poppins font-semibold ss:text-[48px] text-[36px] text-checkPurple text-center">
         Let CheckMate help you!
