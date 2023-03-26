@@ -61,7 +61,7 @@ const Navbar = () => {
       </ul>
 
       {user ? 
-      <Link to="/login">
+      <Link to="/logout">
         <div className="text-checkPurple font-poppins font-normal cursor-pointer text-xl sm:flex hidden" onClick={handleLogout}>Logout</div>
       </Link>
       :
@@ -97,12 +97,21 @@ const Navbar = () => {
                 <Link to={`${nav.id}`}>{nav.title}</Link>
               </li>
             ))}
-            <li
-              key='login'
-              className={`font-poppins font-medium cursor-pointer text-[16px] text-checkBlack mb-4"`}
-            >
-              <Link to="/login">Login</Link>
-            </li>
+            {user ? 
+              <li
+                key='logout'
+                className={`font-poppins font-medium cursor-pointer text-[16px] text-checkBlack mb-4"`}
+              >
+                <Link to="/login">Logout</Link>
+              </li>
+            :
+              <li
+                key='login'
+                className={`font-poppins font-medium cursor-pointer text-[16px] text-checkBlack mb-4"`}
+              >
+                <Link to="/login">Login</Link>
+              </li>
+            }
           </ul>
         </div>
       </div>
