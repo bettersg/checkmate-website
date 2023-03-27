@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from "react";
 
 import { auth } from "../firebase";
@@ -28,8 +29,8 @@ const Navbar = () => {
           position: toast.POSITION.BOTTOM_CENTER
         })
     }).catch((error) => {
-    // An error happened.
-    console.log(error)
+      // An error happened.
+      console.log(error)
       toast.error('Error during logout, contact your admin', {
         position: toast.POSITION.BOTTOM_CENTER
       })
