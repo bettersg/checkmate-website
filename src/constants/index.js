@@ -20,52 +20,62 @@ export const teamMembers = [
   {
     id: 1,
     name: "Bing Wen Tan",
-    picture: team01
+    picture: team01,
+    linkedin: 'https://www.linkedin.com/in/tbw89'
   },
   {
     id: 2,
     name: "Carlos Leyva-Salas",
-    picture: team02
+    picture: team02,
+    linkedin: 'https://www.linkedin.com/in/leyvacarlos'
   },
   {
     id: 3,
     name: "Vincent Teyssier",
-    picture: team03
+    picture: team03,
+    linkedin: "https://www.linkedin.com/in/vincent-teyssier/"
   },
   {
     id: 4,
     name: "Su Yuen Chin",
-    picture: team04
+    picture: team04,
+    linkedin: "https://www.linkedin.com/in/suyuen"
   },
   {
     id: 5,
     name: "Wendy Po",
-    picture: team05
+    picture: team05,
+    linkedin: "https://www.linkedin.com/in/wendypowl"
   },
   {
     id: 6,
     name: "Tasha Tan",
-    picture: team06
+    picture: team06,
+    linkedin: "https://www.linkedin.com/in/tasha-tan-mx"
   },
   {
     id: 7,
     name: "Amanda Goh",
-    picture: team07
+    picture: team07,
+    linkedin: "https://www.linkedin.com/in/amandagohyl"
   },
   {
     id: 8,
     name: "Elston",
-    picture: team08
+    picture: team08,
+    linkedin: "",
   },
   {
     id: 9,
     name: "Yong En",
-    picture: team09
+    picture: team09,
+    linkedin: ""
   },
   {
     id: 10,
     name: "Zhi Hong",
-    picture: team10
+    picture: team10,
+    linkedin: ""
   }
 ]
 
