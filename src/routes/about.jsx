@@ -61,10 +61,10 @@ const About = () => {
           <div className="pt-12 flex flex-row flex-wrap gap-x-24 gap-y-8">
 
             {teamMembers.map((member, index) => (
-              <div key={index} className="flex flex-col items-center gap-y-2">
+              <a href={member.linkedin} target="_blank" key={index} className="flex flex-col items-center gap-y-2">
                 <img key={member.id} src={member.picture} />
                 <span className="font-poppins text-md font-semibold">{member.name}</span>
-              </div>
+              </a>
             ))}
           </div>
         </div>

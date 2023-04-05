@@ -189,7 +189,7 @@ router.get("/messages", async (req, res) => {
             return res.sendStatus(204)
         } else {
             var docs = snapshot.docs.map(doc => doc.data());
-            functions.logger.info(JSON.stringify(docs))
+            //functions.logger.info(JSON.stringify(docs))
             return res.status(200).send(JSON.stringify(docs));
         }
     } catch (error) {
