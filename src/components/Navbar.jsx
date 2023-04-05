@@ -12,6 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import cookies from "nookies";
 
 
 
@@ -28,6 +29,7 @@ const Navbar = () => {
         toast('Signed out successfully', {
           position: toast.POSITION.BOTTOM_CENTER
         })
+        cookies.destroy(null, "session");
     }).catch((error) => {
       // An error happened.
       console.log(error)

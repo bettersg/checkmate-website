@@ -66,3 +66,6 @@ node_modules/
 .env
 firebase.js
 src/firebase.js
+serviceAccount.json
+serviceAccount_backend.json
+functions/serviceAccount.json
