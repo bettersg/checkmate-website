@@ -85,7 +85,7 @@ const Login = () => {
   };
 
   return (
-      <div className="flex md:flex-row flex-col items-center sm:px-24">
+      <div className="flex md:flex-row flex-col-reverse items-center sm:px-24 py-6">
         <img
           src={login}
           alt="checkMate"
