@@ -85,7 +85,7 @@ const Login = () => {
   };
 
   return (
-      <div className="flex flex-wrap-reverse items-center sm:px-24 py-6 px-4">
+      <div className="flex flex-wrap-reverse mx-auto max-w-[1280px] w-full items-center sm:px-24 py-6 px-4">
         <img
           src={login}
           alt="checkMate"
