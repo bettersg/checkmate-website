@@ -1,40 +1,36 @@
 import styles from "../style";
-import hero from "../assets/hero.png"
+import hero from "../assets/hero.png";
 import ButtonCTAWhatsapp from "./ButtonCTAWhatsapp";
 
-import { motion } from 'framer-motion';
-import { staggerContainer, fadeIn } from '../utils/motion';
+import { motion } from "framer-motion";
+import { staggerContainer, fadeIn } from "../utils/motion";
 
 const Hero = () => {
   return (
-    <section id="home" className={`flex md:flex-row flex-col items-start ${styles.paddingY}`}>
-
-      <div className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 py-2 md:py-28 relative pl-24`}>
-        <img
-          src={hero}
-          alt="checkMate"
-          className="gradient-mask-b-50 w-[80%] h-[80%] relative z-[5]"
-        />
-      </div>
+    <section
+      id="home"
+      className={`flex flex-wrap ${styles.paddingY} justify-center sm:px-24 py-6 px-4`}
+    >
+      <img src={hero} alt="checkMate" className="gradient-mask-b-50 z-[5]" />
 
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"
         viewport={{ once: false, amount: 0.25 }}
-        className={`flex-1 flex justify-center items-start flex-col xl:px-0 sm:px-16 px-6 md:my-0 my-10 py-2 md:py-28`}
+        className={`sm:px-16 xs:px-8 self-center`}
       >
-        <motion.div
-          variants={fadeIn('left', 'tween', 0.2, 1)}
-        >
-          <div className="flex flex-row justify-between items-center w-full">
-            <h1 className="flex-1 font-poppins font-semibold ss:text-[64px] text-[48px] text-checkPurple ss:leading-[100.8px] leading-[75px]">
-              You flag,<br className="sm:block hidden" />{" "}
+        <motion.div variants={fadeIn("left", "tween", 0.2, 1)}>
+          <div className="flex flex-col items-start sm:text-6xl text-5xl font-poppins font-semibold text-checkPurple">
+            <p className="leading-normal">
+              You flag,
+            </p>
+            <p>
               we check
-            </h1>
+            </p>
           </div>
 
-          <p className={`${styles.paragraph} text-checkPurple max-w-[470px] mt-5`}>
+          <p className={`${styles.paragraph} text-checkPurple max-w-xs mt-5`}>
             Not sure if a message is legit? Let us help you check it!
           </p>
 
@@ -43,7 +39,6 @@ const Hero = () => {
           </div>
         </motion.div>
       </motion.div>
-
     </section>
   );
 };
