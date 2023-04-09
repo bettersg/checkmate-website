@@ -32,7 +32,7 @@ const App = () => (
 
 function Layout() {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen justify-between">
     <header className="sticky top-0 z-50 sm:px-16 px-6 flex justify-center items-center bg-primary border-b-4 bb-checkGray">
       <div className="xl:max-w-[1280px] w-full">
         <Navbar />

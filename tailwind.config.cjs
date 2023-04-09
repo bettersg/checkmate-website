@@ -16,6 +16,7 @@ module.exports = {
         primary: "#ffffff",
         checkWhite: "#ffffff",
         checkPurple: "#453D81",
+        checkLightPurple: "#5E54AC",
         checkGreen: "#27A313",
         checkBlack: "#353535",
         checkGray: "#D9D9D9"
