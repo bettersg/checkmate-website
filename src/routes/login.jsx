@@ -62,7 +62,7 @@ const Login = () => {
             const csrfToken = getCookie("csrfToken");
             //console.log('csrfToken', csrfToken)
             //console.log('user', user)
-            const messages = await fetch("https://checkmate.sg/api/messages", {
+            /*const messages = await fetch("https://checkmate.sg/api/messages", {
               method: "GET",
               credentials: "include",
               headers: {
@@ -70,7 +70,7 @@ const Login = () => {
                 "Content-Type": "application/json",
               },
             });
-            console.log(await messages.json());
+            console.log(await messages.json());*/
           })
           .catch(function (error) {
             console.log(error);
