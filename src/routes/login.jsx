@@ -62,7 +62,7 @@ const Login = () => {
             const csrfToken = getCookie("csrfToken");
             //console.log('csrfToken', csrfToken)
             //console.log('user', user)
-            const messages = await fetch("https://checkmate.sg/api/messages", {
+            /*const messages = await fetch("https://checkmate.sg/api/messages", {
               method: "GET",
               credentials: "include",
               headers: {
@@ -70,7 +70,7 @@ const Login = () => {
                 "Content-Type": "application/json",
               },
             });
-            console.log(await messages.json());
+            console.log(await messages.json());*/
           })
           .catch(function (error) {
             console.log(error);
@@ -85,7 +85,7 @@ const Login = () => {
   };
 
   return (
-      <div className="flex flex-wrap-reverse mx-auto max-w-[1280px] w-full items-center sm:px-24 py-6 px-4">
+      <div className="flex flex-wrap-reverse self-center items-center max-w-[1280px] w-full sm:px-24 py-6 px-4">
         <img
           src={login}
           alt="checkMate"
