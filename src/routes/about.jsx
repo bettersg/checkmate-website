@@ -70,7 +70,7 @@ const About = () => {
         </div>
       </div>
 
-      {/** Partners section */}
+      {/* * Partners section
       <div className="w-full flex flex-col md:flex-row px-12 items-center justify-center  pt-20 pb-24">
         <div className="flex flex-col md:flex-row xl:max-w-[1280px] w-full gap-x-4">
           <div className="w-2/3 flex flex-col gap-y-4">
@@ -83,7 +83,7 @@ const About = () => {
             <img src={scamshield2} />
           </a>
         </div>
-      </div>
+      </div> */}
 
     </div>
   );
