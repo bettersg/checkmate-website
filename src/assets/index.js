@@ -48,6 +48,7 @@ import faqIcon from "./faq.svg"
 import qrFc from "./qr-fc.png"
 import arrowButtonUp from "./arrow-button-up.svg"
 import arrowButtonRight from "./arrow-button-right.svg"
+import youtube from "./youtube.svg"
 
 export {
   bill,
@@ -99,5 +100,6 @@ export {
   scamshield2,
   faqIcon,
   arrowButtonRight,
-  arrowButtonUp
+  arrowButtonUp,
+  youtube
 };
