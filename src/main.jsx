@@ -15,10 +15,10 @@ import {
 import TagManager from 'react-gtm-module'
 
 const tagManagerArgs = {
-  gtmId: ''
+  gtmId: 'GTM-WDQ46XW'
 }
 
-//TagManager.initialize(tagManagerArgs)
+TagManager.initialize(tagManagerArgs)
 
 const meta = {
   
