@@ -211,6 +211,39 @@ router.get("/messages", async (req, res) => {
     }
 });
 
+router.get("/ts_messages", async (req, res) => {
+  // Destructure the session cookie (a long-lived JWT that expires in two weeks)
+  const { __session } = req.cookies;
+  try {
+      // verify that the session cookie is valid
+      const decodedClaims = await firebaseAdmin.auth().verifySessionCookie(__session, true);
+
+      let searchParameters = {
+        'q'         : 'harry potter',
+        'query_by'  : 'title',
+        'sort_by'   : 'ratings_count:desc'
+      }
+
+      ts_client.collections('messages')
+      .documents()
+      .search(searchParameters)
+      .then(function (searchResults) {
+        // if result empty we send 204, otherwise we send 200 with the list of lists
+        if (searchResults.empty) {
+          functions.logger.log('GET messages returned no document!');
+          return res.sendStatus(204)
+        } else {
+            return res.status(200).send(JSON.stringify(searchResults));
+        }
+      })
+      
+      
+  } catch (error) {
+      functions.logger.error('Error: ', error)
+      return res.sendStatus(203)
+  }
+});
+
 // Export the Express application as a single Firebase Function named "api" and add the vpc connector
 app.use("/api", router);
 exports.api = functions
