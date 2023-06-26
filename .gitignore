@@ -69,3 +69,5 @@ src/firebase.js
 serviceAccount.json
 serviceAccount_backend.json
 functions/serviceAccount.json
+functions/typesense.json
+typesense.json

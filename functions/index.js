@@ -4,7 +4,9 @@ const functions = require("firebase-functions"),
       cors = require("cors"),
       helmet = require("helmet"),
       cookieParser = require("cookie-parser"),
-      bodyParser = require("body-parser");
+      bodyParser = require("body-parser"),
+      typesense = require("typesense"),
+      ts_credentials = require("./typesense.json");
 
 // Initialise an instance of Express and a router
 const app = express(),
@@ -44,6 +46,17 @@ const firestore = firebaseAdmin.firestore();
 // connect securely to the checkmate backend firestore
 const backend = firebaseAdmin.initializeApp( { credential: firebaseAdmin.credential.cert(require("./serviceAccount_backend.json")) } , "WhatsApp Webhook Handler");
 const firestore_backend = backend.firestore();
+
+// initialize the typesense client
+let ts_client = new Typesense.Client({
+  'nodes': [{
+    'host': ts_credentials.hostname + '.a1.typesense.net',
+    'port': '443',
+    'protocol': 'https'
+  }],
+  'apiKey': ts_credentials.api_key,
+  'connectionTimeoutSeconds': 2
+})
 
 /**
  * Exchange a short-lived (1 hour) token (a JWT) for a long-lived (2 weeks) session
