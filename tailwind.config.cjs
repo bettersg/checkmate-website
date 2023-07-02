@@ -24,6 +24,7 @@ module.exports = {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         permanentMarker: ["Permanent Marker", "sans-serif"],
+        workSans: ["Work Sans", "sans-serif"],
       },
     },
     screens: {
