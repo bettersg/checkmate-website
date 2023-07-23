@@ -7,6 +7,7 @@ import { signOut } from 'firebase/auth';
 
 import { close, logo, menu } from "../assets";
 import { navLinks } from "../constants";
+import ButtonCTAWhatsapp from "./ButtonCTAWhatsapp"
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -42,19 +43,20 @@ const Navbar = () => {
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar ">
       <ToastContainer />
+      {/** Logo */}
       <Link to="/">
         <div className="flex flex-row gap-x-2 items-center">
           <img src={logo} width="64px"/>
-          <span className="text-checkBlack text-xl font-extrabold">CheckMate</span>
         </div>
       </Link>
 
+      {/** Navbar menu options */}
       <ul className="list-none sm:flex hidden justify-center items-center flex-1 gap-x-2">
         {navLinks.map((nav, index) => (
           <li
             key={nav.id}
-            className={`font-poppins font-normal cursor-pointer text-xl ${
-              active === nav.title ? "text-checkPurple" : "text-checkPurple"
+            className={`font-workSans cursor-pointer text-xl pb-2 font-semibold ${
+              active === nav.title ? "text-checkPrimary600 border-b-4 border-checkPrimary600" : "text-checkShadeDark"
             } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
             onClick={() => setActive(nav.title)}
           >
@@ -63,13 +65,18 @@ const Navbar = () => {
         ))}
       </ul>
 
-      {user ? 
+      {/** Call to action */}
+      <ButtonCTAWhatsapp />
+
+
+      {/** {user ? 
         <div className="text-checkPurple font-poppins font-normal cursor-pointer text-xl sm:flex hidden" onClick={handleLogout}>Logout</div>
       :
       <Link to="/login">
         <div className="text-checkPurple font-poppins font-normal cursor-pointer text-xl sm:flex hidden">Login</div>
       </Link>
-      }
+      } 
+      */}
       
 
       <div className="sm:hidden flex flex-1 justify-end items-center">

@@ -1,7 +1,7 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Hero from "./Hero";
-import Setup from "./Setup"
+import Approach from "./Approach"
 import CTA from "./CTA"
 import Work from "./Work"
 
@@ -9,7 +9,7 @@ export {
   Navbar,
   Footer,
   Hero,
-  Setup,
+  Approach,
   Work,
   CTA
 };

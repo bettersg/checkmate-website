@@ -1,5 +1,6 @@
 import styles from "../style";
 import hero from "../assets/hero.png";
+import { heroPicture} from "../assets"
 import ButtonCTAWhatsapp from "./ButtonCTAWhatsapp";
 
 import { motion } from "framer-motion";
@@ -11,11 +12,6 @@ const Hero = () => {
       id="home"
       className={`flex flex-wrap ${styles.paddingY} justify-center py-6`}
     >
-      <img
-        src={hero}
-        alt="checkMate"
-        className="gradient-mask-b-50 z-[5] sm:px-24 px-4"
-      />
 
       <motion.div
         variants={staggerContainer}
@@ -28,20 +24,23 @@ const Hero = () => {
           variants={fadeIn("left", "tween", 0.2, 1)}
           className="items-center"
         >
-          <div className="flex flex-col items-start sm:text-6xl text-5xl font-poppins font-semibold text-checkPurple">
-            <p className="leading-normal">You flag,</p>
-            <p>we check</p>
+          <div className="flex flex-col items-start sm:text-6xl text-5xl font-poppins font-semibold text-checkShadeDark">
+            <p className="leading-normal">We verify</p>
+            <p><span className="text-checkPrimary600">Scams</span> and</p>
+            <p className="text-checkSecondaryYellow500">Misinformation</p>
           </div>
 
-          <p className={`${styles.paragraph} text-checkPurple max-w-xs mt-5`}>
-            Not sure if a message is legit? Let us help you check it!
+          <p className={`${styles.paragraph} max-w-xs mt-5`}>
+            Not sure if a message can be trusted? Simply forward your message to CheckMate and we’ll check it for you!
           </p>
 
           <div className=" mb-2 mt-5 sm:mt-8 cursor-pointer">
             <ButtonCTAWhatsapp />
-          </div>
+          </div>  
         </motion.div>
       </motion.div>
+
+      <img src={heroPicture} alt="checkmate" />
     </section>
   );
 };

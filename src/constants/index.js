@@ -2,16 +2,20 @@ import { facebook, instagram, linkedin, youtube, twitter, team01, team02, team03
 
 export const navLinks = [
   {
+  id: "home",
+  title: "Home"
+  },
+  {
     id: "about",
     title: "About Us",
   },
   {
-    id: "privacy-policy",
-    title: "Privacy Policy",
+    id: "message-database",
+    title: "Message Database"
   },
   {
-    id: "fact-checks",
-    title: "Fact Checks",
+    id: "privacy-policy",
+    title: "Privacy Policy",
   },
   {
     id: "faq",

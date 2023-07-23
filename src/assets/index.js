@@ -49,6 +49,7 @@ import qrFc from "./qr-fc.png"
 import arrowButtonUp from "./arrow-button-up.svg"
 import arrowButtonRight from "./arrow-button-right.svg"
 import youtube from "./youtube.svg"
+import heroPicture from "./heroPicture.svg";
 
 export {
   bill,
@@ -101,5 +102,6 @@ export {
   faqIcon,
   arrowButtonRight,
   arrowButtonUp,
-  youtube
+  youtube,
+  heroPicture
 };
