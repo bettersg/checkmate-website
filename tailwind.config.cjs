@@ -19,11 +19,13 @@ module.exports = {
         checkLightPurple: "#5E54AC",
         checkGreen: "#27A313",
         checkBlack: "#353535",
-        checkGray: "#D9D9D9"
+        checkGray: "#D9D9D9",
+        checkCream: "#FBF6E6"
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         permanentMarker: ["Permanent Marker", "sans-serif"],
+        workSans: ["Work Sans", "sans-serif"],
       },
     },
     screens: {

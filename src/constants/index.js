@@ -10,6 +10,10 @@ export const navLinks = [
     title: "Privacy Policy",
   },
   {
+    id: "fact-checks",
+    title: "Fact Checks",
+  },
+  {
     id: "faq",
     title: "FAQs",
   },
