@@ -191,8 +191,8 @@ const FAQ = () => {
             </div>
           </summary>
           <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 space-y-4">
-            <p>CheckMate is an independent, non-government initiative by the non-profit organization <a href="https://better.sg">better.sg</a>. We understand that combatting scams and dubious messages requires a collaborative approach to safeguard everyone. That's why we've partnered with <a href="https://www.scamshield.org.sg/">ScamShield</a>.</p>
-            <p>When you send in a message, and our CheckMates identify it as a scam, we will ask for your consent to share that specific message anonymously with ScamShield. If you agree, ScamShield will include the message in the national scams database in order to help fight scams in Singapore.</p>
+            <p>CheckMate is an independent, non-government initiative by the non-profit organization <a href="https://better.sg">better.sg</a>. We understand that combatting scams and dubious messages requires a collaborative approach to safeguard everyone. That's why we've currently exploring a partnership with <a href="https://www.scamshield.org.sg/">ScamShield</a>.</p>
+            <p>Once we have linked up with ScamShield, when you send in a message, and our CheckMates identify it as a scam, we will ask for your consent to share that specific message anonymously with ScamShield. If you agree, ScamShield will include the message in the national scams database in order to help fight scams in Singapore.</p>
             <p>Your consent is sought for each individual message. You may choose to share some messages with ScamShield, while deciding not to share others. We will seek your consent for every message separately.</p>
             <p>As for your privacy, rest assured that no other information CheckMate has access to will be shared. Your phone number and identity will remain anonymous.</p>
           </div>
