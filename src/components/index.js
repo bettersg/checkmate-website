@@ -3,13 +3,13 @@ import Footer from "./Footer";
 import Hero from "./Hero";
 import Approach from "./Approach"
 import CTA from "./CTA"
-import Work from "./Work"
+import Check from "./Check"
 
 export {
   Navbar,
   Footer,
   Hero,
   Approach,
-  Work,
+  Check,
   CTA
 };

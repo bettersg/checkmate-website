@@ -47,12 +47,16 @@ module.exports = {
         checkCarouselRed: "#ffdbdb",
         checkCarouselYellow: "#e3ffe2",
         checkCarouselGreen: "#fff1bf",
+        checkLink: "#278eff"
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         permanentMarker: ["Permanent Marker", "sans-serif"],
         workSans: ["Work Sans", "sans-serif"],
       },
+      borderRadius: {
+        'carousel': '64px'
+      }
     },
     screens: {
       xs: "480px",
