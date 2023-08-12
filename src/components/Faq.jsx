@@ -218,12 +218,11 @@ const Faq = () => {
             </p>
             <p>
               We have also introduced mixed-model machine learning to assist with the matching and classification of messages, which has allowed us to respond faster to a wider variety of messages. 
-              If we do not respond to your message with an assessment within 24 hours of sending it in, please report it here.
+              If we do not respond to your message with an assessment within 24 hours of sending it in, please report it <a href="https://bit.ly/checkmate-feedback" className="underline">here</a>.
             </p>
           </div>
         </details>
       </div>
-
     </div>
   );
 };
