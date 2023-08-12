@@ -47,6 +47,7 @@ import scamshield2 from "./scamshield2.png"
 import faqIcon from "./faq.svg"
 import qrFc from "./qr-fc.png"
 import arrowButtonUp from "./arrow-button-up.svg"
+import arrowButtonDown from "./arrow-button-down.svg"
 import arrowButtonRight from "./arrow-button-right.svg"
 import youtube from "./youtube.svg"
 import heroPicture from "./heroPicture.svg"
@@ -102,6 +103,7 @@ export {
   scamshield2,
   faqIcon,
   arrowButtonRight,
+  arrowButtonDown,
   arrowButtonUp,
   arrowRight,
   youtube,

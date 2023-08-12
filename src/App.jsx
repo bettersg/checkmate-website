@@ -5,7 +5,6 @@ import Index from "./routes/index"
 import NoMatch from "./routes/404"
 import PrivacyPolicy from "./routes/privacy";
 import FactChecks from "./routes/factchecks";
-import FAQ from "./routes/FAQs";
 import About from "./routes/about"
 import Login from "./routes/login"
 import Dashboard from "./routes/dashboard"
@@ -20,7 +19,6 @@ const App = () => (
         <Route path="about" element={<About />}></Route>
         <Route path="privacy-policy" element={<PrivacyPolicy />} />
         <Route path="fact-checks" element={<FactChecks />} />
-        <Route path="faq" element={<FAQ />} />
         <Route path="login" element={<Login />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="reset" element={<Reset />} />

@@ -18,9 +18,9 @@ export const navLinks = [
     title: "Privacy Policy",
   },
   {
-    id: "faq",
-    title: "FAQs",
-  },
+    id:"contact-us",
+    title: "Contact Us"
+  }
 ];
 
 
