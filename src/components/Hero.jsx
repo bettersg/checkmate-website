@@ -30,11 +30,11 @@ const Hero = () => {
             <p className="text-checkSecondaryYellow500">Misinformation</p>
           </div>
 
-          <p className={`${styles.paragraph} max-w-xs mt-5`}>
+          <p className={`${styles.paragraph} max-w-md mt-5`}>
             Not sure if a message can be trusted? Simply forward your message to CheckMate and we’ll check it for you!
           </p>
 
-          <div className=" mb-2 mt-5 sm:mt-8 cursor-pointer">
+          <div className=" mb-2 mt-5 sm:mt-8 cursor-pointer max-w-[12rem]">
             <ButtonCTAWhatsapp />
           </div>  
         </motion.div>
