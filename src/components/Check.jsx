@@ -1,5 +1,5 @@
 import { team01, team02, team03, team04, team05, team06, arrowUp, arrowRight } from "../assets"
-import { useScroll, motion, useSpring, useTransform, easeOut, easeInOut } from "framer-motion";
+import { useScroll, motion, useTransform, easeInOut } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 const members = [
