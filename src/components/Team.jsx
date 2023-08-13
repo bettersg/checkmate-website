@@ -27,11 +27,13 @@ const lpadding = 6;
 const yLower = 50 / containerHeight;
 const yUpper = 1 - yLower;
 const paddingInPx = lpadding * 4;
-const fullWidth = imageSize * members.length + paddingInPx * (members.length);
+const fullWidth = imageSize * members.length + paddingInPx * (members.length + 1);
+
+// setting height/width through tailwind [] arbitrary values seems to be inconsistent
 
 const Member = ({ name, title, image }) => (
   <div className={`flex flex-col pb-24 pl-${lpadding} gap-y-2 text-left`}>
-    <img className={`h-auto w-[${imageSize}px] object-cover`} src={image} alt={name} />
+    <img className={`h-auto object-cover`} style={{width:`${imageSize}px`}} src={image} alt={name} />
     <div>
       <p className="font-semibold">{name}</p>
       <p>{title}</p>
@@ -52,7 +54,7 @@ const Team = () => {
   const x = useTransform(xSpringValue, [yLower+0.05, yUpper-0.05], ["0px", `${-fullWidth + window.innerWidth - paddingInPx}px`])
 
   return (
-    <motion.div className={`w-100 overflow-hidden h-[${containerHeight}vh]`} ref={containerRef}>
+    <motion.div className="w-100 overflow-hidden" style={{height: `${containerHeight}vh`}} ref={containerRef}>
       <motion.div className="h-96 flex w-max" style={{ y, x }}>
         {members.map((member, index) => (
           <Member key={index} {...member} />
