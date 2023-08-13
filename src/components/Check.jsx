@@ -38,7 +38,7 @@ const Member = ({ name, title, image }) => (
   </div>
 )
 
-const Team = () => {
+const Check = () => {
   const containerRef = useRef(null);
   const carouselRef = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
@@ -126,4 +126,4 @@ const Team = () => {
   )
 };
 
-export default Team;
+export default Check;
