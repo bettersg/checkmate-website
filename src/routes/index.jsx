@@ -1,4 +1,4 @@
-import { Approach, Hero, Check, Faq, Team, JoinUs } from "../components";
+import { Approach, Hero, Check, Faq } from "../components";
 
 export default function Index() {
   return (
@@ -15,19 +15,7 @@ export default function Index() {
         </div>
       </div>
 
-      <div className="bg-checkBG sm:px-16 px-6 flex justify-center items-center">
-        <div className="xl:max-w-[1280px] w-full">
-          <Check />
-        </div>
-      </div>
-
-      <Team />
-
-      <div className="bg-checkBG sm:px-16 px-6 flex justify-center items-center">
-        <div className="xl:max-w-[1280px] w-full">
-          <JoinUs />
-        </div>
-      </div>
+      <Check />
 
       <div className="bg-checkBG sm:px-16 px-6 flex justify-center items-center">
         <div className="xl:max-w-[1280px] w-full">
