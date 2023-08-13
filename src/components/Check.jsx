@@ -75,7 +75,7 @@ const Team = () => {
 
   const joinUsY = useTransform(scrollYProgress,
     [0, 1],
-    [`${-containerHeight + carouselRef.current.offsetHeight + 100 + navbarHeight}px`, `${-dimensions.height + carouselRef.current.offsetHeight + navbarHeight}px`])
+    [`${-containerHeight + carouselRef.current.offsetHeight + 144 + navbarHeight}px`, `${-dimensions.height + carouselRef.current.offsetHeight + 48 + navbarHeight}px`])
 
   return (
     <div>
