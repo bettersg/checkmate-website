@@ -1,13 +1,13 @@
 import styles from "../style";
 import { teamMembers } from "../constants/index"
-import { logoSimple } from "../assets";
+import { logoSimple, partnerHeader } from "../assets";
 import { Link } from "react-router-dom";
 
 const About = () => {
   return (
     <div className="w-full bg-checkBG font-poppins flex flex-col items-center">
       <div className="flex flex-col justify-center">
-        <div className="xl:max-w-[1280px] w-full flex flex-col px-20">
+        <div className="xl:max-w-[1280px] w-full flex flex-col px-20 mx-auto">
           <h1 className="font-bold ss:text-[64px] text-[48px] text-checkShadeDark pb-8 pt-24">
             About Us
           </h1>
@@ -34,13 +34,13 @@ const About = () => {
         </div>
 
         {/** Team members section */}
-        <div className="xl:max-w-[1280px] w-full flex flex-col">
+        <div className="xl:max-w-[1280px] w-full flex flex-col mx-auto">
           <h1 className="w-1/2 ss:text-[48px] text-[32px] font-bold">Meet our <span className="text-checkPrimary600"><span className="italic">diverse</span> and <span className="italic">multidisciplinary</span></span> team of volunteers</h1>  
           <p className="w-1/2 mt-4 text-gray-700">We are currently part of better.sg, a #TechForGood non-profit organisation. What brings us together is the drive to fight scams and misinformation one message at a time. Check out our profiles below!</p>
         </div>
-        <div className="xl:max-w-[1280px] w-full pt-12 flex flex-row flex-wrap gap-x-6 gap-y-8">
+        <div className="xl:max-w-[1280px] w-full pt-12 flex flex-row flex-wrap gap-x-6 gap-y-8 mx-auto pl-4">
           {teamMembers.map((member, index) => (
-            <a href={member.linkedin} target="_blank" key={index} className="flex flex-col items-center w-[calc(25%-3rem)]">
+            <a href={member.linkedin} target="_blank" key={index} className="flex flex-col items-center w-[calc(25%-1.5rem)]">
               <img key={member.id} src={member.picture} />
               <div className="flex flex-col items-center bg-checkWhite w-full p-2 rounded-b-[36px] shadow-2xl">
                 <div className="font-poppins text-lg font-bold">{member.name}</div>
@@ -51,9 +51,10 @@ const About = () => {
         </div>
 
         {/** Partner */}
-        <div className="mt-12">
-        Our Partner ScamShield
-        We're partnering with ScamShield, an anti-scam product developed by the National Crime Prevention Council and Open Government Products in collaboration with the Singapore Police Force.
+        <div className="w-full xl:max-w-[1280px] flex flex-col">
+            <a href="https://www.scamshield.org.sg/" target="_blank">
+              <img src={partnerHeader} alt="CheckMate"  className=""/>
+            </a>
         </div>
 
       </div>
