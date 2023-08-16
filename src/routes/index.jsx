@@ -15,7 +15,7 @@ export default function Index() {
         </div>
       </div>
 
-      {/** <Check />*/}
+      {/** <Check /> */}
 
       <div className="bg-checkBG sm:px-16 px-6 flex justify-center items-center">
         <div className="xl:max-w-[1280px] w-full">
