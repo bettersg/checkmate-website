@@ -52,6 +52,7 @@ import arrowButtonRight from "./arrow-button-right.svg"
 import youtube from "./youtube.svg"
 import heroPicture from "./heroPicture.svg"
 import arrowRight from "./arrow-right.svg"
+import genericText from "./generic_text.svg"
 
 export {
   bill,
@@ -107,5 +108,6 @@ export {
   arrowButtonUp,
   arrowRight,
   youtube,
-  heroPicture
+  heroPicture,
+  genericText
 };
