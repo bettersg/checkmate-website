@@ -14,11 +14,11 @@ export const navLinks = [
     title: "Message Database"
   },
   {
-    id: "privacy-policy",
+    id: "privacy",
     title: "Privacy Policy",
   },
   {
-    id:"contact-us",
+    id:"contact",
     title: "Contact Us"
   }
 ];
