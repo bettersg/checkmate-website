@@ -53,6 +53,7 @@ import youtube from "./youtube.svg"
 import heroPicture from "./heroPicture.svg"
 import arrowRight from "./arrow-right.svg"
 import genericText from "./generic_text.svg"
+import telegram from "./telegram.svg"
 
 export {
   bill,
@@ -109,5 +110,6 @@ export {
   arrowRight,
   youtube,
   heroPicture,
-  genericText
+  genericText,
+  telegram
 };

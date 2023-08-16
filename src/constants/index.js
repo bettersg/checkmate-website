@@ -1,4 +1,4 @@
-import { facebook, instagram, linkedin, youtube, twitter, team01, team02, team03, team04, team05, team06, team07, team08, team09, team10} from "../assets";
+import { facebook, whatsapp, telegram, team01, team02, team03, team04, team05, team06, team07, team08, team09, team10} from "../assets";
 
 export const navLinks = [
   {
@@ -89,14 +89,29 @@ export const teamMembers = [
 
 
 export const socialMedia = [
-  { 
+
+  {
     id: "social-media-0",
-    icon: youtube,
-    link: "https://youtu.be/Nw0Q-kzDNxs"
+    icon: facebook,
+    link: "https://www.facebook.com/CheckMateFactcheck",
+    text: "checkmatesg"
+  },
+  {
+    id: "social-media-1",
+    icon: telegram,
+    link: "t.me/checkmatesg",
+    text: "checkmatesg"
   },
   {
     id: "social-media-2",
-    icon: facebook,
-    link: "https://www.facebook.com/CheckMateFactcheck",
+    icon: whatsapp,
+    link: "https://bit.ly/add-checkmate",
+    text: "+65 8043 2188"
   }
 ];
+
+{/**  { 
+    id: "social-media-0",
+    icon: youtube,
+    link: "https://youtu.be/Nw0Q-kzDNxs"
+  }, */}
