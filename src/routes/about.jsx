@@ -50,6 +50,12 @@ const About = () => {
           ))}
         </div>
 
+        {/** Partner */}
+        <div className="mt-12">
+        Our Partner ScamShield
+        We're partnering with ScamShield, an anti-scam product developed by the National Crime Prevention Council and Open Government Products in collaboration with the Singapore Police Force.
+        </div>
+
       </div>
         
     </div>
