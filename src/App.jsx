@@ -9,6 +9,7 @@ import About from "./routes/about"
 import Login from "./routes/login"
 import Dashboard from "./routes/dashboard"
 import Reset from "./routes/reset"
+import Contact from "./routes/contact"
 
 const App = () => (
   <div className="bg-checkBG w-full">
@@ -19,6 +20,8 @@ const App = () => (
         <Route path="about" element={<About />}></Route>
         <Route path="privacy-policy" element={<PrivacyPolicy />} />
         <Route path="fact-checks" element={<FactChecks />} />
+        <Route path="message-database" element={<div></div>} />
+        <Route path="contact" element={<Contact />} />
         <Route path="login" element={<Login />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="reset" element={<Reset />} />

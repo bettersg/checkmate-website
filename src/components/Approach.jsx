@@ -1,9 +1,10 @@
 import styles from "../style";
+import { genericText } from "../assets"
 
 const Approach = () => (
   
-  <section className={`${styles.flexCenter} flex-col flex-wrap sm:mb-20 mb-6 pt-6`}>
-    <h1 className="flex-1 font-poppins font-semibold ss:text-[64px] text-[48px] text-checkShadeDark text-center py-8">
+  <section className={`${styles.flexCenter} flex-col flex-wrap sm:mb-20 mb-6 pt-2`}>
+    <h1 className="flex-1 font-poppins font-semibold ss:text-[64px] text-[48px] text-checkShadeDark text-center pb-8">
       Our approach
     </h1>
     <div className="flex flex-col md:flex-row items-stretch gap-y-12 md:gap-y-0 gap-x-12 justify-center max-w-[1280px]">
@@ -34,8 +35,8 @@ const Approach = () => (
         {/** Main text bubble */}
         <div className="h-2/3 bg-checkCarouselYellow rounded-t-carousel px-12 pt-16 pb-12">
           <div className="pl-4">Unknown</div>
-          <div className="px-8 py-4 bg-white mt-1 rounded-[24px] shadow-md">
-            --------------------
+          <div className="px-8 py-4 bg-white mt-1 rounded-[24px] shadow-md mb-16">
+            <img src={genericText} />
           </div>
         </div>
       

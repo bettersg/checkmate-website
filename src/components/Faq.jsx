@@ -36,7 +36,7 @@ const Faq = () => {
               />
             </div>
           </summary>
-          <p className="px-4 py-6 pt-0 ml-4 mt-4 text-gray-600">
+          <p className="px-4 py-6 pt-0 ml-4 mt-4 text-gray-600 text-base">
             <span className="font-bold">Absolutely!</span> CheckMate is free to use and free for life.
           </p>
         </details>
@@ -56,7 +56,7 @@ const Faq = () => {
               />
             </div>
           </summary>
-          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 flex flex-col gap-y-2">
+          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 flex flex-col gap-y-2 text-base">
             <p>When you send a message to CheckMate for checking, the following happens:</p>
             <h3 className="font-bold underline">Matching</h3>
             <p>We check if this message has been received before, after ignoring any phone numbers mentioned in the message</p>
@@ -124,7 +124,7 @@ const Faq = () => {
               />
             </div>
           </summary>
-          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 flex flex-col gap-y-4">
+          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 flex flex-col gap-y-4 text-base">
             <p>We're glad to hear that you're interested in helping to combat fake news and scams! </p>
             <p>To get started, please reach out to us @ <a href="mailto:checkmate@better.sg" className="underline text-checkPurple">checkmate@better.sg</a> </p>
             {/** hidden for now <img src={qrFc} className="self-center" />
@@ -146,7 +146,7 @@ const Faq = () => {
               />
             </div>
           </summary>
-          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600">
+          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 text-base">
             <p>Messaging the CheckMate bot is like messaging someone in Whatsapp. CheckMate will only receive <span className="underline font-bold">your number</span> and the <span className="underline font-bold">message you are sending</span>.</p>
             <p>For more information, you can view our <Link to="privacy-policy" className="font-bold text-checkPurple underline">Privacy Policy</Link>.</p>
           </div>
@@ -167,7 +167,7 @@ const Faq = () => {
               />
             </div>
           </summary>
-          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 space-y-4">
+          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 space-y-4 text-base">
             <p>CheckMate is an independent, non-government initiative by the non-profit organization <a href="https://better.sg">better.sg</a>. We understand that combatting scams and dubious messages requires a collaborative approach to safeguard everyone. That's why we've currently exploring a partnership with <a href="https://www.scamshield.org.sg/">ScamShield</a>.</p>
             <p>Once we have linked up with ScamShield, when you send in a message, and our CheckMates identify it as a scam, we will ask for your consent to share that specific message anonymously with ScamShield. If you agree, ScamShield will include the message in the national scams database in order to help fight scams in Singapore.</p>
             <p>Your consent is sought for each individual message. You may choose to share some messages with ScamShield, while deciding not to share others. We will seek your consent for every message separately.</p>
@@ -194,8 +194,35 @@ const Faq = () => {
             <p><a href="https://www.scamshield.org.sg/">ScamShield</a> is an anti-scam product developed by the National Crime Prevention Council and Open Government Products.</p>
           </div>
         </details>
+        <div className="w-[calc(100%-4rem)] border-b border-gray-300"></div>
+        <details
+          ref={(el) => (detailsRef.current['how-long-does-it-take'] = el)}
+          open={isOpenMap['how-long-does-it-take']}
+          onToggle={(e) => toggleDetails('how-long-does-it-take', e.target.open)}
+          className="w-full " id="how-long-does-it-take"
+        >
+          <summary className="cursor-pointer px-4 py-6 font-bold list-none">
+            <div className="flex flex-row justify-between items-center">
+              <span className="p-3 text-xl font-semibold">How long does it take for CheckMate to assess messages?</span>
+              <img
+                className={"h-5 w-5"}
+                src={isOpenMap['how-long-does-it-take'] ? arrowButtonDown : arrowButtonRight}
+              />
+            </div>
+          </summary>
+          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 space-y-4 text-base">
+            <p>
+              CheckMate tries to balance speed and accuracy when it comes to assessing messages. To provide a robust answer, we typically prefer to have more volunteers assess a message. 
+              However, we understand speed is of essence for you. We are typically able to provide an assessment within hours of receiving your message, and are consistently striving to make 
+              this timing shorter without compromising on the quality of our assessment.
+            </p>
+            <p>
+              We have also introduced mixed-model machine learning to assist with the matching and classification of messages, which has allowed us to respond faster to a wider variety of messages. 
+              If we do not respond to your message with an assessment within 24 hours of sending it in, please report it <a href="https://bit.ly/checkmate-feedback" className="underline">here</a>.
+            </p>
+          </div>
+        </details>
       </div>
-
     </div>
   );
 };
