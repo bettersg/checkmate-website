@@ -2,7 +2,7 @@ import { facebook, whatsapp, telegram, team01, team02, team03, team04, team05, t
 
 export const navLinks = [
   {
-  id: "home",
+  id: "",
   title: "Home"
   },
   {
