@@ -1,6 +1,7 @@
 import bill from "./bill.png";
 import card from "./card.png";
 import logo from "./logo.svg";
+import logoSimple from "./logoSimple.svg";
 import quotes from "./quotes.svg";
 import robot from "./robot.png";
 import send from "./Send.svg";
@@ -59,6 +60,7 @@ export {
   bill,
   card,
   logo,
+  logoSimple,
   quotes,
   robot,
   send,

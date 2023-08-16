@@ -29,62 +29,100 @@ export const teamMembers = [
     id: 1,
     name: "Bing Wen Tan",
     picture: team01,
-    linkedin: 'https://www.linkedin.com/in/tbw89'
+    linkedin: 'https://www.linkedin.com/in/tbw89',
+    title: "Founder"
   },
   {
     id: 2,
     name: "Carlos Leyva-Salas",
     picture: team02,
-    linkedin: 'https://www.linkedin.com/in/leyvacarlos'
+    linkedin: 'https://www.linkedin.com/in/leyvacarlos',
+    title: "Head of Growth"
   },
   {
     id: 3,
     name: "Vincent Teyssier",
     picture: team03,
-    linkedin: "https://www.linkedin.com/in/vincent-teyssier/"
+    linkedin: "https://www.linkedin.com/in/vincent-teyssier/",
+    title: "CTO"
   },
   {
     id: 4,
     name: "Su Yuen Chin",
     picture: team04,
-    linkedin: "https://www.linkedin.com/in/suyuen"
+    linkedin: "https://www.linkedin.com/in/suyuen",
+    title: "Advisor"
   },
   {
     id: 5,
     name: "Wendy Po",
     picture: team05,
-    linkedin: "https://www.linkedin.com/in/wendypowl"
+    linkedin: "https://www.linkedin.com/in/wendypowl",
+    title: "UX Team Lead"
   },
   {
     id: 6,
     name: "Tasha Tan",
     picture: team06,
-    linkedin: "https://www.linkedin.com/in/tasha-tan-mx"
+    linkedin: "https://www.linkedin.com/in/tasha-tan-mx",
+    title: "UX Designer"
   },
   {
     id: 7,
     name: "Amanda Goh",
     picture: team07,
-    linkedin: "https://www.linkedin.com/in/amandagohyl"
+    linkedin: "https://www.linkedin.com/in/amandagohyl",
+    title: "New Gen AI"
   },
   {
     id: 8,
     name: "Elston",
     picture: team08,
     linkedin: "",
+    title: ""
   },
   {
     id: 9,
     name: "Yong En",
     picture: team09,
-    linkedin: ""
+    linkedin: "",
+    title: ""
   },
   {
     id: 10,
     name: "Zhi Hong",
     picture: team10,
-    linkedin: ""
-  }
+    linkedin: "",
+    title: ""
+  },
+  {
+    id: 11,
+    name: "Claire Pan",
+    picture: "",
+    linkedin: "",
+    title: "UX Designer"
+  },  
+  {
+    id: 12,
+    name: "Qin",
+    picture: "",
+    linkedin: "",
+    title: "UX Designer"
+  },  
+  {
+    id: 13,
+    name: "Hui Wen Ow",
+    picture: "",
+    linkedin: "",
+    title: "Product Manager"
+  },  
+  {
+    id: 14,
+    name: "Velen",
+    picture: "",
+    linkedin: "",
+    title: "UX Designer"
+  },  
 ]
 
 
