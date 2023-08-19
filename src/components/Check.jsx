@@ -1,5 +1,5 @@
 import { team01, team02, team03, team04, team05, team06, arrowUp, arrowRight } from "../assets"
-import { useScroll, motion, useTransform, easeInOut } from "framer-motion";
+import { useScroll, motion, useTransform, easeInOut, cubicBezier } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { getCurrentBreakpoint } from "../utils/breakpoints";
 
@@ -20,7 +20,6 @@ const members = [
 
 // configurations
 const containerHeightMultiplier = 2; //multiplier of window height- the bigger the number, the slower the scrolling
-const navbarHeight = 112; // in px, from h-28 in App.jsx
 const lpadding = 6;
 
 // setting height/width through tailwind [] arbitrary values seems to be inconsistent
@@ -78,29 +77,24 @@ const Check = () => {
     offset: ["start end", "end end"]
   })
 
-  const navbarPercent = (dimensions.height - navbarHeight) / dimensions.height / containerHeightMultiplier;
-
   const y = useTransform(
     scrollYProgress,
-    [0, navbarPercent, 1],
-    [`0px`, `0px`, `${containerHeight - dimensions.height + navbarHeight}px`]
+    [0, 0.9],
+    [`0px`, `${containerHeight - dimensions.height}px`],
+    {ease: cubicBezier(.5,0,1,1.05)}
   )
   const x = useTransform(
     scrollYProgress,
-    [navbarPercent, 0.95],
+    [0.25, 0.85],
     ["0px", `${-fullWidth + dimensions.width - paddingInPx}px`],
     { ease: easeInOut }
   )
 
-  // const joinUsY = useTransform(scrollYProgress,
-  //   [0, 1],
-  //   [`${-containerHeight + carouselRef.current.offsetHeight + 144 + navbarHeight}px`, `${-dimensions.height + carouselRef.current.offsetHeight + 48 + navbarHeight}px`])
-
   return (
     <div className="w-100" style={{ height: `${containerHeight}px` }} ref={containerRef}>
-      <motion.div className="block" style={{ maxHeight: `${dimensions.height - navbarHeight}px`, y }}>
+      <motion.div className="block" style={{ maxHeight: `${dimensions.height}px`, y }}>
         <motion.div className="overflow-x-hidden">
-          <h1 className="flex-1 font-poppins font-semibold text-checkShadeDark text-center pb-4">
+          <h1 className="sm:text-6xl text-4xl flex-1 font-poppins font-semibold text-checkShadeDark text-center pb-4">
             Check dubious <span className="text-checkPrimary600">messages</span>
           </h1>
           <motion.div className="flex w-max" style={{ x }}>
@@ -110,11 +104,11 @@ const Check = () => {
           </motion.div>
         </motion.div>
         <motion.div>
-          <div className="bg-checkBG sm:px-16 px-6 flex justify-center items-center">
+          <div className="bg-checkBG mt-4 sm:px-16 px-6 flex justify-center items-center">
             <div className="xl:max-w-[1280px] w-full">
 
               {/** Text block */}
-              <h2 className="text-checkPrimary600 text-left font-bold leading-none tracking-tight inline">
+              <h2 className="text-checkPrimary600 text-left font-bold leading-none tracking-tight inline" style={{fontSize: "min(2.5em, 10vw)"}}>
                 CheckMate is powered by a crew of multidisciplinary volunteers, who separate facts from fiction with the help of artificial intelligence.
               </h2>
 
