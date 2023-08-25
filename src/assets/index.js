@@ -22,6 +22,7 @@ import sliders from "./sliders.svg";
 import terminal from "./terminal.svg"
 import performance from "./performance.png";
 import whatsapp from "./whatsapp.svg";
+import whatsappOrange from "./whatsappOrange.svg";
 import bettersg from "./bettersg.png";
 import scamshield from "./scamshield.png";
 import setup01 from "./setup01.png"
@@ -39,7 +40,6 @@ import team03 from "./team03.png"
 import team04 from "./team04.png"
 import team05 from "./team05.png"
 import team06 from "./team06.png"
-import team07 from "./team07.png"
 import team08 from "./team08.png"
 import team09 from "./team09.png"
 import team10 from "./team10.png"
@@ -89,6 +89,7 @@ export {
   terminal,
   performance,
   whatsapp,
+  whatsappOrange,
   bettersg,
   scamshield,
   setup01,
@@ -107,7 +108,6 @@ export {
   team04,
   team05,
   team06,
-  team07,
   team08,
   team09,
   team10,

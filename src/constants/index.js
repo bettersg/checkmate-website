@@ -1,4 +1,4 @@
-import { facebook, whatsapp, telegram, team01, team02, team03, team04, team05, team06, team07, team08, team09, team10} from "../assets";
+import { facebook, whatsapp, telegram, team01, team02, team03, team04, team05, team06, team08, team09, team10} from "../assets";
 
 export const navLinks = [
   {
@@ -35,7 +35,7 @@ export const teamMembers = [
   {
     id: 2,
     name: "Carlos Leyva-Salas",
-    picture: team02,
+    picture: team04,
     linkedin: 'https://www.linkedin.com/in/leyvacarlos',
     title: "Head of Growth"
   },
@@ -70,7 +70,7 @@ export const teamMembers = [
   {
     id: 7,
     name: "Amanda Goh",
-    picture: team07,
+    picture: team02,
     linkedin: "https://www.linkedin.com/in/amandagohyl",
     title: "New Gen AI"
   },
@@ -98,28 +98,28 @@ export const teamMembers = [
   {
     id: 11,
     name: "Claire Pan",
-    picture: "",
+    picture: team09,
     linkedin: "",
     title: "UX Designer"
   },  
   {
     id: 12,
     name: "Qin",
-    picture: "",
+    picture: team09,
     linkedin: "",
     title: "UX Designer"
   },  
   {
     id: 13,
     name: "Hui Wen Ow",
-    picture: "",
+    picture: team09,
     linkedin: "",
     title: "Product Manager"
   },  
   {
     id: 14,
     name: "Velen",
-    picture: "",
+    picture: team09,
     linkedin: "",
     title: "UX Designer"
   },  

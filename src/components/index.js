@@ -6,6 +6,7 @@ import CTA from "./CTA"
 import Check from "./Check"
 import Faq from "./Faq"
 import Checked from "./Checked"
+import Cards3D from "./Cards3D"
 
 export {
   Navbar,
@@ -15,5 +16,6 @@ export {
   Check,
   Checked,
   CTA,
-  Faq
+  Faq,
+  Cards3D
 };

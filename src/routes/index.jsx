@@ -1,4 +1,4 @@
-import { Approach, Hero, Check, Checked, Faq, CTA } from "../components";
+import { Approach, Hero, Check, Checked, Faq, CTA, Cards3D } from "../components";
 
 export default function Index() {
   return (
@@ -20,6 +20,12 @@ export default function Index() {
       <div className="bg-checkBG sm:px-16 px-6 flex justify-center items-center mt-6">
         <div className="xl:max-w-[1280px] w-full">
           <Checked />
+        </div>
+      </div>
+      
+      <div className="bg-checkBG sm:px-16 px-6 flex justify-center items-center mt-6">
+        <div className="xl:max-w-[1280px] w-full">
+          <Cards3D />
         </div>
       </div>
 
