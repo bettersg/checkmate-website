@@ -5,7 +5,7 @@ const functions = require("firebase-functions"),
       helmet = require("helmet"),
       cookieParser = require("cookie-parser"),
       bodyParser = require("body-parser"),
-      typesense = require("typesense"),
+      Typesense = require("typesense"),
       ts_credentials = require("./typesense.json");
 
 // Initialise an instance of Express and a router
@@ -210,6 +210,26 @@ router.get("/messages", async (req, res) => {
         return res.sendStatus(203)
     }
 });
+
+router.get("/publicmessages", async (req, res) => {
+    try {
+      const snapshot = await firestore_backend.collection("messages").limit(20).get();
+     
+      // if result empty we send 204, otherwise we send 200 with the list of lists
+      if (snapshot.empty) {
+          functions.logger.log('GET messages returned no document!');
+          return res.sendStatus(204)
+      } else {
+          var docs = snapshot.docs.map(doc => doc.data());
+          //functions.logger.info(JSON.stringify(docs))
+          return res.status(200).send(JSON.stringify(docs));
+      }
+  } catch (error) {
+      functions.logger.error('Error: ', error)
+      return res.sendStatus(203)
+  }
+});
+
 
 router.get("/ts_messages", async (req, res) => {
   // Destructure the session cookie (a long-lived JWT that expires in two weeks)
