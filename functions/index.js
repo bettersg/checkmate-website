@@ -213,7 +213,7 @@ router.get("/messages", async (req, res) => {
 
 router.get("/publicmessages", async (req, res) => {
     try {
-      const snapshot = await firestore_backend.collection("messages").limit(20).get();
+      const snapshot = await firestore_backend.collection("messages").orderBy('firstTimestamp', 'desc').limit(20).get();
      
       // if result empty we send 204, otherwise we send 200 with the list of lists
       if (snapshot.empty) {
