@@ -5,6 +5,7 @@ import Approach from "./Approach"
 import CTA from "./CTA"
 import Check from "./Check"
 import Faq from "./Faq"
+import Checked from "./Checked"
 
 export {
   Navbar,
@@ -12,6 +13,7 @@ export {
   Hero,
   Approach,
   Check,
+  Checked,
   CTA,
   Faq
 };

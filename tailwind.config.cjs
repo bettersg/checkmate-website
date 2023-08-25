@@ -20,6 +20,7 @@ module.exports = {
         checkGreen: "#27A313",
         checkBlack: "#353535",
         checkGray: "#D9D9D9",
+        checkDarkGray: "#6b6b6b",
         checkCream: "#FBF6E6",
         checkShadeDark: "#333333",
         checkBG: "#efefef",

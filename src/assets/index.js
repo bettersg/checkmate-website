@@ -53,12 +53,15 @@ import arrowButtonRight from "./arrow-button-right.svg"
 import youtube from "./youtube.svg"
 import heroPicture from "./heroPicture.svg"
 import arrowRight from "./arrow-right.svg"
+import arrowRightOrange from "./arrow-right-orange.svg"
 import genericText from "./generic_text.svg"
 import telegram from "./telegram.svg"
 import partnerHeader from "./partnerHeader.svg"
 import iconWarning from "./iconwarning.svg"
 import iconQuestion from "./iconquestion.svg"
 import iconMessage from "./iconmessage.svg"
+import checkedImg1 from "./checkedImg1.svg"
+import checkedImg2 from "./checkedImg2.svg"
 
 
 export {
@@ -115,6 +118,7 @@ export {
   arrowButtonDown,
   arrowButtonUp,
   arrowRight,
+  arrowRightOrange,
   youtube,
   heroPicture,
   genericText,
@@ -122,5 +126,7 @@ export {
   partnerHeader,
   iconMessage,
   iconQuestion,
-  iconWarning
+  iconWarning,
+  checkedImg1,
+  checkedImg2
 };
