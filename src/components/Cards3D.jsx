@@ -73,7 +73,6 @@ const Cards3D = () => {
                 style={{
                     transformOrigin: "top center",
                     backgroundColor: color,
-                    cursor: canDrag ? "grab" : "auto"
                 }}
                 animate={{
                     top: index * -CARD_OFFSET,
@@ -86,10 +85,10 @@ const Cards3D = () => {
                 >
                     <div className="flex flex-col sm:flex-row items-center gap-x-4">
                         <div className="ss:text-[32px] text-[24px] font-semibold">{cards_content[index].text}</div>
-                        <div className="flex flex-row bg-checkWhite text-checkPrimary600 rounded-[50px] w-[28rem] max-w-sm px-8 py-4 justify-center items-center gap-x-4">
+                        <a href={cards_content[index].link} className="cursor-pointer flex flex-row bg-checkWhite text-checkPrimary600 rounded-[50px] w-[28rem] max-w-sm px-8 py-4 justify-center items-center gap-x-4">
                             <img src={whatsappOrange} />
                             {cards_content[index].buttonText}
-                        </div>
+                        </a>
                     </div>
                 </motion.li>
             );
