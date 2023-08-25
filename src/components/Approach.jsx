@@ -1,17 +1,19 @@
 import styles from "../style";
-import { genericText } from "../assets"
+import { genericText, iconQuestion, iconMessage, iconWarning } from "../assets"
 
 const Approach = () => (
   
   <section className={`${styles.flexCenter} flex-col flex-wrap sm:mb-20 mb-6 pt-2`}>
-    <h1 className="flex-1 font-poppins font-semibold ss:text-[64px] text-[48px] text-checkShadeDark text-center pb-8">
+    <h1 className="flex-1 font-poppins font-semibold ss:text-[64px] text-[48px] text-checkShadeDark text-center pb-16">
       Our approach
     </h1>
     <div className="flex flex-col md:flex-row items-stretch gap-y-12 md:gap-y-0 gap-x-12 justify-center max-w-[1280px]">
       {/** first card */}
       <div className="rounded-carousel min-h-[120px] w-1/3 shadow-2xl">
         {/** Icon */}
-        <div className=""></div>
+        <div className="relative top-6 left-12 mt-[-58px]">
+          <img src={iconWarning} alt="Warning"/>
+        </div>
         
         {/** Main text bubble */}
         <div className="h-2/3 bg-checkCarouselRed rounded-t-carousel px-12 pt-16 pb-12">
@@ -22,7 +24,7 @@ const Approach = () => (
         </div>
       
         {/** Sub text */}
-        <div className="h-1/3 bg-checkWhite text-xl font-semibold text-center px-8 py-4 rounded-b-carousel">
+        <div className="h-1/3 bg-checkWhite text-2xl font-semibold text-center px-8 py-4 rounded-b-carousel">
           Send in a dubious message, or a screenshot of the message and sender to us.
         </div>
       </div>
@@ -30,7 +32,9 @@ const Approach = () => (
       {/** Second card */}
       <div className="rounded-carousel min-h-[120px] w-1/3 shadow-2xl">
         {/** Icon */}
-        <div className=""></div>
+        <div className="relative top-6 left-12 mt-[-58px]">
+          <img src={iconQuestion} alt="Question"/>
+        </div>
         
         {/** Main text bubble */}
         <div className="h-2/3 bg-checkCarouselYellow rounded-t-carousel px-12 pt-16 pb-12">
@@ -41,7 +45,7 @@ const Approach = () => (
         </div>
       
         {/** Sub text */}
-        <div className="h-1/3 bg-checkWhite text-xl font-semibold text-center px-8 py-4 rounded-b-carousel">
+        <div className="h-1/3 bg-checkWhite text-2xl font-semibold text-center px-8 py-4 rounded-b-carousel">
           Our AI tries to classify the message. If it’s unable to, human checkers will review it!
         </div>
       </div>
@@ -49,7 +53,9 @@ const Approach = () => (
       {/** Third card */}
       <div className="rounded-carousel min-h-[120px] w-1/3 shadow-2xl">
         {/** Icon */}
-        <div className=""></div>
+        <div className="relative top-6 left-12 mt-[-58px]">
+          <img src={iconMessage} alt="Message"/>
+        </div>
         
         {/** Main text bubble */}
         <div className="h-2/3 bg-checkCarouselGreen rounded-t-carousel px-12 pt-16 pb-12">
@@ -60,7 +66,7 @@ const Approach = () => (
         </div>
       
         {/** Sub text */}
-        <div className="h-1/3 bg-checkWhite text-xl font-semibold text-center px-8 py-4 rounded-b-carousel">
+        <div className="h-1/3 bg-checkWhite text-2xl font-semibold text-center px-8 py-4 rounded-b-carousel">
           Once checked, we inform you of the results!
         </div>
       </div>

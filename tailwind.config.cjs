@@ -45,8 +45,8 @@ module.exports = {
         checkSecondaryGreen700: "#088902",
         checkSecondaryGreen900: "#0e5b0c",
         checkCarouselRed: "#ffdbdb",
-        checkCarouselYellow: "#e3ffe2",
-        checkCarouselGreen: "#fff1bf",
+        checkCarouselYellow: "#fff1bf",
+        checkCarouselGreen: "#e3ffe2",
         checkLink: "#278eff"
       },
       fontFamily: {

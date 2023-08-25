@@ -71,3 +71,4 @@ serviceAccount_backend.json
 functions/serviceAccount.json
 functions/typesense.json
 typesense.json
+dist/assets/

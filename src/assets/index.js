@@ -56,6 +56,10 @@ import arrowRight from "./arrow-right.svg"
 import genericText from "./generic_text.svg"
 import telegram from "./telegram.svg"
 import partnerHeader from "./partnerHeader.svg"
+import iconWarning from "./iconwarning.svg"
+import iconQuestion from "./iconquestion.svg"
+import iconMessage from "./iconmessage.svg"
+
 
 export {
   bill,
@@ -115,5 +119,8 @@ export {
   heroPicture,
   genericText,
   telegram,
-  partnerHeader
+  partnerHeader,
+  iconMessage,
+  iconQuestion,
+  iconWarning
 };
