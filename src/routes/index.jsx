@@ -17,13 +17,13 @@ export default function Index() {
 
       <Check />
 
-      <div className="bg-checkBG sm:px-16 px-6 flex justify-center items-center">
+      <div className="bg-checkBG sm:px-16 px-6 flex justify-center items-center mt-6">
         <div className="xl:max-w-[1280px] w-full">
           <Checked />
         </div>
       </div>
 
-      <div className="bg-checkBG sm:px-16 px-6 flex justify-center items-center">
+      <div className="bg-checkBG sm:px-16 px-6 flex justify-center items-center mt-24">
         <div className="xl:max-w-[1280px] w-full">
           <Faq />
         </div>
