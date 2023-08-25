@@ -4,7 +4,7 @@ import { whatsappOrange } from "../assets";
 import { motion } from "framer-motion";
 
 const CARD_COLORS = ["#ff7557", "#ff5833", " #ff431a", "#ff431a", "#ff2e00"];
-const CARD_OFFSET = 15;
+const CARD_OFFSET = 20;
 const SCALE_FACTOR = 0.08;
 
 const cards_content = [
@@ -61,7 +61,7 @@ const Cards3D = () => {
     return (
     
     <div className="flex flex-col justify-center font-poppins">
-      <div className="relative flex justify-center items-center h-[100vh]">
+      <div className="relative flex justify-center items-center h-[50vh]">
         <ul className="relative w-full h-[220px] mx-16">
             {cards.map((color, index) => {
             const canDrag = index === 0;
@@ -80,7 +80,7 @@ const Cards3D = () => {
                     zIndex: CARD_COLORS.length - index
                 }}
                 
-                transition={{ duration: 1, delay: 4 }}
+                transition={{ duration: 1, delay: 3 }}
                 onAnimationComplete={() => {moveToEnd(index); console.log("Transition end") }}
                 >
                     <div className="flex flex-col sm:flex-row items-center gap-x-4">
