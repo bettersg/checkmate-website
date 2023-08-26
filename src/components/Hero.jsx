@@ -35,7 +35,7 @@ const Hero = () => {
           </p>
 
           <div className=" mb-2 mt-5 sm:mt-8 cursor-pointer max-w-[12rem]">
-            <ButtonCTAWhatsapp />
+            <ButtonCTAWhatsapp link="https://ref.checkmate.sg/add?utm_source=website&utm_medium=hero"/>
           </div>  
         </motion.div>
       </motion.div>

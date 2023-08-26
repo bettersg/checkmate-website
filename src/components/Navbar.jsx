@@ -66,7 +66,7 @@ const Navbar = () => {
       </ul>
 
       {/** Call to action */}
-      <ButtonCTAWhatsapp />
+      <ButtonCTAWhatsapp link="https://ref.checkmate.sg/add?utm_source=website&utm_medium=navbar"/>
 
 
       {/** {user ? 

@@ -49,20 +49,30 @@ const Messages = () => {
       {isLoading ? 
         <span className={purecss.loader}></span>
         : 
-        <div className="flex flex-row flex-wrap gap-x-8">
-        {messages.map( (message) => { return (
+        <div className="flex flex-row flex-wrap gap-x-8 gap-y-8 mb-8">
+        {messages.map( (message) => { 
+            if (message.truthScore) {var messageWidth = Math.round ( ( (Math.round(message.truthScore * 100) / 100) * 100 ) / 5 )}
+            else {var messageWidth = 0}
+            return (
             <div className="flex flex-col w-[calc(33.33%-2rem)]">
-                <div className="flex flex-col gap-y-4 bg-checkWhite rounded-t-carousel px-6 pt-12 pb-6">
+                <div className="flex flex-col gap-y-4 bg-checkWhite rounded-t-carousel px-6 pt-12 pb-6 h-[35vh]">
                     {/** Category */}
                     <div className="ss:text-[32px] text-[24px]">{message.primaryCategory ? capitalizeFirstLetter(message.primaryCategory) : ""}</div> 
                     {/** Report date */}
                     <div className="">Reported on&nbsp;{message.firstTimestamp ? convertTimestamp(message.firstTimestamp._seconds) : ""}</div> 
                     {/** Message */}
-                    <div className="">{message.text ? truncate(message.text, 500) : ""}</div>
+                    <div className="">{message.text ? truncate(message.text, 200) : ""}</div>
                 </div>
                 <div className="flex flex-col gap-y-4 bg-checkGray rounded-b-carousel px-6 pt-6 pb-12">
                     {/** Truth Score */}
-                    <div className="">Truth score&nbsp;{message.truthScore || ""}</div> 
+                    {message.truthScore ?
+                        <div className="flex flex-row items-center">Truth score&nbsp;
+                            <div className="w-24 bg-checkWhite rounded-full h-2.5">
+                                <div className={`bg-checkPrimary600 h-2.5 rounded-full w-[${messageWidth}%]`}></div>
+                            </div>
+                            {console.log(typeof message.truthScore)}
+                        &nbsp;<span className="text-checkPrimary600 font-semibold">{Math.round(message.truthScore * 100) / 100}</span>&nbsp;of 5</div> 
+                    : "" }
                     {/** Status */}
                     <div className="">Status&nbsp;{message.isAssessed ? 
                         <span className="text-checkWhite px-4 py-1 bg-checkPrimary600 rounded-[50px]">Reviewed </span>
@@ -70,18 +80,8 @@ const Messages = () => {
                         <span className="text-checkPrimary600 px-4 py-1 bg-checkWhite rounded-[50px]">Reviewing</span>
                     }</div> 
                     {/** Reported */}
-                    <div className="">Reported&nbsp;<span className="text-checkPrimary">
-                            { ( () => {
-                            if (message.instanceCount) {
-                                if(message.instanceCount == "1") {
-                                return "1 time"
-                                } else {
-                                return message.instanceCount + " times"
-                                } 
-                            } else {
-                                return "1 time"
-                            }
-                            })}
+                    <div className="">Reported&nbsp;<span className="text-checkPrimary600 font-semibold">
+                            { (message.instanceCount && message.instanceCount != "1") ? (message.instanceCount + " times") : "1 time" }
                         </span>
                     </div> 
                 </div>
