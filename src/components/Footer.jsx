@@ -34,7 +34,7 @@ const Footer = () => (
         <div className="">Find us on</div>
         <div className="flex flex-col gap-y-6">
           {socialMedia.map((social, index) => (
-            <div className="flex flex-row">
+            <div key={index} className="flex flex-row">
               <img
                 key={social.id}
                 src={social.icon}
