@@ -62,6 +62,9 @@ import iconQuestion from "./iconquestion.svg"
 import iconMessage from "./iconmessage.svg"
 import checkedImg1 from "./checkedImg1.svg"
 import checkedImg2 from "./checkedImg2.svg"
+import search from "./search.svg"
+import clear from "./clear.svg"
+import filter from "./filter.svg"
 
 
 export {
@@ -128,5 +131,8 @@ export {
   iconQuestion,
   iconWarning,
   checkedImg1,
-  checkedImg2
+  checkedImg2,
+  search,
+  clear,
+  filter
 };
