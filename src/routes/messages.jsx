@@ -26,9 +26,9 @@ const Messages = () => {
     }).then(response => {
         return response.json()
       }).then(data => {
-        console.log(data)
+        console.log(data.hits)
         setIsLoading(false)
-        setMessages(data)
+        setMessages(data.hits)
     });
   }
     
@@ -159,16 +159,17 @@ const Messages = () => {
         <span className={purecss.loader}></span>
         : 
         <div className="flex flex-row flex-wrap gap-x-8 gap-y-8 mb-8 mt-8">
-        {messages.map( (message, index) => { 
+        {messages.map( (message, index) => {
+            message = message.document 
             if (message.truthScore) {var messageWidth = Math.round ( ( (Math.round(message.truthScore * 100) / 100) * 100 ) / 5 )}
             else {var messageWidth = 0}
             return (
             <div key={index} className="flex flex-col w-[calc(33.33%-2rem)]">
                 <div className="flex flex-col gap-y-4 bg-checkWhite rounded-t-carousel px-6 pt-12 pb-6 h-[35vh]">
                     {/** Category */}
-                    <div className="ss:text-[32px] text-[24px]">{message.primaryCategory ? capitalizeFirstLetter(message.primaryCategory) : ""}</div> 
+                    <div className="ss:text-[32px] text-[24px]">{message.category ? capitalizeFirstLetter(message.category) : ""}</div> 
                     {/** Report date */}
-                    <div className="">Reported on&nbsp;{message.firstTimestamp ? convertTimestamp(message.firstTimestamp._seconds) : ""}</div> 
+                    <div className="">Reported on&nbsp;{message.firstReceivedUnixTimestamp ? convertTimestamp(message.firstReceivedUnixTimestamp) : ""}</div> 
                     {/** Message */}
                     <div className="">{message.text ? truncate(message.text, 200) : ""}</div>
                 </div>

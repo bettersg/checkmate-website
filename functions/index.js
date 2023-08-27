@@ -48,6 +48,7 @@ const backend = firebaseAdmin.initializeApp( { credential: firebaseAdmin.credent
 const firestore_backend = backend.firestore();
 
 // initialize the typesense client
+console.log(ts_credentials.hostname + '.a1.typesense.net')
 let ts_client = new Typesense.Client({
   'nodes': [{
     'host': ts_credentials.hostname + '.a1.typesense.net',
@@ -55,7 +56,7 @@ let ts_client = new Typesense.Client({
     'protocol': 'https'
   }],
   'apiKey': ts_credentials.api_key,
-  'connectionTimeoutSeconds': 2
+  'connectionTimeoutSeconds': 3
 })
 
 /**
@@ -211,7 +212,7 @@ router.get("/messages", async (req, res) => {
     }
 });
 
-router.get("/publicmessages", async (req, res) => {
+/*router.get("/publicmessages", async (req, res) => {
     try {
       const snapshot = await firestore_backend.collection("messages").orderBy('firstTimestamp', 'desc').limit(20).get();
      
@@ -228,23 +229,19 @@ router.get("/publicmessages", async (req, res) => {
       functions.logger.error('Error: ', error)
       return res.sendStatus(203)
   }
-});
+});*/
 
-
-router.get("/ts_messages", async (req, res) => {
-  // Destructure the session cookie (a long-lived JWT that expires in two weeks)
-  const { __session } = req.cookies;
+router.get("/publicmessages", async (req, res) => {
   try {
-      // verify that the session cookie is valid
-      const decodedClaims = await firebaseAdmin.auth().verifySessionCookie(__session, true);
+    let searchParameters = {
+      'q'         : '*',
+      'query_by'  : 'text',
+      'sort_by'   : 'firstReceivedUnixTimestamp:desc',
+      'filter_by' : 'category:!=unsure',
+      'limit'     : '20'
+    }
 
-      let searchParameters = {
-        'q'         : 'harry potter',
-        'query_by'  : 'title',
-        'sort_by'   : 'ratings_count:desc'
-      }
-
-      ts_client.collections('messages')
+    ts_client.collections('messagesProd')
       .documents()
       .search(searchParameters)
       .then(function (searchResults) {
@@ -256,12 +253,10 @@ router.get("/ts_messages", async (req, res) => {
             return res.status(200).send(JSON.stringify(searchResults));
         }
       })
-      
-      
-  } catch (error) {
-      functions.logger.error('Error: ', error)
-      return res.sendStatus(203)
-  }
+} catch (error) {
+    functions.logger.error('Error: ', error)
+    return res.sendStatus(203)
+}
 });
 
 // Export the Express application as a single Firebase Function named "api" and add the vpc connector
