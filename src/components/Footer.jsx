@@ -7,7 +7,7 @@ const Footer = () => (
   <section id="footer" className={`w-full sm:py-10 py-2 px-16 flex justify-center items-center flex-col bg-gray-500 text-checkWhite font-poppins`}>
     
     
-    <div className="xl:max-w-[1280px] w-full flex flex-col md:flex-row justify-center">
+    <div className="xl:max-w-[1280px] w-full flex flex-col md:flex-row gap-y-8 justify-center">
 
       <div className="w-full md:w-1/4">
         <div className="">CheckMate</div>
@@ -52,8 +52,8 @@ const Footer = () => (
     
     
 
-    <div className="flex max-w-[1280px] w-full mt-16 font-normal">
-      Checkmate. A <a href="https://better.sg" target="_blank">better.sg</a>&nbsp;Initiative © 2023 CheckMate
+    <div className="flex flex-row flex-wrap max-w-[1280px] w-full mt-16 font-normal">
+      Checkmate. A&nbsp;<a href="https://better.sg" target="_blank">better.sg</a>&nbsp;Initiative © 2023 CheckMate
     </div>    
 
   </section>

@@ -9,7 +9,7 @@ const Approach = () => (
     </h1>
     <div className="flex flex-col md:flex-row items-stretch gap-y-12 md:gap-y-0 gap-x-12 justify-center max-w-[1280px]">
       {/** first card */}
-      <div className="rounded-carousel min-h-[120px] w-1/3 shadow-2xl">
+      <div className="rounded-carousel min-h-[120px] w-full md:w-1/3 shadow-2xl">
         {/** Icon */}
         <div className="relative top-6 left-12 mt-[-58px]">
           <img src={iconWarning} alt="Warning"/>
@@ -30,7 +30,7 @@ const Approach = () => (
       </div>
 
       {/** Second card */}
-      <div className="rounded-carousel min-h-[120px] w-1/3 shadow-2xl">
+      <div className="rounded-carousel min-h-[120px] w-full md:w-1/3 shadow-2xl">
         {/** Icon */}
         <div className="relative top-6 left-12 mt-[-58px]">
           <img src={iconQuestion} alt="Question"/>
@@ -51,7 +51,7 @@ const Approach = () => (
       </div>
 
       {/** Third card */}
-      <div className="rounded-carousel min-h-[120px] w-1/3 shadow-2xl">
+      <div className="rounded-carousel min-h-[120px] w-full md:w-1/3 shadow-2xl">
         {/** Icon */}
         <div className="relative top-6 left-12 mt-[-58px]">
           <img src={iconMessage} alt="Message"/>

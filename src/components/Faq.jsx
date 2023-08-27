@@ -20,7 +20,7 @@ const Faq = () => {
         </h1>
 
       
-      <div className="flex flex-col px-12 pb-24 font-poppins xl:max-w-[1080px] w-full items-center">
+      <div className="flex flex-col px-4 md:px-12 pb-24 font-poppins xl:max-w-[1080px] w-full items-center">
         <details
           ref={(el) => (detailsRef.current['is-checkmate-free-to-us'] = el)}
           open={isOpenMap['is-checkmate-free-to-us']}

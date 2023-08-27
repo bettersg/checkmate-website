@@ -108,7 +108,7 @@ const Check = () => {
             <div className="xl:max-w-[1280px] w-full flex flex-col justify-center">
 
               {/** Text block */}
-              <h2 className="text-checkPrimary600 font-bold leading-none tracking-wide text-center ss:text-[64px] text-[48px]">
+              <h2 className="text-checkPrimary600 font-bold leading-none tracking-wide text-center ss:text-[60px] md:text-[64px] text-[48px]">
               CheckMate is powered by a crew of multidisciplinary volunteers who separate fact from fiction using the power of voting and artificial intelligence. <br />#TechForGood
               </h2>
 

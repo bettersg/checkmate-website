@@ -66,7 +66,9 @@ const Navbar = () => {
       </ul>
 
       {/** Call to action */}
-      <ButtonCTAWhatsapp link="https://ref.checkmate.sg/add?utm_source=website&utm_medium=navbar"/>
+      <div className='hidden sm:block'>
+        <ButtonCTAWhatsapp link="https://ref.checkmate.sg/add?utm_source=website&utm_medium=navbar"/>
+      </div>
 
 
       {/** {user ? 
@@ -91,7 +93,7 @@ const Navbar = () => {
         <div
           className={`${
             !toggle ? "hidden" : "flex"
-          } p-6 bg-white absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar border-4 border-checkPurple`}
+          } p-6 bg-white absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar border-4 border-checkPrimary600`}
         >
           <ul className="list-none flex justify-end items-start flex-1 flex-col">
             {navLinks.map((nav, index) => (
