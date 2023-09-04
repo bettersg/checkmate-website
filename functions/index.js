@@ -264,48 +264,49 @@ router.get("/publicmessages", async (req, res) => {
 });
 
 router.get("/publicmessages_exp", async (req, res) => {
-  // get the params
-  if (request.params) {
-    if (request.params.search) {var search = req.params.search} else {var search = "*"}
-    if (request.params.categories) {var categories = req.params.categories} else {var categories = ""}
-    if (request.params.status) {var status = req.params.status} else {var status = ""}
-    if (request.params.report_count) {var report_count = req.params.report_count} else {var report_count = ""}
-    if (request.params.report_date_start) {
-      var report_date_start = req.params.report_date_start
+  // get the query parameters
+  if (req.query) {
+    if (req.query['search']) {var search = req.query['search']} else {var search = "*"}
+    if (req.query['categories']) {var categories = req.query['categories']} else {var categories = ""}
+    if (req.query['status']) {var status = req.query['status']; console.log('status', status)} else {var status = ""}
+    if (req.query['report_count']) {var report_count = req.query['report_count']} else {var report_count = ""}
+    if (req.query['report_date_start']) {
+      var report_date_start = req.query['report_date_start']
       var date_filter_start = "firstReceivedUnixTimestamp:>" + report_date_start
     } else {var report_date_start = ""}  
-    if (request.params.report_date_end) {
-      var report_date_end = req.params.report_date_end
+    if (req.query['report_date_end']) {
+      var report_date_end = req.query['report_date_end']
       var date_filter_end = "firstReceivedUnixTimestamp:<" + report_date_end
     } else {var report_date_end = ""}  
   }
 
   // build the filter query
   var filter = 'category:=[' + categories + ']'
-  
+
   switch(status) {
-    case 'reviewed': filter = filter + ' && isAssessed:=true';
-    case 'reviewing': filter = filter + ' && isAssessed:=false';
-    default: filter = filter + ' ';
-  }
-  
-  switch(report_count) {
-    case 1: filter = filter + ' && instanceCount:<=5';
-    case 6: filter = filter + ' && instanceCount:>5 && instanceCount:<=10';
-    case 11: filter = filter + ' && instanceCount:>10 && instanceCount:<=20';
-    case 20: filter = filter + ' && instanceCount:>20';
+    case 'reviewed': filter = filter + ' && isAssessed:=true'; break;
+    case 'reviewing': filter = filter + ' && isAssessed:=false'; break;
     default: filter = filter + ' ';
   }
 
-  if (date_filter_start) { 
+  switch(report_count) {
+    case '1': filter = filter + ' && instanceCount:<=5'; break;
+    case '6': filter = filter + ' && instanceCount:>5 && instanceCount:<=10'; break;
+    case '11': filter = filter + ' && instanceCount:>10 && instanceCount:<=20'; break;
+    case '20': filter = filter + ' && instanceCount:>20'; break;
+    default: filter = filter + ' ';
+  }
+
+  if (date_filter_start && date_filter_start != "") { 
     filter = filter + ' && ' + date_filter_start;
-    if (date_filter_end) {
+    if (date_filter_end && date_filter_end != "") {
       filter = filter + ' && ' + date_filter_end
     }
   }
 
   console.log('filter', filter)
-
+  
+  // execute the query
   try {
     let searchParameters = {
       'q'         : search,
