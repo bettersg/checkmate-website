@@ -1,3 +1,5 @@
+const { request } = require("express");
+
 const functions = require("firebase-functions"),
       firebaseAdmin = require("firebase-admin").default,
       express = require("express"),
@@ -238,7 +240,81 @@ router.get("/publicmessages", async (req, res) => {
       'query_by'  : 'text',
       'sort_by'   : 'firstReceivedUnixTimestamp:desc',
       'filter_by' : 'category:!=unsure',
-      'limit'     : '20'
+      'limit'     : 20,
+      'limit_hits': 20,
+      'per_page': 20
+    }
+
+    ts_client.collections('messagesProd')
+      .documents()
+      .search(searchParameters)
+      .then(function (searchResults) {
+        // if result empty we send 204, otherwise we send 200 with the list of lists
+        if (searchResults.empty) {
+          functions.logger.log('GET messages returned no document!');
+          return res.sendStatus(204)
+        } else {
+            return res.status(200).send(JSON.stringify(searchResults));
+        }
+      })
+} catch (error) {
+    functions.logger.error('Error: ', error)
+    return res.sendStatus(203)
+}
+});
+
+router.get("/publicmessages_exp", async (req, res) => {
+  // get the params
+  if (request.params) {
+    if (request.params.search) {var search = req.params.search} else {var search = "*"}
+    if (request.params.categories) {var categories = req.params.categories} else {var categories = ""}
+    if (request.params.status) {var status = req.params.status} else {var status = ""}
+    if (request.params.report_count) {var report_count = req.params.report_count} else {var report_count = ""}
+    if (request.params.report_date_start) {
+      var report_date_start = req.params.report_date_start
+      var date_filter_start = "firstReceivedUnixTimestamp:>" + report_date_start
+    } else {var report_date_start = ""}  
+    if (request.params.report_date_end) {
+      var report_date_end = req.params.report_date_end
+      var date_filter_end = "firstReceivedUnixTimestamp:<" + report_date_end
+    } else {var report_date_end = ""}  
+  }
+
+  // build the filter query
+  var filter = 'category:=[' + categories + ']'
+  
+  switch(status) {
+    case 'reviewed': filter = filter + ' && isAssessed:=true';
+    case 'reviewing': filter = filter + ' && isAssessed:=false';
+    default: filter = filter + ' ';
+  }
+  
+  switch(report_count) {
+    case 1: filter = filter + ' && instanceCount:<=5';
+    case 6: filter = filter + ' && instanceCount:>5 && instanceCount:<=10';
+    case 11: filter = filter + ' && instanceCount:>10 && instanceCount:<=20';
+    case 20: filter = filter + ' && instanceCount:>20';
+    default: filter = filter + ' ';
+  }
+
+  if (date_filter_start) { 
+    filter = filter + ' && ' + date_filter_start;
+    if (date_filter_end) {
+      filter = filter + ' && ' + date_filter_end
+    }
+  }
+
+  console.log('filter', filter)
+
+  try {
+    let searchParameters = {
+      'q'         : search,
+      'query_by'  : 'text',
+      'sort_by'   : 'firstReceivedUnixTimestamp:desc',
+      'filter_by' : filter,
+      'limit'     : 20,
+      'limit_hits': 20,
+      'per_page': 20
     }
 
     ts_client.collections('messagesProd')
