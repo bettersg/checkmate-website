@@ -23,7 +23,6 @@
     "react-document-meta": "^3.0.0-beta.2",
     "react-dom": "^18.2.0",
     "react-gtm-module": "^2.0.11",
-    "react-hook-form": "^7.46.1",
     "react-router-dom": "^6.9.0",
     "react-toastify": "9.0.7",
     "sort-by": "^1.2.0"
