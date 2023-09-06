@@ -1,14 +1,50 @@
-import { search, clear, filter } from "../assets";
+import { search, clear, clearDark, filter, arrowButtonDown } from "../assets";
 import { Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react"
 import purecss from "../purecss.module.css";
+import Datepicker from "react-tailwindcss-datepicker"; 
+import axios from "axios";
+
+const categories = [
+  { id: "checkbox-item-1", text: "illicit" },
+  { id: "checkbox-item-2", text: "legitimate" },
+  { id: "checkbox-item-3", text: "misinformation" },
+  { id: "checkbox-item-4", text: "scam" },
+  { id: "checkbox-item-5", text: "spam" },
+  { id: "checkbox-item-6", text: "trivial" },
+  { id: "checkbox-item-7", text: "unsure" },
+];
 
 const Messages = () => {
 
   const [messages, setMessages] = useState([])
+  const [filterObject, setFilterObject] = useState({
+    categories: "illicit, legitimate, misinformation, scam, spam, trivial, unsure",
+    status: "All",
+    reported: "1 - 5 times",
+    period: "Jan 2022 - Latest",
+    periodStartTimestamp: 0,
+    periodEndTimestamp: Math.floor(Date.now() / 1000),
+    datepickervalue: {
+        dpstartDate: new Date(),
+        dpendDate: new Date().setMonth(11)
+    }
+  })
   const [isLoading, setIsLoading] = useState(true)
   const [isCategoriesToggled, setIsCategoriesToggled] = useState(false)
+  const [isStatusToggled, setIsStatusToggled] = useState(false)
+  const [isReportedToggled, setIsReportedToggled] = useState(false)
+  const [searchText, setSearchText] = useState("");
+  const [selectedCateogries, setSelectedCategories] = useState(
+    categories.reduce(
+      (obj, category) => ({ ...obj, [category.text]: false }),
+      {}
+    )
+  );
+
   const drop = useRef(null);
+  const statusDropdown = useRef(null);
+  const reportedDropdown = useRef(null);
 
   useEffect(() => {
     fetchMessages()
@@ -36,7 +72,15 @@ const Messages = () => {
     if (!e.target.closest(`#${drop.current.id}`) && isCategoriesToggled ) {
         setIsCategoriesToggled(false);
     }
+    if (!e.target.closest(`#${statusDropdown.current.id}`) && isStatusToggled ) {
+        setIsStatusToggled(false);
+    }
   }
+
+  const handleDatePickerValueChange = datepickervalue => {
+    console.log("newValue:", newValue);
+    setFilterObject({...filterObject, datepickervalue})
+  };
 
   useEffect(() => {
     document.addEventListener("click", handleClick);
@@ -59,23 +103,59 @@ const Messages = () => {
     return dateFormat
   }
 
-  console.log('is: ', isCategoriesToggled)
+  const handleSearchSubmit = async (e) => {
+    e.preventDefault();
+
+    const BASE_URL = "https://checkmate.sg/api/publicmessages_exp?";
+    let endpoint = BASE_URL;
+
+    try {
+      setIsLoading(true);
+      if (searchText.length !== 0) {
+        endpoint += `search=${searchText}`;
+      } else {
+        endpoint += `search=''`;
+      }
+
+      const finalCategories = Object.keys(selectedCateogries).filter(
+        (key) => selectedCateogries[key]
+      );
+
+      if (finalCategories.length !== 0) {
+        endpoint += `&categories=${finalCategories.join(",")}`;
+      }
+
+      const response = await axios.get(endpoint);
+
+      const result = response.data;
+
+      setMessages(result.hits);
+      setIsLoading(false);
+    } catch (error) {
+      console.error(`Error:`, error);
+    }
+  };
+
   return (
     <div className="w-full bg-checkBG font-poppins flex flex-col items-center max-w-[1280px] mx-auto">
         <h1 className="flex-1 w-full font-poppins font-semibold ss:text-[64px] text-[48px] text-checkShadeDark text-left pt-16 pb-8">
           Message Database
         </h1>
         {/** Search bar */}
-        <div className="w-full rounded-[50px] bg-checkWhite flex flex-row gap-x-2 px-6 py-6 items-center">
+        <form onSubmit={handleSearchSubmit} className="w-full rounded-[50px] bg-checkWhite flex flex-row gap-x-2 px-6 py-6 items-center">
             <img src={search} className="h-7 flex-none" alt="search" />
-            <input 
-                className="ss:text-[20px] text-[14px] ml-4 flex-grow" 
+            <input
+                className="ss:text-[20px] text-[14px] ml-4 flex-grow"
                 type="text"
                 placeholder="Search..."
                 name="searchText"
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
             />
-            <img src={clear} className="flex-none" alt="Clear" />
+            <img src={clear} className="flex-none" alt="Clear" onClick={() => setSearchText("")}/>
+
             <div className="border-r border-r-checkGray flex-none">&nbsp;</div>
+            
             {/** Category selector */}            
             <div className="relative" id="dropdown" ref={drop}>
                 
@@ -83,7 +163,6 @@ const Messages = () => {
                         type="button" 
                         onClick={() => {
                             setIsCategoriesToggled(isCategoriesToggled => !isCategoriesToggled);
-                            console.log(isCategoriesToggled)
                         }}>
                     <span className="pr-10 ss:text-[20px] text-[14px]">Category </span>
                     <svg className="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -93,48 +172,35 @@ const Messages = () => {
 
                 {isCategoriesToggled && <div id="dropdownDefaultCheckbox" className="z-10 w-48 bg-white divide-y divide-gray-100 rounded-lg shadow absolute top-[3rem] left-8">
                     <ul className="p-3 space-y-3 text-sm text-gray-700" aria-labelledby="dropdownCheckboxButton">
-                    <li>
-                        <div className="flex items-center">
-                        <input id="checkbox-item-1" type="checkbox" value="" className="w-4 h-4 text-checkPrimary600 bg-gray-100 border-gray-300 rounded" />
-                        <label htmlFor="checkbox-item-1" className="ml-2  text-gray-400">Illicit</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="flex items-center">
-                        <input id="checkbox-item-2" type="checkbox" value="" className="w-4 h-4 text-checkPrimary600 bg-gray-100 border-gray-300 rounded" />
-                        <label htmlFor="checkbox-item-2" className="ml-2  text-gray-400">Legitimate</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="flex items-center">
-                        <input id="checkbox-item-3" type="checkbox" value="" className="w-4 h-4 text-checkPrimary600 bg-gray-100 border-gray-300 rounded" />
-                        <label htmlFor="checkbox-item-3" className="ml-2  text-gray-400">Misinformation</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="flex items-center">
-                        <input id="checkbox-item-4" type="checkbox" value="" className="w-4 h-4 text-checkPrimary600 bg-gray-100 border-gray-300 rounded" />
-                        <label htmlFor="checkbox-item-4" className="ml-2  text-gray-400">Scam</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="flex items-center">
-                        <input id="checkbox-item-5" type="checkbox" value="" className="w-4 h-4 text-checkPrimary600 bg-gray-100 border-gray-300 rounded" />
-                        <label htmlFor="checkbox-item-5" className="ml-2  text-gray-400">Spam</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="flex items-center">
-                        <input id="checkbox-item-6" type="checkbox" value="" className="w-4 h-4 text-checkPrimary600 bg-gray-100 border-gray-300 rounded" />
-                        <label htmlFor="checkbox-item-6" className="ml-2  text-gray-400">Trivial</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="flex items-center">
-                        <input id="checkbox-item-7" type="checkbox" value="" className="w-4 h-4 text-checkPrimary600 bg-gray-100 border-gray-300 rounded" />
-                        <label htmlFor="checkbox-item-7" className="ml-2  text-gray-400">Unsure</label>
-                        </div>
-                    </li>
+                        {categories.map((category) => {
+                            const { id, text } = category;
+
+                            return (
+                                <li key={id}>
+                                <div className="flex items-center">
+                                    <input
+                                    id={id}
+                                    type="checkbox"
+                                    value={text}
+                                    className="w-4 h-4 text-checkPrimary600 bg-gray-100 border-gray-300 rounded"
+                                    onChange={(e) =>
+                                        setSelectedCategories({
+                                        ...selectedCateogries,
+                                        [text]: e.target.checked,
+                                        })
+                                    }
+                                    checked={selectedCateogries[text]}
+                                    />
+                                    <label
+                                    htmlFor={id}
+                                    className="ml-2 text-gray-400 capitalize"
+                                    >
+                                    {text}
+                                    </label>
+                                </div>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </div>}
             </div>
@@ -142,16 +208,48 @@ const Messages = () => {
 
             
 
-        </div>
+        </form>
 
         {/** Filters line */}
         <div className="flex flex-row flex-wrap w-full justify-start items-center p-8 gap-x-4">
             <img src={filter} className=""/>
             <div className="">Filter</div>
             <div className="border-r border-r-checkGray flex-none h-[3rem]">&nbsp;</div>
-            <div className="rounded-[50px] border border-checkShadeDark px-4 py-2">Status: All</div>
-            <div className="rounded-[50px] border border-checkShadeDark px-4 py-2">Reported: 1 - 5 times</div>
-            <div className="rounded-[50px] border border-checkShadeDark px-4 py-2">Reported: Jan 2023 - Latest</div>
+            
+            <div className="relative" id="statusDropdown" ref={statusDropdown}>
+                <div className="cursor-pointer rounded-[50px] border border-checkShadeDark px-4 py-2 flex flex-row gap-x-4 items-center"
+                    onClick={() => {
+                        setIsStatusToggled(isStatusToggled => !isStatusToggled);
+                }}>
+                    <div className="">Status: {filterObject.status}</div>
+                    <img src={arrowButtonDown} className="h-2" alt=""/>
+                </div>
+                {isStatusToggled && <div className=""><ul><li>Option1.1</li></ul></div>}
+            </div>
+            
+            <div className="relative" id="reportedDropdown" ref={reportedDropdown}>
+                <div className="cursor-pointer rounded-[50px] border border-checkShadeDark px-4 py-2 flex flex-row gap-x-4 items-center"
+                    onClick={() => {
+                        setIsReportedToggled(isReportedToggled => !isReportedToggled);
+                }}>
+                    <div className="">Reported: {filterObject.reported}</div>
+                    <img src={arrowButtonDown} className="h-2" alt="" />
+                    {isReportedToggled && <div className=""><ul><li>Option2.1</li></ul></div>}
+                </div>
+            </div>
+
+            <div className="" id="periodDropdown" >
+                <div className="cursor-pointer rounded-[50px] border border-checkShadeDark px-4 py-2 flex flex-row gap-x-4 items-center">
+                    <div className="">Reported: </div>
+                    <Datepicker 
+                        primaryColor={"blue"}
+                        value={filterObject.datepickervalue} 
+                        onChange={handleDatePickerValueChange} 
+                    />
+                    <img src={clearDark} className="flex-none h-4 fill-checkShadeDark" alt="Clear" />
+                </div>
+            </div>
+
         </div>
 
         {/** Messages section */}
