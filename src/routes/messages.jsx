@@ -33,7 +33,7 @@ const Messages = () => {
   const [messages, setMessages] = useState([])
   const [filterObject, setFilterObject] = useState({
     categories: "illicit, legitimate, misinformation, scam, spam, trivial, unsure",
-    status: "All",
+    status: "Reviewing",
     reported: "1 - 5 times",
     period: "Jan 2022 - Latest",
     periodStartTimestamp: 0,
@@ -47,6 +47,7 @@ const Messages = () => {
   const [isCategoriesToggled, setIsCategoriesToggled] = useState(false)
   const [isStatusToggled, setIsStatusToggled] = useState(false)
   const [isReportedToggled, setIsReportedToggled] = useState(false)
+  const [isMessagePopupToggled, setIsMessagePopupToggled] = useState(false)
   const [searchText, setSearchText] = useState("");
   const [selectedCateogries, setSelectedCategories] = useState(
     categories.reduce(
@@ -54,6 +55,7 @@ const Messages = () => {
       {}
     )
   );
+
 
   const drop = useRef(null);
   const statusDropdown = useRef(null);
@@ -234,45 +236,58 @@ const Messages = () => {
             <div className="">Filter</div>
             <div className="border-r border-r-checkGray flex-none h-[3rem]">&nbsp;</div>
             
+            {/** Status dropdown */}
             <div className="relative" id="statusDropdown" ref={statusDropdown}>
                 {/** Clickable button */}
-                <div className="cursor-pointer rounded-[50px] border border-checkShadeDark px-4 py-[1.1rem] flex flex-row gap-x-4 items-center"
+                <div className={`cursor-pointer rounded-t-[40px]  ${isStatusToggled ? "" : "rounded-b-[40px]"} border border-checkShadeDark px-4 py-[1.1em] flex flex-col`}
                     onClick={() => {
                         setIsStatusToggled(isStatusToggled => !isStatusToggled);
                 }}>
-                    <div className="">Status: {filterObject.status}</div>
-                    <img src={arrowButtonDown} className="h-2" alt=""/>
-                </div>
-                {/** Dropdown values */}
-                {isStatusToggled && <div className="absolute top-[3rem] left-8">
-                    <ul>
-                        {statusValues.map((itemStatus) => {
-                            return <li key={itemStatus.id} className="">{itemStatus.text}</li>
-                        })}
-                    </ul></div>
-                }
-
+                    {/** Dropdown title */}
+                    <div className="flex flex-row items-center gap-x-4">
+                        Status:&nbsp;
+                        {filterObject.status}
+                        <img src={arrowButtonDown} className="h-2" alt=""/>
+                    </div>
+                        
+                    {/** Dropdown values */}
+                    {isStatusToggled && <div className="w-full absolute top-[2.5rem] left-0 bg-checkBG rounded-b-[40px] p-4 border-x border-b z-10 border-checkShadeDark">
+                        <ul className="flex flex-col gap-y-4">
+                            {statusValues.map((itemStatus) => {
+                                return <li key={itemStatus.id} className="">{itemStatus.text}</li>
+                            })}
+                        </ul>
+                    </div>} 
+                </div>               
             </div>
             
+            {/** Reported count dropdown */}
             <div className="relative" id="reportedDropdown" ref={reportedDropdown}>
-                <div className="cursor-pointer rounded-[50px] border border-checkShadeDark px-4 py-[1.1em] flex flex-row gap-x-4 items-center"
+                <div className={`cursor-pointer rounded-t-[40px]  ${isReportedToggled ? "" : "rounded-b-[40px]"} border border-checkShadeDark px-4 py-[1.1em] flex flex-col`}
                     onClick={() => {
                         setIsReportedToggled(isReportedToggled => !isReportedToggled);
                 }}>
-                    <div className="">Reported: {filterObject.reported}</div>
-                    <img src={arrowButtonDown} className="h-2" alt="" />
+                    {/** Dropdown title */}
+                    <div className="flex flex-row gap-x-4 items-center">
+                        Reported:&nbsp;
+                        {filterObject.reported}
+                        <img src={arrowButtonDown} className="h-2" alt="" />
+                    </div>
+
+                    {/** Dropdown values */}
+                    {isReportedToggled && <div className="w-full absolute top-[2.5rem] left-0 bg-checkBG rounded-b-[40px] p-4 border-x border-b z-10 border-checkShadeDark">
+                        <ul className="flex flex-col gap-y-4">
+                            {reportedValues.map((reportedValue) => {
+                                return <li key={reportedValue.id}>{reportedValue.text}</li>
+                            })}
+                        </ul>
+                    </div>}
                 </div>
-                {isReportedToggled && <div className="absolute top-[3rem] left-8">
-                    <ul>
-                        {reportedValues.map((reportedValue) => {
-                            return <li key={reportedValue.id}>{reportedValue.text}</li>
-                        })}
-                    </ul>
-                </div>}
             </div>
 
+            {/** Reported period datepicker */}
             <div className="" id="periodDropdown" >
-                <div className="cursor-pointer rounded-[50px] border border-checkShadeDark px-4 py-2 flex flex-row gap-x-4 items-center">
+                <div className="cursor-pointer rounded-[40px] border border-checkShadeDark px-4 py-2 flex flex-row gap-x-4 items-center">
                     <div className="">Reported: </div>
                     <Datepicker 
                         primaryColor={"blue"}
@@ -287,9 +302,9 @@ const Messages = () => {
 
         {/** Messages section */}
         {isLoading ? 
-        <span className={purecss.loader}></span>
+        <div className="h-[50vh]"><span className={purecss.loader}></span></div>
         : 
-        <div className="flex flex-row flex-wrap gap-x-8 gap-y-8 mb-8 mt-8">
+        <div className="flex flex-row flex-wrap gap-x-8 gap-y-8 mb-8 mt-8 cursor-pointer">
         {messages.map( (message, index) => {
             message = message.document 
             if (message.truthScore) {var messageWidth = Math.round ( ( (Math.round(message.truthScore * 100) / 100) * 100 ) / 5 )}
@@ -315,9 +330,9 @@ const Messages = () => {
                     : "" }
                     {/** Status */}
                     <div className="">Status&nbsp;{message.isAssessed ? 
-                        <span className="text-checkWhite px-4 py-1 bg-checkPrimary600 rounded-[50px]">Reviewed </span>
+                        <span className="text-checkWhite px-4 py-1 bg-checkPrimary600 rounded-[40px]">Reviewed </span>
                         : 
-                        <span className="text-checkPrimary600 px-4 py-1 bg-checkWhite rounded-[50px]">Reviewing</span>
+                        <span className="text-checkPrimary600 px-4 py-1 bg-checkWhite rounded-[40px]">Reviewing</span>
                     }</div> 
                     {/** Reported */}
                     <div className="">Reported&nbsp;<span className="text-checkPrimary600 font-semibold">
@@ -328,6 +343,9 @@ const Messages = () => {
             </div>
         )})}    
         </div>}
+
+        {isMessagePopupToggled && 
+            <div className=""></div>}
     </div>
   );
 };
