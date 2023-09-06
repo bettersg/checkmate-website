@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  content: [
+    "./index.html", 
+    "./src/**/*.{js,jsx}",
+    "./node_modules/react-tailwindcss-datepicker/dist/index.esm.js"
+  ],
   mode: "jit",
   theme: {
     listStyleType: {
@@ -68,5 +72,6 @@ module.exports = {
       xl: "1700px",
     },
   },
-  plugins: [require("tailwind-gradient-mask-image")]
+  plugins: [require("tailwind-gradient-mask-image")],
+  darkMode: 'false',
 };

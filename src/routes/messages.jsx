@@ -1,14 +1,31 @@
-import { search, clear, filter } from "../assets";
+import { search, clear, clearDark, filter, arrowButtonDown } from "../assets";
 import { Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react"
 import purecss from "../purecss.module.css";
+import Datepicker from "react-tailwindcss-datepicker"; 
 
 const Messages = () => {
 
   const [messages, setMessages] = useState([])
+  const [filterObject, setFilterObject] = useState({
+    categories: "illicit, legitimate, misinformation, scam, spam, trivial, unsure",
+    status: "All",
+    reported: "1 - 5 times",
+    period: "Jan 2022 - Latest",
+    periodStartTimestamp: 0,
+    periodEndTimestamp: Math.floor(Date.now() / 1000),
+    datepickervalue: {
+        dpstartDate: new Date(),
+        dpendDate: new Date().setMonth(11)
+    }
+  })
   const [isLoading, setIsLoading] = useState(true)
   const [isCategoriesToggled, setIsCategoriesToggled] = useState(false)
+  const [isStatusToggled, setIsStatusToggled] = useState(false)
+  const [isReportedToggled, setIsReportedToggled] = useState(false)
   const drop = useRef(null);
+  const statusDropdown = useRef(null);
+  const reportedDropdown = useRef(null);
 
   useEffect(() => {
     fetchMessages()
@@ -36,7 +53,15 @@ const Messages = () => {
     if (!e.target.closest(`#${drop.current.id}`) && isCategoriesToggled ) {
         setIsCategoriesToggled(false);
     }
+    if (!e.target.closest(`#${statusDropdown.current.id}`) && isStatusToggled ) {
+        setIsStatusToggled(false);
+    }
   }
+
+  const handleDatePickerValueChange = datepickervalue => {
+    console.log("newValue:", newValue);
+    setFilterObject({...filterObject, datepickervalue})
+  };
 
   useEffect(() => {
     document.addEventListener("click", handleClick);
@@ -59,7 +84,6 @@ const Messages = () => {
     return dateFormat
   }
 
-  console.log('is: ', isCategoriesToggled)
   return (
     <div className="w-full bg-checkBG font-poppins flex flex-col items-center max-w-[1280px] mx-auto">
         <h1 className="flex-1 w-full font-poppins font-semibold ss:text-[64px] text-[48px] text-checkShadeDark text-left pt-16 pb-8">
@@ -149,9 +173,41 @@ const Messages = () => {
             <img src={filter} className=""/>
             <div className="">Filter</div>
             <div className="border-r border-r-checkGray flex-none h-[3rem]">&nbsp;</div>
-            <div className="rounded-[50px] border border-checkShadeDark px-4 py-2">Status: All</div>
-            <div className="rounded-[50px] border border-checkShadeDark px-4 py-2">Reported: 1 - 5 times</div>
-            <div className="rounded-[50px] border border-checkShadeDark px-4 py-2">Reported: Jan 2023 - Latest</div>
+            
+            <div className="relative" id="statusDropdown" ref={statusDropdown}>
+                <div className="cursor-pointer rounded-[50px] border border-checkShadeDark px-4 py-2 flex flex-row gap-x-4 items-center"
+                    onClick={() => {
+                        setIsStatusToggled(isStatusToggled => !isStatusToggled);
+                }}>
+                    <div className="">Status: {filterObject.status}</div>
+                    <img src={arrowButtonDown} className="h-2" alt=""/>
+                </div>
+                {isStatusToggled && <div className=""><ul><li>Option1.1</li></ul></div>}
+            </div>
+            
+            <div className="relative" id="reportedDropdown" ref={reportedDropdown}>
+                <div className="cursor-pointer rounded-[50px] border border-checkShadeDark px-4 py-2 flex flex-row gap-x-4 items-center"
+                    onClick={() => {
+                        setIsReportedToggled(isReportedToggled => !isReportedToggled);
+                }}>
+                    <div className="">Reported: {filterObject.reported}</div>
+                    <img src={arrowButtonDown} className="h-2" alt="" />
+                    {isReportedToggled && <div className=""><ul><li>Option2.1</li></ul></div>}
+                </div>
+            </div>
+
+            <div className="" id="periodDropdown" >
+                <div className="cursor-pointer rounded-[50px] border border-checkShadeDark px-4 py-2 flex flex-row gap-x-4 items-center">
+                    <div className="">Reported: </div>
+                    <Datepicker 
+                        primaryColor={"blue"}
+                        value={filterObject.datepickervalue} 
+                        onChange={handleDatePickerValueChange} 
+                    />
+                    <img src={clearDark} className="flex-none h-4 fill-checkShadeDark" alt="Clear" />
+                </div>
+            </div>
+
         </div>
 
         {/** Messages section */}
