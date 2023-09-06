@@ -96,7 +96,7 @@ const Messages = () => {
 
   // this function is updating the filterObject object once the datepicker is updated
   const handleDatePickerValueChange = datepickervalue => {
-    console.log("newValue:", newValue);
+    console.log("newValue:", datepickervalue);
     setFilterObject({...filterObject, datepickervalue})
   };
 
