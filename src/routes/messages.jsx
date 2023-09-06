@@ -1,9 +1,8 @@
-import { search, clear, clearDark, filter, arrowButtonDown } from "../assets";
-import { Link } from "react-router-dom";
-import { useEffect, useState, useRef } from "react"
-import purecss from "../purecss.module.css";
-import Datepicker from "react-tailwindcss-datepicker"; 
 import axios from "axios";
+import { useEffect, useRef, useState } from "react";
+import Datepicker from "react-tailwindcss-datepicker";
+import { arrowButtonDown, clear, filter, search } from "../assets";
+import purecss from "../purecss.module.css";
 
 const categories = [
   { id: "checkbox-item-1", text: "illicit" },
@@ -246,7 +245,7 @@ const Messages = () => {
                         value={filterObject.datepickervalue} 
                         onChange={handleDatePickerValueChange} 
                     />
-                    <img src={clearDark} className="flex-none h-4 fill-checkShadeDark" alt="Clear" />
+                    <img src={clear} className="flex-none h-4 fill-checkShadeDark" alt="Clear" />
                 </div>
             </div>
 

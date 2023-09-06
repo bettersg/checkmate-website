@@ -1,37 +1,24 @@
-import React from 'react';
+import React from "react";
 
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import ErrorPage from "./routes/404";
-import Index from "./routes/index"
+import ReactDOM from "react-dom/client";
+import App from "./App";
 
-import './index.css';
-import DocumentMeta from 'react-document-meta';
+import "./index.css";
 
-import {
-  BrowserRouter
-} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
-import TagManager from 'react-gtm-module'
+import TagManager from "react-gtm-module";
 
 const tagManagerArgs = {
-  gtmId: 'GTM-WDQ46XW'
-}
-
-TagManager.initialize(tagManagerArgs)
-
-const meta = {
-  
+  gtmId: "GTM-WDQ46XW",
 };
 
+TagManager.initialize(tagManagerArgs);
 
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <DocumentMeta {...meta}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </DocumentMeta>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
