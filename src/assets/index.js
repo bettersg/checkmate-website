@@ -64,6 +64,7 @@ import checkedImg1 from "./checkedImg1.svg"
 import checkedImg2 from "./checkedImg2.svg"
 import search from "./search.svg"
 import clear from "./clear.svg"
+import clearDark from "./clearDark.svg"
 import filter from "./filter.svg"
 
 
@@ -134,5 +135,6 @@ export {
   checkedImg2,
   search,
   clear,
+  clearDark,
   filter
 };

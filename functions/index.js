@@ -305,7 +305,7 @@ router.get("/publicmessages_exp", async (req, res) => {
   }
 
   console.log('filter', filter)
-  
+
   // execute the query
   try {
     let searchParameters = {
