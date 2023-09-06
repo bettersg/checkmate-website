@@ -15,6 +15,19 @@ const categories = [
   { id: "checkbox-item-7", text: "unsure" },
 ];
 
+const statusValues = [
+    {id: "status_all", text: "All"},
+    {id: "status_reviewing", text: "Reviewing"},
+    {id: "status_reviewed", text: "Reviewed"},
+]
+
+const reportedValues = [
+    {id: "reported_1", text: "1 - 5 Times"},
+    {id: "reported_6", text: "6 - 10 Times"},
+    {id: "reported_11", text: "11 - 20 Times"},
+    {id: "reported_20", text: "> 20 Times"},
+]
+
 const Messages = () => {
 
   const [messages, setMessages] = useState([])
@@ -46,11 +59,12 @@ const Messages = () => {
   const statusDropdown = useRef(null);
   const reportedDropdown = useRef(null);
 
+  // on page load, fetch database messages
   useEffect(() => {
     fetchMessages()
   }, [])
 
-  
+  // main function to fetch the messages on page load
   const fetchMessages = () => {
     setIsLoading(true)
     fetch("https://checkmate.sg/api/publicmessages", {
@@ -68,6 +82,7 @@ const Messages = () => {
     });
   }
     
+  // this is where we handle toggle of each filter dropdown
   function handleClick(e) {
     if (!e.target.closest(`#${drop.current.id}`) && isCategoriesToggled ) {
         setIsCategoriesToggled(false);
@@ -77,11 +92,13 @@ const Messages = () => {
     }
   }
 
+  // this function is updating the filterObject object once the datepicker is updated
   const handleDatePickerValueChange = datepickervalue => {
     console.log("newValue:", newValue);
     setFilterObject({...filterObject, datepickervalue})
   };
 
+  // event listener to detect clicks outside of a dropdown and therefore closing the dropdown
   useEffect(() => {
     document.addEventListener("click", handleClick);
     return () => {
@@ -103,6 +120,7 @@ const Messages = () => {
     return dateFormat
   }
 
+  // function to make a new search once a string has been submitted in the search bar
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
 
@@ -217,25 +235,40 @@ const Messages = () => {
             <div className="border-r border-r-checkGray flex-none h-[3rem]">&nbsp;</div>
             
             <div className="relative" id="statusDropdown" ref={statusDropdown}>
-                <div className="cursor-pointer rounded-[50px] border border-checkShadeDark px-4 py-2 flex flex-row gap-x-4 items-center"
+                {/** Clickable button */}
+                <div className="cursor-pointer rounded-[50px] border border-checkShadeDark px-4 py-[1.1rem] flex flex-row gap-x-4 items-center"
                     onClick={() => {
                         setIsStatusToggled(isStatusToggled => !isStatusToggled);
                 }}>
                     <div className="">Status: {filterObject.status}</div>
                     <img src={arrowButtonDown} className="h-2" alt=""/>
                 </div>
-                {isStatusToggled && <div className=""><ul><li>Option1.1</li></ul></div>}
+                {/** Dropdown values */}
+                {isStatusToggled && <div className="absolute top-[3rem] left-8">
+                    <ul>
+                        {statusValues.map((itemStatus) => {
+                            return <li key={itemStatus.id} className="">{itemStatus.text}</li>
+                        })}
+                    </ul></div>
+                }
+
             </div>
             
             <div className="relative" id="reportedDropdown" ref={reportedDropdown}>
-                <div className="cursor-pointer rounded-[50px] border border-checkShadeDark px-4 py-2 flex flex-row gap-x-4 items-center"
+                <div className="cursor-pointer rounded-[50px] border border-checkShadeDark px-4 py-[1.1em] flex flex-row gap-x-4 items-center"
                     onClick={() => {
                         setIsReportedToggled(isReportedToggled => !isReportedToggled);
                 }}>
                     <div className="">Reported: {filterObject.reported}</div>
                     <img src={arrowButtonDown} className="h-2" alt="" />
-                    {isReportedToggled && <div className=""><ul><li>Option2.1</li></ul></div>}
                 </div>
+                {isReportedToggled && <div className="absolute top-[3rem] left-8">
+                    <ul>
+                        {reportedValues.map((reportedValue) => {
+                            return <li key={reportedValue.id}>{reportedValue.text}</li>
+                        })}
+                    </ul>
+                </div>}
             </div>
 
             <div className="" id="periodDropdown" >
