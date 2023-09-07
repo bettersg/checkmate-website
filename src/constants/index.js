@@ -172,10 +172,10 @@ export const statusValues = [
   ];
   
 export const reportedValues = [
-      {id: "reported_1", text: "1 - 5 Times"},
-      {id: "reported_6", text: "6 - 10 Times"},
-      {id: "reported_11", text: "11 - 20 Times"},
-      {id: "reported_20", text: "> 20 Times"},
+      {id: "reported_1", text: "1 - 5 Times", value: 1},
+      {id: "reported_6", text: "6 - 10 Times", value: 6},
+      {id: "reported_11", text: "11 - 20 Times", value: 11},
+      {id: "reported_20", text: "> 20 Times", value: 20},
   ];
 
 export const MESSAGE_DATABASE_API_ENDPOINT = "https://checkmate.sg/api/publicmessages_exp";

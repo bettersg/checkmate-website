@@ -22,6 +22,7 @@ const Messages = () => {
     )
   );
   const [status, setStatus] = useState("All");
+  const [reportCount, setReportCount] = useState(1);
 
   // const [filterObject, setFilterObject] = useState({
   //   search: "",
@@ -126,6 +127,12 @@ const Messages = () => {
     return selectedKeys.join(",");
   };
 
+  const getReportedText = () => {
+    return reportedValues.find(
+      (reportedValue) => reportedValue.value === reportCount
+    ).text;
+  };
+
   // function to make a new search once a string has been submitted in the search bar
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
@@ -133,7 +140,6 @@ const Messages = () => {
 
     try {
       // setIsLoading(true);
-      console.log(selectedCateogries);
 
       const axiosInstance = axios.create({
         baseURL: MESSAGE_DATABASE_API_ENDPOINT,
@@ -141,6 +147,7 @@ const Messages = () => {
           search: searchText,
           categories: constructSelectedCategoriesString(),
           status: status.toLowerCase(),
+          report_count: reportCount,
         },
       });
 
@@ -286,21 +293,21 @@ const Messages = () => {
               {/** Dropdown values */}
               {isStatusToggled && (
                 <div className="w-full absolute top-[2.5rem] left-0 bg-checkBG rounded-b-[40px] p-4 border-x border-b z-10 border-checkShadeDark">
-                  <div className="flex flex-col gap-y-4">
+                  <ul className="flex flex-col gap-y-4">
                     {statusValues.map((itemStatus) => {
                       const { id, text } = itemStatus;
                       return (
-                        <div
+                        <li
                           key={id}
                           className=""
                           value={text}
-                          onClick={(e) => setStatus(text)}
+                          onClick={() => setStatus(text)}
                         >
                           {text}
-                        </div>
+                        </li>
                       );
                     })}
-                  </div>
+                  </ul>
                 </div>
               )}
             </div>
@@ -323,7 +330,7 @@ const Messages = () => {
               {/** Dropdown title */}
               <div className="flex flex-row gap-x-4 items-center">
                 Reported:&nbsp;
-                {/* {filterObject.reported} */}
+                {getReportedText()}
                 <img src={arrowButtonDown} className="h-2" alt="" />
               </div>
 
@@ -332,8 +339,17 @@ const Messages = () => {
                 <div className="w-full absolute top-[2.5rem] left-0 bg-checkBG rounded-b-[40px] p-4 border-x border-b z-10 border-checkShadeDark">
                   <ul className="flex flex-col gap-y-4">
                     {reportedValues.map((reportedValue) => {
+                      const { id, text, value } = reportedValue;
+
                       return (
-                        <li key={reportedValue.id}>{reportedValue.text}</li>
+                        <li
+                          key={id}
+                          className=""
+                          value={value}
+                          onClick={() => setReportCount(value)}
+                        >
+                          {text}
+                        </li>
                       );
                     })}
                   </ul>
