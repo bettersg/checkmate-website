@@ -21,7 +21,7 @@ const Privacy = () => {
         <p className="font-poppins text-md">Last Updated: February 2023</p>
       </div>
       
-      <div className="flex flex-col gap-y-6 text-xl text-checkBlack xl:max-w-[1280px] w-full p-12 items-start mx-auto">
+      <div className="flex flex-col gap-y-6 text-xl text-checkBlack xl:max-w-[1280px] w-full p-6 md:p-12 items-start mx-auto">
         <p className="">This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.
           We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy and Whatsapp’s privacy policy: 
           <br/><a className="underline text-checkPrimary600" href="https://www.whatsapp.com/legal/privacy-policy/">https://www.whatsapp.com/legal/privacy-policy/</a>
@@ -31,9 +31,9 @@ const Privacy = () => {
           ref={(el) => (detailsRef.current['toggle1'] = el)}
           open={isOpenMap['toggle1']}
           onToggle={(e) => toggleDetails('toggle1', e.target.open)}
-          className="w-full bg-checkWhite border border-checkPrimary600 px-12 py-4 rounded-[32px]" id="toggle1"
+          className="w-full bg-checkWhite border border-checkPrimary600 md:px-12 py-4 rounded-[32px]" id="toggle1"
         >
-          <summary className="cursor-pointer px-4 py-6 list-none">
+          <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">
               <span className="p-3 ss:text-[36px] text-checkPrimary600 text-[24px]">Interpretation and Definitions</span>
               <img
@@ -66,9 +66,9 @@ const Privacy = () => {
           ref={(el) => (detailsRef.current['toggle2'] = el)}
           open={isOpenMap['toggle2']}
           onToggle={(e) => toggleDetails('toggle2', e.target.open)}
-          className="w-full bg-checkWhite border border-checkPrimary600 px-12 py-4 rounded-[32px]" id="toggle2"
+          className="w-full bg-checkWhite border border-checkPrimary600 md:px-12 py-4 rounded-[32px]" id="toggle2"
         >
-          <summary className="cursor-pointer px-4 py-6 list-none">
+          <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">
               <span className="p-3 ss:text-[36px] text-checkPrimary600 text-[24px]">Collecting and Using Your Personal Data</span>
               <img
@@ -156,9 +156,9 @@ const Privacy = () => {
           ref={(el) => (detailsRef.current['toggle3'] = el)}
           open={isOpenMap['toggle3']}
           onToggle={(e) => toggleDetails('toggle3', e.target.open)}
-          className="w-full bg-checkWhite border border-checkPrimary600 px-12 py-4 rounded-[32px]" id="toggle3"
+          className="w-full bg-checkWhite border border-checkPrimary600 md:px-12 py-4 rounded-[32px]" id="toggle3"
         >
-          <summary className="cursor-pointer px-4 py-6 list-none">
+          <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">
               <span className="p-3 ss:text-[36px] text-checkPrimary600 text-[24px]">Children's Privacy</span>
               <img
@@ -177,9 +177,9 @@ const Privacy = () => {
           ref={(el) => (detailsRef.current['toggle4'] = el)}
           open={isOpenMap['toggle4']}
           onToggle={(e) => toggleDetails('toggle4', e.target.open)}
-          className="w-full bg-checkWhite border border-checkPrimary600 px-12 py-4 rounded-[32px]" id="toggle4"
+          className="w-full bg-checkWhite border border-checkPrimary600 md:px-12 py-4 rounded-[32px]" id="toggle4"
         >
-          <summary className="cursor-pointer px-4 py-6 list-none">
+          <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">
               <span className="p-3 ss:text-[36px] text-checkPrimary600 text-[24px]">Links to Other Websites</span>
               <img
@@ -198,9 +198,9 @@ const Privacy = () => {
           ref={(el) => (detailsRef.current['toggle5'] = el)}
           open={isOpenMap['toggle5']}
           onToggle={(e) => toggleDetails('toggle5', e.target.open)}
-          className="w-full bg-checkWhite border border-checkPrimary600 px-12 py-4 rounded-[32px]" id="toggle5"
+          className="w-full bg-checkWhite border border-checkPrimary600 md:px-12 py-4 rounded-[32px]" id="toggle5"
         >
-          <summary className="cursor-pointer px-4 py-6 list-none">
+          <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">
               <span className="p-3 ss:text-[36px] text-checkPrimary600 text-[24px]">Changes to this Privacy Policy</span>
               <img
@@ -220,9 +220,9 @@ const Privacy = () => {
           ref={(el) => (detailsRef.current['toggle6'] = el)}
           open={isOpenMap['toggle6']}
           onToggle={(e) => toggleDetails('toggle6', e.target.open)}
-          className="w-full bg-checkWhite border border-checkPrimary600 px-12 py-4 rounded-[32px]" id="toggle6"
+          className="w-full bg-checkWhite border border-checkPrimary600 md:px-12 py-4 rounded-[32px]" id="toggle6"
         >
-          <summary className="cursor-pointer px-4 py-6 list-none">
+          <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">
               <span className="p-3 ss:text-[36px] text-checkPrimary600 text-[24px]">Contact Us</span>
               <img

@@ -8,7 +8,7 @@ const About = () => {
     <div className="w-full bg-checkBG font-poppins flex flex-col items-center">
       <div className="flex flex-col justify-center">
         <div className="xl:max-w-[1280px] w-full flex flex-col px-10 md:px-20 mx-auto">
-          <h1 className="font-bold ss:text-[64px] text-[48px] text-checkShadeDark pb-8 pt-24">
+          <h1 className="font-bold ss:text-[64px] text-[48px] text-checkShadeDark pb-8 pt-6 md:pt-24">
             About Us
           </h1>
           
