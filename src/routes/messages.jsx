@@ -9,6 +9,7 @@ import {
   reportedValues,
   MESSAGE_DATABASE_API_ENDPOINT,
 } from "../constants";
+import dayjs from "dayjs";
 
 const Messages = () => {
   const [messages, setMessages] = useState([]);
@@ -23,20 +24,10 @@ const Messages = () => {
   );
   const [status, setStatus] = useState("All");
   const [reportCount, setReportCount] = useState(1);
-
-  // const [filterObject, setFilterObject] = useState({
-  //   search: "",
-  //   categories: "illicit, spam, etc",
-  //   status: "Reviewing",
-  //   reported: "1 - 5 times",
-  //   period: "Jan 2022 - Latest",
-  //   periodStartTimestamp: 0,
-  //   periodEndTimestamp: Math.floor(Date.now() / 1000),
-  //   datepickervalue: {
-  //     dpstartDate: new Date(),
-  //     dpendDate: new Date().setMonth(11),
-  //   },
-  // });
+  const [reportDatePeriod, setReportDatePeriod] = useState({
+    startDate: dayjs().subtract(7, "days").format("YYYY-MM-DD"),
+    endDate: dayjs().format("YYYY-MM-DD"),
+  });
 
   const [isLoading, setIsLoading] = useState(true);
   const [isCategoriesToggled, setIsCategoriesToggled] = useState(false);
@@ -55,23 +46,22 @@ const Messages = () => {
 
   // main function to fetch the messages on page load
   const fetchMessages = () => {
-    setIsLoading(false);
-    // setIsLoading(true);
-    // fetch("https://checkmate.sg/api/publicmessages", {
-    //   method: "GET",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     console.log(data.hits);
-    //     setIsLoading(false);
-    //     setMessages(data.hits);
-    //   });
+    setIsLoading(true);
+    fetch("https://checkmate.sg/api/publicmessages", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data.hits);
+        setIsLoading(false);
+        setMessages(data.hits);
+      });
   };
 
   // this is where we handle toggle of each filter dropdown
@@ -85,9 +75,8 @@ const Messages = () => {
   }
 
   // this function is updating the filterObject object once the datepicker is updated
-  const handleDatePickerValueChange = (datepickervalue) => {
-    // console.log("newValue:", datepickervalue);
-    // setFilterObject({ ...filterObject, datepickervalue });
+  const handleDatePickerValueChange = (newValue) => {
+    setReportDatePeriod(newValue);
   };
 
   // event listener to detect clicks outside of a dropdown and therefore closing the dropdown
@@ -136,11 +125,12 @@ const Messages = () => {
   // function to make a new search once a string has been submitted in the search bar
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
-    console.log("here");
+
+    const reportStartTimeUnix = dayjs(reportDatePeriod.startDate).unix();
+    const reportEndTimeUnix = dayjs(reportDatePeriod.endDate).unix();
 
     try {
-      // setIsLoading(true);
-
+      setIsLoading(true);
       const axiosInstance = axios.create({
         baseURL: MESSAGE_DATABASE_API_ENDPOINT,
         params: {
@@ -148,10 +138,11 @@ const Messages = () => {
           categories: constructSelectedCategoriesString(),
           status: status.toLowerCase(),
           report_count: reportCount,
+          report_date_start: reportStartTimeUnix,
+          report_date_end: reportEndTimeUnix,
         },
       });
 
-      console.log(axiosInstance);
       const response = await axiosInstance.get();
       const result = response.data;
       setMessages(result.hits);
@@ -364,13 +355,17 @@ const Messages = () => {
               <div className="">Reported: </div>
               <Datepicker
                 primaryColor={"blue"}
-                // value={filterObject.datepickervalue}
+                value={reportDatePeriod}
                 onChange={handleDatePickerValueChange}
+                showShortcuts={true}
               />
               <img
                 src={clear}
                 className="flex-none h-4 fill-checkShadeDark"
                 alt="Clear"
+                onClick={() =>
+                  setReportDatePeriod({ startDate: null, endDate: null })
+                }
               />
             </div>
           </div>
