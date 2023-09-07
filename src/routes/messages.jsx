@@ -12,31 +12,36 @@ import {
 
 const Messages = () => {
   const [messages, setMessages] = useState([]);
-  const [filterObject, setFilterObject] = useState({
-    categories:
-      "illicit, legitimate, misinformation, scam, spam, trivial, unsure",
-    status: "Reviewing",
-    reported: "1 - 5 times",
-    period: "Jan 2022 - Latest",
-    periodStartTimestamp: 0,
-    periodEndTimestamp: Math.floor(Date.now() / 1000),
-    datepickervalue: {
-      dpstartDate: new Date(),
-      dpendDate: new Date().setMonth(11),
-    },
-  });
+
+  // Filter Object
+  const [searchText, setSearchText] = useState("");
+  const [selectedCateogries, setSelectedCategories] = useState(
+    categories.reduce(
+      (obj, category) => ({ ...obj, [category.text]: true }),
+      {}
+    )
+  );
+  const [status, setStatus] = useState("All");
+
+  // const [filterObject, setFilterObject] = useState({
+  //   search: "",
+  //   categories: "illicit, spam, etc",
+  //   status: "Reviewing",
+  //   reported: "1 - 5 times",
+  //   period: "Jan 2022 - Latest",
+  //   periodStartTimestamp: 0,
+  //   periodEndTimestamp: Math.floor(Date.now() / 1000),
+  //   datepickervalue: {
+  //     dpstartDate: new Date(),
+  //     dpendDate: new Date().setMonth(11),
+  //   },
+  // });
+
   const [isLoading, setIsLoading] = useState(true);
   const [isCategoriesToggled, setIsCategoriesToggled] = useState(false);
   const [isStatusToggled, setIsStatusToggled] = useState(false);
   const [isReportedToggled, setIsReportedToggled] = useState(false);
   const [isMessagePopupToggled, setIsMessagePopupToggled] = useState(false);
-  const [searchText, setSearchText] = useState("");
-  const [selectedCateogries, setSelectedCategories] = useState(
-    categories.reduce(
-      (obj, category) => ({ ...obj, [category.text]: false }),
-      {}
-    )
-  );
 
   const drop = useRef(null);
   const statusDropdown = useRef(null);
@@ -49,22 +54,23 @@ const Messages = () => {
 
   // main function to fetch the messages on page load
   const fetchMessages = () => {
-    setIsLoading(true);
-    fetch("https://checkmate.sg/api/publicmessages", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data.hits);
-        setIsLoading(false);
-        setMessages(data.hits);
-      });
+    setIsLoading(false);
+    // setIsLoading(true);
+    // fetch("https://checkmate.sg/api/publicmessages", {
+    //   method: "GET",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json",
+    //   },
+    // })
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     console.log(data.hits);
+    //     setIsLoading(false);
+    //     setMessages(data.hits);
+    //   });
   };
 
   // this is where we handle toggle of each filter dropdown
@@ -79,8 +85,8 @@ const Messages = () => {
 
   // this function is updating the filterObject object once the datepicker is updated
   const handleDatePickerValueChange = (datepickervalue) => {
-    console.log("newValue:", datepickervalue);
-    setFilterObject({ ...filterObject, datepickervalue });
+    // console.log("newValue:", datepickervalue);
+    // setFilterObject({ ...filterObject, datepickervalue });
   };
 
   // event listener to detect clicks outside of a dropdown and therefore closing the dropdown
@@ -106,28 +112,39 @@ const Messages = () => {
     return dateFormat;
   };
 
+  const handleCategoriesChange = (e) => {
+    setSelectedCategories((prevValue) => ({
+      ...prevValue,
+      [e.target.name]: !selectedCateogries[e.target.name],
+    }));
+  };
+
+  const constructSelectedCategoriesString = () => {
+    const selectedKeys = Object.keys(selectedCateogries).filter(
+      (key) => selectedCateogries[key]
+    );
+    return selectedKeys.join(",");
+  };
+
   // function to make a new search once a string has been submitted in the search bar
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
+    console.log("here");
 
     try {
-      setIsLoading(true);
-
-      const finalCategories = Object.keys(selectedCateogries).filter(
-        (key) => selectedCateogries[key]
-      );
+      // setIsLoading(true);
+      console.log(selectedCateogries);
 
       const axiosInstance = axios.create({
         baseURL: MESSAGE_DATABASE_API_ENDPOINT,
         params: {
-          search: searchText.length !== 0 ? searchText : "",
-          categories:
-            finalCategories.length !== 0
-              ? finalCategories.join(",")
-              : filterObject.categories,
+          search: searchText,
+          categories: constructSelectedCategoriesString(),
+          status: status.toLowerCase(),
         },
       });
 
+      console.log(axiosInstance);
       const response = await axiosInstance.get();
       const result = response.data;
       setMessages(result.hits);
@@ -143,136 +160,94 @@ const Messages = () => {
         Message Database
       </h1>
       {/** Search bar */}
-      <form
-        onSubmit={handleSearchSubmit}
-        className="w-full rounded-[50px] bg-checkWhite flex flex-row gap-x-2 px-6 py-6 items-center"
-      >
-        <img src={search} className="h-7 flex-none" alt="search" />
-        <input
-          className="ss:text-[20px] text-[14px] ml-4 flex-grow"
-          type="text"
-          placeholder="Search..."
-          name="searchText"
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-        />
-        <img
-          src={clear}
-          className="flex-none"
-          alt="Clear"
-          onClick={() => setSearchText("")}
-        />
 
-        <div className="border-r border-r-checkGray flex-none">&nbsp;</div>
+      <form className="w-full">
+        <div className="rounded-[50px] bg-checkWhite flex flex-row gap-x-2 px-6 py-6 items-center">
+          <img
+            src={search}
+            className="h-7 flex-none cursor-pointer"
+            alt="search"
+            onClick={handleSearchSubmit}
+          />
+          <input
+            className="ss:text-[20px] text-[14px] ml-4 flex-grow"
+            type="text"
+            placeholder="Search..."
+            name="search"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+          <img
+            src={clear}
+            className="flex-none"
+            alt="Clear"
+            onClick={() => setSearchText("")}
+          />
 
-        {/** Category selector */}
-        <div className="relative" id="dropdown" ref={drop}>
-          <button
-            id="dropdownCheckboxButton"
-            className="bg-checkWhite px-5 py-2.5 text-center inline-flex items-center text-gray-400"
-            type="button"
-            onClick={() => {
-              setIsCategoriesToggled(
-                (isCategoriesToggled) => !isCategoriesToggled
-              );
-            }}
-          >
-            <span className="pr-10 ss:text-[20px] text-[14px]">Category </span>
-            <svg
-              className="w-2.5 h-2.5 ml-2.5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 10 6"
+          <div className="border-r border-r-checkGray flex-none">&nbsp;</div>
+
+          {/** Category selector */}
+          <div className="relative" id="dropdown" ref={drop}>
+            <button
+              id="dropdownCheckboxButton"
+              className="bg-checkWhite px-5 py-2.5 text-center inline-flex items-center text-gray-400"
+              type="button"
+              onClick={() => {
+                setIsCategoriesToggled(
+                  (isCategoriesToggled) => !isCategoriesToggled
+                );
+              }}
             >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m1 1 4 4 4-4"
-              />
-            </svg>
-          </button>
-
-          {isCategoriesToggled && (
-            <div
-              id="dropdownDefaultCheckbox"
-              className="z-10 w-48 bg-white divide-y divide-gray-100 rounded-lg shadow absolute top-[3rem] left-8"
-            >
-              <ul
-                className="p-3 space-y-3 text-sm text-gray-700"
-                aria-labelledby="dropdownCheckboxButton"
+              <span className="pr-10 ss:text-[20px] text-[14px]">
+                Category{" "}
+              </span>
+              <svg
+                className="w-2.5 h-2.5 ml-2.5"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 10 6"
               >
-                {categories.map((category) => {
-                  const { id, text } = category;
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m1 1 4 4 4-4"
+                />
+              </svg>
+            </button>
 
-                  return (
-                    <li key={id}>
-                      <div className="flex items-center">
-                        <input
-                          id={id}
-                          type="checkbox"
-                          value={text}
-                          className="w-4 h-4 text-checkPrimary600 bg-gray-100 border-gray-300 rounded"
-                          onChange={(e) =>
-                            setSelectedCategories({
-                              ...selectedCateogries,
-                              [text]: e.target.checked,
-                            })
-                          }
-                          checked={selectedCateogries[text]}
-                        />
-                        <label
-                          htmlFor={id}
-                          className="ml-2 text-gray-400 capitalize"
-                        >
-                          {text}
-                        </label>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          )}
-        </div>
-      </form>
-
-      {/** Filters line */}
-      <div className="flex flex-row flex-wrap w-full justify-start items-center p-8 gap-x-4">
-        <img src={filter} className="" />
-        <div className="">Filter</div>
-        <div className="border-r border-r-checkGray flex-none h-[3rem]">
-          &nbsp;
-        </div>
-
-        {/** Status dropdown */}
-        <div className="relative" id="statusDropdown" ref={statusDropdown}>
-          {/** Clickable button */}
-          <div
-            className={`cursor-pointer rounded-t-[40px]  ${
-              isStatusToggled ? "" : "rounded-b-[40px]"
-            } border border-checkShadeDark px-4 py-[1.1em] flex flex-col`}
-            onClick={() => {
-              setIsStatusToggled((isStatusToggled) => !isStatusToggled);
-            }}
-          >
-            {/** Dropdown title */}
-            <div className="flex flex-row items-center gap-x-4">
-              Status:&nbsp;
-              {filterObject.status}
-              <img src={arrowButtonDown} className="h-2" alt="" />
-            </div>
-
-            {/** Dropdown values */}
-            {isStatusToggled && (
-              <div className="w-full absolute top-[2.5rem] left-0 bg-checkBG rounded-b-[40px] p-4 border-x border-b z-10 border-checkShadeDark">
-                <ul className="flex flex-col gap-y-4">
-                  {statusValues.map((itemStatus) => {
+            {isCategoriesToggled && (
+              <div
+                id="dropdownDefaultCheckbox"
+                className="z-10 w-48 bg-white divide-y divide-gray-100 rounded-lg shadow absolute top-[3rem] left-8"
+              >
+                <ul
+                  className="p-3 space-y-3 text-sm text-gray-700"
+                  aria-labelledby="dropdownCheckboxButton"
+                >
+                  {categories.map((category) => {
+                    const { id, text } = category;
                     return (
-                      <li key={itemStatus.id} className="">
-                        {itemStatus.text}
+                      <li key={id}>
+                        <div className="flex items-center">
+                          <input
+                            id={id}
+                            type="checkbox"
+                            value={text}
+                            name={text}
+                            className="w-4 h-4 text-checkPrimary600 bg-gray-100 border-gray-300 rounded"
+                            onChange={(e) => handleCategoriesChange(e)}
+                            checked={selectedCateogries[text]}
+                          />
+                          <label
+                            htmlFor={id}
+                            className="ml-2 text-gray-400 capitalize"
+                          >
+                            {text}
+                          </label>
+                        </div>
                       </li>
                     );
                   })}
@@ -282,53 +257,109 @@ const Messages = () => {
           </div>
         </div>
 
-        {/** Reported count dropdown */}
-        <div className="relative" id="reportedDropdown" ref={reportedDropdown}>
-          <div
-            className={`cursor-pointer rounded-t-[40px]  ${
-              isReportedToggled ? "" : "rounded-b-[40px]"
-            } border border-checkShadeDark px-4 py-[1.1em] flex flex-col`}
-            onClick={() => {
-              setIsReportedToggled((isReportedToggled) => !isReportedToggled);
-            }}
-          >
-            {/** Dropdown title */}
-            <div className="flex flex-row gap-x-4 items-center">
-              Reported:&nbsp;
-              {filterObject.reported}
-              <img src={arrowButtonDown} className="h-2" alt="" />
-            </div>
+        {/** Filters line */}
+        <div className="flex flex-row flex-wrap w-full justify-start items-center p-8 gap-x-4">
+          <img src={filter} className="" />
+          <div className="">Filter</div>
+          <div className="border-r border-r-checkGray flex-none h-[3rem]">
+            &nbsp;
+          </div>
 
-            {/** Dropdown values */}
-            {isReportedToggled && (
-              <div className="w-full absolute top-[2.5rem] left-0 bg-checkBG rounded-b-[40px] p-4 border-x border-b z-10 border-checkShadeDark">
-                <ul className="flex flex-col gap-y-4">
-                  {reportedValues.map((reportedValue) => {
-                    return <li key={reportedValue.id}>{reportedValue.text}</li>;
-                  })}
-                </ul>
+          {/** Status dropdown */}
+          <div className="relative" id="statusDropdown" ref={statusDropdown}>
+            {/** Clickable button */}
+            <div
+              className={`cursor-pointer rounded-t-[40px]  ${
+                isStatusToggled ? "" : "rounded-b-[40px]"
+              } border border-checkShadeDark px-4 py-[1.1em] flex flex-col`}
+              onClick={() => {
+                setIsStatusToggled((isStatusToggled) => !isStatusToggled);
+              }}
+            >
+              {/** Dropdown title */}
+              <div className="flex flex-row items-center gap-x-4">
+                Status:&nbsp;
+                {status.length !== 0 ? status : "All"}
+                <img src={arrowButtonDown} className="h-2" alt="" />
               </div>
-            )}
-          </div>
-        </div>
 
-        {/** Reported period datepicker */}
-        <div className="" id="periodDropdown">
-          <div className="cursor-pointer rounded-[40px] border border-checkShadeDark px-4 py-2 flex flex-row gap-x-4 items-center">
-            <div className="">Reported: </div>
-            <Datepicker
-              primaryColor={"blue"}
-              value={filterObject.datepickervalue}
-              onChange={handleDatePickerValueChange}
-            />
-            <img
-              src={clearDark}
-              className="flex-none h-4 fill-checkShadeDark"
-              alt="Clear"
-            />
+              {/** Dropdown values */}
+              {isStatusToggled && (
+                <div className="w-full absolute top-[2.5rem] left-0 bg-checkBG rounded-b-[40px] p-4 border-x border-b z-10 border-checkShadeDark">
+                  <div className="flex flex-col gap-y-4">
+                    {statusValues.map((itemStatus) => {
+                      const { id, text } = itemStatus;
+                      return (
+                        <div
+                          key={id}
+                          className=""
+                          value={text}
+                          onClick={(e) => setStatus(text)}
+                        >
+                          {text}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/** Reported count dropdown */}
+          <div
+            className="relative"
+            id="reportedDropdown"
+            ref={reportedDropdown}
+          >
+            <div
+              className={`cursor-pointer rounded-t-[40px]  ${
+                isReportedToggled ? "" : "rounded-b-[40px]"
+              } border border-checkShadeDark px-4 py-[1.1em] flex flex-col`}
+              onClick={() => {
+                setIsReportedToggled((isReportedToggled) => !isReportedToggled);
+              }}
+            >
+              {/** Dropdown title */}
+              <div className="flex flex-row gap-x-4 items-center">
+                Reported:&nbsp;
+                {/* {filterObject.reported} */}
+                <img src={arrowButtonDown} className="h-2" alt="" />
+              </div>
+
+              {/** Dropdown values */}
+              {isReportedToggled && (
+                <div className="w-full absolute top-[2.5rem] left-0 bg-checkBG rounded-b-[40px] p-4 border-x border-b z-10 border-checkShadeDark">
+                  <ul className="flex flex-col gap-y-4">
+                    {reportedValues.map((reportedValue) => {
+                      return (
+                        <li key={reportedValue.id}>{reportedValue.text}</li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/** Reported period datepicker */}
+          <div className="" id="periodDropdown">
+            <div className="cursor-pointer rounded-[40px] border border-checkShadeDark px-4 py-2 flex flex-row gap-x-4 items-center">
+              <div className="">Reported: </div>
+              <Datepicker
+                primaryColor={"blue"}
+                // value={filterObject.datepickervalue}
+                onChange={handleDatePickerValueChange}
+              />
+              <img
+                src={clear}
+                className="flex-none h-4 fill-checkShadeDark"
+                alt="Clear"
+              />
+            </div>
           </div>
         </div>
-      </div>
+      </form>
 
       {/** Messages section */}
       {isLoading ? (
