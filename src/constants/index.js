@@ -153,3 +153,29 @@ export const socialMedia = [
     icon: youtube,
     link: "https://youtu.be/Nw0Q-kzDNxs"
   }, */}
+
+
+export const categories = [
+    { id: "checkbox-item-1", text: "illicit" },
+    { id: "checkbox-item-2", text: "legitimate" },
+    { id: "checkbox-item-3", text: "misinformation" },
+    { id: "checkbox-item-4", text: "scam" },
+    { id: "checkbox-item-5", text: "spam" },
+    { id: "checkbox-item-6", text: "trivial" },
+    { id: "checkbox-item-7", text: "unsure" },
+  ];
+  
+export const statusValues = [
+      {id: "status_all", text: "All"},
+      {id: "status_reviewing", text: "Reviewing"},
+      {id: "status_reviewed", text: "Reviewed"},
+  ];
+  
+export const reportedValues = [
+      {id: "reported_1", text: "1 - 5 Times", value: 1},
+      {id: "reported_6", text: "6 - 10 Times", value: 6},
+      {id: "reported_11", text: "11 - 20 Times", value: 11},
+      {id: "reported_20", text: "> 20 Times", value: 20},
+  ];
+
+export const MESSAGE_DATABASE_API_ENDPOINT = "https://checkmate.sg/api/publicmessages_exp";
