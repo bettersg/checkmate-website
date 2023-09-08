@@ -32,6 +32,7 @@ const Messages = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isCategoriesToggled, setIsCategoriesToggled] = useState(false);
   const [isStatusToggled, setIsStatusToggled] = useState(false);
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
   const [isReportedToggled, setIsReportedToggled] = useState(false);
   const [isMessagePopupToggled, setIsMessagePopupToggled] = useState(false);
 
@@ -152,9 +153,125 @@ const Messages = () => {
     }
   };
 
+  const getFilters = () => {
+    return (<div className="flex flex-row flex-wrap w-full justify-start items-center lg:p-8 gap-x-4">
+    <img src={filter} className="max-lg:hidden" />
+    <div className="max-lg:hidden">Filters</div>
+    <div className="max-lg:hidden border-r border-r-checkGray flex-none h-[3rem]">
+      &nbsp;
+    </div>
+      {/** Status dropdown */}
+      <div className="relative" id="statusDropdown" ref={statusDropdown}>
+        {/** Clickable button */}
+        <div
+          className={`cursor-pointer rounded-t-[40px]  ${
+            isStatusToggled ? "" : "rounded-b-[40px]"
+          } border border-checkShadeDark px-4 py-[1.1em] flex flex-col`}
+          onClick={() => {
+            setIsStatusToggled((isStatusToggled) => !isStatusToggled);
+          }}
+        >
+          {/** Dropdown title */}
+          <div className="flex flex-row items-center gap-x-4">
+            Status:&nbsp;
+            {status.length !== 0 ? status : "All"}
+            <img src={arrowButtonDown} className="h-2" alt="" />
+          </div>
+  
+          {/** Dropdown values */}
+          {isStatusToggled && (
+            <div className="w-full absolute top-[2.5rem] left-0 bg-checkBG rounded-b-[40px] p-4 border-x border-b z-10 border-checkShadeDark">
+              <ul className="flex flex-col gap-y-4">
+                {statusValues.map((itemStatus) => {
+                  const { id, text } = itemStatus;
+                  return (
+                    <li
+                      key={id}
+                      className=""
+                      value={text}
+                      onClick={() => setStatus(text)}
+                    >
+                      {text}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+  
+      {/** Reported count dropdown */}
+      <div
+        className="relative"
+        id="reportedDropdown"
+        ref={reportedDropdown}
+      >
+        <div
+          className={`cursor-pointer rounded-t-[40px]  ${
+            isReportedToggled ? "" : "rounded-b-[40px]"
+          } border border-checkShadeDark px-4 py-[1.1em] flex flex-col`}
+          onClick={() => {
+            setIsReportedToggled((isReportedToggled) => !isReportedToggled);
+          }}
+        >
+          {/** Dropdown title */}
+          <div className="flex flex-row gap-x-4 items-center">
+            Reported:&nbsp;
+            {getReportedText()}
+            <img src={arrowButtonDown} className="h-2" alt="" />
+          </div>
+  
+          {/** Dropdown values */}
+          {isReportedToggled && (
+            <div className="w-full absolute top-[2.5rem] left-0 bg-checkBG rounded-b-[40px] p-4 border-x border-b z-10 border-checkShadeDark">
+              <ul className="flex flex-col gap-y-4">
+                {reportedValues.map((reportedValue) => {
+                  const { id, text, value } = reportedValue;
+  
+                  return (
+                    <li
+                      key={id}
+                      className=""
+                      value={value}
+                      onClick={() => setReportCount(value)}
+                    >
+                      {text}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+  
+      {/** Reported period datepicker */}
+      <div className="" id="periodDropdown">
+        <div className="cursor-pointer rounded-[40px] border border-checkShadeDark px-4 py-2 flex flex-row gap-x-4 items-center">
+          <div className="">Reported: </div>
+          <Datepicker
+            primaryColor={"blue"}
+            value={reportDatePeriod}
+            onChange={handleDatePickerValueChange}
+            showShortcuts={true}
+          />
+          <img
+            src={clear}
+            className="flex-none h-4 fill-checkShadeDark"
+            alt="Clear"
+            onClick={() =>
+              setReportDatePeriod({ startDate: null, endDate: null })
+            }
+          />
+        </div>
+      </div>
+    </div>)
+  }
+
   return (
-    <div className="w-full bg-checkBG font-poppins flex flex-col items-center max-w-[1280px] mx-auto">
-      <h1 className="flex-1 w-full font-poppins font-semibold ss:text-[64px] text-[48px] text-checkShadeDark text-left pt-16 pb-8">
+    <div className="max-lg:p-4 w-full bg-checkBG font-poppins flex flex-col items-center max-w-[1280px] mx-auto">
+      <h1 className="flex-1 w-full font-poppins font-semibold ss:text-[64px] text-[48px] text-checkShadeDark text-left lg:pt-16 pb-8">
         Message Database
       </h1>
       {/** Search bar */}
@@ -188,7 +305,7 @@ const Messages = () => {
           <div className="relative" id="dropdown" ref={drop}>
             <button
               id="dropdownCheckboxButton"
-              className="bg-checkWhite px-5 py-2.5 text-center inline-flex items-center text-gray-400"
+              className="bg-checkWhite lg:px-5 py-2.5 text-center inline-flex items-center text-gray-400"
               type="button"
               onClick={() => {
                 setIsCategoriesToggled(
@@ -196,7 +313,7 @@ const Messages = () => {
                 );
               }}
             >
-              <span className="pr-10 ss:text-[20px] text-[14px]">
+              <span className="max-lg:hidden pr-10 ss:text-[20px] text-[14px]">
                 Category{" "}
               </span>
               <svg
@@ -219,7 +336,7 @@ const Messages = () => {
             {isCategoriesToggled && (
               <div
                 id="dropdownDefaultCheckbox"
-                className="z-10 w-48 bg-white divide-y divide-gray-100 rounded-lg shadow absolute top-[3rem] left-8"
+                className="z-10 w-48 bg-white divide-y divide-gray-100 rounded-lg shadow absolute top-[3rem] max-lg:right-2 lg:left-8"
               >
                 <ul
                   className="p-3 space-y-3 text-sm text-gray-700"
@@ -256,119 +373,24 @@ const Messages = () => {
         </div>
 
         {/** Filters line */}
-        <div className="flex flex-row flex-wrap w-full justify-start items-center p-8 gap-x-4">
-          <img src={filter} className="" />
-          <div className="">Filter</div>
-          <div className="border-r border-r-checkGray flex-none h-[3rem]">
-            &nbsp;
-          </div>
-
-          {/** Status dropdown */}
-          <div className="relative" id="statusDropdown" ref={statusDropdown}>
-            {/** Clickable button */}
-            <div
-              className={`cursor-pointer rounded-t-[40px]  ${
-                isStatusToggled ? "" : "rounded-b-[40px]"
-              } border border-checkShadeDark px-4 py-[1.1em] flex flex-col`}
-              onClick={() => {
-                setIsStatusToggled((isStatusToggled) => !isStatusToggled);
-              }}
-            >
-              {/** Dropdown title */}
-              <div className="flex flex-row items-center gap-x-4">
-                Status:&nbsp;
-                {status.length !== 0 ? status : "All"}
-                <img src={arrowButtonDown} className="h-2" alt="" />
-              </div>
-
-              {/** Dropdown values */}
-              {isStatusToggled && (
-                <div className="w-full absolute top-[2.5rem] left-0 bg-checkBG rounded-b-[40px] p-4 border-x border-b z-10 border-checkShadeDark">
-                  <ul className="flex flex-col gap-y-4">
-                    {statusValues.map((itemStatus) => {
-                      const { id, text } = itemStatus;
-                      return (
-                        <li
-                          key={id}
-                          className=""
-                          value={text}
-                          onClick={() => setStatus(text)}
-                        >
-                          {text}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/** Reported count dropdown */}
-          <div
-            className="relative"
-            id="reportedDropdown"
-            ref={reportedDropdown}
+        <div className="max-lg:hidden">
+          {getFilters()}
+        </div>
+        <div className="lg:hidden">
+          <button
+            id="mobileFiltersButton"
+            className="flex flex-row flex-wrap w-full justify-end items-center p-4 gap-x-4"
+            type="button"
+            onClick={() => {
+              setShowMobileFilters(
+                (showMobileFilters) => !showMobileFilters
+              );
+            }}
           >
-            <div
-              className={`cursor-pointer rounded-t-[40px]  ${
-                isReportedToggled ? "" : "rounded-b-[40px]"
-              } border border-checkShadeDark px-4 py-[1.1em] flex flex-col`}
-              onClick={() => {
-                setIsReportedToggled((isReportedToggled) => !isReportedToggled);
-              }}
-            >
-              {/** Dropdown title */}
-              <div className="flex flex-row gap-x-4 items-center">
-                Reported:&nbsp;
-                {getReportedText()}
-                <img src={arrowButtonDown} className="h-2" alt="" />
-              </div>
-
-              {/** Dropdown values */}
-              {isReportedToggled && (
-                <div className="w-full absolute top-[2.5rem] left-0 bg-checkBG rounded-b-[40px] p-4 border-x border-b z-10 border-checkShadeDark">
-                  <ul className="flex flex-col gap-y-4">
-                    {reportedValues.map((reportedValue) => {
-                      const { id, text, value } = reportedValue;
-
-                      return (
-                        <li
-                          key={id}
-                          className=""
-                          value={value}
-                          onClick={() => setReportCount(value)}
-                        >
-                          {text}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/** Reported period datepicker */}
-          <div className="" id="periodDropdown">
-            <div className="cursor-pointer rounded-[40px] border border-checkShadeDark px-4 py-2 flex flex-row gap-x-4 items-center">
-              <div className="">Reported: </div>
-              <Datepicker
-                primaryColor={"blue"}
-                value={reportDatePeriod}
-                onChange={handleDatePickerValueChange}
-                showShortcuts={true}
-              />
-              <img
-                src={clear}
-                className="flex-none h-4 fill-checkShadeDark"
-                alt="Clear"
-                onClick={() =>
-                  setReportDatePeriod({ startDate: null, endDate: null })
-                }
-              />
-            </div>
-          </div>
+            <img src={filter} className="" />
+            <div className="">Filters</div>
+          </button>
+          {showMobileFilters && getFilters()}
         </div>
       </form>
 
@@ -389,8 +411,8 @@ const Messages = () => {
               var messageWidth = 0;
             }
             return (
-              <div key={index} className="flex flex-col w-[calc(33.33%-2rem)]">
-                <div className="flex flex-col gap-y-4 bg-checkWhite rounded-t-carousel px-6 pt-12 pb-6 h-[35vh]">
+              <div key={index} className="flex flex-col lg:w-[calc(33.33%-2rem)]">
+                <div className="flex flex-col gap-y-4 bg-checkWhite rounded-t-carousel px-6 max-lg:pt-6 lg:pt-12 pb-6 lg:h-[35vh]">
                   {/** Category */}
                   <div className="ss:text-[32px] text-[24px]">
                     {message.category
