@@ -261,7 +261,7 @@ const Messages = () => {
             className="flex-none h-4 fill-checkShadeDark"
             alt="Clear"
             onClick={() =>
-              setReportDatePeriod({ startDate: null, endDate: null })
+              setReportDatePeriod({ startDate: dayjs().subtract(7, "days").format("YYYY-MM-DD"), endDate: dayjs().format("YYYY-MM-DD") })
             }
           />
         </div>
