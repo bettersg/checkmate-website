@@ -2,60 +2,26 @@ import move from "lodash-move";
 import { useState } from "react";
 import { whatsappOrange } from "../assets";
 import { motion } from "framer-motion";
+import { cards_content } from "../constants"
 
 const CARD_COLORS = ["#ff7557", "#ff5833", " #ff431a", "#ff431a", "#ff2e00"];
 const CARD_OFFSET = 20;
 const SCALE_FACTOR = 0.08;
 
-const cards_content = [
-    {
-        index: 0,
-        text: "Got a text message from “Alice the recruiter” at JobsDB?",
-        buttonText: "Forward it in",
-        link: "https://ref.checkmate.sg/add?utm_source=website&utm_medium=shufflecomponent"
-    },
-    {
-        index: 1,
-        text: "Find out if the deal is Too Good To Be True.",
-        buttonText: "Forward it to CheckMate",
-        link: "https://ref.checkmate.sg/add?utm_source=website&utm_medium=shufflecomponent"
-    },
-    {
-        index: 2,
-        text: "Came across a strange website claiming to be Singtel?",
-        buttonText: "Forward us the URL",
-        link: "https://ref.checkmate.sg/add?utm_source=website&utm_medium=shufflecomponent"
-    },
-    {
-        index: 3,
-        text: "Received an image in group chats  claiming vaccines don't work?",
-        buttonText: "Forward it in",
-        link: "https://ref.checkmate.sg/add?utm_source=website&utm_medium=shufflecomponent"
-    },
-    {
-        index: 4,
-        text: "Got an email saying your bank account has “security issues”?",
-        buttonText: "Forward us a screenshot",
-        link: "https://ref.checkmate.sg/add?utm_source=website&utm_medium=shufflecomponent"
-    }
-]
 
 const Cards3D = () => {
     const [cards, setCards] = useState(CARD_COLORS);
-
-    const wrapperStyle = {
-        position: "relative",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100vh"
-      };
+    const [cardsContent, setCardsContent] = useState(cards_content)
 
     const moveToEnd = async (from) => {
+
         if (from == cards.length-1) {
             from = 0
         }
+
+        setCardsContent(move(cardsContent, from, cardsContent.length - 1));
         setCards(move(cards, from, cards.length - 1));
+
     };
 
     return (
@@ -68,27 +34,26 @@ const Cards3D = () => {
                 // need to trigger animation on start and execute moveTToEnd on repeat
             return (
                 <motion.li
-                key={color}
-                className="absolute w-full h-full rounded-carousel shadow-2xl list-none px-8 ss:px-12 md:px-24 py-16 text-checkWhite font-poppins"
-                style={{
-                    transformOrigin: "top center",
-                    backgroundColor: color,
-                }}
-                animate={{
-                    top: index * -CARD_OFFSET,
-                    scale: 1 - index * SCALE_FACTOR,
-                    zIndex: CARD_COLORS.length - index
-                }}
-                
-                transition={{ duration: 1, delay: 3 }}
-                onAnimationComplete={() => {moveToEnd(index); console.log("Transition end") }}
+                    key={color}
+                    className="absolute w-full h-full rounded-carousel shadow-2xl list-none px-8 ss:px-12 md:px-24 py-16 text-checkWhite font-poppins"
+                    style={{
+                        transformOrigin: "top center",
+                        backgroundColor: color,
+                    }}
+                    animate={{
+                        top: index * -CARD_OFFSET,
+                        scale: 1 - index * SCALE_FACTOR,
+                        zIndex: cardsContent.length - index
+                    }}
+                    transition={{ duration: 1, delay: 3 }}
+                    onAnimationComplete={() => {moveToEnd(index); console.log("Transition end", cardsContent[0].text) }}
                 >
                     <div className="flex flex-col md:flex-row items-center gap-x-4 gap-y-4">
-                        <div className="ss:text-[28px] md:text-[32px] text-[24px] font-semibold">{cards_content[index].text}</div>
-                        <a href={cards_content[index].link} 
+                        <div className="ss:text-[28px] md:text-[32px] text-[24px] font-semibold">{cardsContent[index].text}</div>
+                        <a href={cardsContent[index].link} 
                             className="cursor-pointer flex flex-row bg-checkWhite text-checkPrimary600 rounded-[50px] w-[20rem] ss:w-[28rem] max-w-sm ss:max-w-xs px-8 py-4 justify-center items-center gap-x-4">
                             <img src={whatsappOrange} />
-                            {cards_content[index].buttonText}
+                            {cardsContent[index].buttonText}
                         </a>
                     </div>
                 </motion.li>
