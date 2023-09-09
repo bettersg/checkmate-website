@@ -503,26 +503,36 @@ const Messages = () => {
       {isMessagePopupToggled ? 
       <div className="fixed inset-0 flex items-center justify-center bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-15" onClick={() => setIsMessagePopupToggled(false)}>
         {/** Popup modal, using stop propagation to prevent the modal from being closed on click and allow only if clicked outside of it */}
-        <div className="relative mx-auto p-5 border w-96 shadow-lg rounded-md bg-white flex flex-col z-20" onClick={e => e.stopPropagation()} >
+        <div className="relative mx-auto px-6 py-8 border w-[32rem] shadow-lg rounded-[40px] bg-white flex flex-col gap-y-4 z-20" onClick={e => e.stopPropagation()} >
             {/** Reported date */}
             {popupContent.messageDate}
             {/** Category */}
-            {popupContent.category}
+            <div className="text-checkPrimary600 ss:text-[32px] text-[24px]">{capitalizeFirstLetter(popupContent.category)}</div>
             {/** Message text */}
-            {popupContent.text}
+            <div className="text-checkGrayModal">{popupContent.text}</div>
             {/** Stats line */}
-            <div className="flex flex-row">
+            <div className="flex flex-row w-full gap-x-4">
                 {/** Truth score */}
-                <div className="flex flex-col">
-                    {Math.round(popupContent.truthScore * 100) / 100}
+                <div className="flex flex-col p-4 rounded-[20px] w-1/3 border border-gray-100 shadow-xl text-checkShadeDark">
+                    <div className="">Truth Score</div>
+                    {popupContent.truthScore ? <div className="w-24 bg-checkWhite rounded-full h-2.5">
+                        <div
+                          className={`bg-checkPrimary600 h-2.5 rounded-full w-[${Math.round((Math.round(popupContent.truthScore * 100) / 100) * 100) / 5}%]`}
+                        ></div>
+                    </div> : ""}
+                    {popupContent.truthScore ? <div className="">{Math.round(popupContent.truthScore * 100) / 100} of 5</div> : "N/A"}
                 </div>
                 {/** Status */}
-                <div className="flex flex-col">
-                    {popupContent.isAssessed ? "Reviewed" : "Reviewing"}
+                <div className="flex flex-col rounded-[20px] w-1/3 border-x border-t border-gray-100 shadow-xl text-checkShadeDark">
+                    <div className="px-4 pt-3 pb-1">Status</div>
+                    <div className="text-checkWhite p-4 h-full rounded-[20px] bg-gradient-to-br from-checkPrimary600 to-checkSecondaryYellow500 ss:text-[20px] text-[16px] w-full text-center">
+                        {popupContent.isAssessed ? "Reviewed" : "Reviewing"}
+                    </div>
                 </div>
                 {/** Report count */}
-                <div className="flex flex-col">
-                    {popupContent.instanceCount}
+                <div className="flex flex-col gap-y-4 p-4 rounded-[20px] w-1/3 text-checkWhite bg-checkPrimary600 border border-gray-100 shadow-xl">
+                    <div>Number of reported</div>
+                    <div className="flex flex-row ss:text-[20px] text-[16px]"><span className="font-bold">{popupContent.instanceCount}</span>&nbsp;time{popupContent.instanceCount > 1 ? "s" : ""}</div>
                 </div>
             </div>
         </div>
