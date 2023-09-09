@@ -7,7 +7,7 @@ import {
   categories,
   statusValues,
   reportedValues,
-  MESSAGE_DATABASE_API_ENDPOINT,
+  MESSAGE_DATABASE_API_ENDPOINT
 } from "../constants";
 import dayjs from "dayjs";
 
@@ -27,6 +27,14 @@ const Messages = () => {
   const [reportDatePeriod, setReportDatePeriod] = useState({
     startDate: dayjs().subtract(7, "days").format("YYYY-MM-DD"),
     endDate: dayjs().format("YYYY-MM-DD"),
+  });
+  const [popupContent, setPopupContent] = useState({
+    category: "",
+    messageDate: "",
+    text: "",
+    truthScore: 0,
+    isAssessed: false,
+    instanceCount: 0
   });
 
   const [isLoading, setIsLoading] = useState(true);
@@ -59,7 +67,6 @@ const Messages = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data.hits);
         setIsLoading(false);
         setMessages(data.hits);
       });
@@ -122,6 +129,20 @@ const Messages = () => {
       (reportedValue) => reportedValue.value === reportCount
     ).text;
   };
+
+  {/** display the message popup and fill its content */}
+  const displayCardDetails = (messageId) => {
+    setIsMessagePopupToggled(true)
+    let popupmessage = messages.find(x => x.document.id === messageId).document || {};
+    setPopupContent({
+        category: popupmessage.category || "",
+        messageDate: convertTimestamp(popupmessage.firstReceivedUnixTimestamp) || "",
+        text: popupmessage.text || "",
+        truthScore: popupmessage.truthScore || "",
+        isAssessed: popupmessage.isAssessed,
+        instanceCount: popupmessage.instanceCount || 0
+    })
+  }
 
   // function to make a new search once a string has been submitted in the search bar
   const handleSearchSubmit = async (e) => {
@@ -400,7 +421,7 @@ const Messages = () => {
           <span className={purecss.loader}></span>
         </div>
       ) : (
-        <div className="flex flex-row flex-wrap gap-x-8 gap-y-8 mb-8 mt-8 cursor-pointer">
+        <div className="flex flex-row flex-wrap gap-x-8 gap-y-8 mb-8 mt-8">
           {messages.map((message, index) => {
             message = message.document;
             if (message.truthScore) {
@@ -411,7 +432,7 @@ const Messages = () => {
               var messageWidth = 0;
             }
             return (
-              <div key={index} className="flex flex-col lg:w-[calc(33.33%-2rem)]">
+              <div key={message.id} className="cursor-pointer flex flex-col lg:w-[calc(33.33%-2rem)]" onClick={() => displayCardDetails(message.id)}>
                 <div className="flex flex-col gap-y-4 bg-checkWhite rounded-t-carousel px-6 max-lg:pt-6 lg:pt-12 pb-6 lg:h-[35vh]">
                   {/** Category */}
                   <div className="ss:text-[32px] text-[24px]">
@@ -479,7 +500,36 @@ const Messages = () => {
         </div>
       )}
 
-      {isMessagePopupToggled && <div className=""></div>}
+      {isMessagePopupToggled ? 
+      <div className="" onClick={() => setIsMessagePopupToggled(false)}>
+        {/** Screen overlay */}
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-15"></div>
+        {/** Popup modal, using stop propagation to prevent the modal from being closed on click and allow only if clicked outside of it */}
+        <div className="absolute top-40 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white flex flex-col z-20" onClick={e => e.stopPropagation()} >
+            {/** Reported date */}
+            {popupContent.messageDate}
+            {/** Category */}
+            {popupContent.category}
+            {/** Message text */}
+            {popupContent.text}
+            {/** Stats line */}
+            <div className="flex flex-row">
+                {/** Truth score */}
+                <div className="flex flex-col">
+                    {Math.round(popupContent.truthScore * 100) / 100}
+                </div>
+                {/** Status */}
+                <div className="flex flex-col">
+                    {popupContent.isAssessed ? "Reviewed" : "Reviewing"}
+                </div>
+                {/** Report count */}
+                <div className="flex flex-col">
+                    {popupContent.instanceCount}
+                </div>
+            </div>
+        </div>
+      </div> : ""}
+      
     </div>
   );
 };
