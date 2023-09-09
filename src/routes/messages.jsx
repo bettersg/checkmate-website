@@ -501,11 +501,9 @@ const Messages = () => {
       )}
 
       {isMessagePopupToggled ? 
-      <div className="" onClick={() => setIsMessagePopupToggled(false)}>
-        {/** Screen overlay */}
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-15"></div>
+      <div className="fixed inset-0 flex items-center justify-center bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-15" onClick={() => setIsMessagePopupToggled(false)}>
         {/** Popup modal, using stop propagation to prevent the modal from being closed on click and allow only if clicked outside of it */}
-        <div className="absolute top-40 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white flex flex-col z-20" onClick={e => e.stopPropagation()} >
+        <div className="relative mx-auto p-5 border w-96 shadow-lg rounded-md bg-white flex flex-col z-20" onClick={e => e.stopPropagation()} >
             {/** Reported date */}
             {popupContent.messageDate}
             {/** Category */}
