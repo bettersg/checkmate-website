@@ -16,7 +16,7 @@ const Approach = () => (
         </div>
         
         {/** Main text bubble */}
-        <div className="h-2/3 bg-checkCarouselRed rounded-t-carousel px-12 pt-16 pb-12">
+        <div className="h-[70%] bg-checkCarouselRed rounded-t-carousel px-12 pt-16 pb-12">
           <div className="pl-4 text-checkBlack">Unknown</div>
           <div className="px-8 py-4 bg-white mt-1 rounded-[24px] shadow-md text-checkBlack">
             LTA: Notice As no valid E-tag detected in your vehicle, your last trip on was unpaid. Please pay now to avoid penalty notice: <span className="text-checkLink">https://itsascam.com</span>
@@ -24,7 +24,7 @@ const Approach = () => (
         </div>
       
         {/** Sub text */}
-        <div className="h-1/3 bg-checkWhite text-checkBlack text-2xl font-medium text-center px-8 py-4 rounded-b-carousel">
+        <div className="h-[30%] bg-checkWhite text-checkBlack text-[24px] md:text-[20px] font-medium text-center px-8 py-4 rounded-b-carousel flex items-center">
           Send in a dubious message, or a screenshot of the message and sender to us.
         </div>
       </div>
@@ -37,7 +37,7 @@ const Approach = () => (
         </div>
         
         {/** Main text bubble */}
-        <div className="h-2/3 bg-checkCarouselYellow rounded-t-carousel px-12 pt-16 pb-12">
+        <div className="h-[70%] bg-checkCarouselYellow rounded-t-carousel px-12 pt-16 pb-12">
           <div className="pl-4 text-checkBlack">Unknown</div>
           <div className="px-8 py-4 bg-white mt-1 rounded-[24px] shadow-md mb-16 text-checkBlack">
             <img src={genericText} />
@@ -45,7 +45,7 @@ const Approach = () => (
         </div>
       
         {/** Sub text */}
-        <div className="h-1/3 bg-checkWhite text-2xl font-medium text-center px-8 py-4 rounded-b-carousel text-checkBlack">
+        <div className="h-[30%] bg-checkWhite text-[24px] md:text-[20px] font-medium text-center px-8 py-4 rounded-b-carousel text-checkBlack flex items-center">
           Our AI tries to classify the message. If it’s unable to, human checkers will review it!
         </div>
       </div>
@@ -58,7 +58,7 @@ const Approach = () => (
         </div>
         
         {/** Main text bubble */}
-        <div className="h-2/3 bg-checkCarouselGreen rounded-t-carousel px-12 pt-16 pb-12 text-checkBlack">
+        <div className="h-[70%] bg-checkCarouselGreen rounded-t-carousel px-12 pt-16 pb-12 text-checkBlack">
           <div className="pl-4">From CheckMateSG</div>
           <div className="px-8 py-4 bg-white mt-1 rounded-[24px] shadow-md">
             This is likely a scam!
@@ -66,7 +66,7 @@ const Approach = () => (
         </div>
       
         {/** Sub text */}
-        <div className="h-1/3 bg-checkWhite text-checkBlack text-2xl font-medium text-center px-8 py-4 rounded-b-carousel">
+        <div className="h-[30%] bg-checkWhite text-checkBlack text-[24px] md:text-[20px] font-medium text-center px-8 py-4 rounded-b-carousel flex items-center">
           Once checked, we inform you of the results!
         </div>
       </div>

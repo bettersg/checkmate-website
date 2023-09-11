@@ -5,7 +5,7 @@ const Checked = () => {
   return (
     <div className="bg-checkWhite rounded-carousel flex flex-col px-8 md:px-24 py-12 md:py-24 justify-center font-poppins">
       <h1 className="w-full font-bold ss:text-[64px] text-[48px] text-checkShadeDark text-center mx-auto">What we’ve checked</h1>
-      <h2 className="w-full ss:text-[28px] text-[20px] text-center mx-auto">See some of the content that we've helped to check!</h2>
+      <h2 className="w-full ss:text-[28px] text-[20px] text-center mx-auto text-checkBlack">See some of the content that we've helped to check!</h2>
 
       <div className="flex flex-col md:flex-row w-full gap-x-12 gap-y-8 pt-12">
         
@@ -18,7 +18,7 @@ const Checked = () => {
                     
                 </Link>
             </div>
-            <img src={checkedImg1} className="w-1/2 pt-12"/>
+            <img src={checkedImg1} className="w-1/2 pt-12 overflow-hidden rounded-br-carousel"/>
         </div>
 
         
@@ -31,7 +31,7 @@ const Checked = () => {
                     
                 </Link>
             </div>
-            <img src={checkedImg2} className="w-1/2 pt-12"/>
+            <img src={checkedImg2} className="w-1/2 pt-12 overflow-hidden rounded-br-carousel"/>
         </div>
         
 

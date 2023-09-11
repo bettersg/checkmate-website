@@ -94,7 +94,7 @@ const Check = () => {
     <div className="w-100" style={{ height: `${containerHeight}px` }} ref={containerRef}>
       <motion.div className="block" style={{ maxHeight: `${dimensions.height}px`, y }}>
         <motion.div className="overflow-x-hidden">
-          <h1 className="sm:text-6xl text-4xl flex-1 font-poppins font-medium text-checkShadeDark text-center pb-24">
+          <h1 className="text-[56px] md:text-[64px] flex-1 font-poppins font-bold text-checkShadeDark text-center pb-24">
             Check dubious <span className="text-checkPrimary600">messages</span>
           </h1>
           <motion.div className="flex w-max" style={{ x }}>
@@ -108,7 +108,7 @@ const Check = () => {
             <div className="xl:max-w-[1280px] w-full flex flex-col justify-center">
 
               {/** Text block */}
-              <h2 className="text-checkPrimary600 font-bold leading-none font-poppins tracking-wide text-center ss:text-[60px] md:text-[64px] text-[48px]">
+              <h2 className="text-checkPrimary600 font-bold leading-none font-poppins tracking-wide text-center text-[48px] md:text-[64px] px-16">
               CheckMate is powered by a crew of multidisciplinary volunteers who separate fact from fiction using the power of voting and artificial intelligence. <br />#TechForGood
               </h2>
 

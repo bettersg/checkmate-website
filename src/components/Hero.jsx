@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className={`flex flex-wrap justify-center py-2`}
+      className={`flex flex-nowrap justify-center py-2`}
     >
 
       <motion.div
@@ -24,10 +24,10 @@ const Hero = () => {
           variants={fadeIn("left", "tween", 0.2, 1)}
           className="items-center"
         >
-          <div className="flex flex-col items-start sm:text-6xl text-5xl font-poppins font-medium text-checkShadeDark">
-            <p className="leading-normal">We verify</p>
-            <p><span className="text-checkPrimary600">Scams</span> and</p>
-            <p className="text-checkSecondaryYellow500">Misinformation</p>
+          <div className="flex flex-col items-start ss:text-[64px] text-[48px] font-poppins font-bold text-checkShadeDark">
+            <p className="leading-tight">We verify</p>
+            <p><span className="text-checkPrimary600 leading-tight">Scams</span> and</p>
+            <p className="text-checkSecondaryYellow500 leading-tight">Misinformation</p>
           </div>
 
           <p className={`${styles.paragraph} max-w-md mt-5 text-checkBlack font-workSans`}>
