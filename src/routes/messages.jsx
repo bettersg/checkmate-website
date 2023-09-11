@@ -292,7 +292,7 @@ const Messages = () => {
 
   return (
     <div className="max-lg:p-4 w-full bg-checkBG font-poppins flex flex-col items-center max-w-[1280px] mx-auto">
-      <h1 className="flex-1 w-full font-poppins font-semibold ss:text-[64px] text-[48px] text-checkShadeDark text-left lg:pt-16 pb-8">
+      <h1 className="flex-1 w-full font-poppins font-medium ss:text-[64px] text-[48px] text-checkShadeDark text-left lg:pt-16 pb-8">
         Message Database
       </h1>
       {/** Search bar */}
@@ -463,7 +463,7 @@ const Messages = () => {
                         ></div>
                       </div>
                       &nbsp;
-                      <span className="text-checkPrimary600 font-semibold">
+                      <span className="text-checkPrimary600 font-medium">
                         {Math.round(message.truthScore * 100) / 100}
                       </span>
                       &nbsp;of 5
@@ -487,7 +487,7 @@ const Messages = () => {
                   {/** Reported */}
                   <div className="">
                     Reported&nbsp;
-                    <span className="text-checkPrimary600 font-semibold">
+                    <span className="text-checkPrimary600 font-medium">
                       {message.instanceCount && message.instanceCount != "1"
                         ? message.instanceCount + " times"
                         : "1 time"}

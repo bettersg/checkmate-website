@@ -15,12 +15,12 @@ const Faq = () => {
 
   return (
     <div id="faq" className={`flex flex-col items-center text-checkShadeDark`}>
-        <h1 className="flex-1 font-poppins font-semibold ss:text-[64px] text-[48px] text-checkShadeDark text-center py-8">
+        <h1 className="flex-1 font-poppins font-medium ss:text-[64px] text-[48px] text-checkShadeDark text-center py-8">
           Frequently Asked Questions
         </h1>
 
       
-      <div className="flex flex-col px-4 md:px-12 pb-24 font-poppins xl:max-w-[1080px] w-full items-center">
+      <div className="flex flex-col px-4 md:px-12 pb-24 font-poppins xl:max-w-[1080px] w-full items-center font-workSans">
         <details
           ref={(el) => (detailsRef.current['is-checkmate-free-to-us'] = el)}
           open={isOpenMap['is-checkmate-free-to-us']}
@@ -29,7 +29,7 @@ const Faq = () => {
         >
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
             <div className="flex flex-row justify-between items-center">
-              <span className="p-3 text-checkShadeDark text-xl font-semibold">Is CheckMate free to use?</span>
+              <span className="p-3 text-checkShadeDark text-xl font-medium">Is CheckMate free to use?</span>
               <img
                 className={"h-5 w-5"}
                 src={isOpenMap['is-checkmate-free-to-us'] ? arrowButtonDown : arrowButtonRight}
@@ -49,7 +49,7 @@ const Faq = () => {
         >
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
             <div className="flex flex-row justify-between items-center">
-              <span className="p-3 text-xl font-semibold">How does CheckMate work?</span>
+              <span className="p-3 text-xl font-medium">How does CheckMate work?</span>
               <img
                 className={"h-5 w-5"}
                 src={isOpenMap['how-does-checkmate-work'] ? arrowButtonDown : arrowButtonRight}
@@ -117,7 +117,7 @@ const Faq = () => {
         >
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
             <div className="flex flex-row justify-between items-center">
-              <span className="p-3 text-xl font-semibold">How can I help and become a fact-checker?</span>
+              <span className="p-3 text-xl font-medium">How can I help and become a fact-checker?</span>
               <img
                 className={"h-5 w-5"}
                 src={isOpenMap['become-a-fact-checker'] ? arrowButtonDown : arrowButtonRight}
@@ -139,7 +139,7 @@ const Faq = () => {
         >
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
             <div className="flex flex-row justify-between items-center">
-              <span className="p-3 text-xl font-semibold">What kind of data can CheckMate see and collect from me?</span>
+              <span className="p-3 text-xl font-medium">What kind of data can CheckMate see and collect from me?</span>
               <img
                 className={"h-5 w-5"}
                 src={isOpenMap['what-data-collected'] ? arrowButtonDown : arrowButtonRight}
@@ -160,7 +160,7 @@ const Faq = () => {
         >
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
             <div className="flex flex-row justify-between items-center">
-              <span className="p-3 text-xl font-semibold">How does CheckMate collaborate with ScamShield?</span>
+              <span className="p-3 text-xl font-medium">How does CheckMate collaborate with ScamShield?</span>
               <img
                 className={"h-5 w-5"}
                 src={isOpenMap['how-collaborate-with-scamshield'] ? arrowButtonDown : arrowButtonRight}
@@ -183,7 +183,7 @@ const Faq = () => {
         >
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
               <div className="flex flex-row justify-between items-center">
-                <span className="p-3 text-xl font-semibold">What is ScamShield?</span>
+                <span className="p-3 text-xl font-medium">What is ScamShield?</span>
                 <img
                   className={"h-5 w-5"}
                   src={isOpenMap['what-is-scamshield'] ? arrowButtonDown : arrowButtonRight}
@@ -203,7 +203,7 @@ const Faq = () => {
         >
           <summary className="cursor-pointer px-4 py-6 font-bold list-none">
             <div className="flex flex-row justify-between items-center">
-              <span className="p-3 text-xl font-semibold">How long does it take for CheckMate to assess messages?</span>
+              <span className="p-3 text-xl font-medium">How long does it take for CheckMate to assess messages?</span>
               <img
                 className={"h-5 w-5"}
                 src={isOpenMap['how-long-does-it-take'] ? arrowButtonDown : arrowButtonRight}

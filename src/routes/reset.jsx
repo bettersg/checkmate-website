@@ -34,7 +34,7 @@ const Reset = () => {
             <main >        
                 <section>
                     <div>                                            
-                        <p className="text-2xl font-poppins font-semibold text-checkPurple mb-8"> Reset Your Password </p>                       
+                        <p className="text-2xl font-poppins font-medium text-checkPrimary600 mb-8"> Reset Your Password </p>                       
                                                        
                         <form className="flex flex-col gap-y-4">                                              
                             <div className="bg-checkWhite border border-checkPurple px-2 py-1 rounded-lg">

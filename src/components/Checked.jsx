@@ -11,10 +11,10 @@ const Checked = () => {
         
         <div className="w-full md:w-1/2 bg-checkGray rounded-carousel flex flex-row">
             <div className="flex flex-col w-1/2 pl-12 my-auto">
-                <h2 className="ss:text-[28px] text-[20px] font-semibold text-checkShadeDark">Suspicious messages</h2>
-                <h3 className="md:text-[20px] text-[14px] text-checkDarkGray">Misinformation, Scams, Surveys, Job offerings, Packages, Investments and others</h3>
+                <h2 className="ss:text-[28px] text-[20px] font-medium text-checkShadeDark font-poppins">Suspicious messages</h2>
+                <h3 className="md:text-[20px] text-[14px] text-checkDarkGray font-workSans">Misinformation, Scams, Surveys, Job offerings, Packages, Investments and others</h3>
                 <Link>
-                    <div className="text-checkPrimary600 flex flex-row">See more&nbsp;<img src={arrowRightOrange} /></div>
+                    <div className="text-checkPrimary600 flex flex-row font-workSans">See more&nbsp;<img src={arrowRightOrange} /></div>
                     
                 </Link>
             </div>
@@ -24,10 +24,10 @@ const Checked = () => {
         
         <div className="w-full md:w-1/2 bg-checkGray rounded-carousel flex flex-row">
             <div className="flex flex-col w-1/2 pl-12 my-auto">
-                <h2 className="ss:text-[28px] text-[20px] font-semibold text-checkShadeDark">Images</h2>
-                <h3 className="md:text-[20px] text-[16px] text-checkDarkGray">QR codes, Flyers, Advertisements, Spam, Screenshots, Deals too good to be true<br/>&nbsp;</h3>
+                <h2 className="ss:text-[28px] text-[20px] font-medium text-checkShadeDark font-poppins">Images</h2>
+                <h3 className="md:text-[20px] text-[16px] text-checkDarkGray font-workSans">QR codes, Flyers, Advertisements, Spam, Screenshots, Deals too good to be true<br/>&nbsp;</h3>
                 <Link>
-                    <div className="text-checkPrimary600 flex flex-row">See more&nbsp;<img src={arrowRightOrange} /></div>
+                    <div className="text-checkPrimary600 flex flex-row font-workSans">See more&nbsp;<img src={arrowRightOrange} /></div>
                     
                 </Link>
             </div>

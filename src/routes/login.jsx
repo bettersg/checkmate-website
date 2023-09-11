@@ -98,7 +98,7 @@ const Login = () => {
         >
           <ToastContainer />
           <div>
-            <p className="text-5xl font-poppins font-bold leading-normal text-black mb-2">
+            <p className="text-5xl font-poppins font-bold leading-normal text-checkBlack mb-2">
               Log In to CheckMate
             </p>
 
@@ -111,7 +111,7 @@ const Login = () => {
                   required
                   placeholder="Your email"
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-checkWhite text-black font-medium"
+                  className="bg-checkWhite text-checkBlack font-medium"
                 />
               </div>
 
@@ -123,7 +123,7 @@ const Login = () => {
                   required
                   placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
-                  className="bg-checkWhite text-black font-medium"
+                  className="bg-checkWhite text-checkBlack font-medium"
                 />
               </div>
               <div className="text-checkPurple font-poppins text-sm text-right">
