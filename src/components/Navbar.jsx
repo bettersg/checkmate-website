@@ -105,7 +105,7 @@ const Navbar = () => {
               <li
                 key={nav.id}
                 className={`py-4 font-workSans font-medium cursor-pointer text-[20px] ${
-                  active === nav.title ? "text-checkBlack" : "text-checkBlack"
+                  active === nav.title ? "text-checkWhite bg-checkPrimary600 rounded-[40px] w-full text-center bg-opacity-100" : "text-checkBlack"
                 } ${index === navLinks.length - 1 ? "mb-4" : "mb-4"}`}
                 onClick={() => handleMobileClick(nav.title)}
               >
