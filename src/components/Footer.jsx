@@ -4,14 +4,14 @@ import { bettersg, scamshield } from "../assets"
 import { Link } from "react-router-dom"
 
 const Footer = () => (
-  <section id="footer" className={`w-full sm:py-10 py-2 px-16 flex justify-center items-center flex-col bg-gray-500 text-checkWhite font-poppins`}>
+  <section id="footer" className={`w-full sm:py-10 py-2 px-16 flex justify-center items-center flex-col bg-checkBGFooter text-checkWhite font-poppins`}>
     
     
     <div className="xl:max-w-[1280px] w-full flex flex-col md:flex-row gap-y-8 justify-center">
 
       <div className="w-full md:w-1/4">
-        <div className="">CheckMate</div>
-        <div className="flex flex-col pl-4 pt-8 text-xs gap-y-6">
+        <div className="text-[20px]">CheckMate</div>
+        <div className="flex flex-col pl-4 pt-8 text-[16px] gap-y-6">
           <Link to="/">Home</Link>
           <Link to="/about">About Us</Link>
           <Link to="/message-database">Message Database</Link>
@@ -20,8 +20,8 @@ const Footer = () => (
       </div>
       
       <div className="w-full md:w-1/4">
-        <div className="">Legal</div>
-        <div className="pl-4 pt-8 text-xs">
+        <div className="text-[20px]">Legal</div>
+        <div className="pl-4 pt-8 text-[16px]">
           <Link to="/privacy-policy">Privacy Policy</Link>
         </div>
       </div>
@@ -31,8 +31,8 @@ const Footer = () => (
       </div>
 
       <div className="w-full md:w-1/4 flex flex-col gap-y-8">
-        <div className="">Find us on</div>
-        <div className="flex flex-col gap-y-6">
+        <div className="text-[20px]">Find us on</div>
+        <div className="flex flex-col gap-y-6 text-[16px]">
           {socialMedia.map((social, index) => (
             <div key={index} className="flex flex-row">
               <img
@@ -42,7 +42,7 @@ const Footer = () => (
                 className="w-[21px] h-[21px] object-contain cursor-pointer mr-6"
                 onClick={() => window.open(social.link)}
               />
-              <span className="text-xs">{social.text}</span>
+              <span className="text-[16px]">{social.text}</span>
             </div>
           ))}
         </div>

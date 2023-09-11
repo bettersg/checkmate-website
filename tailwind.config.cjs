@@ -25,6 +25,7 @@ module.exports = {
         checkBlack: "#525252",
         checkGray: "#D9D9D9",
         checkGrayModal: "#656565",
+        checkGrayPrivacy: "#464646",
         checkDarkGray: "#6b6b6b",
         checkCream: "#FBF6E6",
         checkShadeDark: "#525252",

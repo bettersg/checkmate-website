@@ -50,6 +50,8 @@ import qrFc from "./qr-fc.png"
 import arrowButtonUp from "./arrow-button-up.svg"
 import arrowButtonDown from "./arrow-button-down.svg"
 import arrowButtonRight from "./arrow-button-right.svg"
+import arrowButtonDownPrimary from "./arrow-button-down-primary.svg"
+import arrowButtonRightPrimary from "./arrow-button-right-primary.svg"
 import youtube from "./youtube.svg"
 import heroPicture from "./heroPicture.svg"
 import arrowRight from "./arrow-right.svg"
@@ -120,6 +122,8 @@ export {
   faqIcon,
   arrowButtonRight,
   arrowButtonDown,
+  arrowButtonRightPrimary,
+  arrowButtonDownPrimary,
   arrowButtonUp,
   arrowRight,
   arrowRightOrange,

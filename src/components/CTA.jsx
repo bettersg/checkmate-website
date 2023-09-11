@@ -8,7 +8,7 @@ const Stats = () => (
         href="https://ref.checkmate.sg/add?utm_source=website&utm_medium=cta"
         className="cursor-pointer flex flex-row items-center justify-center gap-x-4 bg-checkPrimary600 font-workSans font-medium rounded-[50px] px-8 py-4 text-center max-w-sm min-w-[16rem] sm:w-[20rem]"
       >
-        <span className="text-checkWhite ss:text-[26px] text-[20px]">Talk to us</span>
+        <span className="text-checkWhite text-[20px]">Talk to us</span>
         <img src={arrowRight} />
       </a>
 

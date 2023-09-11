@@ -292,12 +292,12 @@ const Messages = () => {
 
   return (
     <div className="max-lg:p-4 w-full bg-checkBG font-poppins flex flex-col items-center max-w-[1280px] mx-auto">
-      <h1 className="flex-1 w-full font-poppins font-medium ss:text-[64px] text-[48px] text-checkShadeDark text-left lg:pt-16 pb-8">
+      <h1 className="flex-1 w-full font-poppins font-bold ss:text-[64px] text-[48px] text-checkShadeDark text-left lg:pt-16 pb-8">
         Message Database
       </h1>
       {/** Search bar */}
 
-      <form className="w-full">
+      <form className="w-full font-workSans font-medium text-checkBlack">
         <div className="rounded-[50px] bg-checkWhite flex flex-row gap-x-2 px-6 py-6 items-center">
           <img
             src={search}
@@ -421,7 +421,7 @@ const Messages = () => {
           <span className={purecss.loader}></span>
         </div>
       ) : (
-        <div className="flex flex-row flex-wrap gap-x-8 gap-y-8 mb-8 mt-8">
+        <div className="flex flex-row flex-wrap gap-x-8 gap-y-8 mb-8 mt-8 font-workSans font-medium text-checkBlack">
           {messages.map((message, index) => {
             message = message.document;
             if (message.truthScore) {
@@ -501,7 +501,7 @@ const Messages = () => {
       )}
 
       {isMessagePopupToggled ? 
-      <div className="fixed inset-0 flex items-center justify-center bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-15" onClick={() => setIsMessagePopupToggled(false)}>
+      <div className="fixed inset-0 flex items-center justify-center bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-15 font-workSans font-medium text-checkBlack" onClick={() => setIsMessagePopupToggled(false)}>
         {/** Popup modal, using stop propagation to prevent the modal from being closed on click and allow only if clicked outside of it */}
         <div className="relative mx-auto px-6 py-8 border w-[32rem] shadow-lg rounded-[40px] bg-white flex flex-col gap-y-4 z-20" onClick={e => e.stopPropagation()} >
             {/** Reported date */}
