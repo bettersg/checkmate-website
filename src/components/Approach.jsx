@@ -4,10 +4,10 @@ import { genericText, iconQuestion, iconMessage, iconWarning } from "../assets"
 const Approach = () => (
   
   <section className={`${styles.flexCenter} flex-col flex-wrap sm:mb-20 mb-6 pt-2`}>
-    <h1 className="flex-1 font-poppins font-semibold ss:text-[64px] text-[48px] text-checkShadeDark text-center pb-16">
-      Our approach
+    <h1 className="flex-1 font-poppins font-bold ss:text-[64px] text-[48px] text-checkShadeDark text-center pb-16">
+      Our Approach
     </h1>
-    <div className="flex flex-col md:flex-row items-stretch gap-y-12 md:gap-y-0 gap-x-12 justify-center max-w-[1280px]">
+    <div className="font-workSans flex flex-col md:flex-row items-stretch gap-y-12 md:gap-y-0 gap-x-12 justify-center max-w-[1280px]">
       {/** first card */}
       <div className="rounded-carousel min-h-[120px] w-full md:w-1/3 shadow-2xl">
         {/** Icon */}

@@ -41,7 +41,7 @@ const Checked = () => {
         href="https://bit.ly/add-checkmate"
         className="cursor-pointer flex flex-row items-center justify-center gap-x-4 bg-checkPrimary600 font-workSans rounded-[50px] px-2 py-5 text-center w-72 max-w-xs mt-24 mx-auto"
       >
-        <span className="ss:text-[24px] text-[18px] text-checkWhite">See all</span>
+        <span className="ss:text-[24px] text-[20px] font-workSans font-medium text-checkWhite">See all</span>
         <img src={arrowRight} />
         
       </a>

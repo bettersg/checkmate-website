@@ -55,7 +55,7 @@ const Navbar = () => {
         {navLinks.map((nav, index) => (
           <li
             key={nav.id}
-            className={`font-workSans cursor-pointer text-xl pb-2 font-semibold ${
+            className={`font-workSans cursor-pointer text-xl pb-2 font-medium ${
               active === nav.title ? "text-checkPrimary600 border-b-4 border-checkPrimary600" : "text-checkShadeDark"
             } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
             onClick={() => setActive(nav.title)}
@@ -99,7 +99,7 @@ const Navbar = () => {
             {navLinks.map((nav, index) => (
               <li
                 key={nav.id}
-                className={`font-poppins font-medium cursor-pointer text-[16px] ${
+                className={`font-workSans font-medium cursor-pointer text-[16px] ${
                   active === nav.title ? "text-checkBlack" : "text-checkBlack"
                 } ${index === navLinks.length - 1 ? "mb-4" : "mb-4"}`}
                 onClick={() => setActive(nav.title)}
@@ -110,7 +110,7 @@ const Navbar = () => {
             {user ? 
               <li
                 key='logout'
-                className={`font-poppins font-medium cursor-pointer text-[16px] text-checkBlack mb-4"`}
+                className={`font-workSans font-medium cursor-pointer text-[16px] text-checkBlack mb-4"`}
                 onClick={handleLogout}
               >
                 Logout
@@ -118,7 +118,7 @@ const Navbar = () => {
             :
               <li
                 key='login'
-                className={`font-poppins font-medium cursor-pointer text-[16px] text-checkBlack mb-4"`}
+                className={`font-workSans font-medium cursor-pointer text-[16px] text-checkBlack mb-4"`}
               >
                 <Link to="/login">Login</Link>
               </li>
