@@ -175,7 +175,7 @@ const Messages = () => {
   };
 
   const getFilters = () => {
-    return (<div className="flex flex-row flex-wrap w-full justify-start items-center lg:p-8 gap-x-4">
+    return (<div className="flex flex-row flex-wrap w-full justify-start items-center lg:p-8 gap-x-4 gap-y-4">
     <img src={filter} className="max-lg:hidden" />
     <div className="max-lg:hidden">Filters</div>
     <div className="max-lg:hidden border-r border-r-checkGray flex-none h-[3rem]">

@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className={`flex flex-nowrap justify-center py-2`}
+      className={`flex flex-col md:flex-row   justify-center py-2`}
     >
 
       <motion.div

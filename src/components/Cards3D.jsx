@@ -51,7 +51,7 @@ const Cards3D = () => {
                     <div className="flex flex-col md:flex-row items-center gap-x-4 gap-y-4">
                         <div className="ss:text-[28px] md:text-[32px] text-[24px] font-medium">{cardsContent[index].text}</div>
                         <a href={cardsContent[index].link} 
-                            className="cursor-pointer flex flex-row flex-nowrap bg-checkWhite text-checkPrimary600 rounded-[50px] min-w-[26rem] ss:w-[32rem] max-w-sm ss:max-w-xs px-8 py-4 justify-center items-center gap-x-4 font-workSans font-medium ss:text-[24px] text-[20px]">
+                            className="cursor-pointer flex flex-row flex-nowrap bg-checkWhite text-checkPrimary600 rounded-[50px] min-w-[20rem] md:min-w-[26rem] max-w-sm ss:max-w-xs px-8 py-4 justify-center items-center gap-x-4 font-workSans font-medium ss:text-[24px] text-[20px]">
                             <img src={whatsappOrange} className="w-8" />
                             {cardsContent[index].buttonText}
                         </a>

@@ -4,7 +4,7 @@ import { genericText, iconQuestion, iconMessage, iconWarning } from "../assets"
 const Approach = () => (
   
   <section className={`${styles.flexCenter} flex-col flex-wrap sm:mb-20 mb-6 pt-2`}>
-    <h1 className="flex-1 font-poppins font-bold ss:text-[64px] text-[48px] text-checkShadeDark text-center pb-16">
+    <h1 className="flex-1 font-poppins font-bold text-[36px] md:text-[48px] text-checkShadeDark text-left md:text-center pb-16 w-full">
       Our Approach
     </h1>
     <div className="font-workSans flex flex-col md:flex-row items-stretch gap-y-12 md:gap-y-0 gap-x-12 justify-center max-w-[1280px]">
@@ -24,7 +24,7 @@ const Approach = () => (
         </div>
       
         {/** Sub text */}
-        <div className="h-[30%] bg-checkWhite text-checkBlack text-[24px] md:text-[20px] font-medium text-center px-8 py-4 rounded-b-carousel flex items-center">
+        <div className="h-[30%] bg-checkWhite text-checkBlack text-[20px] font-medium text-center px-8 py-4 rounded-b-carousel flex items-center">
           Send in a dubious message, or a screenshot of the message and sender to us.
         </div>
       </div>
@@ -45,7 +45,7 @@ const Approach = () => (
         </div>
       
         {/** Sub text */}
-        <div className="h-[30%] bg-checkWhite text-[24px] md:text-[20px] font-medium text-center px-8 py-4 rounded-b-carousel text-checkBlack flex items-center">
+        <div className="h-[30%] bg-checkWhite text-[20px] font-medium text-center px-8 py-4 rounded-b-carousel text-checkBlack flex items-center">
           Our AI tries to classify the message. If it’s unable to, human checkers will review it!
         </div>
       </div>
@@ -66,7 +66,7 @@ const Approach = () => (
         </div>
       
         {/** Sub text */}
-        <div className="h-[30%] bg-checkWhite text-checkBlack text-[24px] md:text-[20px] font-medium text-center px-8 py-4 rounded-b-carousel flex items-center">
+        <div className="h-[30%] bg-checkWhite text-checkBlack text-[20px] font-medium text-center px-8 py-4 rounded-b-carousel flex items-center">
           Once checked, we inform you of the results!
         </div>
       </div>

@@ -14,14 +14,14 @@ const Privacy = () => {
   return (
     <div id="privacy" className={`flex flex-col items-start font-poppins`}>
       
-      <div className="xl:max-w-[1280px] mx-auto w-full flex flex-col items-start px-12 pt-20 text-checkBlack">
-        <h1 className="flex-1 font-bold text-[64px] ">
+      <div className="xl:max-w-[1280px] mx-auto w-full flex flex-col items-start px-6 md:px-12 pt-6 md:pt-20 text-checkBlack">
+        <h1 className="flex-1 font-bold text-[48px] md:text-[64px] ">
           Privacy Policy
         </h1>
-        <p className="text-[16px] font-workSans font-medium">Last Updated: September 2023</p>
+        <p className="text-[12px] md:text-[16px] font-workSans font-medium">Last Updated: September 2023</p>
       </div>
       
-      <div className="flex flex-col gap-y-6 text-xl text-checkGrayModal xl:max-w-[1280px] w-full p-6 md:p-12 items-start mx-auto font-workSans font-medium">
+      <div className="flex flex-col gap-y-6 text-[16px] md:text-[20px] text-checkGrayModal xl:max-w-[1280px] w-full p-6 md:p-12 items-start mx-auto font-workSans font-medium">
         <p className="text-checkBlack">This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.
           We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy and Whatsapp’s privacy policy: 
           <br/><a className="underline text-checkPrimary600" href="https://www.whatsapp.com/legal/privacy-policy/">https://www.whatsapp.com/legal/privacy-policy/</a>
@@ -35,7 +35,7 @@ const Privacy = () => {
         >
           <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">
-              <span className="p-3 text-checkPrimary600 text-[28px]">Interpretation and Definitions</span>
+              <span className="p-3 text-checkPrimary600 text-[20px] md:text-[28px]">Interpretation and Definitions</span>
               <img
                 className={"h-5 w-5 fill-checkPrimary600 text-checkPrimary600"}
                 src={isOpenMap['toggle1'] ? arrowButtonDownPrimary : arrowButtonRightPrimary}
@@ -44,7 +44,7 @@ const Privacy = () => {
           </summary>
           <div className="px-4 py-6 pt-0 ml-4 mt-4">
             <h2 className="flex-1 text-[20px] pt-12 pb-4 text-checkGrayPrivacy">Interpretation</h2>
-            <p>The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+            <p className="text-[16px]">The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
             <h2 className="flex-1 text-[20px] pt-8 pb-4 text-checkGrayPrivacy">Definitions</h2>
             <p className="text-[16px]">For the purposes of this Privacy Policy:</p>
             <p className="text-[16px]"><span className=" text-checkPrimary600">Account</span> means a unique account created for You to access our Service or parts of our Service.</p>
@@ -70,7 +70,7 @@ const Privacy = () => {
         >
           <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">
-              <span className="p-3 text-checkPrimary600 text-[28px]">Collecting and Using Your Personal Data</span>
+              <span className="p-3 text-checkPrimary600 text-[20px] md:text-[28px]">Collecting and Using Your Personal Data</span>
               <img
                 className={"h-5 w-5 fill-checkPrimary600 text-checkPrimary600"}
                 src={isOpenMap['toggle2'] ? arrowButtonDownPrimary : arrowButtonRightPrimary}
@@ -78,8 +78,8 @@ const Privacy = () => {
             </div>
           </summary>
           <div className="px-4 py-6 pt-0 ml-4 mt-4">
-            <h2 className="flex-1  text-[20px] text-checkGrayPrivacy pt-8">Types of Data Collected</h2>
-            <h3 className="flex-1  text-[20px] text-checkGrayPrivacy pt-8">Personal Data</h3>
+            <h2 className="flex-1 text-[20px] text-checkGrayPrivacy pt-8">Types of Data Collected</h2>
+            <h3 className="flex-1 text-[20px] text-checkGrayPrivacy pt-8">Personal Data</h3>
             <div className="text-[16px]">While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You. Personally identifiable information may include, but is not limited to:
               <ul className="list-disc pl-8 pt-2">
                 <li>Your Phone number</li>
@@ -89,7 +89,7 @@ const Privacy = () => {
                 <li>Whatsapp’s publicly available account information</li>
               </ul>
             </div>
-            <h3 className="flex-1  text-[20px] text-checkGrayPrivacy pt-8">Usage Data</h3>
+            <h3 className="flex-1 text-[20px] text-checkGrayPrivacy pt-8">Usage Data</h3>
             <p className="text-[16px]">Usage Data is collected automatically when using the Service.</p>
             <p className="text-[16px]">Usage Data will include data shared in interactions with the CheckMate Bot phone number, like exchanged or forwarded messages.</p>
             <p className="text-[16px]">Usage Data may include information such as Your Device's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
@@ -161,7 +161,7 @@ const Privacy = () => {
         >
           <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">
-              <span className="p-3 text-checkPrimary600 text-[28px]">Children's Privacy</span>
+              <span className="p-3 text-checkPrimary600 text-[20px] md:text-[28px]">Children's Privacy</span>
               <img
                 className={"h-5 w-5 fill-checkPrimary600 text-checkPrimary600"}
                 src={isOpenMap['toggle3'] ? arrowButtonDownPrimary : arrowButtonRightPrimary}
@@ -182,7 +182,7 @@ const Privacy = () => {
         >
           <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">
-              <span className="p-3 text-checkPrimary600 text-[28px]">Links to Other Websites</span>
+              <span className="p-3 text-checkPrimary600 text-[20px] md:text-[28px]">Links to Other Websites</span>
               <img
                 className={"h-5 w-5 fill-checkPrimary600 text-checkPrimary600"}
                 src={isOpenMap['toggle4'] ? arrowButtonDownPrimary : arrowButtonRightPrimary}
@@ -203,7 +203,7 @@ const Privacy = () => {
         >
           <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">
-              <span className="p-3 text-checkPrimary600 text-[28px]">Changes to this Privacy Policy</span>
+              <span className="p-3 text-checkPrimary600 text-[20px] md:text-[28px]">Changes to this Privacy Policy</span>
               <img
                 className={"h-5 w-5 fill-checkPrimary600 text-checkPrimary600"}
                 src={isOpenMap['toggle5'] ? arrowButtonDownPrimary : arrowButtonRightPrimary}
@@ -225,7 +225,7 @@ const Privacy = () => {
         >
           <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">
-              <span className="p-3 text-checkPrimary600 text-[28px]">Contact Us</span>
+              <span className="p-3 text-checkPrimary600 text-[20px] md:text-[28px]">Contact Us</span>
               <img
                 className={"h-5 w-5 fill-checkPrimary600 text-checkPrimary600"}
                 src={isOpenMap['toggle6'] ? arrowButtonDownPrimary : arrowButtonRightPrimary}

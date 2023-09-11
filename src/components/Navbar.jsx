@@ -40,6 +40,11 @@ const Navbar = () => {
     });
   }
 
+  const handleMobileClick = (nav) => {
+    setActive(nav);
+    setToggle(false);
+  }
+
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
       <ToastContainer />
@@ -92,17 +97,17 @@ const Navbar = () => {
         {/** Mobile menu */}
         <div
           className={`${
-            !toggle ? "hidden" : "flex"
-          } p-6 bg-white absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar border-4 border-checkPrimary600`}
+            !toggle ? "hidden" : "absolute"
+          } p-6 bg-checkBG opacity-95 top-24 left-0 w-full h-full`}
         >
-          <ul className="list-none flex justify-end items-start flex-1 flex-col">
+          <ul className="list-none flex justify-end items-center flex-1 flex-col">
             {navLinks.map((nav, index) => (
               <li
                 key={nav.id}
-                className={`font-workSans font-medium cursor-pointer text-[16px] ${
+                className={`py-4 font-workSans font-medium cursor-pointer text-[20px] ${
                   active === nav.title ? "text-checkBlack" : "text-checkBlack"
                 } ${index === navLinks.length - 1 ? "mb-4" : "mb-4"}`}
-                onClick={() => setActive(nav.title)}
+                onClick={() => handleMobileClick(nav.title)}
               >
                 <Link to={`${nav.id}`}>{nav.title}</Link>
               </li>
@@ -110,7 +115,7 @@ const Navbar = () => {
             {user ? 
               <li
                 key='logout'
-                className={`font-workSans font-medium cursor-pointer text-[16px] text-checkBlack mb-4"`}
+                className={`font-workSans py-4 font-medium cursor-pointer text-[20px] text-checkBlack mb-4"`}
                 onClick={handleLogout}
               >
                 Logout
@@ -118,7 +123,7 @@ const Navbar = () => {
             :
               <li
                 key='login'
-                className={`font-workSans font-medium cursor-pointer text-[16px] text-checkBlack mb-4"`}
+                className={`font-workSans py-4 font-medium cursor-pointer text-[20px] text-checkBlack mb-4"`}
               >
                 <Link to="/login">Login</Link>
               </li>

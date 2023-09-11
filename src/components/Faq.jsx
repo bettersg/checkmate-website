@@ -15,12 +15,12 @@ const Faq = () => {
 
   return (
     <div id="faq" className={`flex flex-col items-center text-checkShadeDark`}>
-        <h1 className="flex-1 font-poppins font-medium ss:text-[64px] text-[48px] text-checkShadeDark text-center py-8">
+        <h1 className="flex-1 font-poppins font-medium text-[36px] md:text-[48px] text-checkShadeDark w-full text-left md:text-center py-8">
           Frequently Asked Questions
         </h1>
 
       
-      <div className="flex flex-col px-4 md:px-12 pb-24 xl:max-w-[1080px] w-full items-center font-workSans">
+      <div className="flex flex-col px-0 sm:px-4 md:px-12 pb-24 xl:max-w-[1080px] w-full items-center font-workSans">
         <details
           ref={(el) => (detailsRef.current['is-checkmate-free-to-us'] = el)}
           open={isOpenMap['is-checkmate-free-to-us']}
@@ -40,7 +40,7 @@ const Faq = () => {
             <span className="font-bold">Absolutely!</span> CheckMate is free to use and free for life.
           </p>
         </details>
-        <div className="w-[calc(100%-4rem)] border-b border-gray-300 mt-0"></div>
+        <div className="w-[calc(100%-3rem)] md:w-[calc(100%-4rem)] border-b border-gray-300 mt-0"></div>
         <details
           ref={(el) => (detailsRef.current['how-does-checkmate-work'] = el)}
           open={isOpenMap['how-does-checkmate-work']}
@@ -108,7 +108,7 @@ const Faq = () => {
             </ol>
           </div>
         </details>
-        <div className="w-[calc(100%-4rem)] border-b border-gray-300"></div>
+        <div className="w-[calc(100%-3rem)] md:w-[calc(100%-4rem)] border-b border-gray-300"></div>
         <details
           ref={(el) => (detailsRef.current['become-a-fact-checker'] = el)}
           open={isOpenMap['become-a-fact-checker']}
@@ -131,7 +131,7 @@ const Faq = () => {
             <span className="self-center">QR Code to CheckMate's fact-checker bot</span>*/}
           </div>
         </details>
-        <div className="w-[calc(100%-4rem)] border-b border-gray-300"></div>
+        <div className="w-[calc(100%-3rem)] md:w-[calc(100%-4rem)] border-b border-gray-300"></div>
         <details
           ref={(el) => (detailsRef.current['what-data-collected'] = el)}
           open={isOpenMap['what-data-collected']} onToggle={(e) => toggleDetails('what-data-collected', e.target.open)}
@@ -151,7 +151,7 @@ const Faq = () => {
             <p>For more information, you can view our <Link to="privacy-policy" className="font-bold text-checkPurple underline">Privacy Policy</Link>.</p>
           </div>
         </details>
-        <div className="w-[calc(100%-4rem)] border-b border-gray-300"></div>
+        <div className="w-[calc(100%-3rem)] md:w-[calc(100%-4rem)] border-b border-gray-300"></div>
         <details
           ref={(el) => (detailsRef.current['how-collaborate-with-scamshield'] = el)}
           open={isOpenMap['how-collaborate-with-scamshield']}
@@ -174,7 +174,7 @@ const Faq = () => {
             <p>As for your privacy, rest assured that no other information CheckMate has access to will be shared. Your phone number and identity will remain anonymous.</p>
           </div>
         </details>
-        <div className="w-[calc(100%-4rem)] border-b border-gray-300"></div>
+        <div className="w-[calc(100%-3rem)] md:w-[calc(100%-4rem)] border-b border-gray-300"></div>
         <details
           ref={(el) => (detailsRef.current['what-is-scamshield'] = el)}
           open={isOpenMap['what-is-scamshield']}
@@ -194,7 +194,7 @@ const Faq = () => {
             <p><a href="https://www.scamshield.org.sg/">ScamShield</a> is an anti-scam product developed by the National Crime Prevention Council and Open Government Products.</p>
           </div>
         </details>
-        <div className="w-[calc(100%-4rem)] border-b border-gray-300"></div>
+        <div className="w-[calc(100%-3rem)] md:w-[calc(100%-4rem)] border-b border-gray-300"></div>
         <details
           ref={(el) => (detailsRef.current['how-long-does-it-take'] = el)}
           open={isOpenMap['how-long-does-it-take']}
