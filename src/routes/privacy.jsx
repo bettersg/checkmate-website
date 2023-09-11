@@ -18,7 +18,7 @@ const Privacy = () => {
         <h1 className="flex-1 font-bold text-[64px] ">
           Privacy Policy
         </h1>
-        <p className="text-[16px] font-workSans font-medium">Last Updated: February 2023</p>
+        <p className="text-[16px] font-workSans font-medium">Last Updated: September 2023</p>
       </div>
       
       <div className="flex flex-col gap-y-6 text-xl text-checkGrayModal xl:max-w-[1280px] w-full p-6 md:p-12 items-start mx-auto font-workSans font-medium">
@@ -118,6 +118,7 @@ const Privacy = () => {
                 <li><span className=" text-checkPrimary600">With Affiliates</span>: We may share Your information with Our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any other subsidiaries, joint venture partners or other companies that We control or that are under common control with Us.</li>
                 <li><span className=" text-checkPrimary600">With business partners</span>: We may share Your information with Our business partners to offer You certain products or services.</li>
                 <li><span className=" text-checkPrimary600">With other users</span>: when You share messages with the CheckMate bot we will be sharing these messages with volunteers, other members of Our Organisation or other users of Whatsapp in order to provide you with the Service and determine whether these messages are harmful to you. Remember that if You interact with other users or register through a Third-Party Social Media Service, Your contacts on the Third-Party Social Media Service may see Your name, profile, pictures and description of Your activity. Similarly, other users will be able to view descriptions of Your activity, communicate with You and view Your profile.</li>
+                <li><span className=" text-checkPrimary600">Message Database</span>: Messages that you have shared with checkmate may be be anonymised of personally identifiable information (e.g., number, name, addresses) and stored in our database for the purpose of tracking data related to scams and misinformation. Said database can be made available to the public or other checkmate users via our website or service.</li>
                 <li><span className=" text-checkPrimary600">With Your consent</span>: We may disclose Your personal information for any other purpose with Your consent.</li>
               </ul>
             </div>
