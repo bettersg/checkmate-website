@@ -68,6 +68,7 @@ import search from "./search.svg"
 import clear from "./clear.svg"
 import clearDark from "./clearDark.svg"
 import filter from "./filter.svg"
+import arrowSpiralDown from "./arrow-spiral-down.svg";
 
 
 export {
@@ -140,5 +141,6 @@ export {
   search,
   clear,
   clearDark,
-  filter
+  filter,
+  arrowSpiralDown
 };

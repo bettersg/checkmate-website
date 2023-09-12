@@ -1,7 +1,8 @@
 import styles from "../style";
 import { teamMembers } from "../constants/index";
-import { logoSimple, partnerHeader } from "../assets";
+import { arrowSpiralDown, logoSimple, partnerHeader } from "../assets";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const About = () => {
   return (
@@ -11,7 +12,7 @@ const About = () => {
           <h1 className="font-bold text-[36px] md:text-[48px] text-checkShadeDark pb-8 pt-6 md:pt-24 w-full text-left">
             About Us
           </h1>
-          
+
           <h1 className="font-medium font-workSans text-checkPrimary600 text-[36px]">
             Our Mission Statement
           </h1>
@@ -62,7 +63,6 @@ const About = () => {
               </p>
             </div>
           </div>
-
         </div>
 
         {/** Team members section */}
@@ -81,15 +81,41 @@ const About = () => {
             and misinformation one message at a time. Check out our profiles
             below!
           </p>
+          <motion.div
+            animate={{ x: [0, 30, 0], y: [0, -30, 0] }}
+            transition={{ duration: 8, repeat: Infinity }}
+            className="self-end my-10 hidden ss:block"
+          >
+            <p className="relative rounded-full tracking-wider border text-sm sm:text-2xl font-medium border-black py-5 px-10">
+              Meet the bunch
+              <img
+                className="absolute top-[70%] -translate-x-[150%]"
+                src={arrowSpiralDown}
+              />
+            </p>
+          </motion.div>
+          <motion.div
+            animate={{ x: [0, 0, 0], y: [0, -20, 0] }}
+            transition={{ duration: 4, repeat: Infinity }}
+            className="self-end mt-8 mb-16 ss:hidden"
+          >
+            <p className="relative rounded-full tracking-wider border text-sm sm:text-2xl font-medium border-black py-5 px-10">
+              Meet the bunch
+              <img
+                className="absolute top-[130%] -translate-x-[30%] -rotate-12"
+                src={arrowSpiralDown}
+              />
+            </p>
+          </motion.div>
         </div>
         <div className="xl:max-w-[1280px] md:w-full w-[calc(100%/2-20px)] pt-12 flex flex-row flex-wrap gap-x-6 gap-y-8 mx-auto pl-4 items-center justify-items-center">
           {teamMembers.map((member, index) => (
             <a
-            href={member.linkedin}
-            target="_blank"
-            key={index}
-            className="flex flex-col items-center justify-items-center mx-auto"
-          >
+              href={member.linkedin}
+              target="_blank"
+              key={index}
+              className="flex flex-col items-center justify-items-center mx-auto"
+            >
               <img key={member.id} src={member.picture} />
               <div className="flex flex-col items-center bg-checkWhite w-full p-2 rounded-b-[36px] shadow-2xl">
                 <div className="font-poppins text-lg font-bold">
@@ -109,9 +135,7 @@ const About = () => {
             <img src={partnerHeader} alt="CheckMate" className="" />
           </a>
         </div>
-
       </div>
-        
     </div>
   );
 };
