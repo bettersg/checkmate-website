@@ -233,7 +233,7 @@ router.get("/messages", async (req, res) => {
   }
 });*/
 
-router.get("/publicmessages", async (req, res) => {
+/*router.get("/publicmessages", async (req, res) => {
   try {
     let searchParameters = {
       'q'         : '*',
@@ -261,9 +261,9 @@ router.get("/publicmessages", async (req, res) => {
     functions.logger.error('Error: ', error)
     return res.sendStatus(203)
 }
-});
+});*/
 
-router.get("/publicmessages_exp", async (req, res) => {
+router.get("/publicmessages", async (req, res) => {
   // get the query parameters
   if (req.query) {
     if (req.query['search']) {var search = req.query['search']} else {var search = "*"}

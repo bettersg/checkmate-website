@@ -217,4 +217,4 @@ export const cards_content = [
     }
 ];
 
-export const MESSAGE_DATABASE_API_ENDPOINT = "https://checkmate.sg/api/publicmessages_exp";
+export const MESSAGE_DATABASE_API_ENDPOINT = "https://checkmate.sg/api/publicmessages";

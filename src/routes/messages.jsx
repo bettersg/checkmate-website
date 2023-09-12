@@ -56,7 +56,7 @@ const Messages = () => {
   // main function to fetch the messages on page load
   const fetchMessages = () => {
     setIsLoading(true);
-    fetch("https://checkmate.sg/api/publicmessages", {
+    fetch(MESSAGE_DATABASE_API_ENDPOINT, {
       method: "GET",
       headers: {
         Accept: "application/json",
