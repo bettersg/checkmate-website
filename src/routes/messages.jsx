@@ -1,4 +1,4 @@
-import { search, clear, clearDark, filter, arrowButtonDown } from "../assets";
+import { search, clear, clearDark, filter, arrowButtonDown, arrowButtonUp } from "../assets";
 import { useEffect, useState, useRef } from "react";
 import purecss from "../purecss.module.css";
 import Datepicker from "react-tailwindcss-datepicker";
@@ -77,7 +77,7 @@ const Messages = () => {
     if (!e.target.closest(`#${drop.current.id}`) && isCategoriesToggled) {
       setIsCategoriesToggled(false);
     }
-    if (!e.target.closest(`#${statusDropdown.current.id}`) && isStatusToggled) {
+    if (statusDropdown.current !== null && !e.target.closest(`#${statusDropdown.current.id}`) && isStatusToggled) {
       setIsStatusToggled(false);
     }
   }
@@ -408,6 +408,10 @@ const Messages = () => {
               );
             }}
           >
+            {showMobileFilters ? 
+                (<img src={arrowButtonUp} className="h-2" />) : 
+                (<img src={arrowButtonDown} className="h-2" />)
+            }
             <img src={filter} className="" />
             <div className="">Filters</div>
           </button>
@@ -432,7 +436,7 @@ const Messages = () => {
               var messageWidth = 0;
             }
             return (
-              <div key={message.id} className="cursor-pointer flex flex-col lg:w-[calc(33.33%-2rem)]" onClick={() => displayCardDetails(message.id)}>
+              <div key={message.id} className="cursor-pointer flex flex-col max-md:w-full max-lg:w-[calc(50%-2rem)] lg:w-[calc(33.33%-2rem)]" onClick={() => displayCardDetails(message.id)}>
                 <div className="flex flex-col gap-y-4 bg-checkWhite rounded-t-carousel px-6 max-lg:pt-6 lg:pt-12 pb-6 lg:h-[35vh]">
                   {/** Category */}
                   <div className="ss:text-[32px] text-[24px]">
