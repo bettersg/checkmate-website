@@ -1,5 +1,5 @@
 import { team01, team02, team03, team04, team05, team06, arrowUp, arrowRight } from "../assets"
-import { useScroll, motion, useTransform, easeInOut, cubicBezier } from "framer-motion";
+import { AnimatePresence, useScroll, motion, useTransform, easeInOut, cubicBezier } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { getCurrentBreakpoint } from "../utils/breakpoints";
 
@@ -39,7 +39,7 @@ const Check = () => {
   const containerRef = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
   const [fullWidth, setFullWidth] = useState(0);
-
+  const [index, setIndex] = useState(0);
 
 
   const updateSizes = () => {
@@ -71,6 +71,58 @@ const Check = () => {
     updateSizes();
   }, []);
 
+  // handle the change of text in Check dubious ...
+  const TextLoop = ({ texts }) => {
+    const [index, setIndex] = useState(0);
+  
+    useEffect(() => {
+      setTimeout(() => {
+        let next = index + 1;
+        setIndex(next % texts.length);
+      }, 3 * 1000);
+    }, [index, setIndex, texts]);
+  
+    return (
+      <h1 className="text-checkPrimary600">
+        <AnimatePresence initial={false}>
+          <motion.span
+            position="absolute"
+            key={index}
+            layout
+            variants={{
+              enter: {
+                translateY: 20,
+                opacity: 0,
+                height: 0
+              },
+              center: {
+                zIndex: 1,
+                translateY: 0,
+                opacity: 1,
+                height: "auto"
+              },
+              exit: {
+                zIndex: 0,
+                translateY: -20,
+                opacity: 0,
+                height: 0
+              }
+            }}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              translateY: { type: "spring", stiffness: 1000, damping: 200 },
+              opacity: { duration: 0.5 }
+            }}
+          >
+            {texts[index]}
+          </motion.span>
+        </AnimatePresence>
+      </h1>
+    );
+  };
+
   const containerHeight = dimensions.height * containerHeightMultiplier;
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -94,8 +146,9 @@ const Check = () => {
     <div className="w-100" style={{ height: `${containerHeight}px` }} ref={containerRef}>
       <motion.div className="block" style={{ maxHeight: `${dimensions.height}px`, y }}>
         <motion.div className="overflow-x-hidden">
-          <h1 className="text-[48px] md:text-[64px] flex-1 font-poppins font-bold text-checkShadeDark text-center pb-24">
-            Check dubious <span className="text-checkPrimary600">messages</span>
+          <h1 className="text-[48px] md:text-[64px] flex flex-row justify-center flex-1 font-poppins font-bold text-checkShadeDark text-center pb-24">
+            Check dubious&nbsp;
+            <TextLoop texts={["messages", "email", "flyers", "QR codes"]} />
           </h1>
           <motion.div className="flex w-max" style={{ x }}>
             {members.map((member, index) => (
