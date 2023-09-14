@@ -25,7 +25,7 @@ const Messages = () => {
   const [status, setStatus] = useState("All");
   const [reportCount, setReportCount] = useState(1);
   const [reportDatePeriod, setReportDatePeriod] = useState({
-    startDate: dayjs().subtract(7, "days").format("YYYY-MM-DD"),
+    startDate: dayjs().subtract(90, "days").format("YYYY-MM-DD"),
     endDate: dayjs().format("YYYY-MM-DD"),
   });
   const [popupContent, setPopupContent] = useState({
@@ -148,8 +148,11 @@ const Messages = () => {
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
 
-    const reportStartTimeUnix = dayjs(reportDatePeriod.startDate).unix();
-    const reportEndTimeUnix = dayjs(reportDatePeriod.endDate).unix();
+    let reportStartTimeUnix = dayjs(reportDatePeriod.startDate).unix();
+    let reportEndTimeUnix = dayjs(reportDatePeriod.endDate).unix();
+
+    if (isNaN(reportStartTimeUnix)) {reportStartTimeUnix = dayjs().subtract(90, "days").unix();}
+    if (isNaN(reportEndTimeUnix)) {reportEndTimeUnix = dayjs().unix();}
 
     try {
       setIsLoading(true);
