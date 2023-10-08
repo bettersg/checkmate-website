@@ -15,7 +15,7 @@ const Faq = () => {
 
   return (
     <div id="faq" className={`flex flex-col items-center text-checkShadeDark`}>
-        <h1 className="flex-1 font-poppins font-medium text-[36px] md:text-[48px] text-checkShadeDark w-full text-left md:text-center py-8">
+        <h1 className="flex-1 font-poppins font-bold text-[36px] md:text-[48px] text-checkShadeDark w-full text-left md:text-center py-8">
           Frequently Asked Questions
         </h1>
 
@@ -168,9 +168,9 @@ const Faq = () => {
             </div>
           </summary>
           <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-checkGrayModal space-y-4 text-base">
-            <p>CheckMate is an independent, non-government initiative by the non-profit organization <a href="https://better.sg">better.sg</a>. We understand that combatting scams and dubious messages requires a collaborative approach to safeguard everyone. That's why we've currently exploring a partnership with <a href="https://www.scamshield.org.sg/">ScamShield</a>.</p>
-            <p>Once we have linked up with ScamShield, when you send in a message, and our CheckMates identify it as a scam, we will ask for your consent to share that specific message anonymously with ScamShield. If you agree, ScamShield will include the message in the national scams database in order to help fight scams in Singapore.</p>
-            <p>Your consent is sought for each individual message. You may choose to share some messages with ScamShield, while deciding not to share others. We will seek your consent for every message separately.</p>
+            <p>CheckMate is an independent, non-government initiative by the non-profit organization <a className="text-checkPrimary600 underline cursor-pointer" href="https://better.sg">better.sg</a>. We understand that combatting scams and dubious messages requires a collaborative approach to safeguard everyone. That's why we are currently exploring a partnership with <a className="text-checkPrimary600 underline cursor-pointer" href="https://www.scamshield.org.sg/">ScamShield</a>.</p>
+            <p>Once we have linked up with <a className="text-checkPrimary600 underline cursor-pointer" href="https://scamshield.org.sg/">ScamShield</a>, when you send in a message, and our CheckMates identify it as a scam, we will ask for your consent to share that specific message anonymously with <a className="text-checkPrimary600 underline cursor-pointer" href="https://scamshield.org.sg/">ScamShield</a>. If you agree, <a className="text-checkPrimary600 underline cursor-pointer" href="https://scamshield.org.sg/">ScamShield</a> will include the message in the national scams database in order to help fight scams in Singapore.</p>
+            <p>Your consent is sought for each individual message. You may choose to share some messages with <a className="text-checkPrimary600 underline cursor-pointer" href="https://scamshield.org.sg/">ScamShield</a>, while deciding not to share others. We will seek your consent for every message separately.</p>
             <p>As for your privacy, rest assured that no other information CheckMate has access to will be shared. Your phone number and identity will remain anonymous.</p>
           </div>
         </details>
@@ -191,7 +191,7 @@ const Faq = () => {
               </div>
           </summary>
           <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-checkGrayModal space-y-4">
-            <p><a href="https://www.scamshield.org.sg/">ScamShield</a> is an anti-scam product developed by the National Crime Prevention Council and Open Government Products.</p>
+            <p><a className="text-checkPrimary600 underline cursor-pointer"href="https://www.scamshield.org.sg/">ScamShield</a> is an anti-scam product developed by the National Crime Prevention Council and Open Government Products.</p>
           </div>
         </details>
         <div className="w-[calc(100%-3rem)] md:w-[calc(100%-4rem)] border-b border-gray-300"></div>

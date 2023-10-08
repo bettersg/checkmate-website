@@ -1,6 +1,6 @@
 import React from "react"
 import { arrowButtonRightPrimary, arrowButtonDownPrimary } from "../assets";
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 
 const Privacy = () => {
 
@@ -10,6 +10,12 @@ const Privacy = () => {
   const toggleDetails = (questionNumber, isOpen) => {
     setIsOpenMap({ ...isOpenMap, [questionNumber]: isOpen });
   };
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 
   return (
     <div id="privacy" className={`flex flex-col items-start font-poppins`}>
