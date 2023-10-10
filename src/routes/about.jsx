@@ -1,8 +1,8 @@
-import styles from "../style";
-import { teamMembers } from "../constants/index";
-import { arrowSpiralDown, logoSimple, partnerHeader } from "../assets";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import styles from '../style';
+import { teamMembers } from '../constants/index';
+import { arrowSpiralDown, logoSimple, partnerHeader } from '../assets';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const About = () => {
   return (
@@ -34,7 +34,7 @@ const About = () => {
             categorisation of the message. The CheckMate team has seen really
             close the negative impact of misinformation and scams in our
             families, friends, and society as a whole across Singapore and the
-            rest of the world. We had enough and decided to bring it to and end,{" "}
+            rest of the world. We had enough and decided to bring it to and end,{' '}
             <strong>one message at a time.</strong>
           </p>
 
@@ -68,11 +68,11 @@ const About = () => {
         {/** Team members section */}
         <div className="xl:max-w-[1280px] w-full flex flex-col items-start px-6 md:px-0">
           <h1 className="w-full sm:w-3/4 md:w-1/2 text-[32px] md:text-[48px] font-bold font-poppins content-center">
-            Meet our{" "}
+            Meet our{' '}
             <span className="text-checkPrimary600">
-              <span className="italic">diverse</span> and{" "}
+              <span className="italic">diverse</span> and{' '}
               <span className="italic">multidisciplinary</span>
-            </span>{" "}
+            </span>{' '}
             team of volunteers
           </h1>
           <p className="w-full sm:w-3/4 md:w-1/2 mt-4 text-workSans font-workSans text-[18px]">
@@ -122,7 +122,7 @@ const About = () => {
                   {member.name}
                 </div>
                 <div className="font-poppins text-md font-normal">
-                  {member.title || ""}
+                  {member.title || ''}
                 </div>
               </div>
             </a>

@@ -1,7 +1,7 @@
-import styles from "../style";
-import { socialMedia } from "../constants";
-import { bettersg, scamshield } from "../assets";
-import { Link } from "react-router-dom";
+import styles from '../style';
+import { socialMedia } from '../constants';
+import { bettersg, scamshield } from '../assets';
+import { Link } from 'react-router-dom';
 
 const Footer = () => (
   <section

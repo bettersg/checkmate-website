@@ -1,4 +1,4 @@
-import { Approach, Hero, Check, Checked, Faq, Cards3D } from "../components";
+import { Approach, Hero, Check, Checked, Faq, Cards3D } from '../components';
 
 export default function Index() {
   return (

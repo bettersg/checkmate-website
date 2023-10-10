@@ -1,10 +1,10 @@
-import move from "lodash-move";
-import { useState } from "react";
-import { whatsappOrange } from "../assets";
-import { motion } from "framer-motion";
-import { cards_content } from "../constants";
+import move from 'lodash-move';
+import { useState } from 'react';
+import { whatsappOrange } from '../assets';
+import { motion } from 'framer-motion';
+import { cards_content } from '../constants';
 
-const CARD_COLORS = ["#ff7557", "#ff5833", " #ff431a", "#ff431a", "#ff2e00"];
+const CARD_COLORS = ['#ff7557', '#ff5833', ' #ff431a', '#ff431a', '#ff2e00'];
 const CARD_OFFSET = 20;
 const SCALE_FACTOR = 0.08;
 
@@ -33,7 +33,7 @@ const Cards3D = () => {
                 key={color}
                 className="absolute w-full h-full rounded-carousel shadow-2xl list-none px-8 ss:px-12 md:px-24 py-16 text-checkWhite font-poppins"
                 style={{
-                  transformOrigin: "top center",
+                  transformOrigin: 'top center',
                   backgroundColor: color,
                 }}
                 animate={{

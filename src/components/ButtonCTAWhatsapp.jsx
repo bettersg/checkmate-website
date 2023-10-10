@@ -1,4 +1,4 @@
-import { whatsapp } from "../assets";
+import { whatsapp } from '../assets';
 
 const ButtonCTAWhatsapp = (props) => {
   return (

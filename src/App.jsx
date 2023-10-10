@@ -1,20 +1,19 @@
-import { Footer, Navbar } from "./components";
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Footer, Navbar } from './components';
+import { Routes, Route, Outlet } from 'react-router-dom';
 
-import Index from "./routes/index"
-import NoMatch from "./routes/404"
-import PrivacyPolicy from "./routes/privacy";
-import FactChecks from "./routes/factchecks";
-import About from "./routes/about"
-import Login from "./routes/login"
-import Dashboard from "./routes/dashboard"
-import Reset from "./routes/reset"
-import Contact from "./routes/contact"
-import Messages from "./routes/messages"
+import Index from './routes/index';
+import NoMatch from './routes/404';
+import PrivacyPolicy from './routes/privacy';
+import FactChecks from './routes/factchecks';
+import About from './routes/about';
+import Login from './routes/login';
+import Dashboard from './routes/dashboard';
+import Reset from './routes/reset';
+import Contact from './routes/contact';
+import Messages from './routes/messages';
 
 const App = () => (
   <div className="bg-checkBG w-full">
-
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Index />} />
@@ -30,7 +29,6 @@ const App = () => (
         <Route path="*" element={<NoMatch />} />
       </Route>
     </Routes>
-
   </div>
 );
 
@@ -48,7 +46,6 @@ function Layout() {
       <div className="flex flex-col justify-center items-center bg-checkBGFooter w-full">
         <Footer />
       </div>
-
     </div>
   );
 }
