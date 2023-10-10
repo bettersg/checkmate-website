@@ -1,10 +1,9 @@
-import React from 'react';
 import { arrowButtonRightPrimary, arrowButtonDownPrimary } from '../assets';
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 
 const Privacy = () => {
   const detailsRef = useRef({});
-  const [isOpenMap, setIsOpenMap] = React.useState({});
+  const [isOpenMap, setIsOpenMap] = useState({});
 
   const toggleDetails = (questionNumber, isOpen) => {
     setIsOpenMap({ ...isOpenMap, [questionNumber]: isOpen });
@@ -85,9 +84,9 @@ const Privacy = () => {
             <p className="text-[16px]">
               <span className=" text-checkPrimary600">Affiliate</span> means an
               entity that controls, is controlled by or is under common control
-              with a party, where "control" means ownership of 50% or more of
-              the shares, equity interest or other securities entitled to vote
-              for election of directors or other managing authority.
+              with a party, where &quot;control&quot; means ownership of 50% or
+              more of the shares, equity interest or other securities entitled
+              to vote for election of directors or other managing authority.
             </p>
             <p className="text-[16px]">
               <span className=" text-checkPrimary600">Application</span> refers
@@ -97,8 +96,9 @@ const Privacy = () => {
             <p className="text-[16px]">
               <span className=" text-checkPrimary600">Organisation</span>{' '}
               (referred to as either “
-              <span className="underline">Better.sg</span>”, "the Organisation",
-              "We", "Us" or "Our" in this Agreement) refers to{' '}
+              <span className="underline">Better.sg</span>”, &quot;the
+              Organisation&quot;, &quot;We&quot; &quot;Us&quot; or
+              &quot;Our&quot; in this Agreement) refers to{' '}
               <span className="underline">BETTER.SG</span> LIMITED, 258F LORONG
               CHUAN, BOUNDARY GARDENS, 556755.
             </p>
@@ -206,11 +206,11 @@ const Privacy = () => {
               CheckMate Bot phone number, like exchanged or forwarded messages.
             </p>
             <p className="text-[16px]">
-              Usage Data may include information such as Your Device's Internet
-              Protocol address (e.g. IP address), browser type, browser version,
-              the pages of our Service that You visit, the time and date of Your
-              visit, the time spent on those pages, unique device identifiers
-              and other diagnostic data.
+              Usage Data may include information such as Your Device&apos;s
+              Internet Protocol address (e.g. IP address), browser type, browser
+              version, the pages of our Service that You visit, the time and
+              date of Your visit, the time spent on those pages, unique device
+              identifiers and other diagnostic data.
             </p>
             <p className="text-[16px]">
               When You access the Service by or through a mobile device, We may
@@ -240,16 +240,17 @@ const Privacy = () => {
               If You decide to register through or otherwise grant us access to
               a Third-Party Social Media Service , We may collect Personal data
               that is already associated with Your Third-Party Social Media
-              Service's account that is publicly available, such as Your name,
-              Phone Number, or Your activities associated with that account.
+              Service&apos;s account that is publicly available, such as Your
+              name, Phone Number, or Your activities associated with that
+              account.
             </p>
             <p className="text-[16px]">
               You may also have the option of sharing additional information
               with the Organisation through Your Third-Party Social Media
-              Service's account. If You choose to provide such information and
-              Personal Data, during registration or otherwise, You are giving
-              the Organisation permission to use, share, and store it in a
-              manner consistent with this Privacy Policy.
+              Service&apos;s account. If You choose to provide such information
+              and Personal Data, during registration or otherwise, You are
+              giving the Organisation permission to use, share, and store it in
+              a manner consistent with this Privacy Policy.
             </p>
             <h2 className="flex-1 text-[20px] text-checkGrayPrivacy pt-8 pb-6">
               Use of Your Personal Data
@@ -419,11 +420,11 @@ const Privacy = () => {
             </h2>
             <p className="text-[16px]">
               Your information, including Personal Data, is processed at the
-              Organisation's operating offices and in any other places where the
-              parties involved in the processing are located. It means that this
-              information may be transferred to — and maintained on — computers
-              located outside of Your state, province, country or other
-              governmental jurisdiction where the data protection laws may
+              Organisation&apos;s operating offices and in any other places
+              where the parties involved in the processing are located. It means
+              that this information may be transferred to — and maintained on —
+              computers located outside of Your state, province, country or
+              other governmental jurisdiction where the data protection laws may
               differ than those from Your jurisdiction.
             </p>
             <p className="text-[16px]">
@@ -525,7 +526,7 @@ const Privacy = () => {
           <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">
               <span className="p-3 text-checkPrimary600 text-[20px] md:text-[28px]">
-                Children's Privacy
+                Children&apos;s Privacy
               </span>
               <img
                 className={'h-5 w-5 fill-checkPrimary600 text-checkPrimary600'}
@@ -551,8 +552,8 @@ const Privacy = () => {
             <p>
               If We need to rely on consent as a legal basis for processing Your
               information and Your country requires consent from a parent, We
-              may require Your parent's consent before We collect and use that
-              information.
+              may require Your parent&apos;s consent before We collect and use
+              that information.
             </p>
           </div>
         </details>
@@ -583,8 +584,8 @@ const Privacy = () => {
             <p>
               Our Service may contain links to other websites that are not
               operated by Us. If You click on a third party link, You will be
-              directed to that third party's site. We strongly advise You to
-              review the Privacy Policy of every site You visit.
+              directed to that third party&apos;s site. We strongly advise You
+              to review the Privacy Policy of every site You visit.
             </p>
             <p>
               We have no control over and assume no responsibility for the
@@ -624,7 +625,7 @@ const Privacy = () => {
             <p>
               We will let You know via email and/or a prominent notice on Our
               Service, prior to the change becoming effective and update the
-              "Last updated" date at the top of this Privacy Policy.
+              &quot;Last updated&quot; date at the top of this Privacy Policy.
             </p>
             <p>
               You are advised to review this Privacy Policy periodically for any

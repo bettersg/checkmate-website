@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 
 import { auth } from '../firebase';
@@ -18,7 +17,8 @@ import cookies from 'nookies';
 const Navbar = () => {
   const [active, setActive] = useState('Home');
   const [toggle, setToggle] = useState(false);
-  const [user, loading, error] = useAuthState(auth);
+  // const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
   const handleLogout = () => {

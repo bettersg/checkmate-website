@@ -26,7 +26,7 @@ const Cards3D = () => {
       <div className="relative flex justify-center items-center h-[50vh]">
         <ul className="relative w-full h-[320px] md:h-[220px] mx-4 sm:mx-16">
           {cards.map((color, index) => {
-            const canDrag = index === 0;
+            // const canDrag = index === 0;
             // need to trigger animation on start and execute moveTToEnd on repeat
             return (
               <motion.li

@@ -2,8 +2,8 @@ import React from 'react';
 
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import ErrorPage from './routes/404';
-import Index from './routes/index';
+// import ErrorPage from './routes/404';
+// import Index from './routes/index';
 
 import './index.css';
 import DocumentMeta from 'react-document-meta';

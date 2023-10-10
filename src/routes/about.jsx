@@ -1,7 +1,7 @@
-import styles from '../style';
+// import styles from '../style';
 import { teamMembers } from '../constants/index';
 import { arrowSpiralDown, logoSimple, partnerHeader } from '../assets';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const About = () => {
@@ -57,9 +57,9 @@ const About = () => {
                 Our Impact
               </h2>
               <p className="text-[16px] md:text-[20px] md:pr-8 text-gray-700">
-                We've just started for now, but we hope to make a real dent on
-                the problem of misinformation and scams, both in Singapore and
-                around the world.
+                We&apos;ve just started for now, but we hope to make a real dent
+                on the problem of misinformation and scams, both in Singapore
+                and around the world.
               </p>
             </div>
           </div>
@@ -113,6 +113,7 @@ const About = () => {
             <a
               href={member.linkedin}
               target="_blank"
+              rel="noopener noreferrer"
               key={index}
               className="flex flex-col items-center justify-items-center mx-auto"
             >
@@ -131,7 +132,11 @@ const About = () => {
 
         {/** Partner */}
         <div className="w-full xl:max-w-[1280px] flex flex-col">
-          <a href="https://www.scamshield.org.sg/" target="_blank">
+          <a
+            href="https://www.scamshield.org.sg/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img src={partnerHeader} alt="CheckMate" className="" />
           </a>
         </div>

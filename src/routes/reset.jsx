@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';
+// import React, { useState } from 'react';
+// import { signInWithEmailAndPassword } from 'firebase/auth';
+// import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
-import { useAuthState } from 'react-firebase-hooks/auth';
+// import { useAuthState } from 'react-firebase-hooks/auth';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Reset = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [user, loading, error] = useAuthState(auth);
+  // const [email, setEmail] = useState('');
+  // const [user, loading, error] = useAuthState(auth);
 
-  const onReset = async (e) => {
+  const onReset = async () => {
     try {
-      await sendPasswordResetEmail(auth, email);
+      // await sendPasswordResetEmail(auth, email);
       toast.success('Password reset link sent!', {
         position: toast.POSITION.BOTTOM_CENTER,
       });
@@ -48,7 +48,7 @@ const Reset = () => {
                   type="email"
                   required
                   placeholder="Your Email Address"
-                  onChange={(e) => setEmail(e.target.value)}
+                  // onChange={(e) => setEmail(e.target.value)}
                   className="bg-checkWhite text-checkPurple"
                 />
               </div>

@@ -1,7 +1,6 @@
 import {
   search,
   clear,
-  clearDark,
   filter,
   arrowButtonDown,
   arrowButtonUp,
@@ -446,14 +445,15 @@ const Messages = () => {
         </div>
       ) : (
         <div className="flex flex-row flex-wrap gap-x-8 gap-y-8 mb-8 mt-8 font-workSans font-medium text-checkBlack">
-          {messages.map((message, index) => {
+          {messages.map((message) => {
             message = message.document;
+            let messageWidth;
             if (message.truthScore) {
-              var messageWidth = Math.round(
+              messageWidth = Math.round(
                 ((Math.round(message.truthScore * 100) / 100) * 100) / 5
               );
             } else {
-              var messageWidth = 0;
+              messageWidth = 0;
             }
             return (
               <div

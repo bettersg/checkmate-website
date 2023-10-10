@@ -1,5 +1,5 @@
 import styles from '../style';
-import hero from '../assets/hero.png';
+// import hero from '../assets/hero.png';
 import { heroPicture } from '../assets';
 import ButtonCTAWhatsapp from './ButtonCTAWhatsapp';
 

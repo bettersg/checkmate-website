@@ -1,22 +1,20 @@
-import React from 'react';
-import styles from '../style';
-import { faqIcon, qrFc, arrowButtonRight, arrowButtonUp } from '../assets';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+// import styles from '../style';
+import { useLocation } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 
 const factchecks = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const detailsRef = useRef({});
   const location = useLocation();
-  const [isOpenMap, setIsOpenMap] = React.useState({});
-  const [isOpen, setIsOpen] = React.useState({});
+  // const [isOpenMap, setIsOpenMap] = useState({});
+  // const [isOpen, setIsOpen] = useState({});
 
-  const toggleDetails = (questionNumber, isOpen) => {
-    setIsOpenMap({ ...isOpenMap, [questionNumber]: isOpen });
-    if (isOpen) {
-      navigate(`/faq#${questionNumber}`);
-    }
-  };
+  // const toggleDetails = (questionNumber, isOpen) => {
+  //   setIsOpenMap({ ...isOpenMap, [questionNumber]: isOpen });
+  //   if (isOpen) {
+  //     navigate(`/faq#${questionNumber}`);
+  //   }
+  // };
 
   useEffect(() => {
     // Get the fragment from the current URL
@@ -54,7 +52,7 @@ const factchecks = () => {
   );
 };
 
-const ScamCard = ({ title, description, metadata, content }) => {
+const ScamCard = ({ content }) => {
   return (
     <div>
       <div className="flex flex-col rounded-xl shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">

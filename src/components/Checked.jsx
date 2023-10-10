@@ -13,7 +13,7 @@ const Checked = () => {
         What we’ve checked
       </h1>
       <h2 className="w-full ss:text-[28px] text-[20px] text-center mx-auto text-checkBlack">
-        See some of the content that we've helped to check!
+        See some of the content that we&apos;ve helped to check!
       </h2>
 
       <div className="flex flex-col md:flex-row w-full gap-x-12 gap-y-8 pt-12">

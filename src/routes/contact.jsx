@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Contact = () => {
   return (
     <div
@@ -15,8 +13,8 @@ const Contact = () => {
       <div className="flex flex-col gap-y-6 text-xl text-checkBlack xl:max-w-[1280px] w-full p-12 items-start mx-auto">
         <p className="">
           We value your feedback and welcome opportunities for collaboration.
-          Don't hesitate to reach out to us - we're excited to hear from you!
-          You can also write to us at checkmate@better.sg.
+          Don&apos;t hesitate to reach out to us - we&apos;re excited to hear
+          from you! You can also write to us at checkmate@better.sg.
         </p>
       </div>
       <div className="w-full mx-auto max-w-[1280px] flex justify-center h-[150vh]">

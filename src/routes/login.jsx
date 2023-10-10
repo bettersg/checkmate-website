@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   signInWithEmailAndPassword,
   setPersistence,
@@ -6,37 +6,37 @@ import {
 } from 'firebase/auth';
 import { auth } from '../firebase';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { ToastContainer, toast } from 'react-toastify';
+// import { useAuthState } from 'react-firebase-hooks/auth';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import login from '../assets/login.svg';
 
-const isDevelopment = process.env.NODE_ENV === 'development';
+// const isDevelopment = process.env.NODE_ENV === 'development';
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [user, loading, error] = useAuthState(auth);
+  // const [user, loading, error] = useAuthState(auth);
 
-  function getCookie(name) {
-    var dc = document.cookie;
-    var prefix = name + '=';
-    var begin = dc.indexOf('; ' + prefix);
-    if (begin == -1) {
-      begin = dc.indexOf(prefix);
-      if (begin != 0) return null;
-    } else {
-      begin += 2;
-      var end = document.cookie.indexOf(';', begin);
-      if (end == -1) {
-        end = dc.length;
-      }
-    }
-    // because unescape has been deprecated, replaced with decodeURI
-    //return unescape(dc.substring(begin + prefix.length, end));
-    return decodeURI(dc.substring(begin + prefix.length, end));
-  }
+  // function getCookie(name) {
+  //   var dc = document.cookie;
+  //   var prefix = name + '=';
+  //   var begin = dc.indexOf('; ' + prefix);
+  //   if (begin == -1) {
+  //     begin = dc.indexOf(prefix);
+  //     if (begin != 0) return null;
+  //   } else {
+  //     begin += 2;
+  //     var end = document.cookie.indexOf(';', begin);
+  //     if (end == -1) {
+  //       end = dc.length;
+  //     }
+  //   }
+  //   // because unescape has been deprecated, replaced with decodeURI
+  //   //return unescape(dc.substring(begin + prefix.length, end));
+  //   return decodeURI(dc.substring(begin + prefix.length, end));
+  // }
 
   const onLogin = (e) => {
     e.preventDefault();
@@ -44,10 +44,10 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         // Signed in
-        const user = userCredential.user;
+        // const user = userCredential.user;
         const token = await userCredential.user?.getIdToken();
 
-        const csrfToken = getCookie('csrfToken');
+        // const csrfToken = getCookie('csrfToken');
 
         await fetch('https://checkmate.sg/api/login', {
           method: 'POST',
@@ -58,8 +58,8 @@ const Login = () => {
           },
           body: JSON.stringify({ token }),
         })
-          .then(async function (response) {
-            const csrfToken = getCookie('csrfToken');
+          .then(async function () {
+            // const csrfToken = getCookie('csrfToken');
             //console.log('csrfToken', csrfToken)
             //console.log('user', user)
             /*const messages = await fetch("https://checkmate.sg/api/messages", {

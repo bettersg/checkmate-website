@@ -113,8 +113,9 @@ const Faq = () => {
               <li>Spam (Unsolicited spam, such as marketing messages)</li>
               <li>Trivial (Trivial/banal messages with nothing to assess)</li>
               <li>
-                Legitimate (Message has a legitimate source but doesn't contain
-                claims that can be assessed, e.g. transactional messages)
+                Legitimate (Message has a legitimate source but doesn&apos;t
+                contain claims that can be assessed, e.g. transactional
+                messages)
               </li>
               <li>
                 Unsure (Our checkers are unsure how to categorise this message)
@@ -142,7 +143,7 @@ const Faq = () => {
               <li>
                 If none of these thresholds are exceeded, that means there is
                 little agreement among checkers. It is automatically categorised
-                as "unsure"
+                as &quot;unsure&quot;
               </li>
               <li>
                 Determine whether message should be considered assessed. There
@@ -156,7 +157,7 @@ const Faq = () => {
                     <ol className="list-roman pl-6">
                       <li>It enables a fast response to counter scams</li>
                       <li>
-                        Scams are relative easy to assess, so we're more
+                        Scams are relative easy to assess, so we&apos;re more
                         confident in our CheckMates getting this assessment
                         right
                       </li>
@@ -174,8 +175,8 @@ const Faq = () => {
                     threshold is higher than scams because
                     <ol className="list-roman pl-6">
                       <li>
-                        While the other categories can also be problematic, it's
-                        less urgent
+                        While the other categories can also be problematic,
+                        it&apos;s less urgent
                       </li>
                       <li>
                         Misinformation is typically more subjective. Gathering
@@ -232,8 +233,8 @@ const Faq = () => {
           </summary>
           <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-checkGrayModal flex flex-col gap-y-4 text-base">
             <p>
-              We're glad to hear that you're interested in helping to combat
-              fake news and scams!{' '}
+              We&apos;re glad to hear that you&apos;re interested in helping to
+              combat fake news and scams!{' '}
             </p>
             <p>
               To get started, please reach out to us @{' '}
@@ -325,8 +326,8 @@ const Faq = () => {
               CheckMate is an independent, non-government initiative by the
               non-profit organization <a href="https://better.sg">better.sg</a>.
               We understand that combatting scams and dubious messages requires
-              a collaborative approach to safeguard everyone. That's why we've
-              currently exploring a partnership with{' '}
+              a collaborative approach to safeguard everyone. That&apos;s why
+              we&apos;ve currently exploring a partnership with{' '}
               <a href="https://www.scamshield.org.sg/">ScamShield</a>.
             </p>
             <p>
