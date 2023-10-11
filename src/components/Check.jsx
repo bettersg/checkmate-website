@@ -5,7 +5,7 @@ import { getCurrentBreakpoint } from "../utils/breakpoints";
 
 const members = [
   { name: "Bing Wen Tan", title: "Founder", image: team01 },
-  { name: "Amanda Goh", title: "New Gen AI", image: team02 },
+  { name: "Amanda Goh", title: "Fact-Checking Lead", image: team02 },
   { name: "Vincent Teyssier", title: "CTO", image: team03 },
   { name: "Carlos Leyva-Salas", title: "Product Manager", image: team04 },
   { name: "Wendy Po", title: "Ux Designer Lead", image: team05 },
@@ -29,7 +29,7 @@ const Member = ({ name, title, image }) => (
   <div className={`flex flex-col pl-${lpadding} gap-y-2 text-left`}>
     <img className="h-auto object-cover md:w-72 sm:w-48 w-36" src={image} alt={name} />
     <div>
-      <p className="font-medium text-checkBlack">{name}</p>
+      <p className="font-medium text-checkBlack text-[20px]">{name}</p>
       <p className="text-checkBlack">{title}</p>
     </div>
   </div>
@@ -171,14 +171,14 @@ const Check = () => {
                   href="/about"
                   className="cursor-pointer flex flex-row items-center justify-center gap-x-4 bg-checkWhite font-workSans font-medium rounded-[50px] px-5 py-4 text-center max-w-sm"
                 >
-                  <span className="text-checkPrimary600">Learn more</span>
+                  <span className="text-checkPrimary600 text-[20px]">Learn more</span>
                   <img src={arrowUp} className="fill-checkPrimary600" />
                 </a>
                 <a
                   href="https://bit.ly/add-checkmate"
                   className="cursor-pointer flex flex-row items-center justify-center gap-x-4 bg-checkPrimary600 font-workSans font-medium rounded-[50px] px-5 py-4 text-center max-w-sm"
                 >
-                  <span className="text-checkWhite">Join as a fact checker</span>
+                  <span className="text-checkWhite text-[20px]">Join as a fact checker</span>
                   <img src={arrowRight} />
                 </a>
               </div>

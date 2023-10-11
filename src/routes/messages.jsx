@@ -53,6 +53,10 @@ const Messages = () => {
     fetchMessages();
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // main function to fetch the messages on page load
   const fetchMessages = () => {
     setIsLoading(true);
@@ -67,6 +71,9 @@ const Messages = () => {
         return response.json();
       })
       .then((data) => {
+        console.log("hits:", data.hits)
+        console.log('endpoint', MESSAGE_DATABASE_API_ENDPOINT)
+
         setIsLoading(false);
         setMessages(data.hits);
       });
@@ -133,6 +140,9 @@ const Messages = () => {
   {/** display the message popup and fill its content */}
   const displayCardDetails = (messageId) => {
     setIsMessagePopupToggled(true)
+    setIsStatusToggled(false)
+    setIsReportedToggled(false)
+    setIsCategoriesToggled(false)
     let popupmessage = messages.find(x => x.document.id === messageId).document || {};
     setPopupContent({
         category: popupmessage.category || "",
@@ -156,6 +166,7 @@ const Messages = () => {
 
     try {
       setIsLoading(true);
+      console.log(MESSAGE_DATABASE_API_ENDPOINT)
       const axiosInstance = axios.create({
         baseURL: MESSAGE_DATABASE_API_ENDPOINT,
         params: {
@@ -280,14 +291,7 @@ const Messages = () => {
             onChange={handleDatePickerValueChange}
             showShortcuts={true}
           />
-          <img
-            src={clear}
-            className="flex-none h-4 fill-checkShadeDark"
-            alt="Clear"
-            onClick={() =>
-              setReportDatePeriod({ startDate: dayjs().subtract(7, "days").format("YYYY-MM-DD"), endDate: dayjs().format("YYYY-MM-DD") })
-            }
-          />
+          
         </div>
       </div>
     </div>)
@@ -538,7 +542,7 @@ const Messages = () => {
                 </div>
                 {/** Report count */}
                 <div className="flex flex-col gap-y-4 p-4 rounded-[20px] w-1/3 text-checkWhite bg-checkPrimary600 border border-gray-100 shadow-xl">
-                    <div>Number of reported</div>
+                    <div>Reported</div>
                     <div className="flex flex-row ss:text-[20px] text-[16px]"><span className="font-bold">{popupContent.instanceCount}</span>&nbsp;time{popupContent.instanceCount > 1 ? "s" : ""}</div>
                 </div>
             </div>

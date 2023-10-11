@@ -1,6 +1,10 @@
-import React from "react"
+import React, { useEffect } from "react"
 
 const Contact = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div id="privacy-policy" className={`flex flex-col items-start font-workSans font-medium`}>

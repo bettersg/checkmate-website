@@ -1,10 +1,16 @@
-import styles from "../style";
+import React, { useEffect } from 'react';
 import { teamMembers } from "../constants/index";
 import { arrowSpiralDown, logoSimple, partnerHeader } from "../assets";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
+
 const About = () => {
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="w-full bg-checkBG font-poppins text-checkBlack flex flex-col items-center">
       <div className="flex flex-col justify-center">
@@ -20,7 +26,7 @@ const About = () => {
             In a world where misinformation and scams are commonplace, CheckMate
             harnesses the power of artificial intelligence coupled with
             crowdsourcing intelligence through our CheckMates: a network of
-            trusted volunteers who help verify dubious messages that you might
+            trusted volunteers who help verify any dubious messages that you might
             come across.
           </p>
 
@@ -31,10 +37,10 @@ const About = () => {
             CheckMate is a crowdsourced system that monitors messages sent to
             our CheckMate bot, funnels those in need of verification to our
             CheckMates, and replies users once we are confident on our
-            categorisation of the message. The CheckMate team has seen really
-            close the negative impact of misinformation and scams in our
-            families, friends, and society as a whole across Singapore and the
-            rest of the world. We had enough and decided to bring it to and end,{" "}
+            categorisation of the message. The CheckMate team has seen first-hand 
+            the negative impact of misinformation and scams on our
+            families, friends, across Singapore and the
+            rest of the world. To do our part, we decided to fight this problem,{" "}
             <strong>one message at a time.</strong>
           </p>
 
@@ -73,7 +79,7 @@ const About = () => {
               <span className="italic">diverse</span> and{" "}
               <span className="italic">multidisciplinary</span>
             </span>{" "}
-            team of volunteers
+            team of&nbsp;volunteers
           </h1>
           <p className="w-full sm:w-3/4 md:w-1/2 mt-4 text-workSans font-workSans text-[18px]">
             We are currently part of better.sg, a #TechForGood non-profit
@@ -108,7 +114,7 @@ const About = () => {
             </p>
           </motion.div>
         </div>
-        <div className="xl:max-w-[1280px] md:w-full w-[calc(100%/2-20px)] pt-12 flex flex-row flex-wrap gap-x-6 gap-y-8 mx-auto pl-4 items-center justify-items-center">
+        <div className="xl:max-w-[1280px] md:w-full w-[calc(100%/2-20px)] pt-12 flex flex-row flex-wrap gap-x-6 gap-y-8 mx-auto pl-4 items-center justify-items-center mb-12">
           {teamMembers.map((member, index) => (
             <a
               href={member.linkedin}
@@ -130,7 +136,7 @@ const About = () => {
         </div>
 
         {/** Partner */}
-        <div className="w-full xl:max-w-[1280px] flex flex-col">
+        <div className="hidden w-full xl:max-w-[1280px] flex flex-col">
           <a href="https://www.scamshield.org.sg/" target="_blank">
             <img src={partnerHeader} alt="CheckMate" className="" />
           </a>
