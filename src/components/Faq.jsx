@@ -15,12 +15,12 @@ const Faq = () => {
 
   return (
     <div id="faq" className={`flex flex-col items-center text-checkShadeDark`}>
-        <h1 className="flex-1 font-poppins font-bold text-[36px] md:text-[48px] text-checkShadeDark w-full text-left md:text-center py-8">
+        <h1 className="flex-1 font-poppins font-medium text-[36px] md:text-[48px] text-checkShadeDark w-full text-left md:text-center">
           Frequently Asked Questions
         </h1>
 
       
-      <div className="flex flex-col px-0 sm:px-4 md:px-12 pb-24 xl:max-w-[1080px] w-full items-center font-workSans">
+      <div className="flex flex-col px-0 sm:px-4 md:px-12 xl:max-w-[1080px] w-full items-center font-workSans">
         <details
           ref={(el) => (detailsRef.current['is-checkmate-free-to-us'] = el)}
           open={isOpenMap['is-checkmate-free-to-us']}

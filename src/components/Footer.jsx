@@ -1,14 +1,14 @@
 import styles from "../style";
 import { socialMedia } from "../constants";
-import { bettersg, scamshield } from "../assets"
-import { Link } from "react-router-dom"
+import { bettersg, scamshield } from "../assets";
+import { Link } from "react-router-dom";
 
 const Footer = () => (
-  <section id="footer" className={`w-full sm:py-10 py-2 px-16 flex justify-center items-center flex-col bg-checkBGFooter text-checkWhite font-poppins`}>
-    
-    
+  <section
+    id="footer"
+    className={`w-full py-14 py-2 px-16 flex justify-center items-center flex-col bg-checkBGFooter text-checkWhite font-poppins`}
+  >
     <div className="xl:max-w-[1280px] w-full flex flex-col md:flex-row gap-y-8 justify-center">
-
       <div className="w-full md:w-1/4">
         <div className="text-[20px]">CheckMate</div>
         <div className="flex flex-col pl-4 pt-8 text-[16px] gap-y-6">
@@ -18,7 +18,7 @@ const Footer = () => (
           <Link to="/contact">Contact Us</Link>
         </div>
       </div>
-      
+
       <div className="w-full md:w-1/4">
         <div className="text-[20px]">Legal</div>
         <div className="pl-4 pt-8 text-[16px]">
@@ -47,15 +47,15 @@ const Footer = () => (
           ))}
         </div>
       </div>
-
     </div>
-    
-    
 
     <div className="flex flex-row flex-wrap max-w-[1280px] w-full mt-16 font-normal">
-      Checkmate. A&nbsp;<a href="https://better.sg" target="_blank">better.sg</a>&nbsp;Initiative © 2023 CheckMate
-    </div>    
-
+      Checkmate. A&nbsp;
+      <a href="https://better.sg" target="_blank">
+        better.sg
+      </a>
+      &nbsp;Initiative © 2023 CheckMate
+    </div>
   </section>
 );
 
