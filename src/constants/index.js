@@ -1,5 +1,10 @@
 import { facebook, whatsapp, telegram, team01, team02, team03, team04, team05, team06, team08, team09, team10} from "../assets";
 
+  //{
+  //  id: "message-database",
+  //  title: "Message Database"
+  //},
+  
 export const navLinks = [
   {
   id: "",
@@ -9,10 +14,6 @@ export const navLinks = [
     id: "about",
     title: "About Us",
   },
-  //{
-  //  id: "message-database",
-  //  title: "Message Database"
-  //},
   {
     id: "privacy-policy",
     title: "Privacy Policy",

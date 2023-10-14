@@ -24,13 +24,13 @@ const Hero = () => {
           variants={fadeIn("left", "tween", 0.2, 1)}
           className="items-center"
         >
-          <div className="flex flex-col items-start ss:text-[64px] text-[48px] font-poppins font-bold text-checkShadeDark">
+          <div className="flex flex-col items-start ss:text-[64px] text-[40px] font-poppins font-bold text-checkShadeDark">
             <p className="leading-tight">We verify</p>
             <p><span className="text-checkPrimary600 leading-tight">Scams</span> and</p>
             <p className="text-checkSecondaryYellow500 leading-tight">Misinformation</p>
           </div>
 
-          <p className={`${styles.paragraph} max-w-md mt-5 text-checkBlack font-workSans`}>
+          <p className={`${styles.paragraph} max-w-md mt-5 text-checkBlack font-workSans text-[16px] ss:text-[18px]`}>
             Not sure if a message can be trusted? Simply forward your message to CheckMate and we’ll check it for you!
           </p>
 
