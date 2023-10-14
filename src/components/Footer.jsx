@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Footer = () => (
   <section
     id="footer"
-    className={`w-full py-14 py-2 px-16 flex justify-center items-center flex-col bg-checkBGFooter text-checkWhite font-poppins`}
+    className={`w-full pt-[40px] md:pt-14 pb-14 px-16 flex justify-center items-center flex-col bg-checkBGFooter text-checkWhite font-poppins`}
   >
     <div className="xl:max-w-[1280px] w-full flex flex-col md:flex-row gap-y-8 justify-center">
       <div className="w-full md:w-1/4">
@@ -14,7 +14,7 @@ const Footer = () => (
         <div className="flex flex-col pl-4 pt-8 text-[16px] gap-y-6">
           <Link to="/">Home</Link>
           <Link to="/about">About Us</Link>
-          <Link to="/message-database">Message Database</Link>
+          {/*<Link to="/message-database">Message Database</Link>*/}
           <Link to="/contact">Contact Us</Link>
         </div>
       </div>

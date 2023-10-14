@@ -8,7 +8,13 @@ import { motion } from "framer-motion";
 const About = () => {
   
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const scrollDelay = 100;
+
+    const timeoutId = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, scrollDelay);
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return (
@@ -136,11 +142,11 @@ const About = () => {
         </div>
 
         {/** Partner */}
-        <div className="hidden w-full xl:max-w-[1280px] flex flex-col">
+        {/*<div className="w-full xl:max-w-[1280px] flex flex-col">
           <a href="https://www.scamshield.org.sg/" target="_blank">
             <img src={partnerHeader} alt="CheckMate" className="" />
           </a>
-        </div>
+          </div>*/}
       </div>
     </div>
   );

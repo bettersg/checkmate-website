@@ -13,7 +13,13 @@ const Privacy = () => {
 
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const scrollDelay = 100;
+
+    const timeoutId = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, scrollDelay);
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
 
@@ -37,7 +43,7 @@ const Privacy = () => {
           ref={(el) => (detailsRef.current['toggle1'] = el)}
           open={isOpenMap['toggle1']}
           onToggle={(e) => toggleDetails('toggle1', e.target.open)}
-          className="w-[90%] bg-checkWhite border border-checkPrimary600 md:px-12 py-4 rounded-[32px]" id="toggle1"
+          className="w-[100%] bg-checkWhite border border-checkPrimary600 md:px-12 py-4 rounded-[32px]" id="toggle1"
         >
           <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">
@@ -72,7 +78,7 @@ const Privacy = () => {
           ref={(el) => (detailsRef.current['toggle2'] = el)}
           open={isOpenMap['toggle2']}
           onToggle={(e) => toggleDetails('toggle2', e.target.open)}
-          className="w-[90%] bg-checkWhite border border-checkPrimary600 md:px-12 py-4 rounded-[32px]" id="toggle2"
+          className="w-[100%] bg-checkWhite border border-checkPrimary600 md:px-12 py-4 rounded-[32px]" id="toggle2"
         >
           <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">
@@ -163,7 +169,7 @@ const Privacy = () => {
           ref={(el) => (detailsRef.current['toggle3'] = el)}
           open={isOpenMap['toggle3']}
           onToggle={(e) => toggleDetails('toggle3', e.target.open)}
-          className="w-[90%] bg-checkWhite border border-checkPrimary600 md:px-12 py-4 rounded-[32px]" id="toggle3"
+          className="w-[100%] bg-checkWhite border border-checkPrimary600 md:px-12 py-4 rounded-[32px]" id="toggle3"
         >
           <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">
@@ -184,7 +190,7 @@ const Privacy = () => {
           ref={(el) => (detailsRef.current['toggle4'] = el)}
           open={isOpenMap['toggle4']}
           onToggle={(e) => toggleDetails('toggle4', e.target.open)}
-          className="w-[90%] bg-checkWhite border border-checkPrimary600 md:px-12 py-4 rounded-[32px]" id="toggle4"
+          className="w-[100%] bg-checkWhite border border-checkPrimary600 md:px-12 py-4 rounded-[32px]" id="toggle4"
         >
           <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">
@@ -205,7 +211,7 @@ const Privacy = () => {
           ref={(el) => (detailsRef.current['toggle5'] = el)}
           open={isOpenMap['toggle5']}
           onToggle={(e) => toggleDetails('toggle5', e.target.open)}
-          className="w-[90%] bg-checkWhite border border-checkPrimary600 md:px-12 py-4 rounded-[32px]" id="toggle5"
+          className="w-[100%] bg-checkWhite border border-checkPrimary600 md:px-12 py-4 rounded-[32px]" id="toggle5"
         >
           <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">
@@ -227,7 +233,7 @@ const Privacy = () => {
           ref={(el) => (detailsRef.current['toggle6'] = el)}
           open={isOpenMap['toggle6']}
           onToggle={(e) => toggleDetails('toggle6', e.target.open)}
-          className="w-[90%] bg-checkWhite border border-checkPrimary600 md:px-12 py-4 rounded-[32px]" id="toggle6"
+          className="w-[100%] bg-checkWhite border border-checkPrimary600 md:px-12 py-4 rounded-[32px]" id="toggle6"
         >
           <summary className="cursor-pointer px-4 md:py-6 list-none">
             <div className="flex flex-row justify-between items-center">

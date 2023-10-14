@@ -3,7 +3,13 @@ import React, { useEffect } from "react"
 const Contact = () => {
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const scrollDelay = 100;
+
+    const timeoutId = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, scrollDelay);
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return (

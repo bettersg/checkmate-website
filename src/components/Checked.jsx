@@ -10,7 +10,7 @@ const Checked = () => {
       <div className="flex flex-col md:flex-row w-full gap-x-12 gap-y-8 pt-12">
         
         <div className="w-full md:w-1/2 bg-checkGray rounded-carousel flex flex-col md:flex-row">
-            <div className="flex flex-col w-full md:w-1/2 pl-6 pr-4 md:pr-0 md:pl-12 justify-center md:mt-0">
+            <div className="flex flex-col w-full md:w-1/2 pl-6 pr-0 md:pl-12 pt-10 ss:pt-0 justify-center md:mt-0">
                 <h2 className="ss:text-[28px] text-[20px] font-medium text-checkShadeDark font-poppins">Suspicious messages</h2>
                 <h3 className="md:text-[20px] text-[14px] text-checkDarkGray font-workSans">Misinformation, Scams, Surveys, Job offerings, Packages, Investments and others</h3>
                 <Link>
@@ -22,7 +22,7 @@ const Checked = () => {
 
         
         <div className="w-full md:w-1/2 bg-checkGray rounded-carousel flex flex-col md:flex-row">
-            <div className="flex flex-col w-full md:w-1/2 pl-6 pr-4 md:pr-0 md:pl-12 justify-center md:mt-0">
+            <div className="flex flex-col w-full md:w-1/2 pl-6 pr-0 md:pl-12 pt-10 ss:pt-0 justify-center md:mt-0">
                 <h2 className="ss:text-[28px] text-[20px] font-medium text-checkShadeDark font-poppins">Images</h2>
                 <h3 className="md:text-[20px] text-[16px] text-checkDarkGray font-workSans">QR codes, Flyers, Advertisements, Spam, Screenshots, Deals too good to be true<br/>&nbsp;</h3>
                 <Link>

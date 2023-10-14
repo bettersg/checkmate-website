@@ -54,7 +54,13 @@ const Messages = () => {
   }, []);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const scrollDelay = 100;
+
+    const timeoutId = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, scrollDelay);
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   // main function to fetch the messages on page load

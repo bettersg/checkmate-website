@@ -146,8 +146,8 @@ const Check = () => {
     <div className="w-100" style={{ height: `${containerHeight}px` }} ref={containerRef}>
       <motion.div className="block" style={{ maxHeight: `${dimensions.height}px`, y }}>
         <motion.div className="overflow-x-hidden">
-          <h1 className="text-[48px] md:text-[64px] flex flex-row justify-center flex-1 font-poppins font-bold text-checkShadeDark text-center pb-24">
-            Check dubious&nbsp;
+          <h1 className="text-[40px] md:text-[64px] flex flex-col ss:flex-row justify-center flex-1 font-poppins font-bold text-checkShadeDark text-center pb-24">
+            <span className="flex-nowrap">Check dubious&nbsp;</span>
             <TextLoop texts={["messages", "email", "flyers", "QR codes"]} />
           </h1>
           <motion.div className="flex w-max" style={{ x }}>
@@ -171,14 +171,14 @@ const Check = () => {
                   href="/about"
                   className="cursor-pointer flex flex-row items-center justify-center gap-x-4 bg-checkWhite font-workSans font-medium rounded-[50px] px-5 py-4 text-center max-w-sm"
                 >
-                  <span className="text-checkPrimary600 text-[20px]">Learn more</span>
+                  <span className="text-checkPrimary600 text-[14px] ss:text-[20px]">Learn more</span>
                   <img src={arrowUp} className="fill-checkPrimary600" />
                 </a>
                 <a
                   href="https://bit.ly/add-checkmate"
                   className="cursor-pointer flex flex-row items-center justify-center gap-x-4 bg-checkPrimary600 font-workSans font-medium rounded-[50px] px-5 py-4 text-center max-w-sm"
                 >
-                  <span className="text-checkWhite text-[20px]">Join as a fact checker</span>
+                  <span className="text-checkWhite text-[14px] ss:text-[20px]">Join as a fact checker</span>
                   <img src={arrowRight} />
                 </a>
               </div>

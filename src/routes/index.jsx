@@ -1,6 +1,19 @@
 import { Approach, Hero, Check, Checked, Faq, Cards3D } from "../components";
+import { useEffect } from "react";
 
 export default function Index() {
+  // scroll to the top on mount
+  useEffect(() => {
+    const scrollDelay = 100;
+
+    const timeoutId = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, scrollDelay);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+
   return (
     <div className="bg-checkBG w-full">
       <div className="bg-checkBG flex justify-center items-start">
