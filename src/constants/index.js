@@ -15,6 +15,10 @@ export const navLinks = [
     title: "About Us",
   },
   {
+    id:"message-database",
+    title: "Message Database"
+  },
+  {
     id: "privacy-policy",
     title: "Privacy Policy",
   },
