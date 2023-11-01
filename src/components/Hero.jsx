@@ -30,7 +30,7 @@ const Hero = () => {
             <p className="text-checkSecondaryYellow500 leading-tight">Misinformation</p>
           </div>
 
-          <p className={`${styles.paragraph} max-w-md mt-5 text-checkBlack font-workSans text-[16px] ss:text-[18px]`}>
+          <p className={`${styles.paragraph} max-w-md mt-5 text-checkBlack font-workSans text-[16px] ss:text-[16px]`}>
             Not sure if a message can be trusted? Simply forward your message to CheckMate and we’ll check it for you!
           </p>
 

@@ -15,7 +15,7 @@ const Faq = () => {
 
   return (
     <div id="faq" className={`flex flex-col items-center text-checkShadeDark`}>
-        <h1 className="flex-1 font-poppins font-bold text-[36px] md:text-[48px] text-checkShadeDark w-full text-left md:text-center">
+        <h1 className="flex-1 font-poppins font-bold text-[36px] md:text-[48px] text-checkShadeDark w-full text-center">
           Frequently Asked Questions
         </h1>
 
@@ -36,7 +36,7 @@ const Faq = () => {
               />
             </div>
           </summary>
-          <p className="px-4 py-6 pt-0 ml-4 mt-4 text-checkGrayModal text-base">
+          <p className="px-4 py-6 pt-0 mt-4 text-checkGrayModal text-base">
             <span className="font-bold">Absolutely!</span> CheckMate is free to use and free for life.
           </p>
         </details>
@@ -56,7 +56,7 @@ const Faq = () => {
               />
             </div>
           </summary>
-          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-checkGrayModal flex flex-col gap-y-2 text-base">
+          <div className="px-4 py-6 pt-0 mt-4 text-checkGrayModal flex flex-col gap-y-2 text-base">
             <p>When you send a message to CheckMate for checking, the following happens:</p>
             <h3 className="font-bold underline">Matching</h3>
             <p>We check if this message has been received before, after ignoring any phone numbers mentioned in the message</p>
@@ -124,7 +124,7 @@ const Faq = () => {
               />
             </div>
           </summary>
-          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-checkGrayModal flex flex-col gap-y-4 text-base">
+          <div className="px-4 py-6 pt-0 mt-4 text-checkGrayModal flex flex-col gap-y-4 text-base">
             <p>We're glad to hear that you're interested in helping to combat fake news and scams! </p>
             <p>To get started, please reach out to us @ <a href="mailto:checkmate@better.sg" className="underline text-checkPurple">checkmate@better.sg</a> </p>
             {/** hidden for now <img src={qrFc} className="self-center" />
@@ -146,7 +146,7 @@ const Faq = () => {
               />
             </div>
           </summary>
-          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-checkGrayModal text-base">
+          <div className="px-4 py-6 pt-0 mt-4 text-checkGrayModal text-base">
             <p>Messaging the CheckMate bot is like messaging someone in Whatsapp. CheckMate will only receive <span className="underline font-bold">your number</span> and the <span className="underline font-bold">message you are sending</span>.</p>
             <p>For more information, you can view our <Link to="privacy-policy" className="font-bold text-checkPurple underline">Privacy Policy</Link>.</p>
           </div>
@@ -167,7 +167,7 @@ const Faq = () => {
               />
             </div>
           </summary>
-          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-checkGrayModal space-y-4 text-base">
+          <div className="px-4 py-6 pt-0 mt-4 text-checkGrayModal space-y-4 text-base">
             <p>CheckMate is an independent, non-government initiative by the non-profit organization <a className="text-checkPrimary600 underline cursor-pointer" href="https://better.sg">better.sg</a>. We understand that combatting scams and dubious messages requires a collaborative approach to safeguard everyone. That's why we are currently exploring a partnership with <a className="text-checkPrimary600 underline cursor-pointer" href="https://www.scamshield.org.sg/">ScamShield</a>.</p>
             <p>Once we have linked up with <a className="text-checkPrimary600 underline cursor-pointer" href="https://scamshield.org.sg/">ScamShield</a>, when you send in a message, and our CheckMates identify it as a scam, we will ask for your consent to share that specific message anonymously with <a className="text-checkPrimary600 underline cursor-pointer" href="https://scamshield.org.sg/">ScamShield</a>. If you agree, <a className="text-checkPrimary600 underline cursor-pointer" href="https://scamshield.org.sg/">ScamShield</a> will include the message in the national scams database in order to help fight scams in Singapore.</p>
             <p>Your consent is sought for each individual message. You may choose to share some messages with <a className="text-checkPrimary600 underline cursor-pointer" href="https://scamshield.org.sg/">ScamShield</a>, while deciding not to share others. We will seek your consent for every message separately.</p>
@@ -190,7 +190,7 @@ const Faq = () => {
                 />
               </div>
           </summary>
-          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-checkGrayModal space-y-4">
+          <div className="px-4 py-6 pt-0 mt-4 text-checkGrayModal space-y-4">
             <p><a className="text-checkPrimary600 underline cursor-pointer"href="https://www.scamshield.org.sg/">ScamShield</a> is an anti-scam product developed by the National Crime Prevention Council and Open Government Products.</p>
           </div>
         </details>
@@ -210,7 +210,7 @@ const Faq = () => {
               />
             </div>
           </summary>
-          <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-checkGrayModal space-y-4 text-base">
+          <div className="px-4 py-6 pt-0 mt-4 text-checkGrayModal space-y-4 text-base">
             <p>
               CheckMate tries to balance speed and accuracy when it comes to assessing messages. To provide a robust answer, we typically prefer to have more volunteers assess a message. 
               However, we understand speed is of essence for you. We are typically able to provide an assessment within hours of receiving your message, and are consistently striving to make 
