@@ -52,7 +52,7 @@ const Cards3D = () => {
                   </div>
                   <a
                     href={cardsContent[index].link}
-                    className="cursor-pointer flex flex-row flex-nowrap bg-checkWhite text-checkPrimary600 rounded-[50px] min-w-[20rem] md:min-w-[26rem] max-w-sm ss:max-w-xs px-8 py-4 justify-center items-center gap-x-4 font-workSans font-medium text-[20px]"
+                    className="cursor-pointer flex flex-row flex-nowrap bg-checkWhite text-checkPrimary600 rounded-[50px] min-w-[20rem] md:min-w-[26rem] max-w-sm ss:max-w-xs px-8 py-4 justify-center items-center gap-x-4 font-workSans font-medium text-[16px] ss:text-[20px]"
                   >
                     <img src={whatsappOrange} className="w-8" />
                     {cardsContent[index].buttonText}

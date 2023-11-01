@@ -68,7 +68,8 @@ import search from "./search.svg"
 import clear from "./clear.svg"
 import clearDark from "./clearDark.svg"
 import filter from "./filter.svg"
-import arrowSpiralDown from "./arrow-spiral-down.svg";
+import arrowSpiralDown from "./arrow-spiral-down.svg"
+import profilePlaceholder from "./profile-placeholder.svg"
 
 
 export {
@@ -142,5 +143,6 @@ export {
   clear,
   clearDark,
   filter,
-  arrowSpiralDown
+  arrowSpiralDown,
+  profilePlaceholder
 };

@@ -4,7 +4,7 @@ import { genericText, iconQuestion, iconMessage, iconWarning } from "../assets"
 const Approach = () => (
   
   <section className={`${styles.flexCenter} flex-col flex-wrap sm:mb-20 mb-6 pt-2`}>
-    <h1 className="flex-1 font-poppins font-bold text-[36px] md:text-[48px] text-checkShadeDark text-left md:text-center pb-16 w-full">
+    <h1 className="flex-1 font-poppins font-bold text-[36px] md:text-[48px] text-checkShadeDark text-center pb-16 w-full">
       Our Approach
     </h1>
     <div className="font-workSans flex flex-col md:flex-row items-stretch gap-y-12 md:gap-y-0 gap-x-12 justify-center max-w-[1280px]">

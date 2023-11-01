@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { teamMembers } from "../constants/index";
-import { arrowSpiralDown, logoSimple, partnerHeader } from "../assets";
+import { arrowSpiralDown, logoSimple, partnerHeader, profilePlaceholder } from "../assets";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -25,7 +25,7 @@ const About = () => {
             About Us
           </h1>
 
-          <h1 className="font-medium font-workSans text-checkPrimary600 text-[36px]">
+          <h1 className="font-medium font-workSans text-checkPrimary600 text-[36px] tracking-tight ss:tracking-normal">
             Our Mission Statement
           </h1>
           <p className="font-workSans font-medium text-[16px] md:text-[20px]">
@@ -36,7 +36,7 @@ const About = () => {
             come across.
           </p>
 
-          <h1 className="font-medium font-workSans text-checkPrimary600 text-[36px] mt-12">
+          <h1 className="font-medium font-workSans text-checkPrimary600 text-[36px] mt-12 tracking-tight ss:tracking-normal">
             What is CheckMate?
           </h1>
           <p className="font-workSans font-medium text-[16px] md:text-[20px]">
@@ -50,7 +50,7 @@ const About = () => {
             <strong>one message at a time.</strong>
           </p>
 
-          <h1 className="font-medium font-workSans text-checkPrimary600 text-[36px] mt-12">
+          <h1 className="font-medium font-workSans text-checkPrimary600 text-[36px] mt-12 tracking-tight ss:tracking-normal">
             Who are the CheckMates?
           </h1>
           <p className="font-workSans font-medium text-[16px] md:text-[20px]">
@@ -121,24 +121,29 @@ const About = () => {
           </motion.div>
         </div>
         <div className="xl:max-w-[1280px] md:w-full w-[calc(100%/2-20px)] pt-12 flex flex-row flex-wrap gap-x-6 gap-y-8 mx-auto pl-4 items-center justify-items-center mb-12">
-          {teamMembers.map((member, index) => (
-            <a
-              href={member.linkedin}
-              target="_blank"
-              key={index}
-              className="flex flex-col items-center justify-items-center mx-auto"
-            >
-              <img key={member.id} src={member.picture} />
-              <div className="flex flex-col items-center bg-checkWhite w-full p-2 rounded-b-[36px] shadow-2xl">
-                <div className="font-poppins text-lg font-bold">
-                  {member.name}
+          {teamMembers.map((member, index) => {
+            if (member.picture == profilePlaceholder) {
+              console.log('placeholder')
+            }
+            return (
+              <a
+                href={member.linkedin}
+                target="_blank"
+                key={index}
+                className="flex flex-col items-center justify-items-center mx-auto"
+              >
+                <img key={member.id} src={member.picture} className={`rounded-t-[36px] ${member.picture == profilePlaceholder ? "w-['90%'] px-4 pt-4 bg-checkCarouselRed": ""}`}/>
+                <div className="flex flex-col items-center bg-checkWhite w-full p-2 rounded-b-[36px] shadow-2xl">
+                  <div className="font-poppins text-lg font-bold">
+                    {member.name}
+                  </div>
+                  <div className="font-poppins text-md font-normal">
+                    {member.title || ""}
+                  </div>
                 </div>
-                <div className="font-poppins text-md font-normal">
-                  {member.title || ""}
-                </div>
-              </div>
-            </a>
-          ))}
+              </a>
+            )}
+          )}
         </div>
 
         {/** Partner */}
@@ -146,7 +151,7 @@ const About = () => {
           <a href="https://www.scamshield.org.sg/" target="_blank">
             <img src={partnerHeader} alt="CheckMate" className="" />
           </a>
-          </div>*/}
+          </div>*/} 
       </div>
     </div>
   );

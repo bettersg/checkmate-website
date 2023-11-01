@@ -131,10 +131,11 @@ const Messages = () => {
   };
 
   const constructSelectedCategoriesString = () => {
-    const selectedKeys = Object.keys(selectedCateogries).filter(
+    /*const selectedKeys = Object.keys(selectedCateogries).filter(
       (key) => selectedCateogries[key]
     );
-    return selectedKeys.join(",");
+    return selectedKeys.join(",");*/
+    return "illicit,misinformation,scam,spam"
   };
 
   const getReportedText = () => {
@@ -314,7 +315,7 @@ const Messages = () => {
         <div className="rounded-[50px] bg-checkWhite flex flex-row gap-x-2 px-6 py-6 items-center">
           <img
             src={search}
-            className="h-7 flex-none cursor-pointer"
+            className="h-4 ss:h-7 flex-none cursor-pointer"
             alt="search"
             onClick={handleSearchSubmit}
           />
@@ -328,15 +329,15 @@ const Messages = () => {
           />
           <img
             src={clear}
-            className="flex-none"
+            className="flex-none h-4 ss:h-7"
             alt="Clear"
             onClick={() => setSearchText("")}
           />
 
-          <div className="border-r border-r-checkGray flex-none">&nbsp;</div>
+          {/*<div className="border-r border-r-checkGray flex-none">&nbsp;</div>*/}
 
           {/** Category selector */}
-          <div className="relative" id="dropdown" ref={drop}>
+          {/*<div className="relative" id="dropdown" ref={drop}>
             <button
               id="dropdownCheckboxButton"
               className="bg-checkWhite lg:px-5 py-2.5 text-center inline-flex items-center text-gray-400"
@@ -403,7 +404,7 @@ const Messages = () => {
                 </ul>
               </div>
             )}
-          </div>
+                </div>*/}
         </div>
 
         {/** Filters line */}
@@ -413,7 +414,7 @@ const Messages = () => {
         <div className="lg:hidden">
           <button
             id="mobileFiltersButton"
-            className="flex flex-row flex-wrap w-full justify-end items-center p-4 gap-x-4"
+            className="flex flex-row flex-wrap w-full justify-start items-center p-4 gap-x-4"
             type="button"
             onClick={() => {
               setShowMobileFilters(
@@ -421,12 +422,12 @@ const Messages = () => {
               );
             }}
           >
+            <img src={filter} className="" />
+            <div className="">Filters</div>
             {showMobileFilters ? 
                 (<img src={arrowButtonUp} className="h-2" />) : 
                 (<img src={arrowButtonDown} className="h-2" />)
             }
-            <img src={filter} className="" />
-            <div className="">Filters</div>
           </button>
           {showMobileFilters && getFilters()}
         </div>
@@ -450,9 +451,9 @@ const Messages = () => {
             }
             return (
               <div key={message.id} className="cursor-pointer flex flex-col max-md:w-full max-lg:w-[calc(50%-2rem)] lg:w-[calc(33.33%-2rem)]" onClick={() => displayCardDetails(message.id)}>
-                <div className="flex flex-col gap-y-4 bg-checkWhite rounded-t-carousel px-6 max-lg:pt-6 lg:pt-12 pb-6 lg:h-[35vh]">
+                <div className="flex flex-col gap-y-6 bg-checkWhite rounded-t-card p-6 lg:h-[35vh]">
                   {/** Category */}
-                  <div className="ss:text-[32px] text-[24px]">
+                  <div className="ss:text-[28px] text-[24px]">
                     {message.category
                       ? capitalizeFirstLetter(message.category)
                       : ""}
@@ -465,11 +466,11 @@ const Messages = () => {
                       : ""}
                   </div>
                   {/** Message */}
-                  <div className="">
+                  <div className="text-[16px] font-normal break-all">
                     {message.text ? truncate(message.text, 200) : ""}
                   </div>
                 </div>
-                <div className="flex flex-col gap-y-4 bg-checkGray rounded-b-carousel px-6 pt-6 pb-12">
+                <div className="flex flex-col gap-y-4 bg-checkGray rounded-b-card px-6 pt-6 pb-12">
                   {/** Truth Score */}
                   {message.truthScore ? (
                     <div className="flex flex-row items-center">
@@ -492,11 +493,11 @@ const Messages = () => {
                   <div className="">
                     Status&nbsp;
                     {message.isAssessed ? (
-                      <span className="text-checkWhite px-4 py-1 bg-checkPrimary600 rounded-[40px]">
+                      <span className="text-checkWhite px-4 py-2 bg-checkPrimary600 rounded-[40px]">
                         Reviewed{" "}
                       </span>
                     ) : (
-                      <span className="text-checkPrimary600 px-4 py-1 bg-checkWhite rounded-[40px]">
+                      <span className="text-checkPrimary600 px-4 py-2 bg-checkWhite rounded-[40px]">
                         Reviewing
                       </span>
                     )}
@@ -518,9 +519,9 @@ const Messages = () => {
       )}
 
       {isMessagePopupToggled ? 
-      <div className="fixed inset-0 flex items-center justify-center bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-15 font-workSans font-medium text-checkBlack" onClick={() => setIsMessagePopupToggled(false)}>
+      <div className="fixed inset-0 flex items-center justify-center bg-gray-600 bg-opacity-75 overflow-y-auto h-full w-full z-15 font-workSans font-medium text-checkBlack" onClick={() => setIsMessagePopupToggled(false)}>
         {/** Popup modal, using stop propagation to prevent the modal from being closed on click and allow only if clicked outside of it */}
-        <div className="relative mx-auto px-6 py-8 border w-[32rem] shadow-lg rounded-[40px] bg-white flex flex-col gap-y-4 z-20" onClick={e => e.stopPropagation()} >
+        <div className="relative mx-auto p-6 border w-[32rem] shadow-lg rounded-[40px] bg-white flex flex-col gap-y-6 z-20" onClick={e => e.stopPropagation()} >
             {/** Reported date */}
             {popupContent.messageDate}
             {/** Category */}
