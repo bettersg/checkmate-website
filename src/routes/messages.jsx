@@ -117,7 +117,7 @@ const Messages = () => {
   };
 
   const convertTimestamp = (timestamp) => {
-    const date = new Date(timestamp);
+    const date = new Date(timestamp*1000); //convert to milliseconds
     const dateFormat =
       date.toDateString() + " " + date.getHours() + ":" + date.getMinutes();
     return dateFormat;
@@ -135,7 +135,7 @@ const Messages = () => {
       (key) => selectedCateogries[key]
     );
     return selectedKeys.join(",");*/
-    return "illicit,misinformation,scam,spam"
+    return "illicit,untrue,misleading,accurate,scam,spam"
   };
 
   const getReportedText = () => {
