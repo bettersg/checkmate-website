@@ -176,7 +176,7 @@ export const socialMedia = [
 
 export const categories = [
     { id: "checkbox-item-1", text: "illicit" },
-    { id: "checkbox-item-2", text: "misinformation" },
+    { id: "checkbox-item-2", text: "misleading" },
     { id: "checkbox-item-3", text: "scam" },
     { id: "checkbox-item-4", text: "spam" },
   ];
