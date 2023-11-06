@@ -120,7 +120,7 @@ const About = () => {
             </p>
           </motion.div>
         </div>
-        <div className="xl:max-w-[1280px] md:w-full w-[calc(100%/2-20px)] pt-12 flex flex-row flex-wrap gap-x-6 gap-y-8 mx-auto pl-4 items-center justify-items-center mb-12">
+        <div className="xl:max-w-[1280px] md:w-full w-full ss:w-[calc(100%/2-20px)] pt-12 flex flex-col ss:flex-row flex-wrap gap-x-6 gap-y-8 mx-auto pl-0 ss:pl-4 items-center justify-items-center mb-12">
           {teamMembers.map((member, index) => {
             if (member.picture == profilePlaceholder) {
               console.log('placeholder')
@@ -132,9 +132,9 @@ const About = () => {
                 key={index}
                 className="flex flex-col items-center justify-items-center mx-auto"
               >
-                <img key={member.id} src={member.picture} className={`rounded-t-[36px] ${member.picture == profilePlaceholder ? "w-['90%'] px-4 pt-4 bg-checkCarouselRed": ""}`}/>
-                <div className="flex flex-col items-center bg-checkWhite w-full p-2 rounded-b-[36px] shadow-2xl">
-                  <div className="font-poppins text-lg font-bold">
+                <img key={member.id} src={member.picture} className={`max-w-[289px] max-h-[308px] rounded-t-[36px] ${member.picture == profilePlaceholder ? "w-['85%'] px-4 pt-4 bg-checkCarouselRed": ""}`}/>
+                <div className="flex flex-col items-center bg-checkWhite w-full p-4 rounded-b-[36px] shadow-2xl">
+                  <div className="font-poppins text-lg font-bold">  
                     {member.name}
                   </div>
                   <div className="font-poppins text-md font-normal">

@@ -98,14 +98,7 @@ export const teamMembers = [
     name: "Amanda Goh",
     picture: amanda,
     linkedin: "https://www.linkedin.com/in/amandagohyl",
-    title: "New Gen AI"
-  },
-  {
-    id: 8,
-    name: "Elston",
-    picture: profilePlaceholder,
-    linkedin: "",
-    title: ""
+    title: "Fact-Checking Lead"
   },
   {
     id: 9,
@@ -183,12 +176,9 @@ export const socialMedia = [
 
 export const categories = [
     { id: "checkbox-item-1", text: "illicit" },
-    { id: "checkbox-item-2", text: "legitimate" },
-    { id: "checkbox-item-3", text: "misinformation" },
-    { id: "checkbox-item-4", text: "scam" },
-    { id: "checkbox-item-5", text: "spam" },
-    { id: "checkbox-item-6", text: "trivial" },
-    { id: "checkbox-item-7", text: "unsure" },
+    { id: "checkbox-item-2", text: "misinformation" },
+    { id: "checkbox-item-3", text: "scam" },
+    { id: "checkbox-item-4", text: "spam" },
   ];
   
 export const statusValues = [

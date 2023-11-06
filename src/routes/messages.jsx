@@ -131,11 +131,11 @@ const Messages = () => {
   };
 
   const constructSelectedCategoriesString = () => {
-    /*const selectedKeys = Object.keys(selectedCateogries).filter(
+    const selectedKeys = Object.keys(selectedCateogries).filter(
       (key) => selectedCateogries[key]
     );
-    return selectedKeys.join(",");*/
-    return "illicit,untrue,misleading,accurate,scam,spam"
+    return selectedKeys.join(",");
+    //return "illicit,untrue,misleading,accurate,scam,spam"
   };
 
   const getReportedText = () => {
@@ -334,10 +334,10 @@ const Messages = () => {
             onClick={() => setSearchText("")}
           />
 
-          {/*<div className="border-r border-r-checkGray flex-none">&nbsp;</div>*/}
+          <div className="border-r border-r-checkGray flex-none">&nbsp;</div>
 
           {/** Category selector */}
-          {/*<div className="relative" id="dropdown" ref={drop}>
+          <div className="relative" id="dropdown" ref={drop}>
             <button
               id="dropdownCheckboxButton"
               className="bg-checkWhite lg:px-5 py-2.5 text-center inline-flex items-center text-gray-400"
@@ -404,7 +404,7 @@ const Messages = () => {
                 </ul>
               </div>
             )}
-                </div>*/}
+                </div>
         </div>
 
         {/** Filters line */}
