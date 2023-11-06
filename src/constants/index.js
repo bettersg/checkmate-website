@@ -1,4 +1,25 @@
-import { facebook, whatsapp, telegram, team01, team02, team03, team04, team05, team06, team08, team09, team10, profilePlaceholder} from "../assets";
+import { 
+  facebook, 
+  whatsapp, 
+  telegram, 
+  ahmed,
+  amanda,
+  audrey,
+  bingwen,
+  brennan,
+  claire,
+  gen,
+  huiwen,
+  ken,
+  nicholas,
+  tasha,
+  tongYing,
+  velen,
+  waishun,
+  wendy,
+  wuyou,
+  zhekai,
+  profilePlaceholder} from "../assets";
 
   //{
   //  id: "message-database",
@@ -33,7 +54,7 @@ export const teamMembers = [
   {
     id: 1,
     name: "Bing Wen Tan",
-    picture: profilePlaceholder,
+    picture: bingwen,
     linkedin: 'https://www.linkedin.com/in/tbw89',
     title: "Founder"
   },
@@ -61,21 +82,21 @@ export const teamMembers = [
   {
     id: 5,
     name: "Wendy Po",
-    picture: profilePlaceholder,
+    picture: wendy,
     linkedin: "https://www.linkedin.com/in/wendypowl",
     title: "UX Team Lead"
   },
   {
     id: 6,
     name: "Tasha Tan",
-    picture: profilePlaceholder,
+    picture: tasha,
     linkedin: "https://www.linkedin.com/in/tasha-tan-mx",
     title: "UX Designer"
   },
   {
     id: 7,
     name: "Amanda Goh",
-    picture: profilePlaceholder,
+    picture: amanda,
     linkedin: "https://www.linkedin.com/in/amandagohyl",
     title: "New Gen AI"
   },
@@ -103,7 +124,7 @@ export const teamMembers = [
   {
     id: 11,
     name: "Claire Pan",
-    picture: profilePlaceholder,
+    picture: claire,
     linkedin: "",
     title: "UX Designer"
   },  
@@ -117,14 +138,14 @@ export const teamMembers = [
   {
     id: 13,
     name: "Hui Wen Ow",
-    picture: profilePlaceholder,
+    picture: huiwen,
     linkedin: "",
     title: "Product Manager"
   },  
   {
     id: 14,
     name: "Velen",
-    picture: profilePlaceholder,
+    picture: velen,
     linkedin: "",
     title: "UX Designer"
   },  
