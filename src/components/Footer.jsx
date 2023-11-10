@@ -34,16 +34,15 @@ const Footer = () => (
         <div className="text-[20px]">Find us on</div>
         <div className="flex flex-col gap-y-3 ss:gap-y-6 text-[16px]">
           {socialMedia.map((social, index) => (
-            <div key={index} className="flex flex-row">
-              <img
-                key={social.id}
-                src={social.icon}
-                alt={social.id}
-                className="w-[21px] h-[21px] object-contain cursor-pointer mr-6"
-                onClick={() => window.open(social.link)}
-              />
-              <span className="text-[16px]">{social.text}</span>
-            </div>
+            <a key={index} href={social.link} target="_blank" className="flex flex-row">
+                <img
+                  key={social.id}
+                  src={social.icon}
+                  alt={social.id}
+                  className="w-[21px] h-[21px] object-contain cursor-pointer mr-6"
+                />
+                <span className="text-[16px]">{social.text}</span>
+            </a>
           ))}
         </div>
       </div>

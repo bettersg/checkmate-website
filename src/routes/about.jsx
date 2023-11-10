@@ -20,7 +20,7 @@ const About = () => {
   return (
     <div className="w-full bg-checkBG font-poppins text-checkBlack flex flex-col items-center">
       <div className="flex flex-col justify-center">
-        <div className="xl:max-w-[1280px] w-full flex flex-col px-10 md:px-20 mx-auto">
+        <div className="xl:max-w-[1280px] w-full flex flex-col  mx-auto">
           <h1 className="font-bold text-[36px] md:text-[48px] text-checkShadeDark pb-8 pt-6 md:pt-24 w-full text-left">
             About Us
           </h1>
@@ -62,7 +62,7 @@ const About = () => {
           </p>
 
           {/** Our impact section */}
-          <div className=" md:w-full flex flex-col md:flex-row gap-x-12 md:px-12 py-12 items-center">
+          <div className="xl:max-w-[1280px] md:w-full flex flex-col md:flex-row gap-x-12 md:px-12 py-12 items-center">
             <img src={logoSimple} className="w-1/4 p-4" alt="CheckMate" />
             <div className="w-full md:w-3/4 bg-checkWhite  shadow-2xl px-12 py-8 rounded-carousel flex flex-col gap-y-4">
               <h2 className="font-bold text-[36px] text-checkPrimary600">

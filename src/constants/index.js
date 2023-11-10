@@ -55,93 +55,155 @@ export const teamMembers = [
     id: 1,
     name: "Bing Wen Tan",
     picture: bingwen,
-    linkedin: 'https://www.linkedin.com/in/tbw89',
+    linkedin: 'https://www.linkedin.com/in/tbw89/',
     title: "Founder"
   },
   {
     id: 2,
-    name: "Carlos Leyva-Salas",
-    picture: profilePlaceholder,
-    linkedin: 'https://www.linkedin.com/in/leyvacarlos',
-    title: "Head of Growth"
+    name: "Wu You",
+    picture: wuyou,
+    linkedin: "https://www.linkedin.com/in/wu-you/",
+    title: "Data Science Lead"
   },
   {
     id: 3,
-    name: "Vincent Teyssier",
-    picture: profilePlaceholder,
-    linkedin: "https://www.linkedin.com/in/vincent-teyssier/",
-    title: "CTO"
-  },
-  {
-    id: 4,
-    name: "Su Yuen Chin",
-    picture: profilePlaceholder,
-    linkedin: "https://www.linkedin.com/in/suyuen",
-    title: "Advisor"
-  },
-  {
-    id: 5,
-    name: "Wendy Po",
-    picture: wendy,
-    linkedin: "https://www.linkedin.com/in/wendypowl",
-    title: "UX Team Lead"
-  },
-  {
-    id: 6,
-    name: "Tasha Tan",
-    picture: tasha,
-    linkedin: "https://www.linkedin.com/in/tasha-tan-mx",
-    title: "UX Designer"
-  },
-  {
-    id: 7,
     name: "Amanda Goh",
     picture: amanda,
     linkedin: "https://www.linkedin.com/in/amandagohyl",
     title: "Fact-Checking Lead"
   },
   {
-    id: 9,
-    name: "Yong En",
+    id: 4,
+    name: "Carlos Leyva-Salas",
     picture: profilePlaceholder,
-    linkedin: "",
-    title: ""
+    linkedin: 'https://www.linkedin.com/in/leyvacarlos/',
+    title: "Head of Growth"
+  },
+  {
+    id: 5,
+    name: "Hui Wen Ow",
+    picture: huiwen,
+    linkedin: "https://www.linkedin.com/in/owhuiwen/",
+    title: "Strategy & Partnerships Lead"
+  }, 
+  {
+    id: 6,
+    name: "Vincent Teyssier",
+    picture: profilePlaceholder,
+    linkedin: "https://www.linkedin.com/in/vincent-teyssier/",
+    title: "CTO"
+  },
+  {
+    id: 7,
+    name: "Velen Chew",
+    picture: velen,
+    linkedin: "https://www.linkedin.com/in/velen-c/",
+    title: "UX Lead"
+  },
+	{
+    id: 8,
+    name: "Ken Chen",
+    picture: profilePlaceholder,
+    linkedin: ken,
+    title: "Academic & Fact-checking Partnerships"
+  },
+  {
+    id: 9,
+    name: "Audrey Tim",
+    picture: profilePlaceholder,
+    linkedin: audrey,
+    title: "Social Media Content"
   },
   {
     id: 10,
-    name: "Zhi Hong",
+    name: "Genevieve Tan",
+    picture: gen,
+    linkedin: "https://www.linkedin.com/in/genevieve-tan-weiling/",
+    title: "Social Media Content & UX Designer"
+  },
+	{
+    id: 11,
+    name: "Ruth Smalley",
     picture: profilePlaceholder,
-    linkedin: "",
-    title: ""
+    linkedin: "https://www.linkedin.com/in/ruth-smalley-13b746b8/",
+    title: "Social Media Content"
   },
   {
-    id: 11,
+    id: 12,
+    name: "Tanya Lim",
+    picture: profilePlaceholder,
+    linkedin: "https://www.linkedin.com/in/tanya-lim/",
+    title: "Corp & Govt Partnerships"
+  },
+	{
+    id: 13,
+    name: "Ahmed Bahajjaj",
+    picture: ahmed,
+    linkedin: "https://www.linkedin.com/in/ahmed-bahajjaj/",
+    title: "Backend Engineer"
+  },
+	{
+    id: 14,
+    name: "Brennan Tan",
+    picture: brennan,
+    linkedin: "https://www.linkedin.com/in/brennantanjiale/",
+    title: "Backend Engineer"
+  },
+  {
+    id: 15,
+    name: "Jerome Ng",
+    picture: profilePlaceholder,
+    linkedin: "https://www.linkedin.com/in/jerome-ng/",
+    title: "Backend Engineer"
+  },
+  {
+    id: 16,
+    name: "Low Zhe Kai",
+    picture: zhekai,
+    linkedin: "https://www.linkedin.com/in/lowzhekai/",
+    title: "Frontend Engineer"
+  },
+  {
+    id: 17,
+    name: "Tong Ying",
+    picture: tongYing,
+    linkedin: "https://www.linkedin.com/in/tong-ying/",
+    title: "UX Designer"
+  },
+	{
+    id: 18,
+    name: "Yuki Neo",
+    picture: profilePlaceholder,
+    linkedin: "https://www.linkedin.com/in/yukineoweiqian/",
+    title: "UX Designer & Frontend Engineer"
+  },
+  {
+    id: 19,
     name: "Claire Pan",
     picture: claire,
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/cympan/",
     title: "UX Designer"
   },  
   {
-    id: 12,
-    name: "Qin",
-    picture: profilePlaceholder,
-    linkedin: "",
+    id: 20,
+    name: "Tasha Tan",
+    picture: tasha,
+    linkedin: "https://www.linkedin.com/in/tasha-tan-mx",
     title: "UX Designer"
-  },  
-  {
-    id: 13,
-    name: "Hui Wen Ow",
-    picture: huiwen,
-    linkedin: "",
-    title: "Product Manager"
-  },  
-  {
-    id: 14,
-    name: "Velen",
-    picture: velen,
-    linkedin: "",
-    title: "UX Designer"
-  },  
+  },{
+    id: 21,
+    name: "Wendy Po",
+    picture: wendy,
+    linkedin: "https://www.linkedin.com/in/wendypowl",
+    title: "UX Lead"
+  },
+	{
+    id: 22,
+    name: "Lee Wai Shun",
+    picture: waishun,
+    linkedin: "https://www.linkedin.com/in/wai-shun-lee/",
+    title: "Frontend Engineer"
+  },
 ]
 
 
@@ -156,7 +218,7 @@ export const socialMedia = [
   {
     id: "social-media-1",
     icon: telegram,
-    link: "t.me/checkmatesg",
+    link: "https://t.me/checkmatesg",
     text: "checkmatesg"
   },
   {

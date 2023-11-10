@@ -92,13 +92,13 @@ const Check = () => {
                   <span className="text-checkPrimary600 text-[16px] ss:text-[20px]">Learn more</span>
                   <img src={arrowUp} className="fill-checkPrimary600" />
                 </a>
-                <a
+                {/*<a
                   href="https://bit.ly/add-checkmate"
                   className="cursor-pointer flex flex-row items-center justify-center gap-x-4 bg-checkPrimary600 font-workSans font-medium rounded-[50px] px-5 py-4 text-center max-w-sm"
                 >
                   <span className="text-checkWhite text-[16px] ss:text-[20px]">Join as a fact checker</span>
                   <img src={arrowRight} />
-                </a>
+  </a>*/}
               </div>
             </div>
           </div>
