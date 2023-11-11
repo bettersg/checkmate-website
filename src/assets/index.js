@@ -79,6 +79,8 @@ import waishun from "./waishun.jpg"
 import wendy from "./wendy.jpg"
 import wuyou from "./wuyou.jpg"
 import zhekai from "./zhekai.jpg"
+import vincent from "./vincent.jpg"
+import qin from "./qin.jpg"
 
 
 export {
@@ -99,6 +101,8 @@ export {
   wendy,
   wuyou,
   zhekai,
+  vincent,
+  qin,
   bill,
   card,
   logo,
