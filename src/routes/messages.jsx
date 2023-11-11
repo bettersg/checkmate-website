@@ -84,8 +84,8 @@ const Messages = () => {
         return response.json();
       })
       .then((data) => {
-        console.log("hits:", data.hits);
-        console.log("endpoint", MESSAGE_DATABASE_API_ENDPOINT);
+        //console.log("hits:", data.hits);
+        //console.log("endpoint", MESSAGE_DATABASE_API_ENDPOINT);
 
         setIsLoading(false);
         setMessages(data.hits.filter((hit) => !!hit.document.text));
@@ -192,7 +192,7 @@ const Messages = () => {
 
     try {
       setIsLoading(true);
-      console.log(MESSAGE_DATABASE_API_ENDPOINT);
+      //console.log(MESSAGE_DATABASE_API_ENDPOINT);
       const axiosInstance = axios.create({
         baseURL: MESSAGE_DATABASE_API_ENDPOINT,
         params: {

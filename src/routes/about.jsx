@@ -122,9 +122,6 @@ const About = () => {
         </div>
         <div className="xl:max-w-[1280px] md:w-full w-full ss:w-[calc(100%/2-20px)] pt-12 flex flex-col ss:flex-row flex-wrap gap-x-6 gap-y-8 mx-auto pl-0 ss:pl-4 items-center justify-items-center mb-12">
           {teamMembers.map((member, index) => {
-            if (member.picture == profilePlaceholder) {
-              console.log('placeholder')
-            }
             return (
               <a
                 href={member.linkedin}
