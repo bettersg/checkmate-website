@@ -14,6 +14,7 @@ import {
   tasha,
   tongYing,
   velen,
+  vincent,
   waishun,
   wendy,
   wuyou,
@@ -88,7 +89,7 @@ export const teamMembers = [
   {
     id: 6,
     name: "Vincent Teyssier",
-    picture: profilePlaceholder,
+    picture: vincent,
     linkedin: "https://www.linkedin.com/in/vincent-teyssier/",
     title: "Website Lead",
   },
@@ -102,15 +103,15 @@ export const teamMembers = [
   {
     id: 8,
     name: "Ken Chen",
-    picture: profilePlaceholder,
-    linkedin: ken,
+    picture: ken,
+    linkedin: "",
     title: "Fact-Checking, AI/ML",
   },
   {
     id: 9,
     name: "Audrey Tim",
-    picture: profilePlaceholder,
-    linkedin: audrey,
+    picture: audrey,
+    linkedin: "",
     title: "Growth & Marketing",
   },
   {
