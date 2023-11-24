@@ -7,7 +7,6 @@ import {
   easeInOut,
   cubicBezier,
 } from "framer-motion";
-import styled from "styled-components";
 import { useRef, useState, useEffect } from "react";
 
 const Check = () => {
@@ -88,7 +87,7 @@ const Check = () => {
           <div className="bg-checkBG sm:px-16 px-6 flex flex-col justify-center items-center">
             <div className="xl:max-w-[1280px] w-full flex flex-col justify-center">
               {/** Text block */}
-              <h2 className="text-checkPrimary600 font-bold leading-none font-poppins tracking-wide text-center text-[36px] sm:text-[48px] md:text-[64px] px-0 sm:px-8 md:px-16">
+              <h2 className="text-checkPrimary600 font-bold leading-nogine font-poppins tracking-wide text-center text-[36px] sm:text-[48px] md:text-[64px] px-0 sm:px-8 md:px-16">
                 CheckMate is powered by a crew of multidisciplinary volunteers
                 who separate fact from fiction using the power of voting and
                 artificial intelligence. <br />
@@ -121,15 +120,5 @@ const Check = () => {
     </div>
   );
 };
-
-const StyledInputWrap = styled.div`
-  position: relative;
-  border-radius: 999px;
-  background-color: #eee;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px 16px;
-`;
 
 export default Check;
