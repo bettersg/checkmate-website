@@ -25,46 +25,47 @@ const Check = () => {
         }
         setIndex(next);
       }, 3 * 1000);
-    }, [index, setIndex, texts]);
+    }, [index, setIndex]);
 
     return (
       <div className="text-checkPrimary600">
-          <AnimatePresence initial={false}>
-            <motion.span
-              position="absolute"
-              key={index}
-              layout
-              variants={{
-                enter: {
-                  translateY: -20,
-                  opacity: 0,
-                  height: 0,
-                },
-                center: {
-                  zIndex: 1,
-                  translateY: 0,
-                  opacity: 1,
-                  height: "auto",
-                  transform: "none",
-                  position: "absolute",
-                },
-                exit: {
-                  zIndex: 0,
-                  opacity: 0,
-                  height: 0,
-                },
-              }}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                translateY: { type: "spring", stiffness: 300, damping: 200 },
-                opacity: { duration: 0.5 },
-              }}
-            >
-              {texts[index]}  
-            </motion.span>
-          </AnimatePresence>
+        <AnimatePresence initial={false}>
+          <motion.span
+            position="absolute"
+            key={index}
+            layout
+            variants={{
+              enter: {
+                translateY: -20,
+                opacity: 0,
+                // height: 0,
+              },
+              center: {
+                zIndex: 1,
+                translateY: 0,
+                opacity: 1,
+                position: "relative",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              },
+              exit: {
+                zIndex: 0,
+                opacity: 0,
+                // height: 0,
+              },
+            }}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              translateY: { type: "spring", stiffness: 300, damping: 200 },
+              opacity: { duration: 0.5 },
+            }}
+          >
+            {texts[index]}
+          </motion.span>
+        </AnimatePresence>
       </div>
     );
   };
@@ -73,12 +74,14 @@ const Check = () => {
     <div className="w-100 mt-20">
       <motion.div className="block">
         <motion.div className="overflow-x-hidden">
-          <h1 className="text-[40px] md:text-[64px] flex flex-col ss:flex-row justify-center flex-1 font-poppins font-bold text-checkShadeDark text-center pb-24">
+          <h1 className="text-[40px] md:text-[64px] w-full flex flex-col ss:flex-row justify-center flex-1 font-poppins font-bold text-checkShadeDark text-center pb-24">
             <span className="flex-nowrap">Check dubious&nbsp;</span>
+            <div className="text-loop-container h-px">
               <TextLoop texts={["messages", "email", "flyers", "QR codes"]} />
+            </div>
           </h1>
         </motion.div>
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.8 }}
