@@ -78,7 +78,7 @@ const Check = () => {
               <TextLoop texts={["messages", "email", "flyers", "QR codes"]} />
           </h1>
         </motion.div>
-        <motion.div
+        <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.8 }}
