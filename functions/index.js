@@ -267,7 +267,8 @@ router.get("/publicmessages", async (req, res) => {
   // get the query parameters
   if (req.query) {
     if (req.query['search']) {var search = req.query['search']} else {var search = "*"}
-    if (req.query['categories']) {var categories = req.query['categories']} else {var categories = ""}
+    //if (req.query['categories']) {var categories = req.query['categories']} else {var categories = "illicit,untrue,misleading,accurate,scam,spam,legitimate"}
+    if (req.query['categories']) {var categories = req.query['categories']} else {var categories = "illicit,untrue,misleading,accurate,scam,spam"}
     if (req.query['status']) {var status = req.query['status']; console.log('status', status)} else {var status = ""}
     if (req.query['report_count']) {var report_count = req.query['report_count']} else {var report_count = ""}
     if (req.query['report_date_start']) {

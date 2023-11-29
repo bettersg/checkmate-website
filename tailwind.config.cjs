@@ -62,7 +62,8 @@ module.exports = {
         workSans: ["Work Sans", "sans-serif"],
       },
       borderRadius: {
-        'carousel': '64px'
+        'carousel': '64px',
+        'card': '24px'
       }
     },
     screens: {

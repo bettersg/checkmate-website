@@ -34,15 +34,7 @@ import work04 from "./work04.png"
 import qr from "./qr.png"
 import arrowSetup from "./arrow-setup.svg"
 import arrowWork from "./arrow-work.svg"
-import team01 from "./team01.png"
-import team02 from "./team02.png"
-import team03 from "./team03.png"
-import team04 from "./team04.png"
-import team05 from "./team05.png"
-import team06 from "./team06.png"
-import team08 from "./team08.png"
 import team09 from "./team09.png"
-import team10 from "./team10.png"
 import scamshield1 from "./scamshield1.png"
 import scamshield2 from "./scamshield2.png"
 import faqIcon from "./faq.svg"
@@ -68,10 +60,49 @@ import search from "./search.svg"
 import clear from "./clear.svg"
 import clearDark from "./clearDark.svg"
 import filter from "./filter.svg"
-import arrowSpiralDown from "./arrow-spiral-down.svg";
+import arrowSpiralDown from "./arrow-spiral-down.svg"
+import profilePlaceholder from "./profile-placeholder.svg"
+import ahmed from "./ahmed.jpg"
+import amanda from "./amanda.jpg"
+import audrey from "./audrey.jpg"
+import bingwen from "./bingwen.jpg"
+import brennan from "./brennan.jpg"
+import claire from "./claire.jpg"
+import gen from "./Gen.jpg"
+import huiwen from "./huiwen.jpg"
+import ken from "./ken.jpg"
+import nicholas from "./nicholas.jpg"
+import tasha from "./tasha.jpg"
+import tongYing from "./tong-ying.jpg"
+import velen from "./velen.jpg"
+import waishun from "./waishun.jpg"
+import wendy from "./wendy.jpg"
+import wuyou from "./wuyou.jpg"
+import zhekai from "./zhekai.jpg"
+import vincent from "./vincent.jpg"
+import qin from "./qin.jpg"
 
 
 export {
+  ahmed,
+  amanda,
+  audrey,
+  bingwen,
+  brennan,
+  claire,
+  gen,
+  huiwen,
+  ken,
+  nicholas,
+  tasha,
+  tongYing,
+  velen,
+  waishun,
+  wendy,
+  wuyou,
+  zhekai,
+  vincent,
+  qin,
   bill,
   card,
   logo,
@@ -109,15 +140,7 @@ export {
   qrFc,
   arrowSetup,
   arrowWork,
-  team01,
-  team02,
-  team03,
-  team04,
-  team05,
-  team06,
-  team08,
   team09,
-  team10,
   scamshield1,
   scamshield2,
   faqIcon,
@@ -142,5 +165,6 @@ export {
   clear,
   clearDark,
   filter,
-  arrowSpiralDown
+  arrowSpiralDown,
+  profilePlaceholder
 };

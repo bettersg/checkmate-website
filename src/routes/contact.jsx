@@ -1,6 +1,16 @@
-import React from "react"
+import React, { useEffect } from "react"
 
 const Contact = () => {
+
+  useEffect(() => {
+    const scrollDelay = 100;
+
+    const timeoutId = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, scrollDelay);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   return (
     <div id="privacy-policy" className={`flex flex-col items-start font-workSans font-medium`}>

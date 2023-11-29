@@ -45,6 +45,11 @@ const Navbar = () => {
     setToggle(false);
   }
 
+  // making sure we have the right active nav based on the url
+  navLinks.forEach(nav => {
+    if (window.location.pathname == "/" + nav.id && active != nav.title) {setActive(nav.title)}
+  })
+
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
       <ToastContainer />
@@ -63,7 +68,6 @@ const Navbar = () => {
             className={`font-workSans cursor-pointer text-xl pb-2 font-medium ${
               active === nav.title ? "text-checkPrimary600 border-b-4 border-checkPrimary600" : "text-checkShadeDark"
             } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
-            onClick={() => setActive(nav.title)}
           >
             <Link to={`${nav.id}`}>{nav.title}</Link>
           </li>
