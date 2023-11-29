@@ -1,42 +1,59 @@
 import styles from "../style";
 import { socialMedia } from "../constants";
-import { bettersg, scamshield } from "../assets"
-import { Link } from "react-router-dom"
+import { bettersg, scamshield } from "../assets";
+import { Link } from "react-router-dom";
 
 const Footer = () => (
-  <section id="footer" className={`w-full ${styles.paddingY} px-16 flex-col bg-checkPurple`}>
-    <div className="text-checkWhite w-full flex justify-between items-center md:flex-row flex-col pb-6">
-      <p className="font-poppins font-normal text-center text-[18px] leading-[27px] text-checkWhite">
-        Contact Us: <a href="mailto:checkmate@better.sg">checkmate@better.sg</a>
-      </p>
-      <div className="flex flex-row md:mt-0 mt-6">
-        <p className="font-poppins font-normal text-center text-[18px] leading-[27px] text-checkWhite">
-          <Link to="privacy-policy">Privacy Policy</Link>
-        </p>
+  <section
+    id="footer"
+    className={`w-full pt-[40px] md:pt-14 pb-14 px-16 flex justify-center items-center flex-col bg-checkBGFooter text-checkWhite font-poppins`} 
+  >
+    <div className="xl:max-w-[1280px] w-full flex flex-col md:flex-row gap-y-8 justify-center">
+      <div className="w-full md:w-1/4">
+        <div className="text-[20px]">CheckMate</div>
+        <div className="flex flex-col pl-4 pt-4 ss:pt-8 text-[16px] gap-y-3 ss:gap-y-6">
+          <Link to="/">Home</Link>
+          <Link to="/about">About Us</Link>
+          {/*<Link to="/message-database">Message Database</Link>*/}
+          <Link to="/contact">Contact Us</Link>
+        </div>
       </div>
-    </div>
-    
-    <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-white">
-      <p className="flex flex-col md:flex-row gap-x-2 items-center font-poppins font-normal text-center text-[18px] leading-[27px] text-checkWhite">
-        <span className="flex flex-row gap-x-2 items-center">A <a href="http://better.sg/"><img src={bettersg} /></a> initiative</span>{/**, </span>in collaboration with <a href="https://www.scamshield.org.sg/"><img src={scamshield} /></a>*/}
-      </p>
 
-      <div className="flex flex-col md:flex-row md:mt-0 mt-6 gap-y-2">
-        <div className="flex flex-row">
+      <div className="w-full md:w-1/4">
+        <div className="text-[20px]">Legal</div>
+        <div className="pl-4 pt-4 ss:pt-8 text-[16px]">
+          <Link to="/privacy-policy">Privacy Policy</Link>
+        </div>
+      </div>
+
+      <div className="w-full md:w-1/4 hidden ss:block">
+        <div className="">&nbsp;</div>
+      </div>
+
+      <div className="w-full md:w-1/4 flex flex-col gap-y-4 ss:gap-y-8">
+        <div className="text-[20px]">Find us on</div>
+        <div className="flex flex-col gap-y-3 ss:gap-y-6 text-[16px]">
           {socialMedia.map((social, index) => (
-            <img
-              key={social.id}
-              src={social.icon}
-              alt={social.id}
-              className={`w-[21px] h-[21px] object-contain cursor-pointer ${
-                index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
-              }`}
-              onClick={() => window.open(social.link)}
-            />
+            <a key={index} href={social.link} target="_blank" className="flex flex-row">
+                <img
+                  key={social.id}
+                  src={social.icon}
+                  alt={social.id}
+                  className="w-[21px] h-[21px] object-contain cursor-pointer mr-6"
+                />
+                <span className="text-[16px]">{social.text}</span>
+            </a>
           ))}
         </div>
-        <span className="ml-4 text-checkWhite font-poppins font-normal">© 2023 CheckMate</span>
       </div>
+    </div>
+
+    <div className="flex flex-row flex-wrap max-w-[1280px] w-full mt-16 font-normal">
+      Checkmate. A&nbsp;
+      <a href="https://better.sg" target="_blank">
+        better.sg
+      </a>
+      &nbsp;Initiative © 2023 CheckMate
     </div>
   </section>
 );

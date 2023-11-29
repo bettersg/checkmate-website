@@ -1,15 +1,19 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Hero from "./Hero";
-import Setup from "./Setup"
-import CTA from "./CTA"
-import Work from "./Work"
+import Approach from "./Approach"
+import Check from "./Check"
+import Faq from "./Faq"
+import Checked from "./Checked"
+import Cards3D from "./Cards3D"
 
 export {
   Navbar,
   Footer,
   Hero,
-  Setup,
-  Work,
-  CTA
+  Approach,
+  Check,
+  Checked,
+  Faq,
+  Cards3D
 };

@@ -36,7 +36,7 @@ const factchecks = () => {
   return (
     <div id="faq" className="flex flex-col items-center">
       <div className="bg-checkPurple text-checkWhite w-full flex flex-col items-start px-12 py-8">
-        <h1 className="flex-1 font-poppins font-semibold ss:text-[48px] text-[36px] text-center">
+        <h1 className="flex-1 font-poppins font-medium ss:text-[48px] text-[36px] text-center">
           Fact Checks
         </h1>
         <p className="font-workSans text-xl">In this page, you will find the messages that we have fact-checked here</p>

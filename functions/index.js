@@ -1,10 +1,14 @@
+const { request } = require("express");
+
 const functions = require("firebase-functions"),
       firebaseAdmin = require("firebase-admin").default,
       express = require("express"),
       cors = require("cors"),
       helmet = require("helmet"),
       cookieParser = require("cookie-parser"),
-      bodyParser = require("body-parser");
+      bodyParser = require("body-parser"),
+      Typesense = require("typesense"),
+      ts_credentials = require("./typesense.json");
 
 // Initialise an instance of Express and a router
 const app = express(),
@@ -44,6 +48,18 @@ const firestore = firebaseAdmin.firestore();
 // connect securely to the checkmate backend firestore
 const backend = firebaseAdmin.initializeApp( { credential: firebaseAdmin.credential.cert(require("./serviceAccount_backend.json")) } , "WhatsApp Webhook Handler");
 const firestore_backend = backend.firestore();
+
+// initialize the typesense client
+console.log(ts_credentials.hostname + '.a1.typesense.net')
+let ts_client = new Typesense.Client({
+  'nodes': [{
+    'host': ts_credentials.hostname + '.a1.typesense.net',
+    'port': '443',
+    'protocol': 'https'
+  }],
+  'apiKey': ts_credentials.api_key,
+  'connectionTimeoutSeconds': 3
+})
 
 /**
  * Exchange a short-lived (1 hour) token (a JWT) for a long-lived (2 weeks) session
@@ -196,6 +212,129 @@ router.get("/messages", async (req, res) => {
         functions.logger.error('Error: ', error)
         return res.sendStatus(203)
     }
+});
+
+/*router.get("/publicmessages", async (req, res) => {
+    try {
+      const snapshot = await firestore_backend.collection("messages").orderBy('firstTimestamp', 'desc').limit(20).get();
+     
+      // if result empty we send 204, otherwise we send 200 with the list of lists
+      if (snapshot.empty) {
+          functions.logger.log('GET messages returned no document!');
+          return res.sendStatus(204)
+      } else {
+          var docs = snapshot.docs.map(doc => doc.data());
+          //functions.logger.info(JSON.stringify(docs))
+          return res.status(200).send(JSON.stringify(docs));
+      }
+  } catch (error) {
+      functions.logger.error('Error: ', error)
+      return res.sendStatus(203)
+  }
+});*/
+
+/*router.get("/publicmessages", async (req, res) => {
+  try {
+    let searchParameters = {
+      'q'         : '*',
+      'query_by'  : 'text',
+      'sort_by'   : 'firstReceivedUnixTimestamp:desc',
+      'filter_by' : 'category:!=unsure',
+      'limit'     : 20,
+      'limit_hits': 20,
+      'per_page': 20
+    }
+
+    ts_client.collections('messagesProd')
+      .documents()
+      .search(searchParameters)
+      .then(function (searchResults) {
+        // if result empty we send 204, otherwise we send 200 with the list of lists
+        if (searchResults.empty) {
+          functions.logger.log('GET messages returned no document!');
+          return res.sendStatus(204)
+        } else {
+            return res.status(200).send(JSON.stringify(searchResults));
+        }
+      })
+} catch (error) {
+    functions.logger.error('Error: ', error)
+    return res.sendStatus(203)
+}
+});*/
+
+router.get("/publicmessages", async (req, res) => {
+  // get the query parameters
+  if (req.query) {
+    if (req.query['search']) {var search = req.query['search']} else {var search = "*"}
+    //if (req.query['categories']) {var categories = req.query['categories']} else {var categories = "illicit,untrue,misleading,accurate,scam,spam,legitimate"}
+    if (req.query['categories']) {var categories = req.query['categories']} else {var categories = "illicit,untrue,misleading,accurate,scam,spam"}
+    if (req.query['status']) {var status = req.query['status']; console.log('status', status)} else {var status = ""}
+    if (req.query['report_count']) {var report_count = req.query['report_count']} else {var report_count = ""}
+    if (req.query['report_date_start']) {
+      var report_date_start = req.query['report_date_start']
+      var date_filter_start = "firstReceivedUnixTimestamp:>" + report_date_start
+    } else {var report_date_start = ""}  
+    if (req.query['report_date_end']) {
+      var report_date_end = req.query['report_date_end']
+      var date_filter_end = "firstReceivedUnixTimestamp:<" + report_date_end
+    } else {var report_date_end = ""}  
+  }
+
+  // build the filter query
+  var filter = 'category:=[' + categories + ']'
+
+  switch(status) {
+    case 'reviewed': filter = filter + ' && isAssessed:=true'; break;
+    case 'reviewing': filter = filter + ' && isAssessed:=false'; break;
+    default: filter = filter + ' ';
+  }
+
+  switch(report_count) {
+    case '1': filter = filter + ' && instanceCount:<=5'; break;
+    case '6': filter = filter + ' && instanceCount:>5 && instanceCount:<=10'; break;
+    case '11': filter = filter + ' && instanceCount:>10 && instanceCount:<=20'; break;
+    case '20': filter = filter + ' && instanceCount:>20'; break;
+    default: filter = filter + ' ';
+  }
+
+  if (date_filter_start && date_filter_start != "") { 
+    filter = filter + ' && ' + date_filter_start;
+    if (date_filter_end && date_filter_end != "") {
+      filter = filter + ' && ' + date_filter_end
+    }
+  }
+
+  console.log('filter', filter)
+
+  // execute the query
+  try {
+    let searchParameters = {
+      'q'         : search,
+      'query_by'  : 'text',
+      'sort_by'   : 'firstReceivedUnixTimestamp:desc',
+      'filter_by' : filter,
+      'limit'     : 20,
+      'limit_hits': 20,
+      'per_page': 20
+    }
+
+    ts_client.collections('messagesProd')
+      .documents()
+      .search(searchParameters)
+      .then(function (searchResults) {
+        // if result empty we send 204, otherwise we send 200 with the list of lists
+        if (searchResults.empty) {
+          functions.logger.log('GET messages returned no document!');
+          return res.sendStatus(204)
+        } else {
+            return res.status(200).send(JSON.stringify(searchResults));
+        }
+      })
+} catch (error) {
+    functions.logger.error('Error: ', error)
+    return res.sendStatus(203)
+}
 });
 
 // Export the Express application as a single Firebase Function named "api" and add the vpc connector

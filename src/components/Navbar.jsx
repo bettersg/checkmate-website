@@ -7,6 +7,7 @@ import { signOut } from 'firebase/auth';
 
 import { close, logo, menu } from "../assets";
 import { navLinks } from "../constants";
+import ButtonCTAWhatsapp from "./ButtonCTAWhatsapp"
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -39,37 +40,54 @@ const Navbar = () => {
     });
   }
 
+  const handleMobileClick = (nav) => {
+    setActive(nav);
+    setToggle(false);
+  }
+
+  // making sure we have the right active nav based on the url
+  navLinks.forEach(nav => {
+    if (window.location.pathname == "/" + nav.id && active != nav.title) {setActive(nav.title)}
+  })
+
   return (
-    <nav className="w-full flex py-6 justify-between items-center navbar ">
+    <nav className="w-full flex py-6 justify-between items-center navbar">
       <ToastContainer />
+      {/** Logo */}
       <Link to="/">
         <div className="flex flex-row gap-x-2 items-center">
           <img src={logo} width="64px"/>
-          <span className="text-checkBlack text-xl font-extrabold">CheckMate</span>
         </div>
       </Link>
 
+      {/** Navbar menu options */}
       <ul className="list-none sm:flex hidden justify-center items-center flex-1 gap-x-2">
         {navLinks.map((nav, index) => (
           <li
             key={nav.id}
-            className={`font-poppins font-normal cursor-pointer text-xl ${
-              active === nav.title ? "text-checkPurple" : "text-checkPurple"
+            className={`font-workSans cursor-pointer text-xl pb-2 font-medium ${
+              active === nav.title ? "text-checkPrimary600 border-b-4 border-checkPrimary600" : "text-checkShadeDark"
             } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
-            onClick={() => setActive(nav.title)}
           >
             <Link to={`${nav.id}`}>{nav.title}</Link>
           </li>
         ))}
       </ul>
 
-      {user ? 
+      {/** Call to action */}
+      <div className='hidden sm:block'>
+        <ButtonCTAWhatsapp link="https://ref.checkmate.sg/add?utm_source=website&utm_medium=navbar"/>
+      </div>
+
+
+      {/** {user ? 
         <div className="text-checkPurple font-poppins font-normal cursor-pointer text-xl sm:flex hidden" onClick={handleLogout}>Logout</div>
       :
       <Link to="/login">
         <div className="text-checkPurple font-poppins font-normal cursor-pointer text-xl sm:flex hidden">Login</div>
       </Link>
-      }
+      } 
+      */}
       
 
       <div className="sm:hidden flex flex-1 justify-end items-center">
@@ -83,17 +101,17 @@ const Navbar = () => {
         {/** Mobile menu */}
         <div
           className={`${
-            !toggle ? "hidden" : "flex"
-          } p-6 bg-white absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar border-4 border-checkPurple`}
+            !toggle ? "hidden" : "absolute"
+          } p-6 bg-checkBG opacity-95 top-24 left-0 w-full h-full`}
         >
-          <ul className="list-none flex justify-end items-start flex-1 flex-col">
+          <ul className="list-none flex justify-end items-center flex-1 flex-col">
             {navLinks.map((nav, index) => (
               <li
                 key={nav.id}
-                className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                  active === nav.title ? "text-checkBlack" : "text-checkBlack"
+                className={`py-4 font-workSans font-medium cursor-pointer text-[20px] ${
+                  active === nav.title ? "text-checkWhite bg-checkPrimary600 rounded-[40px] w-full text-center bg-opacity-100" : "text-checkBlack"
                 } ${index === navLinks.length - 1 ? "mb-4" : "mb-4"}`}
-                onClick={() => setActive(nav.title)}
+                onClick={() => handleMobileClick(nav.title)}
               >
                 <Link to={`${nav.id}`}>{nav.title}</Link>
               </li>
@@ -101,7 +119,7 @@ const Navbar = () => {
             {user ? 
               <li
                 key='logout'
-                className={`font-poppins font-medium cursor-pointer text-[16px] text-checkBlack mb-4"`}
+                className={`font-workSans py-4 font-medium cursor-pointer text-[20px] text-checkBlack mb-4"`}
                 onClick={handleLogout}
               >
                 Logout
@@ -109,7 +127,7 @@ const Navbar = () => {
             :
               <li
                 key='login'
-                className={`font-poppins font-medium cursor-pointer text-[16px] text-checkBlack mb-4"`}
+                className={`font-workSans py-4 font-medium cursor-pointer text-[20px] text-checkBlack mb-4"`}
               >
                 <Link to="/login">Login</Link>
               </li>
