@@ -43,7 +43,7 @@ const OurImpact = () => {
     )   
 
     const MessagesChecked = () => (
-        <div style={{ minWidth: "100%", flexShrink: 0}} className="w-full bg-checkWhite shadow-2xl px-12 py-8 rounded-carousel flex flex-col gap-y-4">
+        <div style={{ minWidth: "100%"}} className="w-full bg-checkWhite shadow-2xl px-12 py-8 rounded-carousel flex flex-col gap-y-4">
             <h2 className="font-bold ss:text-[48px] text-[36px]">
                 <span className="from-checkPrimary600 to-checkSecondaryYellow500 bg-gradient-to-b bg-clip-text text-transparent">320+&nbsp;</span>
                 Message <br/>Checked
