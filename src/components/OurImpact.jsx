@@ -53,7 +53,7 @@ const OurImpact = () => {
 
     const MessagesVerified = () => (
         <div style={{ width: "100%", height: "100%" }} className="w-full bg-checkPrimary600 shadow-2xl px-12 py-8 rounded-carousel flex flex-col gap-y-4">
-            <h2 className="font-bold ss:text-[61px] text-[48px] text-white break-words">
+            <h2 className="font-bold ss:text-[61px] text-[48px] text-white">
             50+ Messages <br/>Verified Weekly
             </h2>
         </div>
