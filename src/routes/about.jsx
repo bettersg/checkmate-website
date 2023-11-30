@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { teamMembers } from "../constants/index";
-import { arrowSpiralDown, logoSimple, partnerHeader, profilePlaceholder } from "../assets";
+import {
+  arrowSpiralDown,
+  logoSimple,
+  partnerHeader,
+  profilePlaceholder,
+} from "../assets";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import OurImpact from "../components/OurImpact";
 
-
 const About = () => {
-  
   useEffect(() => {
     const scrollDelay = 100;
 
@@ -21,7 +24,7 @@ const About = () => {
   return (
     <div className="w-full bg-checkBG font-poppins text-checkBlack flex flex-col items-center">
       <div className="flex flex-col justify-center">
-        <div className="xl:max-w-[1280px] w-full flex flex-col  mx-auto">
+        <div className="xl:max-w-[1280px] w-full flex flex-col mx-auto">
           <h1 className="font-bold text-[36px] md:text-[48px] text-checkShadeDark pb-8 pt-6 md:pt-24 w-full text-left">
             About Us
           </h1>
@@ -33,8 +36,8 @@ const About = () => {
             In a world where misinformation and scams are commonplace, CheckMate
             harnesses the power of artificial intelligence coupled with
             crowdsourcing intelligence through our CheckMates: a network of
-            trusted volunteers who help verify any dubious messages that you might
-            come across.
+            trusted volunteers who help verify any dubious messages that you
+            might come across.
           </p>
 
           <h1 className="font-medium font-workSans text-checkPrimary600 text-[36px] mt-12 tracking-tight ss:tracking-normal">
@@ -44,10 +47,10 @@ const About = () => {
             CheckMate is a crowdsourced system that monitors messages sent to
             our CheckMate bot, funnels those in need of verification to our
             CheckMates, and replies users once we are confident on our
-            categorisation of the message. The CheckMate team has seen first-hand 
-            the negative impact of misinformation and scams on our
-            families, friends, across Singapore and the
-            rest of the world. To do our part, we decided to fight this problem,{" "}
+            categorisation of the message. The CheckMate team has seen
+            first-hand the negative impact of misinformation and scams on our
+            families, friends, across Singapore and the rest of the world. To do
+            our part, we decided to fight this problem,{" "}
             <strong>one message at a time.</strong>
           </p>
 
@@ -65,7 +68,12 @@ const About = () => {
           {/** Our impact section */}
           <div className="xl:max-w-[1280px] md:w-full flex flex-col md:flex-row gap-x-12 md:px-12 py-12 items-center">
             <img src={logoSimple} className="w-1/4 p-4" alt="CheckMate" />
-            <OurImpact />
+            <div
+              style={{ width: "100%" }}
+              className="w-full md:w-3/4 px-12 py-8 rounded-carousel flex flex-col gap-y-4"
+            >
+              <OurImpact />
+            </div>
           </div>
         </div>
 
@@ -121,9 +129,17 @@ const About = () => {
                 key={index}
                 className="flex flex-col items-center justify-items-center mx-auto"
               >
-                <img key={member.id} src={member.picture} className={`max-w-[289px] max-h-[308px] rounded-t-[36px] ${member.picture == profilePlaceholder ? "w-['85%'] px-4 pt-4 bg-checkCarouselRed": ""}`}/>
+                <img
+                  key={member.id}
+                  src={member.picture}
+                  className={`max-w-[289px] max-h-[308px] rounded-t-[36px] ${
+                    member.picture == profilePlaceholder
+                      ? "w-['85%'] px-4 pt-4 bg-checkCarouselRed"
+                      : ""
+                  }`}
+                />
                 <div className="flex flex-col items-center bg-checkWhite w-full p-4 rounded-b-[36px] shadow-2xl">
-                  <div className="font-poppins text-lg font-bold">  
+                  <div className="font-poppins text-lg font-bold">
                     {member.name}
                   </div>
                   <div className="font-poppins text-md font-normal">
@@ -131,8 +147,8 @@ const About = () => {
                   </div>
                 </div>
               </a>
-            )}
-          )}
+            );
+          })}
         </div>
 
         {/** Partner */}
@@ -140,7 +156,7 @@ const About = () => {
           <a href="https://www.scamshield.org.sg/" target="_blank">
             <img src={partnerHeader} alt="CheckMate" className="" />
           </a>
-          </div>*/} 
+          </div>*/}
       </div>
     </div>
   );
