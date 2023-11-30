@@ -14,7 +14,7 @@ const Check = () => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   // handle the change of text in Check dubious ...
-  const TextLoop = ({ texts }) => {
+  const TextLoop = ({ texts, height }) => {
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
@@ -31,7 +31,7 @@ const Check = () => {
       <div className="text-checkPrimary600">
         <AnimatePresence initial={false}>
           <motion.span
-            position="absolute"
+            position="relative"
             key={index}
             layout
             variants={{
@@ -52,15 +52,15 @@ const Check = () => {
               exit: {
                 zIndex: 0,
                 opacity: 0,
-                // height: 0,
+                height: 0,
               },
             }}
             initial="enter"
             animate="center"
             exit="exit"
             transition={{
-              translateY: { type: "spring", stiffness: 300, damping: 200 },
-              opacity: { duration: 0.5 },
+              translateY: { type: "spring", stiffness: 1000, damping: 10 },
+              opacity: { duration: 0 },
             }}
           >
             {texts[index]}
@@ -73,10 +73,10 @@ const Check = () => {
   return (
     <div className="w-100 mt-20">
       <motion.div className="block">
-        <motion.div className="overflow-x-hidden">
+        <motion.div className="overflow-x-hidden h-full">
           <h1 className="text-[40px] md:text-[64px] w-full flex flex-col ss:flex-row justify-center flex-1 font-poppins font-bold text-checkShadeDark text-center pb-24">
             <span className="flex-nowrap">Check dubious&nbsp;</span>
-            <div className="text-loop-container h-px">
+            <div className="text-loop-container">
               <TextLoop texts={["messages", "email", "flyers", "QR codes"]} />
             </div>
           </h1>
