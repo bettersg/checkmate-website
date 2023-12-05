@@ -26,8 +26,8 @@ const Privacy = () => {
   return (
     <div id="privacy" className={`flex flex-col items-start font-poppins`}>
       
-      <div className="xl:max-w-[1280px] mx-auto w-full flex flex-col items-start px-6 md:px-12 pt-6 md:pt-20 text-checkBlack">
-        <h1 className="flex-1 font-bold text-[48px] md:text-[64px] ">
+      <div className="xl:max-w-[1280px] mx-auto w-full flex flex-col items-start px-6 md:px-12 pt-10 md:pt-20 text-checkBlack">
+        <h1 className="flex-1 font-bold text-[48px] md:text-[64px]">
           Privacy Policy
         </h1>
         <p className="text-[12px] md:text-[16px] font-workSans font-medium">Last Updated: September 2023</p>

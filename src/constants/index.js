@@ -182,7 +182,7 @@ export const teamMembers = [
     name: "Yuki Neo",
     picture: profilePlaceholder,
     linkedin: "https://www.linkedin.com/in/yukineoweiqian/",
-    title: "Dev",
+    title: "Dev, UIUX",
   },
   {
     id: 20,
