@@ -4,13 +4,18 @@ import { whatsappOrange } from "../assets";
 import { motion } from "framer-motion";
 import { cards_content } from "../constants";
 
-const CARD_COLORS = ["#ff7557", "#ff5833", " #ff431a", "#ff431a", "#ff2e00"];
+const CARD_COLORS = ["#ff2e00", "#ff5833", " #ff431a", "#ff431a", "#ff7557"];
 const CARD_OFFSET = 20;
 const SCALE_FACTOR = 0.08;
 
 const Cards3D = () => {
-  const [cards, setCards] = useState(CARD_COLORS);
   const [cardsContent, setCardsContent] = useState(cards_content);
+
+  const sortedColors = CARD_COLORS.sort(
+    (color1, color2) => parseInt(color1.slice(1), 16) - parseInt(color2.slice(1), 16)
+  );
+
+  const [cards, setCards] = useState(sortedColors);
 
   const moveToEnd = async (from) => {
     if (from == cards.length - 1) {

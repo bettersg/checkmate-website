@@ -68,8 +68,8 @@ const About = () => {
           <div className="xl:max-w-[1280px] md:w-full flex flex-col md:flex-row gap-x-12 md:px-12 py-12 items-center">
             <img src={logoSimple} className="w-1/4 p-4" alt="CheckMate" />
             <div
-              style={{ width: "100%", alignContent: "center" }}
-              className="w-full md:w-3/4 px-12 py-8 rounded-carousel flex flex-col gap-y-4 flex-wrap"
+              style={{ width: "100%" }}
+              className="w-full md:w-3/4 px-12 py-8 rounded-carousel flex flex-col gap-y-4 flex-wrap content-center"
             >
               <OurImpact />
             </div>

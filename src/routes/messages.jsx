@@ -322,7 +322,7 @@ const Messages = () => {
 
   return (
     <div className="max-lg:p-4 w-full bg-checkBG font-poppins flex flex-col items-center max-w-[1280px] mx-auto">
-      <h1 className="flex-1 w-full font-poppins font-bold text-[48px] md:text-[64px] text-checkShadeDark text-left lg:pt-16 pb-6">
+      <h1 className="flex-1 w-full font-poppins font-bold text-[48px] md:text-[64px] text-checkShadeDark text-left lg:pt-16 pb-6  ">
         Message Database
       </h1>
       {/** Search bar */}
@@ -542,6 +542,7 @@ const Messages = () => {
         >
           {/** Popup modal, using stop propagation to prevent the modal from being closed on click and allow only if clicked outside of it */}
           <div
+            // style={{ marginLeft: "24px", marginRight: "24px"}}
             className="relative mx-auto p-6 border w-[32rem] shadow-lg rounded-[40px] bg-white flex flex-col gap-y-6 z-20"
             onClick={(e) => e.stopPropagation()}
           >
