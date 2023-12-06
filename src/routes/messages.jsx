@@ -322,7 +322,7 @@ const Messages = () => {
 
   return (
     <div className="max-lg:p-4 w-full bg-checkBG font-poppins flex flex-col items-center max-w-[1280px] mx-auto">
-      <h1 className="flex-1 w-full font-poppins font-bold ss:text-[64px] text-[48px] text-checkShadeDark text-left lg:pt-16 pb-8">
+      <h1 className="flex-1 w-full font-poppins font-bold text-[48px] md:text-[64px] text-checkShadeDark text-left lg:pt-16 pb-6">
         Message Database
       </h1>
       {/** Search bar */}
@@ -552,7 +552,7 @@ const Messages = () => {
               {capitalizeFirstLetter(popupContent.category)}
             </div>
             {/** Message text */}
-            <div className="text-checkGrayModal">{popupContent.text}</div>
+            <div className="text-checkGrayModal break-words">{popupContent.text}</div>
             {/** Stats line */}
             <div className="flex flex-row w-full gap-x-4">
               {/** Truth score */}

@@ -23,9 +23,8 @@ const About = () => {
 
   return (
     <div className="w-full bg-checkBG font-poppins text-checkBlack flex flex-col items-center">
-      <div className="flex flex-col justify-center">
-        <div className="xl:max-w-[1280px] w-full flex flex-col mx-auto">
-          <h1 className="font-bold text-[36px] md:text-[48px] text-checkShadeDark pb-8 pt-6 md:pt-24 w-full text-left">
+        <div className="xl:max-w-[1280px] w-full flex flex-col mx-auto px-6 md:px-12 py-10 md:py-20">
+          <h1 className="font-bold text-[48px] md:text-[64px] text-checkShadeDark w-full text-left pb-10">
             About Us
           </h1>
 
@@ -35,7 +34,7 @@ const About = () => {
           <p className="font-workSans font-medium text-[16px] md:text-[20px]">
             In a world where misinformation and scams are commonplace, CheckMate
             harnesses the power of artificial intelligence coupled with
-            crowdsourcing intelligence through our CheckMates: a network of
+            crowdsourcing intelligenace through our CheckMates: a network of
             trusted volunteers who help verify any dubious messages that you
             might come across.
           </p>
@@ -69,95 +68,95 @@ const About = () => {
           <div className="xl:max-w-[1280px] md:w-full flex flex-col md:flex-row gap-x-12 md:px-12 py-12 items-center">
             <img src={logoSimple} className="w-1/4 p-4" alt="CheckMate" />
             <div
-              style={{ width: "100%" }}
-              className="w-full md:w-3/4 px-12 py-8 rounded-carousel flex flex-col gap-y-4"
+              style={{ width: "100%", alignContent: "center" }}
+              className="w-full md:w-3/4 px-12 py-8 rounded-carousel flex flex-col gap-y-4 flex-wrap"
             >
               <OurImpact />
             </div>
           </div>
-        </div>
 
-        {/** Team members section */}
-        <div className="xl:max-w-[1280px] w-full flex flex-col items-start px-6 md:px-0">
-          <h1 className="w-full sm:w-3/4 md:w-1/2 text-[32px] md:text-[48px] font-bold font-poppins content-center">
-            Meet our{" "}
-            <span className="text-checkPrimary600">
-              <span className="italic">diverse</span> and{" "}
-              <span className="italic">multidisciplinary</span>
-            </span>{" "}
-            team of&nbsp;volunteers
-          </h1>
-          <p className="w-full sm:w-3/4 md:w-1/2 mt-4 text-workSans font-workSans text-[18px]">
-            We are currently part of better.sg, a #TechForGood non-profit
-            organisation. What brings us together is the drive to fight scams
-            and misinformation one message at a time. Check out our profiles
-            below!
-          </p>
-          <motion.div
-            animate={{ x: [0, 30, 0], y: [0, -30, 0] }}
-            transition={{ duration: 8, repeat: Infinity }}
-            className="self-end my-10 hidden ss:block"
-          >
-            <p className="relative rounded-full tracking-wider border text-sm sm:text-2xl font-medium border-black py-5 px-10">
-              Meet the bunch
-              <img
-                className="absolute top-[70%] -translate-x-[150%]"
-                src={arrowSpiralDown}
-              />
+          {/** Team members section */}
+          <div className="xl:max-w-[1280px] w-full flex flex-col items-start px-6 md:px-0">
+            <h1 className="w-full sm:w-3/4 md:w-1/2 text-[32px] md:text-[48px] font-bold font-poppins content-center">
+              Meet our{" "}
+              <span className="text-checkPrimary600">
+                <span className="italic">diverse</span> and{" "}
+                <span className="italic">multidisciplinary</span>
+              </span>{" "}
+              team of&nbsp;volunteers
+            </h1>
+            <p className="w-full sm:w-3/4 md:w-1/2 mt-4 text-workSans font-workSans text-[18px]">
+              We are currently part of better.sg, a #TechForGood non-profit
+              organisation. What brings us together is the drive to fight scams
+              and misinformation one message at a time. Check out our profiles
+              below!
             </p>
-          </motion.div>
-          <motion.div
-            animate={{ x: [0, 0, 0], y: [0, -20, 0] }}
-            transition={{ duration: 4, repeat: Infinity }}
-            className="self-end mt-8 mb-16 ss:hidden"
-          >
-            <p className="relative rounded-full tracking-wider border text-sm sm:text-2xl font-medium border-black py-5 px-10">
-              Meet the bunch
-              <img
-                className="absolute top-[130%] -translate-x-[30%] -rotate-12"
-                src={arrowSpiralDown}
-              />
-            </p>
-          </motion.div>
-        </div>
-        <div className="xl:max-w-[1280px] md:w-full w-full ss:w-[calc(100%/2-20px)] pt-12 flex flex-col ss:flex-row flex-wrap gap-x-6 gap-y-8 mx-auto pl-0 ss:pl-4 items-center justify-items-center mb-12">
-          {teamMembers.map((member, index) => {
-            return (
-              <a
-                href={member.linkedin}
-                target="_blank"
-                key={index}
-                className="flex flex-col items-center justify-items-center mx-auto"
-              >
+            <motion.div
+              animate={{ x: [0, 30, 0], y: [0, -30, 0] }}
+              transition={{ duration: 8, repeat: Infinity }}
+              className="self-end my-10 hidden ss:block"
+            >
+              <p className="relative rounded-full tracking-wider border text-sm sm:text-2xl font-medium border-black py-5 px-10">
+                Meet the bunch
                 <img
-                  key={member.id}
-                  src={member.picture}
-                  className={`max-w-[289px] max-h-[308px] rounded-t-[36px] ${
-                    member.picture == profilePlaceholder
-                      ? "w-['85%'] px-4 pt-4 bg-checkCarouselRed"
-                      : ""
-                  }`}
+                  className="absolute top-[70%] -translate-x-[150%]"
+                  src={arrowSpiralDown}
                 />
-                <div className="flex flex-col items-center bg-checkWhite w-full p-4 rounded-b-[36px] shadow-2xl">
-                  <div className="font-poppins text-lg font-bold">
-                    {member.name}
+              </p>
+            </motion.div>
+            <motion.div
+              animate={{ x: [0, 0, 0], y: [0, -20, 0] }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="self-end mt-8 mb-16 ss:hidden"
+            >
+              <p className="relative rounded-full tracking-wider border text-sm sm:text-2xl font-medium border-black py-5 px-10">
+                Meet the bunch
+                <img
+                  className="absolute top-[130%] -translate-x-[30%] -rotate-12"
+                  src={arrowSpiralDown}
+                />
+              </p>
+            </motion.div>
+          </div>
+          <div className="xl:max-w-[1280px] md:w-full w-full ss:w-[calc(100%/2-20px)] pt-12 flex flex-col ss:flex-row flex-wrap gap-x-6 gap-y-8 mx-auto pl-0 ss:pl-4 items-center justify-items-center mb-12">
+            {teamMembers.map((member, index) => {
+              return (
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  key={index}
+                  className="flex flex-col items-center justify-items-center mx-auto"
+                >
+                  <img
+                    key={member.id}
+                    src={member.picture}
+                    className={`max-w-[289px] max-h-[308px] rounded-t-[36px] ${
+                      member.picture == profilePlaceholder
+                        ? "w-['85%'] px-4 pt-4 bg-checkCarouselRed"
+                        : ""
+                    }`}
+                  />
+                  <div className="flex flex-col items-center bg-checkWhite w-full p-4 rounded-b-[36px] shadow-2xl">
+                    <div className="font-poppins text-lg font-bold">
+                      {member.name}
+                    </div>
+                    <div className="font-poppins text-md font-normal">
+                      {member.title || ""}
+                    </div>
                   </div>
-                  <div className="font-poppins text-md font-normal">
-                    {member.title || ""}
-                  </div>
-                </div>
-              </a>
-            );
-          })}
-        </div>
+                </a>
+              );
+            })}
+          </div>
 
-        {/** Partner */}
-        {/*<div className="w-full xl:max-w-[1280px] flex flex-col">
+          {/** Partner */}
+          {/*<div className="w-full xl:max-w-[1280px] flex flex-col">
           <a href="https://www.scamshield.org.sg/" target="_blank">
             <img src={partnerHeader} alt="CheckMate" className="" />
           </a>
           </div>*/}
-      </div>
+        </div>
+      
     </div>
   );
 };
