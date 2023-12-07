@@ -4,18 +4,14 @@ import { whatsappOrange } from "../assets";
 import { motion } from "framer-motion";
 import { cards_content } from "../constants";
 
-const CARD_COLORS = ["#ff2e00", "#ff5833", " #ff431a", "#ff431a", "#ff7557"];
+const CARD_COLORS = ["#ff7557", "#ff5833", " #ff431a", "#ff431a", "#ff2e00"];
 const CARD_OFFSET = 20;
 const SCALE_FACTOR = 0.08;
 
 const Cards3D = () => {
+  const [cards, setCards] = useState(CARD_COLORS);
   const [cardsContent, setCardsContent] = useState(cards_content);
-
-  const sortedColors = CARD_COLORS.sort(
-    (color1, color2) => parseInt(color1.slice(1), 16) - parseInt(color2.slice(1), 16)
-  );
-
-  const [cards, setCards] = useState(sortedColors);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const moveToEnd = async (from) => {
     if (from == cards.length - 1) {
@@ -31,15 +27,30 @@ const Cards3D = () => {
       <div className="relative flex justify-center items-center h-[50vh]">
         <ul className="relative w-full h-[320px] md:h-[220px] mx-4 sm:mx-16">
           {cards.map((color, index) => {
-            const canDrag = index === 0;
+            // const canDrag = index === 0;
             // need to trigger animation on start and execute moveTToEnd on repeat
+
+            // Corrected color mapping based on the specified conditions
+            let positionBasedColor;
+            if (index === 0 && currentIndex === 0) {
+              positionBasedColor = "#ff5833";
+            } else if (index === 1) {
+              positionBasedColor = "#ff431a";
+            } else if (index === 2) {
+              positionBasedColor = "#ff431a";
+            } else if (index === 3) {
+              positionBasedColor = "#ff2e00";
+            } else {
+              positionBasedColor = "#ff7557";
+            }
+
             return (
               <motion.li
                 key={color}
                 className="absolute w-full h-full rounded-carousel shadow-2xl list-none px-8 ss:px-12 md:px-24 py-16 text-checkWhite font-poppins"
                 style={{
                   transformOrigin: "top center",
-                  backgroundColor: color,
+                  backgroundColor: positionBasedColor,
                 }}
                 animate={{
                   top: index * -CARD_OFFSET,
