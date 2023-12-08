@@ -60,9 +60,9 @@ const OurImpact = () => {
     )
 
     const ActiveCheckers = () => (
-        <div style={{ width: "100%" }} className="w-full md:w-3/4 bg-checkSecondaryYellow500 shadow-2xl px-12 py-8 rounded-carousel flex flex-col gap-y-4">
+        <div style={{ width: "100%" }} className="w-full md:w-3/4 bg-checkSecondaryYellow500 shadow-2xl px-12 py-8 rounded-carousel flex flex-col gap-y-4 justify-center">
             <h2 className="font-bold ss:text-[61px] text-[48px] text-white text-left">
-                &gt;30 Active <br/>Checkers
+                &gt;30 <br/>Active Checkers
             </h2>
         </div>
     )

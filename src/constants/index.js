@@ -264,35 +264,30 @@ export const cards_content = [
     text: "Got a text message from “Alice the recruiter” at JobsDB?",
     buttonText: "Forward it in",
     link: "https://ref.checkmate.sg/add?utm_source=website&utm_medium=shufflecomponent",
-    color: "#ff7557",
   },
   {
     index: 1,
     text: "Find out if the deal is Too Good To Be True.",
     buttonText: "Forward it to CheckMate",
     link: "https://ref.checkmate.sg/add?utm_source=website&utm_medium=shufflecomponent",
-    color: "#ff5833",
   },
   {
     index: 2,
     text: "Came across a strange website claiming to be Singtel?",
     buttonText: "Forward us the URL",
     link: "https://ref.checkmate.sg/add?utm_source=website&utm_medium=shufflecomponent",
-    color: "#ff431a",
   },
   {
     index: 3,
-    text: "Received an image in group chats  claiming vaccines don't work?",
+    text: "Received an image in group chats claiming vaccines don't work?",
     buttonText: "Forward it in",
     link: "https://ref.checkmate.sg/add?utm_source=website&utm_medium=shufflecomponent",
-    color: "#ff431a",
   },
   {
     index: 4,
     text: "Got an email saying your bank account has “security issues”?",
     buttonText: "Forward us a screenshot",
     link: "https://ref.checkmate.sg/add?utm_source=website&utm_medium=shufflecomponent",
-    color: "#ff2e00",
   },
 ];
 
