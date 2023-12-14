@@ -1,6 +1,6 @@
 import styles from "../style";
 import hero from "../assets/hero.png";
-import { heroPicture} from "../assets"
+import { heroPicture } from "../assets"
 import ButtonCTAWhatsapp from "./ButtonCTAWhatsapp";
 
 import { motion } from "framer-motion";
@@ -31,12 +31,12 @@ const Hero = () => {
           </div>
 
           <p className={`${styles.paragraph} max-w-md mt-5 text-checkBlack font-workSans text-[16px] ss:text-[16px]`}>
-            Not sure if a message can be trusted? Simply forward your message to CheckMate and we’ll check it for you!
+            Not sure if a message can be trusted? Simply forward it to CheckMate and we’ll check it for you!
           </p>
 
           <div className=" mb-2 mt-5 sm:mt-8 cursor-pointer max-w-[12rem]">
-            <ButtonCTAWhatsapp link="https://ref.checkmate.sg/add?utm_source=website&utm_medium=hero"/>
-          </div>  
+            <ButtonCTAWhatsapp link="https://ref.checkmate.sg/add?utm_source=website&utm_medium=hero" />
+          </div>
         </motion.div>
       </motion.div>
 
