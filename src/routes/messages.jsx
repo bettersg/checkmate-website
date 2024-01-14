@@ -6,7 +6,7 @@ import {
   arrowButtonDown,
   arrowButtonUp,
 } from "../assets";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import purecss from "../purecss.module.css";
 import Datepicker from "react-tailwindcss-datepicker";
 import axios from "axios";
@@ -17,6 +17,7 @@ import {
   MESSAGE_DATABASE_API_ENDPOINT,
 } from "../constants";
 import dayjs from "dayjs";
+import { debounce } from "lodash";
 
 const Messages = () => {
   const [messages, setMessages] = useState([]);
@@ -55,11 +56,6 @@ const Messages = () => {
   const statusDropdown = useRef(null);
   const reportedDropdown = useRef(null);
 
-  // on page load, fetch database messages
-  useEffect(() => {
-    fetchMessages();
-  }, []);
-
   useEffect(() => {
     const scrollDelay = 100;
 
@@ -91,6 +87,19 @@ const Messages = () => {
         setMessages(data.hits.filter((hit) => !!hit.document.text));
       });
   };
+
+  // on page load, fetch database messages
+  useEffect(() => {
+    fetchMessages();
+  }, []);
+
+  useEffect(() => {
+    debouncedFetchSelectedData();
+
+    return () => {
+      debouncedFetchSelectedData.cancel();
+    };
+  }, [searchText, status, selectedCateogries, reportDatePeriod, reportCount]);
 
   // this is where we handle toggle of each filter dropdown
   function handleClick(e) {
@@ -176,10 +185,7 @@ const Messages = () => {
     });
   };
 
-  // function to make a new search once a string has been submitted in the search bar
-  const handleSearchSubmit = async (e) => {
-    e.preventDefault();
-
+  const fetchSelectedData = async () => {
     let reportStartTimeUnix = dayjs(reportDatePeriod.startDate).unix();
     let reportEndTimeUnix = dayjs(reportDatePeriod.endDate).unix();
 
@@ -212,6 +218,14 @@ const Messages = () => {
     } catch (error) {
       console.error(`Error:`, error);
     }
+  };
+
+  const debouncedFetchSelectedData = debounce(fetchSelectedData, 300);
+
+  // function to make a new search once a string has been submitted in the search bar
+  const handleSearchSubmit = async (e) => {
+    e.preventDefault();
+    fetchSelectedData();
   };
 
   const getFilters = () => {
@@ -553,7 +567,9 @@ const Messages = () => {
               {capitalizeFirstLetter(popupContent.category)}
             </div>
             {/** Message text */}
-            <div className="text-checkGrayModal break-words">{popupContent.text}</div>
+            <div className="text-checkGrayModal break-words">
+              {popupContent.text}
+            </div>
             {/** Stats line */}
             <div className="flex flex-row w-full gap-x-4">
               {/** Truth score */}
