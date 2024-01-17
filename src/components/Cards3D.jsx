@@ -56,16 +56,15 @@ const Cards3D = () => {
                     index === topCard ? "#ff7557" : getPositionColor(index),
                 }}
                 animate={{
-                  top: index * -CARD_OFFSET,
+                  top: index * CARD_OFFSET,
                   scale: 1 - Math.abs(index - topCard) * SCALE_FACTOR,
-                  // scale: 1 + index * SCALE_FACTOR,
+                  // scale: 1 - SCALE_FACTOR,
                   // scale: 1 - index * SCALE_FACTOR,
                   zIndex: cards.length - Math.abs(index - topCard),
-                  // rotateX: Math.abs(index - topCard) * 5, // Rotate cards slightly for a 3D effect
-                  // rotateY: Math.abs(index - topCard) * 5, // Rotate cards slightly for a 3D effect
+                  rotateX: Math.abs(index - topCard) * 5, // Rotate cards slightly for a 3D effect
+                  rotateY: Math.abs(index - topCard) * 5, // Rotate cards slightly for a 3D effect
                   // rotateZ: Math.abs(index - topCard) * 5, // Rotate cards slightly for a 3D effect
                 }}
-                exit={{ opacity: 0 }}
               >
                 <div className="flex flex-col md:flex-row items-center gap-x-4 gap-y-4">
                   <div className="ss:text-[28px] md:text-[32px] text-[24px] font-medium">
