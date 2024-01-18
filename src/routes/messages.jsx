@@ -10,6 +10,7 @@ import { useEffect, useState, useRef, useMemo } from "react";
 import purecss from "../purecss.module.css";
 import Datepicker from "react-tailwindcss-datepicker";
 import axios from "axios";
+import TypesenseInstantSearchAdapter from "typesense-instantsearch-adapter";
 import {
   categories,
   statusValues,
@@ -199,17 +200,18 @@ const Messages = () => {
     try {
       setIsLoading(true);
       //console.log(MESSAGE_DATABASE_API_ENDPOINT);
-      const axiosInstance = axios.create({
-        baseURL: MESSAGE_DATABASE_API_ENDPOINT,
-        params: {
-          search: searchText,
-          categories: constructSelectedCategoriesString(),
-          status: status.toLowerCase(),
-          report_count: reportCount,
-          report_date_start: reportStartTimeUnix,
-          report_date_end: reportEndTimeUnix,
-        },
-      });
+      // const axiosInstance = axios.create({
+      // baseURL: MESSAGE_DATABASE_API_ENDPOINT,
+      // params: {
+      //   search: searchText,
+      //   categories: constructSelectedCategoriesString(),
+      //   status: status.toLowerCase(),
+      //   report_count: reportCount,
+      //   report_date_start: reportStartTimeUnix,
+      //   report_date_end: reportEndTimeUnix,
+      // }
+      //   baseURL:
+      // });
 
       const response = await axiosInstance.get();
       const result = response.data;
