@@ -113,6 +113,13 @@ const Messages = () => {
     ) {
       setIsStatusToggled(false);
     }
+    if (
+      reportedDropdown.current !== null &&
+      !e.target.closest(`#${reportedDropdown.current.id}`) &&
+      isReportedToggled
+    ) {
+      setIsReportedToggled(false);
+    }
   }
 
   // this function is updating the filterObject object once the datepicker is updated
