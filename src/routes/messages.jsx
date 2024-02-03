@@ -1,12 +1,5 @@
-import {
-  search,
-  clear,
-  clearDark,
-  filter,
-  arrowButtonDown,
-  arrowButtonUp,
-} from "../assets";
-import { useEffect, useState, useRef, useMemo } from "react";
+import * as assets from "../assets";
+import { useEffect, useState, useRef } from "react";
 import purecss from "../purecss.module.css";
 import Datepicker from "react-tailwindcss-datepicker";
 import axios from "axios";
@@ -139,10 +132,6 @@ const Messages = () => {
     return str.length > len ? str.substring(0, len - 1) + "..." : str;
   };
 
-  const capitalizeFirstLetter = (str) => {
-    return str[0].toUpperCase() + str.slice(1);
-  };
-
   const convertTimestamp = (timestamp) => {
     const date = new Date(timestamp * 1000); //convert to milliseconds
     const dateFormat =
@@ -238,7 +227,7 @@ const Messages = () => {
   const getFilters = () => {
     return (
       <div className="flex flex-row flex-wrap w-full justify-start items-center lg:p-8 gap-x-4 gap-y-4">
-        <img src={filter} className="max-lg:hidden" />
+        <img src={assets.filter} className="max-lg:hidden" />
         <div className="max-lg:hidden">Filters</div>
         <div className="max-lg:hidden border-r border-r-checkGray flex-none h-[3rem]">
           &nbsp;
@@ -258,7 +247,7 @@ const Messages = () => {
             <div className="flex flex-row items-center gap-x-4">
               Status:&nbsp;
               {status.length !== 0 ? status : "All"}
-              <img src={arrowButtonDown} className="h-2" alt="" />
+              <img src={assets.arrowButtonDown} className="h-2" alt="" />
             </div>
 
             {/** Dropdown values */}
@@ -298,7 +287,7 @@ const Messages = () => {
             <div className="flex flex-row gap-x-4 items-center">
               Reported:&nbsp;
               {getReportedText()}
-              <img src={arrowButtonDown} className="h-2" alt="" />
+              <img src={assets.arrowButtonDown} className="h-2" alt="" />
             </div>
 
             {/** Dropdown values */}
@@ -351,7 +340,7 @@ const Messages = () => {
       <form className="w-full font-workSans font-medium text-checkBlack">
         <div className="rounded-[50px] bg-checkWhite flex flex-row gap-x-2 px-6 py-6 items-center">
           <img
-            src={search}
+            src={assets.search}
             className="h-4 ss:h-7 flex-none cursor-pointer"
             alt="search"
             onClick={handleSearchSubmit}
@@ -365,7 +354,7 @@ const Messages = () => {
             onChange={(e) => setSearchText(e.target.value)}
           />
           <img
-            src={clear}
+            src={assets.clear}
             className="flex-none h-4 ss:h-7"
             alt="Clear"
             onClick={() => setSearchText("")}
@@ -455,12 +444,12 @@ const Messages = () => {
               setShowMobileFilters((showMobileFilters) => !showMobileFilters);
             }}
           >
-            <img src={filter} className="" />
+            <img src={assets.filter} className="" />
             <div className="">Filters</div>
             {showMobileFilters ? (
-              <img src={arrowButtonUp} className="h-2" />
+              <img src={assets.arrowButtonUp} className="h-2" />
             ) : (
-              <img src={arrowButtonDown} className="h-2" />
+              <img src={assets.arrowButtonDown} className="h-2" />
             )}
           </button>
           {showMobileFilters && getFilters()}
@@ -491,10 +480,8 @@ const Messages = () => {
               >
                 <div className="flex flex-col gap-y-6 bg-checkWhite rounded-t-card p-6 lg:h-[35vh]">
                   {/** Category */}
-                  <div className="ss:text-[28px] text-[24px]">
-                    {message.category
-                      ? capitalizeFirstLetter(message.category)
-                      : ""}
+                  <div className="ss:text-[28px] text-[24px] capitalize">
+                    {message.category ? message.category : ""}
                   </div>
                   {/** Report date */}
                   <div className="">
@@ -570,8 +557,8 @@ const Messages = () => {
             {/** Reported date */}
             {popupContent.messageDate}
             {/** Category */}
-            <div className="text-checkPrimary600 ss:text-[32px] text-[24px]">
-              {capitalizeFirstLetter(popupContent.category)}
+            <div className="text-checkPrimary600 ss:text-[32px] text-[24px] capitalize">
+              {popupContent.category}
             </div>
             {/** Message text */}
             <div className="text-checkGrayModal break-words">
