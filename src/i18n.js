@@ -34,6 +34,21 @@ i18n
           "hero.title_4": "Misinformation",
           "hero.paragraph":
             "Not sure if a message can be trusted? Simply forward it to CheckMate and we’ll check it for you!",
+          // Approach
+          "approach.title": "Our Approach",
+          "approach.card_1_title": "Unknown",
+          "approach.card_1_convo_text":
+            "LTA: Notice As no valid E-tag detected in your vehicle, your last trip on was unpaid. Please pay now to avoid penalty notice:",
+          "approach.card_1_convo_link": "https://itsascam.com",
+          "approach.card_1_subtext":
+            "Send in a dubious message, or a screenshot of the message and sender to us.",
+          "approach.card_2_title": "Unknown",
+          "approach.card_2_subtext":
+            "Our AI tries to classify the message. If it’s unable to, human checkers will review it!",
+          "approach.card_3_title": "From CheckMateSG",
+          "approach.card_3_convo_text": "This is likely a scam!",
+          "approach.card_3_subtext":
+            "Once checked, we inform you of the results!",
         },
       },
       cn: {
@@ -53,6 +68,20 @@ i18n
           "hero.title_4": "误传",
           "hero.paragraph":
             "不确定消息是否可信？只需将其转发给 CheckMate，我们就会为您检查！",
+          // Approach
+          "approach.title": "我们的方法",
+          "approach.card_1_title": "不知",
+          "approach.card_1_convo_text":
+            "LTA：通知 由于在您的车辆中未检测到有效的电子标签，因此您的上次行程未支付费用。请立即付款以避免罚款通知：",
+          "approach.card_1_convo_link": "https://itsascam.com",
+          "approach.card_1_subtext":
+            "向我们发送可疑消息或消息和发件人的屏幕截图.",
+          "approach.card_2_title": "不知",
+          "approach.card_2_subtext":
+            "我们的人工智能尝试对消息进行分类。如果无法，人工检查员将对其进行审核!",
+          "approach.card_3_title": "来自 CheckMateSG",
+          "approach.card_3_convo_text": "这很可能是一个骗局!",
+          "approach.card_3_subtext": "一旦检查完毕，我们将通知您结果！",
         },
       },
     },
