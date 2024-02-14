@@ -27,24 +27,22 @@ const Hero = () => {
           className="items-center"
         >
           <div className="flex flex-col items-start ss:text-[64px] text-[40px] font-poppins font-bold text-checkShadeDark">
-            <p className="leading-tight">
-              {t("hero.title1")}
-              {/* We verify */}
-            </p>
+            <p className="leading-tight">{t("hero.title_1")}</p>
             <p>
-              <span className="text-checkPrimary600 leading-tight">Scams</span>{" "}
-              and
+              <span className="text-checkPrimary600 leading-tight">
+                {t("hero.title_2")}
+              </span>{" "}
+              {t("hero.title_3")}
             </p>
             <p className="text-checkSecondaryYellow500 leading-tight">
-              Misinformation
+              {t("hero.title_4")}
             </p>
           </div>
 
           <p
             className={`${styles.paragraph} max-w-md mt-5 text-checkBlack font-workSans text-[16px] ss:text-[16px]`}
           >
-            Not sure if a message can be trusted? Simply forward it to CheckMate
-            and we’ll check it for you!
+            {t("hero.paragraph")}
           </p>
 
           <div className=" mb-2 mt-5 sm:mt-8 cursor-pointer max-w-[12rem]">
