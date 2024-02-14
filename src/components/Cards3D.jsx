@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { whatsappOrange } from "../assets";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { cards_content } from "../constants";
 
 const CARD_OFFSET = 30;
 const SCALE_FACTOR = 0.08;
 
 const Cards3D = () => {
+  const { t } = useTranslation();
+
   const [cards, setCards] = useState(cards_content);
 
   useEffect(() => {
@@ -63,14 +66,14 @@ const Cards3D = () => {
             >
               <div className="flex flex-col md:flex-row items-center gap-x-4 gap-y-4">
                 <div className="ss:text-[28px] md:text-[32px] text-[24px] font-medium">
-                  {card.text}
+                  {t(`card.${card.index}_text`)}
                 </div>
                 <a
                   href={card.link}
                   className="cursor-pointer flex flex-row flex-nowrap bg-checkWhite text-checkPrimary600 rounded-[50px] min-w-[20rem] md:min-w-[26rem] max-w-sm ss:max-w-xs px-8 py-4 justify-center items-center gap-x-4 font-workSans font-medium text-[16px] ss:text-[20px]"
                 >
                   <img src={whatsappOrange} className="w-8" alt="WhatsApp" />
-                  {card.buttonText}
+                  {t(`card.${card.index}_button`)}
                 </a>
               </div>
             </motion.li>

@@ -68,8 +68,24 @@ i18n
           "checked.card_2_text":
             "QR codes, Flyers, Advertisements, Spam, Screenshots, Deals too good to be true",
           "checked.cta": "See all",
+          // Cards3D
+          "card.0_text":
+            "Got a text message from “Alice the recruiter” at JobsDB?",
+          "card.0_button": "Forward it in",
+          "card.1_text": "Find out if the deal is Too Good To Be True.",
+          "card.1_button": "Forward it to CheckMate",
+          "card.2_text":
+            "Came across a strange website claiming to be Singtel?",
+          "card.2_button": "Forward us the URL",
+          "card.3_text":
+            "Received an image in group chats claiming vaccines don't work?",
+          "card.3_button": "Forward it in",
+          "card.4_text":
+            "Got an email saying your bank account has “security issues”?",
+          "card.4_button": "Forward us a screenshot",
         },
       },
+
       cn: {
         translation: {
           // Common
@@ -118,6 +134,17 @@ i18n
           "checked.card_2_text":
             "二维码、传单、广告、垃圾邮件、屏幕截图、好得令人难以置信的优惠",
           "checked.cta": "查看全部",
+          // Cards3D
+          "card.0_text": "收到了来自 JobsDB 的“招聘人员 Alice”的短信？",
+          "card.0_button": "转发到",
+          "card.1_text": "看看这笔交易是否好得令人难以置信.",
+          "card.1_button": "将其转发至 CheckMate",
+          "card.2_text": "遇到一个自称是 Singtel 的奇怪网站？",
+          "card.2_button": "将网址转发给我们",
+          "card.3_text": "在群聊中收到一张声称疫苗不起作用的图片？",
+          "card.3_button": "转发到",
+          "card.4_text": "收到一封电子邮件说您的银行帐户存在“安全问题”?",
+          "card.4_button": "给我们转发截图",
         },
       },
     },
