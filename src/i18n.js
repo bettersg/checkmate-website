@@ -19,7 +19,22 @@ i18n
     resources: {
       en: {
         translation: {
-          // here we will place our translations...
+          "nav.home": "Home",
+          "nav.about": "About Us",
+          "nav.message-database": "Message Database",
+          "nav.privacy-policy": "Privacy Policy",
+          "nav.contact": "Contact Us",
+          "hero.title1": "We verify",
+        },
+      },
+      cn: {
+        translation: {
+          "nav.home": "主页",
+          "nav.about": "关于我们",
+          "nav.message-database": "消息库",
+          "nav.privacy-policy": "隐私政策",
+          "nav.contact": "联系我们",
+          "hero.title1": "我们验证",
         },
       },
     },
