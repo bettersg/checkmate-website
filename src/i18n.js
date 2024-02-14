@@ -49,6 +49,13 @@ i18n
           "approach.card_3_convo_text": "This is likely a scam!",
           "approach.card_3_subtext":
             "Once checked, we inform you of the results!",
+          // Check
+          "check.title": "Check dubious",
+          "check.title_subtext": ["messages", "email", "flyers", "QR codes"],
+          "check.text_block":
+            "CheckMate is powered by a crew of multidisciplinary volunteers who separate fact from fiction using the power of voting and artificial intelligence.",
+          "check.hashtag": "#TechForGood",
+          "check.cta": "Learn more",
         },
       },
       cn: {
@@ -82,6 +89,13 @@ i18n
           "approach.card_3_title": "来自 CheckMateSG",
           "approach.card_3_convo_text": "这很可能是一个骗局!",
           "approach.card_3_subtext": "一旦检查完毕，我们将通知您结果！",
+          // Check
+          "check.title": "检查可疑的",
+          "check.title_subtext": ["信息", "电子邮件", "传单", "二维码"],
+          "check.text_block":
+            "CheckMate 由一群多学科志愿者提供支持，他们利用投票和人工智能的力量将事实与虚构分开.",
+          "check.hashtag": "#TechForGood",
+          "check.cta": "了解更多",
         },
       },
     },
