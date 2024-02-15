@@ -7,12 +7,11 @@ export default function Index() {
     const scrollDelay = 100;
 
     const timeoutId = setTimeout(() => {
-      window.scrollTo(0, 0);
+      // window.scrollTo(0, 0);
     }, scrollDelay);
 
     return () => clearTimeout(timeoutId);
   }, []);
-
 
   return (
     <div className="bg-checkBG w-full">
