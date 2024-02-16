@@ -19,9 +19,12 @@ i18n
     resources: {
       en: {
         translation: {
+          // Entities
+          "entity.scamshield": "ScamShield",
+          "entity.checkmate": "CheckMate",
+          "entity.bettersg": "better.sg",
           // Common
           "cta.button": "Try it now",
-          "entity.scamshield": "ScamShield",
           // Nav
           "nav.home": "Home",
           "nav.about": "About Us",
@@ -205,6 +208,11 @@ i18n
           "faq.answer_7_2":
             "We have also introduced mixed-model machine learning to assist with the matching and classification of messages, which has allowed us to respond faster to a wider variety of messages. If we do not respond to your message with an assessment within 24 hours of sending it in, please report it",
           "faq.answer_7_2_link": "here",
+          // === Footer ===
+          "footer.legal": "Legal",
+          "footer.find_us_on": "Find us on",
+          "footer.initiative": "Initiative",
+          "footer.channel": "Channel",
         },
       },
 
@@ -383,6 +391,10 @@ i18n
           "faq.answer_7_2":
             "我们还引入了混合模型机器学习来协助消息的匹配和分类，这使我们能够更快地响应更广泛的消息。如果我们在发送消息后 24 小时内没有回复您的消息并进行评估，请举报",
           "faq.answer_7_2_link": "这里",
+          // === Footer ===
+          "footer.legal": "法律",
+          "footer.find_us_on": "在 - 找到我们",
+          "footer.initiative": "倡议",
         },
       },
     },

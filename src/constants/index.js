@@ -218,7 +218,7 @@ export const socialMedia = [
     id: "social-media-1",
     icon: telegram,
     link: "https://t.me/checkmatesg",
-    text: "CheckMate Telegram Channel",
+    text: "CheckMate Telegram",
   },
   {
     id: "social-media-2",
