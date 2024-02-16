@@ -15,11 +15,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import cookies from "nookies";
 
-const languages = {
-  en: { navtiveName: "English", code: "en" },
-  cn: { navtiveName: "中文", code: "cn" },
-};
-
 import { FaLanguage } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { t } from "i18next";
@@ -141,7 +136,7 @@ const Navbar = () => {
                 } ${index === navLinks.length - 1 ? "mb-4" : "mb-4"}`}
                 onClick={() => handleMobileClick(nav.title)}
               >
-                <Link to={`${nav.id}`}>{nav.title}</Link>
+                <Link to={`${nav.id}`}> {t(`${nav.id}`)}</Link>
               </li>
             ))}
             {user ? (
