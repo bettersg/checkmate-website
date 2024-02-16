@@ -1,54 +1,47 @@
-import React from 'react';
+import React from "react";
 import { useState } from "react";
 
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { signOut } from 'firebase/auth';
+import { signOut } from "firebase/auth";
 
 import { close, logo, menu } from "../assets";
 import { navLinks } from "../constants";
-import ButtonCTAWhatsapp from "./ButtonCTAWhatsapp"
+import ButtonCTAWhatsapp from "./ButtonCTAWhatsapp";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import cookies from "nookies";
 
-
-
 const Navbar = () => {
-  const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
 
-  const handleLogout = () => {               
-    signOut(auth).then(() => {
-    // Sign-out successful.
-        navigate('/login')
-        toast('Signed out successfully', {
-          position: toast.POSITION.BOTTOM_CENTER
-        })
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        navigate("/login");
+        toast("Signed out successfully", {
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
         cookies.destroy(null, "session");
-    }).catch((error) => {
-      // An error happened.
-      console.log(error)
-      toast.error('Error during logout, contact your admin', {
-        position: toast.POSITION.BOTTOM_CENTER
       })
-    });
-  }
+      .catch((error) => {
+        // An error happened.
+        console.log(error);
+        toast.error("Error during logout, contact your admin", {
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+      });
+  };
 
   const handleMobileClick = (nav) => {
-    setActive(nav);
     setToggle(false);
-  }
-
-  // making sure we have the right active nav based on the url
-  navLinks.forEach(nav => {
-    if (window.location.pathname == "/" + nav.id && active != nav.title) {setActive(nav.title)}
-  })
+  };
 
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
@@ -56,29 +49,34 @@ const Navbar = () => {
       {/** Logo */}
       <Link to="/">
         <div className="flex flex-row gap-x-2 items-center">
-          <img src={logo} width="64px"/>
+          <img src={logo} width="64px" />
         </div>
       </Link>
 
       {/** Navbar menu options */}
       <ul className="list-none sm:flex hidden justify-center items-center flex-1 gap-x-2">
         {navLinks.map((nav, index) => (
-          <li
+          <NavLink
             key={nav.id}
-            className={`font-workSans cursor-pointer text-xl pb-2 font-medium ${
-              active === nav.title ? "text-checkPrimary600 border-b-4 border-checkPrimary600" : "text-checkShadeDark"
-            } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
+            to={`${nav.id}`}
+            className={({ isActive }) =>
+              `${
+                isActive
+                  ? "text-checkPrimary600 border-b-4 border-checkPrimary600"
+                  : "text-checkShadeDark"
+              } font-workSans cursor-pointer text-xl pb-2 font-medium 
+              ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`
+            }
           >
-            <Link to={`${nav.id}`}>{nav.title}</Link>
-          </li>
+            {nav.title}
+          </NavLink>
         ))}
       </ul>
 
       {/** Call to action */}
-      <div className='hidden sm:block'>
-        <ButtonCTAWhatsapp link="https://ref.checkmate.sg/add?utm_source=website&utm_medium=navbar"/>
+      <div className="hidden sm:block">
+        <ButtonCTAWhatsapp link="https://ref.checkmate.sg/add?utm_source=website&utm_medium=navbar" />
       </div>
-
 
       {/** {user ? 
         <div className="text-checkPurple font-poppins font-normal cursor-pointer text-xl sm:flex hidden" onClick={handleLogout}>Logout</div>
@@ -88,7 +86,6 @@ const Navbar = () => {
       </Link>
       } 
       */}
-      
 
       <div className="sm:hidden flex flex-1 justify-end items-center">
         <img
@@ -106,32 +103,38 @@ const Navbar = () => {
         >
           <ul className="list-none flex justify-end items-center flex-1 flex-col">
             {navLinks.map((nav, index) => (
-              <li
+              <NavLink
                 key={nav.id}
-                className={`py-4 font-workSans font-medium cursor-pointer text-[20px] ${
-                  active === nav.title ? "text-checkWhite bg-checkPrimary600 rounded-[40px] w-full text-center bg-opacity-100" : "text-checkBlack"
-                } ${index === navLinks.length - 1 ? "mb-4" : "mb-4"}`}
+                to={`${nav.id}`}
+                className={({ isActive }) =>
+                  `${
+                    isActive
+                      ? "text-checkPrimary600 border-b-4 border-checkPrimary600"
+                      : "text-checkShadeDark"
+                  } py-4 font-workSans font-medium cursor-pointer text-[20px] 
+                ${index === navLinks.length - 1 ? "mb-4" : "mb-4"}`
+                }
                 onClick={() => handleMobileClick(nav.title)}
               >
-                <Link to={`${nav.id}`}>{nav.title}</Link>
-              </li>
+                {nav.title}
+              </NavLink>
             ))}
-            {user ? 
+            {user ? (
               <li
-                key='logout'
+                key="logout"
                 className={`font-workSans py-4 font-medium cursor-pointer text-[20px] text-checkBlack mb-4"`}
                 onClick={handleLogout}
               >
                 Logout
               </li>
-            :
+            ) : (
               <li
-                key='login'
+                key="login"
                 className={`font-workSans py-4 font-medium cursor-pointer text-[20px] text-checkBlack mb-4"`}
               >
                 <Link to="/login">Login</Link>
               </li>
-            }
+            )}
           </ul>
         </div>
       </div>
