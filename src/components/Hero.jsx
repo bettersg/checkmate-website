@@ -56,4 +56,23 @@ const Hero = () => {
   );
 };
 
+export const heroTranslations = {
+  en: {
+    "hero.title_1": "We verify",
+    "hero.title_2": "Scams",
+    "hero.title_3": "and",
+    "hero.title_4": "Misinformation",
+    "hero.paragraph":
+      "Not sure if a message can be trusted? Simply forward it to CheckMate and we’ll check it for you!",
+  },
+  cn: {
+    "hero.title_1": "我们验证",
+    "hero.title_2": "诈骗",
+    "hero.title_3": "与",
+    "hero.title_4": "误传",
+    "hero.paragraph":
+      "不确定消息是否可信？只需将其转发给 CheckMate，我们就会为您检查！",
+  },
+};
+
 export default Hero;

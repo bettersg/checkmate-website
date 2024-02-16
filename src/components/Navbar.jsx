@@ -96,7 +96,7 @@ const Navbar = () => {
             } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
           >
             <Link to={`${nav.id === "home" ? "" : nav.id}`}>
-              {t(`nav.${nav.id}`)}
+              {t(`${nav.id}`)}
             </Link>
           </li>
         ))}
@@ -165,6 +165,19 @@ const Navbar = () => {
       </div>
     </nav>
   );
+};
+
+export const navbarTranslations = {
+  en: {
+    "nav.about": "About Us",
+    "nav.message-database": "Message Database",
+    "nav.contact": "Contact Us",
+  },
+  cn: {
+    "nav.about": "关于我们",
+    "nav.message-database": "消息库",
+    "nav.contact": "联系我们",
+  },
 };
 
 export default Navbar;

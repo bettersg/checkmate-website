@@ -74,4 +74,30 @@ const Checked = () => {
   );
 };
 
+export const checkedTranslations = {
+  en: {
+    "checked.title": "What we’ve checked",
+    "checked.subtext": "See some of the content that we've helped to check!",
+    "checked.card_1_title": "Suspicious messages",
+    "checked.card_1_text":
+      "Misinformation, Scams, Surveys, Job offerings, Packages, Investments and others",
+    "checked.card_1_cta": "See more",
+    "checked.card_2_title": "Images",
+    "checked.card_2_text":
+      "QR codes, Flyers, Advertisements, Spam, Screenshots, Deals too good to be true",
+    "checked.cta": "See all",
+  },
+  cn: {
+    "checked.title": "我们检查过什么",
+    "checked.subtext": "查看我们帮助检查的一些内容!",
+    "checked.card_1_title": "可疑消息",
+    "checked.card_1_text": "错误信息、诈骗、调查、工作机会、套餐、投资等",
+    "checked.card_1_cta": "查看更多",
+    "checked.card_2_title": "图片",
+    "checked.card_2_text":
+      "二维码、传单、广告、垃圾邮件、屏幕截图、好得令人难以置信的优惠",
+    "checked.cta": "查看全部",
+  },
+};
+
 export default Checked;

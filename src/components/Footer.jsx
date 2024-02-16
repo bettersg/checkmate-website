@@ -16,17 +16,17 @@ const Footer = () => {
         <div className="w-full md:w-1/4">
           <div className="text-[20px]">{t("entity.checkmate")}</div>
           <div className="flex flex-col pl-4 pt-4 ss:pt-8 text-[16px] gap-y-3 ss:gap-y-6">
-            <Link to="/">{t("nav.home")}</Link>
-            <Link to="/about">{t("nav.about")}</Link>
+            <Link to="/">{t("home")}</Link>
+            <Link to="/about">{t("about")}</Link>
             {/*<Link to="/message-database">Message Database</Link>*/}
-            <Link to="/contact">{t("nav.contact")}</Link>
+            <Link to="/contact">{t("contact")}</Link>
           </div>
         </div>
 
         <div className="w-full md:w-1/4">
           <div className="text-[20px]">{t("footer.legal")}</div>
           <div className="pl-4 pt-4 ss:pt-8 text-[16px]">
-            <Link to="/privacy-policy">{t("nav.privacy_policy")}</Link>
+            <Link to="/privacy-policy">{t("privacy-policy")}</Link>
           </div>
         </div>
 
@@ -66,6 +66,19 @@ const Footer = () => {
       </div>
     </section>
   );
+};
+
+export const footerTranslations = {
+  en: {
+    "footer.legal": "Legal",
+    "footer.find_us_on": "Find us on",
+    "footer.initiative": "Initiative",
+  },
+  cn: {
+    "footer.legal": "法律",
+    "footer.find_us_on": "在 - 找到我们",
+    "footer.initiative": "倡议",
+  },
 };
 
 export default Footer;

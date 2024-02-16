@@ -127,4 +127,23 @@ const Check = () => {
   );
 };
 
+export const checkTranslations = {
+  en: {
+    "check.title": "Check dubious",
+    "check.title_subtext": ["messages", "email", "flyers", "QR codes"],
+    "check.text_block":
+      "CheckMate is powered by a crew of multidisciplinary volunteers who separate fact from fiction using the power of voting and artificial intelligence.",
+    "check.hashtag": "#TechForGood",
+    "check.cta": "Learn more",
+  },
+  cn: {
+    "check.title": "检查可疑的",
+    "check.title_subtext": ["信息", "电子邮件", "传单", "二维码"],
+    "check.text_block":
+      "CheckMate 由一群多学科志愿者提供支持，他们利用投票和人工智能的力量将事实与虚构分开.",
+    "check.hashtag": "#TechForGood",
+    "check.cta": "了解更多",
+  }
+}
+
 export default Check;
