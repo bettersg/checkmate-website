@@ -91,7 +91,7 @@ const Navbar = () => {
             } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
           >
             <Link to={`${nav.id === "home" ? "" : nav.id}`}>
-              {t(`${nav.id}`)}
+              {t(`${nav.id !== "" ? nav.id : "home"}`)}{" "}
             </Link>
           </li>
         ))}
@@ -136,7 +136,9 @@ const Navbar = () => {
                 } ${index === navLinks.length - 1 ? "mb-4" : "mb-4"}`}
                 onClick={() => handleMobileClick(nav.title)}
               >
-                <Link to={`${nav.id}`}> {t(`${nav.id}`)}</Link>
+                <Link to={`${nav.id}`}>
+                  {t(`${nav.id !== "" ? nav.id : "home"}`)}
+                </Link>
               </li>
             ))}
             {user ? (
