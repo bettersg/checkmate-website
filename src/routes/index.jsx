@@ -13,7 +13,6 @@ export default function Index() {
     return () => clearTimeout(timeoutId);
   }, []);
 
-
   return (
     <div className="bg-checkBG w-full">
       <div className="bg-checkBG flex justify-center items-start">

@@ -8,10 +8,13 @@ import {
   cubicBezier,
 } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const Check = () => {
   const containerRef = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+  const { t } = useTranslation();
 
   // handle the change of text in Check dubious ...
   const TextLoop = ({ texts, height }) => {
@@ -75,9 +78,11 @@ const Check = () => {
       <motion.div className="block">
         <motion.div className="overflow-x-hidden h-full">
           <h1 className="text-[40px] md:text-[64px] w-full flex flex-col ss:flex-row justify-center flex-1 font-poppins font-bold text-checkShadeDark text-center pb-24">
-            <span className="flex-nowrap">Check dubious&nbsp;</span>
+            <span className="flex-nowrap">{t("check.title")}&nbsp;</span>
             <div className="text-loop-container">
-              <TextLoop texts={["messages", "email", "flyers", "QR codes"]} />
+              <TextLoop
+                texts={t("check.title_subtext", { returnObjects: true })}
+              />
             </div>
           </h1>
         </motion.div>
@@ -91,10 +96,8 @@ const Check = () => {
             <div className="xl:max-w-[1280px] w-full flex flex-col justify-center">
               {/** Text block */}
               <h2 className="text-checkPrimary600 font-bold leading-nogine font-poppins tracking-wide text-center text-[36px] sm:text-[48px] md:text-[64px] px-0 sm:px-8 md:px-16">
-                CheckMate is powered by a crew of multidisciplinary volunteers
-                who separate fact from fiction using the power of voting and
-                artificial intelligence. <br />
-                #TechForGood
+                {t("check.text_block")} <br />
+                {t("check.hashtag")}
               </h2>
 
               {/** CTA */}
@@ -104,7 +107,7 @@ const Check = () => {
                   className="cursor-pointer flex flex-row items-center justify-center gap-x-4 bg-checkWhite font-workSans font-medium rounded-[50px] px-5 py-4 text-center max-w-sm"
                 >
                   <span className="text-checkPrimary600 text-[16px] ss:text-[20px]">
-                    Learn more
+                    {t("check.cta")}
                   </span>
                   <img src={arrowUp} className="fill-checkPrimary600" />
                 </a>
@@ -123,5 +126,24 @@ const Check = () => {
     </div>
   );
 };
+
+export const checkTranslations = {
+  en: {
+    "check.title": "Check dubious",
+    "check.title_subtext": ["messages", "email", "flyers", "QR codes"],
+    "check.text_block":
+      "CheckMate is powered by a crew of multidisciplinary volunteers who separate fact from fiction using the power of voting and artificial intelligence.",
+    "check.hashtag": "#TechForGood",
+    "check.cta": "Learn more",
+  },
+  cn: {
+    "check.title": "检查可疑的",
+    "check.title_subtext": ["信息", "电子邮件", "传单", "二维码"],
+    "check.text_block":
+      "CheckMate 由一群多学科志愿者提供支持，他们利用投票和人工智能的力量将事实与虚构分开.",
+    "check.hashtag": "#TechForGood",
+    "check.cta": "了解更多",
+  }
+}
 
 export default Check;

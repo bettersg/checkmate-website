@@ -1,21 +1,23 @@
-import React from 'react';
+import React from "react";
 import { useState } from "react";
 
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { signOut } from 'firebase/auth';
+import { signOut } from "firebase/auth";
 
 import { close, logo, menu } from "../assets";
 import { navLinks } from "../constants";
-import ButtonCTAWhatsapp from "./ButtonCTAWhatsapp"
+import ButtonCTAWhatsapp from "./ButtonCTAWhatsapp";
 
 import { Link, useNavigate } from "react-router-dom";
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import cookies from "nookies";
 
-
+import { FaLanguage } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
+import { t } from "i18next";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
@@ -23,32 +25,38 @@ const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
 
-  const handleLogout = () => {               
-    signOut(auth).then(() => {
-    // Sign-out successful.
-        navigate('/login')
-        toast('Signed out successfully', {
-          position: toast.POSITION.BOTTOM_CENTER
-        })
+  const { i18n } = useTranslation();
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        navigate("/login");
+        toast("Signed out successfully", {
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
         cookies.destroy(null, "session");
-    }).catch((error) => {
-      // An error happened.
-      console.log(error)
-      toast.error('Error during logout, contact your admin', {
-        position: toast.POSITION.BOTTOM_CENTER
       })
-    });
-  }
+      .catch((error) => {
+        // An error happened.
+        console.log(error);
+        toast.error("Error during logout, contact your admin", {
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+      });
+  };
 
   const handleMobileClick = (nav) => {
     setActive(nav);
     setToggle(false);
-  }
+  };
 
   // making sure we have the right active nav based on the url
-  navLinks.forEach(nav => {
-    if (window.location.pathname == "/" + nav.id && active != nav.title) {setActive(nav.title)}
-  })
+  navLinks.forEach((nav) => {
+    if (window.location.pathname == "/" + nav.id && active != nav.title) {
+      setActive(nav.title);
+    }
+  });
 
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
@@ -56,9 +64,20 @@ const Navbar = () => {
       {/** Logo */}
       <Link to="/">
         <div className="flex flex-row gap-x-2 items-center">
-          <img src={logo} width="64px"/>
+          <img src={logo} width="64px" />
         </div>
       </Link>
+
+      {/** Language switch */}
+      <FaLanguage
+        className="text-3xl cursor-pointer"
+        onClick={() =>
+          i18n.resolvedLanguage === "en"
+            ? i18n.changeLanguage("cn")
+            : i18n.changeLanguage("en")
+        }
+      />
+      <p>{i18n.resolvedLanguage}</p>
 
       {/** Navbar menu options */}
       <ul className="list-none sm:flex hidden justify-center items-center flex-1 gap-x-2">
@@ -66,19 +85,22 @@ const Navbar = () => {
           <li
             key={nav.id}
             className={`font-workSans cursor-pointer text-xl pb-2 font-medium ${
-              active === nav.title ? "text-checkPrimary600 border-b-4 border-checkPrimary600" : "text-checkShadeDark"
+              active === nav.title
+                ? "text-checkPrimary600 border-b-4 border-checkPrimary600"
+                : "text-checkShadeDark"
             } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
           >
-            <Link to={`${nav.id}`}>{nav.title}</Link>
+            <Link to={`${nav.id === "home" ? "" : nav.id}`}>
+              {t(`${nav.id !== "" ? nav.id : "home"}`)}{" "}
+            </Link>
           </li>
         ))}
       </ul>
 
       {/** Call to action */}
-      <div className='hidden sm:block'>
-        <ButtonCTAWhatsapp link="https://ref.checkmate.sg/add?utm_source=website&utm_medium=navbar"/>
+      <div className="hidden sm:block">
+        <ButtonCTAWhatsapp link="https://ref.checkmate.sg/add?utm_source=website&utm_medium=navbar" />
       </div>
-
 
       {/** {user ? 
         <div className="text-checkPurple font-poppins font-normal cursor-pointer text-xl sm:flex hidden" onClick={handleLogout}>Logout</div>
@@ -88,7 +110,6 @@ const Navbar = () => {
       </Link>
       } 
       */}
-      
 
       <div className="sm:hidden flex flex-1 justify-end items-center">
         <img
@@ -109,34 +130,51 @@ const Navbar = () => {
               <li
                 key={nav.id}
                 className={`py-4 font-workSans font-medium cursor-pointer text-[20px] ${
-                  active === nav.title ? "text-checkWhite bg-checkPrimary600 rounded-[40px] w-full text-center bg-opacity-100" : "text-checkBlack"
+                  active === nav.title
+                    ? "text-checkWhite bg-checkPrimary600 rounded-[40px] w-full text-center bg-opacity-100"
+                    : "text-checkBlack"
                 } ${index === navLinks.length - 1 ? "mb-4" : "mb-4"}`}
                 onClick={() => handleMobileClick(nav.title)}
               >
-                <Link to={`${nav.id}`}>{nav.title}</Link>
+                <Link to={`${nav.id}`}>
+                  {t(`${nav.id !== "" ? nav.id : "home"}`)}
+                </Link>
               </li>
             ))}
-            {user ? 
+            {user ? (
               <li
-                key='logout'
+                key="logout"
                 className={`font-workSans py-4 font-medium cursor-pointer text-[20px] text-checkBlack mb-4"`}
                 onClick={handleLogout}
               >
                 Logout
               </li>
-            :
+            ) : (
               <li
-                key='login'
+                key="login"
                 className={`font-workSans py-4 font-medium cursor-pointer text-[20px] text-checkBlack mb-4"`}
               >
                 <Link to="/login">Login</Link>
               </li>
-            }
+            )}
           </ul>
         </div>
       </div>
     </nav>
   );
+};
+
+export const navbarTranslations = {
+  en: {
+    "nav.about": "About Us",
+    "nav.message-database": "Message Database",
+    "nav.contact": "Contact Us",
+  },
+  cn: {
+    "nav.about": "关于我们",
+    "nav.message-database": "消息库",
+    "nav.contact": "联系我们",
+  },
 };
 
 export default Navbar;
