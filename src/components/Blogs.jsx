@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { configDotenv } from "dotenv";
-import { Link } from "react-router-dom";
 
 const demoEndpoint = import.meta.env.VITE_FIREBASE_NOTION_ENDPOINT;
 
@@ -71,9 +69,16 @@ const convertJSONToComponents = (entries) => {
     };
   });
 
-  // console.log(JSON.stringify(components[0].children, null, 2));
-
   return components;
+};
+const SelectedBlog = ({ blogData, setSelectedBlog }) => {
+  return (
+    <div className="min-h-screen flex flex-col">
+      <p>{JSON.stringify(blogData)}</p>
+
+      <button onClick={() => setSelectedBlog(null)}>Back</button>
+    </div>
+  );
 };
 
 const Blogs = () => {
@@ -83,12 +88,15 @@ const Blogs = () => {
 
   useEffect(() => {
     const fetchNotionData = async () => {
-      const data = (await axios.get(demoEndpoint)).data;
+      const data = (await axios.get(demoEndpoint)).data.reverse();
       const components = convertJSONToComponents(data);
       setBlogPosts(components);
     };
     fetchNotionData();
   }, []);
+
+  const blogData = blogPosts?.[selectedBlog]?.children;
+  // console.log(`blogData: ${JSON.stringify(blogData)}`);
 
   const handleTabsClick = (e) => {
     const tabName = e.target.name;
@@ -135,58 +143,60 @@ const Blogs = () => {
         {/* Page Data  */}
         {blogPosts.map((component, index) => {
           return (
-            <Link to={`/blogs/${index}`}>
-              <div
-                key={index}
-                className="flex flex-col gap-y-3 py-5 sm:py-10 container px-4 sm:px-0 justify-center"
-              >
-                <div className="flex gap-2">
-                  {/* Author Name */}
-                  <p>Author Name</p>
-                  {/* Date */}
-                  <p>
-                    {new Date("05-02-2024").toLocaleDateString("en-GB", {
-                      day: "2-digit",
-                      month: "short",
-                      year: "numeric",
-                    })}
+            <div
+              key={index}
+              className="flex flex-col gap-y-3 py-5 sm:py-10 container px-4 sm:px-0 justify-center cursor-pointer hover:bg-slate-200 transition-all duration-200 ease-in-out"
+              onClick={() => setSelectedBlog(index)}
+            >
+              <div className="flex gap-2">
+                {/* Author Name */}
+                <p>Author Name</p>
+                {/* Date */}
+                <p>
+                  {new Date("05-02-2024").toLocaleDateString("en-GB", {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                  })}
+                </p>
+              </div>
+              <div className="flex items-center">
+                {/* Image */}
+                <img
+                  src={component.summaryData.previewImageURL}
+                  alt="preview"
+                  className="w-28 h-28 object-cover rounded-md mr-4"
+                />
+                {/* Title, Summary */}
+                <div className="flex flex-col">
+                  <h2 className="capitalize text-lg font-bold">
+                    long title goes here
+                  </h2>
+                  <p className="hidden sm:inline-block">
+                    {/* {component.summaryData.summary.substring(0, 50)}
+                    {component.summaryData.summary.length > 50 ? "..." : ""} */}
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehe
                   </p>
                 </div>
-                <div className="flex items-center">
-                  {/* Image */}
-                  <img
-                    src={component.summaryData.previewImageURL}
-                    alt="preview"
-                    className="w-28 h-28 object-cover rounded-md mr-4"
-                  />
-                  {/* Title, Summary */}
-                  <div className="flex flex-col">
-                    <h2 className="capitalize text-lg font-bold">
-                      long title goes here
-                    </h2>
-                    <p className="hidden sm:inline-block">
-                      {/* {component.summaryData.summary.substring(0, 50)}
-                    {component.summaryData.summary.length > 50 ? "..." : ""} */}
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehe
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-4 items-center">
-                  <div className="flex gap-x-1">
-                    {component.summaryData.Tags.map((tag) => (
-                      <span className="inline-block border rounded-full bg-slate-300 p-1 text-sm">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <p>{component.summaryData.duration} min read</p>
-                </div>
               </div>
-            </Link>
+              <div className="flex gap-4 items-center">
+                <div className="flex gap-x-1">
+                  {component.summaryData.Tags.map((tag) => (
+                    <span
+                      key={`article-${index}-tag-${tag}`}
+                      className="inline-block border rounded-full bg-slate-300 p-1 text-sm"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <p>{component.summaryData.duration} min read</p>
+              </div>
+            </div>
           );
         })}
 
@@ -203,7 +213,11 @@ const Blogs = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
-      <SummaryPage />
+      {selectedBlog !== null ? (
+        <SelectedBlog blogData={blogData} setSelectedBlog={setSelectedBlog} />
+      ) : (
+        <SummaryPage />
+      )}
     </div>
   );
 };
