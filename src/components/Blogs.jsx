@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { configDotenv } from "dotenv";
 
 const demoEndpoint = import.meta.env.VITE_FIREBASE_NOTION_ENDPOINT;
 
@@ -37,6 +38,7 @@ const convertJSONToComponents = (entries) => {
 const Blogs = () => {
   const [notionData, setNotionData] = useState("");
   const [blogPosts, setBlogPosts] = useState([]);
+  const [activeTab, setActiveTab] = useState("all");
 
   const handleNotionDataRetrievalClick = async () => {
     const data = (await axios.get(demoEndpoint)).data;
@@ -45,10 +47,47 @@ const Blogs = () => {
     setBlogPosts(components);
   };
 
+  const handleTabsClick = (e) => {
+    const tabName = e.target.name;
+    setActiveTab(tabName);
+    // TODO: Replace data with filtered data
+  };
+
   const SummaryPage = () => {
     return (
       <div className="flex flex-col divide-y text-sm sm:text-lg">
         {/* Nav -- Refactor to Layout component */}
+        <nav className="">
+          <ul className="flex gap-x-4">
+            <li
+              className={`${
+                activeTab === "all" ? "border-b border-black" : ""
+              }`}
+            >
+              <button name="all" onClick={(e) => handleTabsClick(e)}>
+                All
+              </button>
+            </li>
+            <li
+              className={`${
+                activeTab === "blogs" ? "border-b border-black" : ""
+              }`}
+            >
+              <button name="blogs" onClick={(e) => handleTabsClick(e)}>
+                Blog Posts
+              </button>
+            </li>
+            <li
+              className={`${
+                activeTab === "events" ? "border-b border-black" : ""
+              }`}
+            >
+              <button name="events" onClick={(e) => handleTabsClick(e)}>
+                Events around the year
+              </button>
+            </li>
+          </ul>
+        </nav>
 
         {/* Page Data  */}
         {blogPosts.map((component, index) => {
@@ -105,6 +144,14 @@ const Blogs = () => {
             </div>
           );
         })}
+
+        {/* Pagination */}
+        <div className="flex justify-center  container gap-10 py-10">
+          {/* Num articles + Articles per pagination + Increment index % number articles */}
+          <button className="p-6 rounded bg-black text-white">1</button>
+          <button className="p-6 rounded bg-black text-white">2</button>
+          <button className="p-6 rounded bg-black text-white">3</button>
+        </div>
       </div>
     );
   };
