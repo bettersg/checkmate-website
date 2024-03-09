@@ -80,18 +80,22 @@ const convertJSONToComponents = (entries) => {
 const SelectedBlog = ({ blogData, setSelectedBlog }) => {
   return (
     <div className="min-h-screen flex flex-col container relative">
-      <div>
-        <button
-          className="p-4 bg-slate-300 rounded sticky top-0 z-10"
-          onClick={() => setSelectedBlog(null)}
-        >
-          Back
-        </button>
+      <button
+        className="p-4 hover:bg-slate-300 mb-4 rounded sticky top-0 z-10"
+        onClick={() => setSelectedBlog(null)}
+      >
+        Back
+      </button>
+      {/* Progress bar */}
+      {/* <div className="h-1 bg-black "></div> */}
+      <div className="flex flex-col gap-y-6 px-4 sm:px-0">
         {blogData.map((component, index) => {
           return (
-            <div key={index} className="flex flex-col gap-y-3 py-5 sm:py-10">
+            <React.Fragment key={index}>
               {component.component === "Heading" && (
-                <h2 className="text-2xl font-bold">{component.text}</h2>
+                <h2 className="text-2xl sm:text-4xl font-bold">
+                  {component.text}
+                </h2>
               )}
               {component.component === "Paragraph" && (
                 <p className="text-sm sm:text-lg">{component.text}</p>
@@ -102,22 +106,22 @@ const SelectedBlog = ({ blogData, setSelectedBlog }) => {
                 <img
                   src={component.url}
                   alt="preview"
-                  className="w-full h-96 object-cover rounded-md"
+                  className="w-full max-h-[320px] object-cover rounded md"
                 />
               )) ||
                 (component.component === "Image" && (
                   <img
                     src={component.imageURL}
                     alt="preview"
-                    className="w-full h-96 object-cover rounded-md"
+                    className="w-full object-cover rounded-md"
                   />
                 ))}
               {component.component === "Quote" && (
-                <blockquote className="text-sm sm:text-lg">
-                  {component.text}
+                <blockquote className="text-3xl sm:text-5xl font-bold">
+                  "{component.text}"
                 </blockquote>
               )}
-            </div>
+            </React.Fragment>
           );
         })}
       </div>
