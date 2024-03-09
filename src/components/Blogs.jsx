@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
 const demoEndpoint = import.meta.env.VITE_FIREBASE_NOTION_ENDPOINT;
@@ -78,16 +78,49 @@ const convertJSONToComponents = (entries) => {
   return components;
 };
 const SelectedBlog = ({ blogData, setSelectedBlog }) => {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const blogRef = useRef(null);
+
+  const handleScroll = () => {
+    if (blogRef.current) {
+      const scrollPx = document.documentElement.scrollTop;
+      const winHeightPx =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const scrolled = (scrollPx / winHeightPx) * 100;
+
+      setScrollProgress(scrolled);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen flex flex-col container relative">
+    <div
+      ref={blogRef}
+      className="min-h-screen flex flex-col container relative"
+    >
       <button
-        className="p-4 hover:bg-slate-300 mb-4 rounded sticky top-0 z-10"
+        className="p-4 hover:bg-slate-300 mb-4 rounded sticky"
         onClick={() => setSelectedBlog(null)}
       >
         Back
       </button>
       {/* Progress bar */}
-      {/* <div className="h-1 bg-black "></div> */}
+      <div className="fixed left-0 top-0 h-full flex flex-col items-end justify-end z-[51]">
+        <div
+          className="w-4 bg-black relative"
+          style={{ height: `${100 - scrollProgress}%` }}
+        >
+          <div className="pl-10">{Math.round(scrollProgress)}% read</div>
+        </div>
+      </div>
       <div className="flex flex-col gap-y-6 px-4 sm:px-0">
         {blogData.map((component, index) => {
           return (
@@ -113,7 +146,7 @@ const SelectedBlog = ({ blogData, setSelectedBlog }) => {
                   <img
                     src={component.imageURL}
                     alt="preview"
-                    className="w-full object-cover rounded-md"
+                    className="w-full max-h-[320px] object-cover rounded md"
                   />
                 ))}
               {component.component === "Quote" && (
@@ -124,6 +157,16 @@ const SelectedBlog = ({ blogData, setSelectedBlog }) => {
             </React.Fragment>
           );
         })}
+      </div>
+      <div className="flex justify-center mt-auto mb-10 ">
+        <button
+          onClick={() => {
+            window.scrollTo(0, 0);
+          }}
+          className="bg-slate-300 rounded-full p-4 hover:bg-slate-400 transition-all duration-200 ease-in-out "
+        >
+          Top
+        </button>
       </div>
     </div>
   );
@@ -248,12 +291,12 @@ const Blogs = () => {
         })}
 
         {/* Pagination */}
-        <div className="flex justify-center  container gap-10 py-10">
-          {/* Num articles + Articles per pagination + Increment index % number articles */}
-          <button className="p-6 rounded bg-black text-white">1</button>
+        {/* Num articles + Articles per pagination + Increment index % number articles */}
+        {/* <div className="flex justify-center  container gap-10 py-10"> */}
+        {/* <button className="p-6 rounded bg-black text-white">1</button>
           <button className="p-6 rounded bg-black text-white">2</button>
           <button className="p-6 rounded bg-black text-white">3</button>
-        </div>
+        </div> */}
       </div>
     );
   };
