@@ -115,10 +115,10 @@ const SelectedBlog = ({ blogData, setSelectedBlog }) => {
       {/* Progress bar */}
       <div className="fixed left-0 top-0 h-full flex flex-col items-end justify-end z-[51]">
         <div
-          className="w-4 bg-black relative"
+          className="w-1 sm:w-4 bg-black relative"
           style={{ height: `${100 - scrollProgress}%` }}
         >
-          <div className="pl-10">{Math.round(scrollProgress)}% read</div>
+          {/* <div className="pl-10">{Math.round(scrollProgress)}% read</div> */}
         </div>
       </div>
       <div className="flex flex-col gap-y-6 px-4 sm:px-0">
