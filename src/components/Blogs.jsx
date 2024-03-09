@@ -4,14 +4,52 @@ import { configDotenv } from "dotenv";
 
 const demoEndpoint = import.meta.env.VITE_FIREBASE_NOTION_ENDPOINT;
 
+const blockMap = {
+  heading_1: (block) => {
+    return {
+      component: "Heading",
+      text: block.heading_1.rich_text[0].plain_text,
+    };
+  },
+  heading_2: (block) => {
+    return {
+      component: "Heading",
+      text: block.heading_2.rich_text[0].plain_text,
+    };
+  },
+  paragraph: (block) => {
+    if (block.paragraph.rich_text.length === 0) {
+      return null;
+    }
+    return {
+      component: "Paragraph",
+      text: block.paragraph.rich_text
+        .map(({ plain_text }) => plain_text)
+        .join(""),
+    };
+  },
+  image: (block) => {
+    return {
+      component: "Image",
+      imageURL: block.image.external.url,
+    };
+  },
+  quote: (block) => {
+    return {
+      component: "Quote",
+      text: block.quote.rich_text[0].plain_text,
+    };
+  },
+};
+
 // TODO: Finish up implementation
 const tranformBlocks = (blocks) => {
-  const blockMap = {};
   return blocks
     .map((block) => {
       if (blockMap[block.type]) {
-        return blockMap[block.type][block];
+        return blockMap[block.type](block);
       }
+      console.log("NOT SUPPORTED:", block.type);
     })
     .filter(Boolean);
 };
@@ -31,6 +69,8 @@ const convertJSONToComponents = (entries) => {
       children: tranformBlocks(children), // TODO: Finish up implementation
     };
   });
+
+  console.log(JSON.stringify(components[0].children, null, 2));
 
   return components;
 };
