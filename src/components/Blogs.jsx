@@ -33,6 +33,12 @@ const blockMap = {
       imageURL: block.image.external.url,
     };
   },
+  embed: (block) => {
+    return {
+      component: "Embed",
+      url: block.embed.url,
+    };
+  },
   quote: (block) => {
     return {
       component: "Quote",
@@ -73,10 +79,48 @@ const convertJSONToComponents = (entries) => {
 };
 const SelectedBlog = ({ blogData, setSelectedBlog }) => {
   return (
-    <div className="min-h-screen flex flex-col">
-      <p>{JSON.stringify(blogData)}</p>
+    <div className="min-h-screen flex flex-col container relative">
+      <div>
+        <button
+          className="p-4 bg-slate-300 rounded sticky top-0 z-10"
+          onClick={() => setSelectedBlog(null)}
+        >
+          Back
+        </button>
+        {blogData.map((component, index) => {
+          return (
+            <div key={index} className="flex flex-col gap-y-3 py-5 sm:py-10">
+              {component.component === "Heading" && (
+                <h2 className="text-2xl font-bold">{component.text}</h2>
+              )}
+              {component.component === "Paragraph" && (
+                <p className="text-sm sm:text-lg">{component.text}</p>
+              )}
 
-      <button onClick={() => setSelectedBlog(null)}>Back</button>
+              {/* Not sure why Notion sometimes reports it as 'image', others 'embed' */}
+              {(component.component === "Embed" && (
+                <img
+                  src={component.url}
+                  alt="preview"
+                  className="w-full h-96 object-cover rounded-md"
+                />
+              )) ||
+                (component.component === "Image" && (
+                  <img
+                    src={component.imageURL}
+                    alt="preview"
+                    className="w-full h-96 object-cover rounded-md"
+                  />
+                ))}
+              {component.component === "Quote" && (
+                <blockquote className="text-sm sm:text-lg">
+                  {component.text}
+                </blockquote>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
@@ -96,7 +140,6 @@ const Blogs = () => {
   }, []);
 
   const blogData = blogPosts?.[selectedBlog]?.children;
-  // console.log(`blogData: ${JSON.stringify(blogData)}`);
 
   const handleTabsClick = (e) => {
     const tabName = e.target.name;
@@ -212,7 +255,7 @@ const Blogs = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
+    <div className="min-h-screen flex flex-col items-center justify-center relative">
       {selectedBlog !== null ? (
         <SelectedBlog blogData={blogData} setSelectedBlog={setSelectedBlog} />
       ) : (
