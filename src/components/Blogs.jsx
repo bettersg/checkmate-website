@@ -110,7 +110,7 @@ const SelectedBlog = ({ blogData, setSelectedBlog }) => {
       className="min-h-screen flex flex-col xl:max-w-[1280px] w-full mx-auto px-6 md:px-12 py-10 md:py-20"
     >
       <button
-        className="p-4 hover:bg-slate-300 mb-4 rounded sticky"
+        className="p-4 hover:bg-slate-300 mb-4 rounded border border-black mr-auto"
         onClick={() => setSelectedBlog(null)}
       >
         Back
@@ -231,7 +231,12 @@ const Blogs = () => {
                 activeTab === "events" ? "border-b border-black" : ""
               }`}
             >
-              <button name="events" onClick={(e) => handleTabsClick(e)}>
+              <button
+                className="opacity-50"
+                disabled
+                name="events"
+                onClick={(e) => handleTabsClick(e)}
+              >
                 Events around the year
               </button>
             </li>
