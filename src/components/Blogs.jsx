@@ -65,11 +65,13 @@ const convertJSONToComponents = (entries) => {
 
     return {
       summaryData: {
-        summary: entryProperties["Summary"].rich_text[0].plain_text,
+        // summary: entryProperties["Summary"].rich_text[0].plain_text,
         duration: entryProperties["Duration"].number,
         previewImageURL:
           entryProperties["Preview Image"].rich_text[0].plain_text,
         Tags: entryProperties["Tags"].multi_select.map((tag) => tag["name"]),
+        authorName: entryProperties["Author Name"].rich_text[0].plain_text,
+        publishingDate: entryProperties["Publishing Date"].date.start,
       },
       children: tranformBlocks(children), // TODO: Finish up implementation
     };
@@ -245,10 +247,10 @@ const Blogs = () => {
             >
               <div className="flex gap-2">
                 {/* Author Name */}
-                <p>Author Name</p>
+                <p>{authorName}</p>
                 {/* Date */}
                 <p>
-                  {new Date("05-02-2024").toLocaleDateString("en-GB", {
+                  {new Date(publishingDate).toLocaleDateString("en-GB", {
                     day: "2-digit",
                     month: "short",
                     year: "numeric",
