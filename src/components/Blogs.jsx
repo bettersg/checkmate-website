@@ -113,15 +113,17 @@ const SelectedBlog = ({ blogData, setSelectedBlog }) => {
         Back
       </button>
       {/* Progress bar */}
-      <div className="fixed left-0 top-0 h-full flex flex-col items-end justify-end z-[51]">
-        <div
-          className="w-1 sm:w-4 bg-black relative"
-          style={{ height: `${100 - scrollProgress}%` }}
-        >
-          {/* <div className="pl-10">{Math.round(scrollProgress)}% read</div> */}
+      <div className="flex flex-col gap-y-6 px-4 sm:px-0 relative">
+        <div className="flex space-between sticky z-50 top-28 bg-slate-200">
+          <div className="absolute right-0 bottom-2">
+            {Math.round(scrollProgress)}% read
+          </div>
+          <div
+            className="sticky z-50 h-2 top-24  bg-black "
+            style={{ width: `${scrollProgress}%` }}
+          ></div>
         </div>
-      </div>
-      <div className="flex flex-col gap-y-6 px-4 sm:px-0">
+
         {blogData.map((component, index) => {
           return (
             <React.Fragment key={index}>
@@ -130,10 +132,13 @@ const SelectedBlog = ({ blogData, setSelectedBlog }) => {
                   {component.text}
                 </h2>
               )}
+              {/* TODO: BRENNAN */}
+              {/* Author name */}
+              {/* Min read */}
+              {/* Date */}
               {component.component === "Paragraph" && (
                 <p className="text-sm sm:text-lg">{component.text}</p>
               )}
-
               {/* Not sure why Notion sometimes reports it as 'image', others 'embed' */}
               {(component.component === "Embed" && (
                 <img
