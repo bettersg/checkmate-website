@@ -65,7 +65,8 @@ const convertJSONToComponents = (entries) => {
 
     return {
       summaryData: {
-        // summary: entryProperties["Summary"].rich_text[0].plain_text,
+        articleTitle: entryProperties["Article Title"].title[0].plain_text,
+        summary: entryProperties["Summary"].rich_text[0].plain_text,
         duration: entryProperties["Duration"].number,
         previewImageURL:
           entryProperties["Preview Image"].rich_text[0].plain_text,
@@ -247,10 +248,12 @@ const Blogs = () => {
             >
               <div className="flex gap-2">
                 {/* Author Name */}
-                <p>{authorName}</p>
+                <p>{component.summaryData.authorName}</p>
                 {/* Date */}
                 <p>
-                  {new Date(publishingDate).toLocaleDateString("en-GB", {
+                  {new Date(
+                    component.summaryData.publishingDate
+                  ).toLocaleDateString("en-GB", {
                     day: "2-digit",
                     month: "short",
                     year: "numeric",
@@ -267,16 +270,11 @@ const Blogs = () => {
                 {/* Title, Summary */}
                 <div className="flex flex-col">
                   <h2 className="capitalize text-lg font-bold">
-                    long title goes here
+                    {component.summaryData.articleTitle}
                   </h2>
                   <p className="hidden sm:inline-block">
-                    {/* {component.summaryData.summary.substring(0, 50)}
-                    {component.summaryData.summary.length > 50 ? "..." : ""} */}
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehe
+                    {component.summaryData.summary.substring(0, 300)}
+                    {component.summaryData.summary.length > 300 ? "..." : ""}
                   </p>
                 </div>
               </div>
