@@ -104,7 +104,7 @@ const SelectedBlog = ({ blogData, setSelectedBlog }) => {
   return (
     <div
       ref={blogRef}
-      className="min-h-screen flex flex-col container relative"
+      className="min-h-screen flex flex-col xl:max-w-[1280px] w-full mx-auto px-6 md:px-12 py-10 md:py-20"
     >
       <button
         className="p-4 hover:bg-slate-300 mb-4 rounded sticky"
@@ -201,7 +201,7 @@ const Blogs = () => {
 
   const SummaryPage = () => {
     return (
-      <div className="flex flex-col divide-y text-sm sm:text-lg">
+      <div className="flex flex-col divide-y text-sm sm:text-lg relative min-h-screen xl:max-w-[1280px] w-full mx-auto px-6 md:px-12 py-10 md:py-20f">
         {/* Nav -- Refactor to Layout component */}
         <nav className="">
           <ul className="flex gap-x-4">
