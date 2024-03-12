@@ -191,12 +191,12 @@ const SelectedBlog = ({
           );
         })}
       </div>
-      <div className="flex justify-center mt-20">
+      <div className="flex justify-center mt-10 sm:mt-20">
         <button
           onClick={() => {
             window.scrollTo(0, 0);
           }}
-          className="bg-slate-300 rounded-full p-8 hover:bg-slate-400 transition-all duration-200 ease-in-out "
+          className="bg-slate-300 rounded-full p-4 sm:p-8 hover:bg-slate-400 transition-all duration-200 ease-in-out "
         >
           Top
         </button>
