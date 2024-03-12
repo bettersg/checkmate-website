@@ -50,7 +50,6 @@ const blockMap = {
   },
 };
 
-// TODO: Finish up implementation
 const tranformBlocks = (blocks) => {
   return blocks
     .map((block) => {
@@ -77,7 +76,7 @@ const convertJSONToComponents = (entries) => {
         authorName: entryProperties["Author Name"].rich_text[0].plain_text,
         publishingDate: entryProperties["Publishing Date"].date.start,
       },
-      children: tranformBlocks(children), // TODO: Finish up implementation
+      children: tranformBlocks(children),
     };
   });
 
@@ -191,7 +190,7 @@ const SelectedBlog = ({
           );
         })}
       </div>
-      <div className="flex justify-center mt-10 sm:mt-20">
+      <div className="flex justify-center mt- sm:mt-20">
         <button
           onClick={() => {
             window.scrollTo(0, 0);
