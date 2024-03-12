@@ -3,6 +3,7 @@ import axios from "axios";
 import { mockNotionData } from "../utils";
 import purecss from "../purecss.module.css";
 import { delay } from "../utils/mockTime";
+import { chunk } from "lodash";
 
 const demoEndpoint = import.meta.env.VITE_FIREBASE_NOTION_ENDPOINT;
 
@@ -209,6 +210,8 @@ const Blogs = () => {
   const [activeTab, setActiveTab] = useState("all");
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [paginationIndex, setPaginationIndex] = useState(0);
+  const [paginatedDataChunks, setPaginatedDataChunks] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -222,12 +225,17 @@ const Blogs = () => {
       }
 
       const components = convertJSONToComponents(data);
-      setBlogPosts(components);
+      setBlogPosts(components); // Non-paginated option
+      if (components.length !== 0) {
+        setPaginatedDataChunks(chunk(components, 4));
+      }
+
       setIsLoading(false);
     };
     fetchNotionData();
   }, []);
 
+  const numChunks = Math.floor(blogPosts.length / 4);
   const selectedBlogSummaryData = blogPosts?.[selectedBlog]?.summaryData;
   const selectedBlogData = blogPosts?.[selectedBlog]?.children;
 
@@ -289,7 +297,8 @@ const Blogs = () => {
             <span className={purecss.loader}></span>
           </div>
         ) : (
-          blogPosts.map((component, index) => {
+          paginatedDataChunks.length !== 0 &&
+          paginatedDataChunks[paginationIndex].map((component, index) => {
             return (
               <div
                 key={index}
@@ -344,11 +353,24 @@ const Blogs = () => {
 
         {/* Pagination */}
         {/* Num articles + Articles per pagination + Increment index % number articles */}
-        {/* <div className="flex justify-center  container gap-10 py-10"> */}
-        {/* <button className="p-6 rounded bg-black text-white">1</button>
-          <button className="p-6 rounded bg-black text-white">2</button>
-          <button className="p-6 rounded bg-black text-white">3</button>
-        </div> */}
+        <div className="flex justify-center  container gap-10 py-10">
+          <button
+            className="p-4 rounded bg-black text-white disabled:opacity-20 hover:opacity-50"
+            disabled={paginationIndex === 0}
+            onClick={() => setPaginationIndex(Math.max(0, paginationIndex - 1))}
+          >
+            Prev
+          </button>
+          <button
+            className="p-4 bg-black text-white disabled:opacity-20 hover:opacity-50"
+            disabled={paginationIndex === numChunks}
+            onClick={() => {
+              setPaginationIndex(Math.min(paginationIndex + 1), numChunks);
+            }}
+          >
+            Next
+          </button>
+        </div>
       </div>
     );
   };
