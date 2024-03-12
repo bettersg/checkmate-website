@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { mockNotionData } from "../utils";
+import purecss from "../purecss.module.css";
+import { delay } from "../utils/mockTime";
 
 const demoEndpoint = import.meta.env.VITE_FIREBASE_NOTION_ENDPOINT;
 
@@ -185,11 +187,14 @@ const Blogs = () => {
   const [blogPosts, setBlogPosts] = useState([]);
   const [activeTab, setActiveTab] = useState("all");
   const [selectedBlog, setSelectedBlog] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchNotionData = async () => {
       let data;
       if (import.meta.env.VITE_DEVELOPMENT === "TRUE") {
+        await delay(1000);
         data = mockNotionData;
       } else {
         data = (await axios.get(demoEndpoint)).data.reverse();
@@ -197,6 +202,7 @@ const Blogs = () => {
 
       const components = convertJSONToComponents(data);
       setBlogPosts(components);
+      setIsLoading(false);
     };
     fetchNotionData();
   }, []);
@@ -207,6 +213,11 @@ const Blogs = () => {
     const tabName = e.target.name;
     setActiveTab(tabName);
     // TODO: Replace data with filtered data
+  };
+
+  const handleBlogSelection = (index) => {
+    setSelectedBlog(index);
+    window.scrollTo({ top: 0, behavior: "instant" });
   };
 
   const SummaryPage = () => {
@@ -251,61 +262,67 @@ const Blogs = () => {
         </nav>
 
         {/* Page Data  */}
-        {blogPosts.map((component, index) => {
-          return (
-            <div
-              key={index}
-              className="flex flex-col gap-y-3 py-5 sm:py-10 container px-4 sm:px-0 justify-center cursor-pointer hover:bg-slate-200 transition-all duration-200 ease-in-out"
-              onClick={() => setSelectedBlog(index)}
-            >
-              <div className="flex gap-2">
-                {/* Author Name */}
-                <p>{component.summaryData.authorName}</p>
-                {/* Date */}
-                <p>
-                  {new Date(
-                    component.summaryData.publishingDate
-                  ).toLocaleDateString("en-GB", {
-                    day: "2-digit",
-                    month: "short",
-                    year: "numeric",
-                  })}
-                </p>
-              </div>
-              <div className="flex items-center">
-                {/* Image */}
-                <img
-                  src={component.summaryData.previewImageURL}
-                  alt="preview"
-                  className="w-28 h-28 object-cover rounded-md mr-4"
-                />
-                {/* Title, Summary */}
-                <div className="flex flex-col">
-                  <h2 className="capitalize text-lg font-bold">
-                    {component.summaryData.articleTitle}
-                  </h2>
-                  <p className="hidden sm:inline-block">
-                    {component.summaryData.summary.substring(0, 300)}
-                    {component.summaryData.summary.length > 300 ? "..." : ""}
+        {isLoading ? (
+          <div className="mx-auto">
+            <span className={purecss.loader}></span>
+          </div>
+        ) : (
+          blogPosts.map((component, index) => {
+            return (
+              <div
+                key={index}
+                className="flex flex-col gap-y-3 py-5 sm:py-10 container px-4 sm:px-0 justify-center cursor-pointer hover:bg-slate-200 transition-all duration-200 ease-in-out"
+                onClick={() => setSelectedBlog(index)}
+              >
+                <div className="flex gap-2">
+                  {/* Author Name */}
+                  <p>{component.summaryData.authorName}</p>
+                  {/* Date */}
+                  <p>
+                    {new Date(
+                      component.summaryData.publishingDate
+                    ).toLocaleDateString("en-GB", {
+                      day: "2-digit",
+                      month: "short",
+                      year: "numeric",
+                    })}
                   </p>
                 </div>
-              </div>
-              <div className="flex gap-4 items-center">
-                <div className="flex gap-x-1">
-                  {component.summaryData.Tags.map((tag) => (
-                    <span
-                      key={`article-${index}-tag-${tag}`}
-                      className="inline-block border rounded-full bg-slate-300 p-1 text-sm"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <div className="flex items-center">
+                  {/* Image */}
+                  <img
+                    src={component.summaryData.previewImageURL}
+                    alt="preview"
+                    className="w-28 h-28 object-cover rounded-md mr-4"
+                  />
+                  {/* Title, Summary */}
+                  <div className="flex flex-col">
+                    <h2 className="capitalize text-lg font-bold">
+                      {component.summaryData.articleTitle}
+                    </h2>
+                    <p className="hidden sm:inline-block">
+                      {component.summaryData.summary.substring(0, 300)}
+                      {component.summaryData.summary.length > 300 ? "..." : ""}
+                    </p>
+                  </div>
                 </div>
-                <p>{component.summaryData.duration} min read</p>
+                <div className="flex gap-4 items-center">
+                  <div className="flex gap-x-1">
+                    {component.summaryData.Tags.map((tag) => (
+                      <span
+                        key={`article-${index}-tag-${tag}`}
+                        className="inline-block border rounded-full bg-slate-300 p-1 text-sm"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <p>{component.summaryData.duration} min read</p>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })
+        )}
 
         {/* Pagination */}
         {/* Num articles + Articles per pagination + Increment index % number articles */}
