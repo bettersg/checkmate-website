@@ -26,14 +26,28 @@ export const getNotionJSON = onRequest(
 );
 
 // Clound Function Entry point to export Notion data to Firestore
-export const exportNotionToFirestore = onRequest(
-  { cors: true },
+export const dailyExportNotionToFirestore = onSchedule(
+  "0 8 * * *", // 8am UTC, 12am SGT
+  async (event) => {
+    try {
+      await exportNotionPages();
+      console.log("Successfully exported Notion data");
+      // response.send("Successfully exported Notion data");
+    } catch (err) {
+      console.error("Error exporting Notion data to Firestore", err);
+      // response.status(500).send("Failed to export Notion data");
+    }
+  }
+);
+
+export const manualTriggerExportNotionToFirestore = onRequest(
   async (request, response) => {
     try {
       await exportNotionPages();
+      // console.log("Successfully exported Notion data");
       response.send("Successfully exported Notion data");
     } catch (err) {
-      console.error("Error exporting Notion data to Firestore", err);
+      // console.error("Error exporting Notion data to Firestore", err);
       response.status(500).send("Failed to export Notion data");
     }
   }
