@@ -303,7 +303,7 @@ const Blogs = () => {
               <div
                 key={index}
                 className="grid grid-cols-[30%_1fr] sm:grid-cols-[128px_1fr] gap-x-4 items-center gap-y-3 py-5 sm:py-10 container px-4 sm:px-0 justify-center cursor-pointer hover:bg-slate-200 transition-all duration-200 ease-in-out"
-                onClick={() => handleBlogSelection(index)}
+                onClick={() => handleBlogSelection(index + paginationIndex * 4)}
               >
                 {/* Author Name */}
                 <p className="w-20 lg:w-32">
