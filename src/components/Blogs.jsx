@@ -120,7 +120,7 @@ const SelectedBlog = ({ blogData, setSelectedBlog }) => {
       </button>
       {/* Progress bar */}
       <div className="flex flex-col gap-y-6 px-4 sm:px-0 relative">
-        <div className="flex space-between sticky z-50 top-28 bg-slate-200">
+        <div className="hidden lg:flex space-between sticky z-50 top-28 bg-slate-200">
           <div className="absolute right-0 bottom-2">
             {Math.round(scrollProgress)}% read
           </div>
@@ -272,7 +272,7 @@ const Blogs = () => {
               <div
                 key={index}
                 className="flex flex-col gap-y-3 py-5 sm:py-10 container px-4 sm:px-0 justify-center cursor-pointer hover:bg-slate-200 transition-all duration-200 ease-in-out"
-                onClick={() => setSelectedBlog(index)}
+                onClick={() => handleBlogSelection(index)}
               >
                 <div className="flex gap-2">
                   {/* Author Name */}
