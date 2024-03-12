@@ -271,54 +271,50 @@ const Blogs = () => {
             return (
               <div
                 key={index}
-                className="flex flex-col gap-y-3 py-5 sm:py-10 container px-4 sm:px-0 justify-center cursor-pointer hover:bg-slate-200 transition-all duration-200 ease-in-out"
+                className="grid grid-cols-[30%_1fr] sm:grid-cols-[128px_1fr] gap-x-4 items-center gap-y-3 py-5 sm:py-10 container px-4 sm:px-0 justify-center cursor-pointer hover:bg-slate-200 transition-all duration-200 ease-in-out"
                 onClick={() => handleBlogSelection(index)}
               >
-                <div className="flex gap-2">
-                  {/* Author Name */}
-                  <p>{component.summaryData.authorName}</p>
-                  {/* Date */}
-                  <p>
-                    {new Date(
-                      component.summaryData.publishingDate
-                    ).toLocaleDateString("en-GB", {
-                      day: "2-digit",
-                      month: "short",
-                      year: "numeric",
-                    })}
+                {/* Author Name */}
+                <p className="w-20 lg:w-32">
+                  {component.summaryData.authorName.slice(0, 10)}
+                </p>
+                {/* Date */}
+                <p>
+                  {new Date(
+                    component.summaryData.publishingDate
+                  ).toLocaleDateString("en-GB", {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                  })}
+                </p>
+                {/* Image */}
+                <img
+                  src={component.summaryData.previewImageURL}
+                  alt="preview"
+                  className="w-32 lg:w-32 aspect-square object-cover rounded-md mr-4"
+                />
+                {/* Title, Summary */}
+                <div className="flex flex-col">
+                  <h2 className="capitalize text-lg font-bold">
+                    {component.summaryData.articleTitle}
+                  </h2>
+                  <p className="hidden sm:inline-block">
+                    {component.summaryData.summary.substring(0, 300)}
+                    {component.summaryData.summary.length > 300 ? "..." : ""}
                   </p>
                 </div>
-                <div className="flex items-center">
-                  {/* Image */}
-                  <img
-                    src={component.summaryData.previewImageURL}
-                    alt="preview"
-                    className="w-32 aspect-square object-cover rounded-md mr-4"
-                  />
-                  {/* Title, Summary */}
-                  <div className="flex flex-col">
-                    <h2 className="capitalize text-lg font-bold">
-                      {component.summaryData.articleTitle}
-                    </h2>
-                    <p className="hidden sm:inline-block">
-                      {component.summaryData.summary.substring(0, 300)}
-                      {component.summaryData.summary.length > 300 ? "..." : ""}
-                    </p>
-                  </div>
+                <div className="flex gap-x-1">
+                  {component.summaryData.Tags.map((tag) => (
+                    <span
+                      key={`article-${index}-tag-${tag}`}
+                      className="inline-block border rounded-full bg-slate-300 p-1 text-sm"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
-                <div className="flex gap-4 items-center">
-                  <div className="flex gap-x-1">
-                    {component.summaryData.Tags.map((tag) => (
-                      <span
-                        key={`article-${index}-tag-${tag}`}
-                        className="inline-block border rounded-full bg-slate-300 p-1 text-sm"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <p>{component.summaryData.duration} min read</p>
-                </div>
+                <p>{component.summaryData.duration} min read</p>
               </div>
             );
           })
