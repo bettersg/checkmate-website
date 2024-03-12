@@ -194,7 +194,7 @@ const Blogs = () => {
     const fetchNotionData = async () => {
       let data;
       if (import.meta.env.VITE_DEVELOPMENT === "TRUE") {
-        await delay(1000);
+        await delay(300);
         data = mockNotionData;
       } else {
         data = (await axios.get(demoEndpoint)).data.reverse();
@@ -293,7 +293,7 @@ const Blogs = () => {
                   <img
                     src={component.summaryData.previewImageURL}
                     alt="preview"
-                    className="w-28 h-28 object-cover rounded-md mr-4"
+                    className="w-32 aspect-square object-cover rounded-md mr-4"
                   />
                   {/* Title, Summary */}
                   <div className="flex flex-col">
