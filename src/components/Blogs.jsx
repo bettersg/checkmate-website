@@ -83,7 +83,11 @@ const convertJSONToComponents = (entries) => {
 
   return components;
 };
-const SelectedBlog = ({ blogData, setSelectedBlog }) => {
+const SelectedBlog = ({
+  selectedBlogSummaryData,
+  selectedBlogData,
+  setSelectedBlog,
+}) => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const blogRef = useRef(null);
 
@@ -129,8 +133,30 @@ const SelectedBlog = ({ blogData, setSelectedBlog }) => {
             style={{ width: `${scrollProgress}%` }}
           ></div>
         </div>
+        <div className="flex flex-col">
+          {/* Title */}
+          <h1 className="lg:text-6xl text-4xl font-bold my-5 sm:my-10">
+            {selectedBlogSummaryData.articleTitle}
+          </h1>
+          <div className="flex flex-col border-b border-t border-slate-300 py-2 sm:text-lg">
+            {/* Author name */}
+            <div className="inline-block">
+              {selectedBlogSummaryData.authorName}
+            </div>
+            <div className=" flex gap-x-2 text-slate-500">
+              {/* Min read */}
+              <div className="inline-block">
+                {selectedBlogSummaryData.duration} min read
+              </div>
+              {/* Date */}
+              <div className="inline-block">
+                {selectedBlogSummaryData.publishingDate}
+              </div>
+            </div>
+          </div>
+        </div>
 
-        {blogData.map((component, index) => {
+        {selectedBlogData.map((component, index) => {
           return (
             <React.Fragment key={index}>
               {component.component === "Heading" && (
@@ -138,10 +164,6 @@ const SelectedBlog = ({ blogData, setSelectedBlog }) => {
                   {component.text}
                 </h2>
               )}
-              {/* TODO: BRENNAN */}
-              {/* Author name */}
-              {/* Min read */}
-              {/* Date */}
               {component.component === "Paragraph" && (
                 <p className="text-sm sm:text-lg">{component.text}</p>
               )}
@@ -207,7 +229,8 @@ const Blogs = () => {
     fetchNotionData();
   }, []);
 
-  const blogData = blogPosts?.[selectedBlog]?.children;
+  const selectedBlogSummaryData = blogPosts?.[selectedBlog]?.summaryData;
+  const selectedBlogData = blogPosts?.[selectedBlog]?.children;
 
   const handleTabsClick = (e) => {
     const tabName = e.target.name;
@@ -222,7 +245,7 @@ const Blogs = () => {
 
   const SummaryPage = () => {
     return (
-      <div className="flex flex-col divide-y text-sm sm:text-lg relative min-h-screen xl:max-w-[1280px] w-full mx-auto px-6 md:px-12 py-10 md:py-20f">
+      <div className="flex flex-col divide-y text-sm sm:text-lg relative min-h-screen xl:max-w-[1280px] w-full mx-auto px-6 md:px-12 py-10 md:py-20">
         {/* Nav -- Refactor to Layout component */}
         <nav className="">
           <ul className="flex gap-x-4">
@@ -334,7 +357,11 @@ const Blogs = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center relative">
       {selectedBlog !== null ? (
-        <SelectedBlog blogData={blogData} setSelectedBlog={setSelectedBlog} />
+        <SelectedBlog
+          selectedBlogSummaryData={selectedBlogSummaryData}
+          selectedBlogData={selectedBlogData}
+          setSelectedBlog={setSelectedBlog}
+        />
       ) : (
         <SummaryPage />
       )}
