@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { mockNotionData } from "../utils";
 
 const demoEndpoint = import.meta.env.VITE_FIREBASE_NOTION_ENDPOINT;
 
@@ -187,7 +188,13 @@ const Blogs = () => {
 
   useEffect(() => {
     const fetchNotionData = async () => {
-      const data = (await axios.get(demoEndpoint)).data.reverse();
+      let data;
+      if (import.meta.env.VITE_DEVELOPMENT === "TRUE") {
+        data = mockNotionData;
+      } else {
+        data = (await axios.get(demoEndpoint)).data.reverse();
+      }
+
       const components = convertJSONToComponents(data);
       setBlogPosts(components);
     };
