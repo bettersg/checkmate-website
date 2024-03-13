@@ -27,7 +27,10 @@ export const getNotionJSON = onRequest(
 
 // Clound Function Entry point to export Notion data to Firestore
 export const dailyExportNotionToFirestore = onSchedule(
-  "0 8 * * *", // 8am UTC, 12am SGT
+  {
+    schedule: "0 0 * * *", // Run daily at midnight
+    timeZone: "Asia/Singapore",
+  },
   async (event) => {
     try {
       await exportNotionPages();
