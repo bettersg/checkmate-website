@@ -258,8 +258,8 @@ const Blogs = () => {
           <ul className="flex gap-x-4">
             <li
               className={`${
-                activeTab === "all" ? "border-b border-black" : ""
-              }`}
+                activeTab === "all" ? "border-b-4  border-black" : ""
+              } pb-2`}
             >
               <button name="all" onClick={(e) => handleTabsClick(e)}>
                 All
@@ -267,8 +267,8 @@ const Blogs = () => {
             </li>
             <li
               className={`${
-                activeTab === "blogs" ? "border-b border-black" : ""
-              }`}
+                activeTab === "blogs" ? "border-b-4 border-black" : ""
+              } pb-2`}
             >
               <button name="blogs" onClick={(e) => handleTabsClick(e)}>
                 Blog Posts
@@ -276,8 +276,8 @@ const Blogs = () => {
             </li>
             <li
               className={`${
-                activeTab === "events" ? "border-b border-black" : ""
-              }`}
+                activeTab === "events" ? "border-b-4 border-black" : ""
+              } pb-2`}
             >
               <button
                 className="opacity-50"
@@ -362,7 +362,7 @@ const Blogs = () => {
             Prev
           </button>
           <button
-            className="p-4 bg-black text-white disabled:opacity-20 hover:opacity-50"
+            className="p-4 rounded bg-black text-white disabled:opacity-20 hover:opacity-50"
             disabled={paginationIndex === numChunks}
             onClick={() => {
               setPaginationIndex(Math.min(paginationIndex + 1), numChunks);
