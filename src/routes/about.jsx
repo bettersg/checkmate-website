@@ -86,7 +86,7 @@ const About = () => {
             team of&nbsp;volunteers
           </h1>
           <p className="w-full sm:w-3/4 md:w-1/2 mt-4 text-workSans font-workSans text-[18px]">
-            We are part of better.sg, a #TechForGood non-profit
+            We are a bunch of volunteers from better.sg, a #TechForGood non-profit
             organisation. What brings us together is the drive to fight scams
             and misinformation one message at a time. Check out our profiles
             below!

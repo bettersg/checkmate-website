@@ -49,11 +49,7 @@ const Footer = () => (
     </div>
 
     <div className="flex flex-row flex-wrap max-w-[1280px] w-full mt-16 font-normal">
-      Checkmate. A&nbsp;
-      <a href="https://better.sg" target="_blank">
-        better.sg
-      </a>
-      &nbsp;Initiative © 2023 CheckMate
+      © 2023 CheckMate
     </div>
   </section>
 );
