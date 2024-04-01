@@ -4,6 +4,7 @@ import { mockNotionData } from "../utils";
 import purecss from "../purecss.module.css";
 import { delay } from "../utils/mockTime";
 import { chunk } from "lodash";
+import { arrowBack } from "../assets";
 
 const demoEndpoint = import.meta.env.VITE_FIREBASE_NOTION_ENDPOINT;
 
@@ -116,15 +117,18 @@ const SelectedBlog = ({
       ref={blogRef}
       className="min-h-screen flex flex-col xl:max-w-[1280px] w-full mx-auto px-6 md:px-12 py-10 md:py-20"
     >
-      <button
-        className="p-4 hover:bg-slate-300 mb-4 rounded border border-black mr-auto"
-        onClick={() => setSelectedBlog(null)}
-      >
-        Back
-      </button>
+      <div className="flex items-center mb-4">
+        <img src={arrowBack} alt="back" className="w-4 h-4 mr-2" />
+        <button
+          className=" hover:bg-slate-300 rounded mr-auto"
+          onClick={() => setSelectedBlog(null)}
+        >
+          Back
+        </button>
+      </div>
       {/* Progress bar */}
       <div className="flex flex-col gap-y-6 px-4 sm:px-0 relative">
-        <div className="hidden lg:flex space-between sticky z-50 top-28 bg-slate-200">
+        <div className="flex w-full space-between fixed right-0 mx-8 sm:mx-0 top-[22%] sm:sticky z-50 sm:top-28 bg-slate-200">
           <div className="absolute right-0 bottom-2">
             {Math.round(scrollProgress)}% read
           </div>
