@@ -103,6 +103,7 @@ const SelectedBlog = ({
       setScrollProgress(scrolled);
     }
   };
+  console.log(scrollProgress);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -195,7 +196,11 @@ const SelectedBlog = ({
           );
         })}
       </div>
-      <div className="flex justify-center mt- sm:mt-20">
+      <div
+        className={`sticky bottom-0 right-[50%] flex justify-center sm:mt-20 transition-opacity duration-300 ${
+          scrollProgress >= 50 ? "opacity-100" : "opacity-0"
+        }`}
+      >
         <button
           onClick={() => {
             window.scrollTo(0, 0);
