@@ -44,7 +44,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full flex py-6 justify-between items-center navbar">
+    <nav className="w-full flex py-6 px-6 justify-between items-center bg-checkBG">
       <ToastContainer />
       {/** Logo */}
       <Link to="/">
@@ -54,7 +54,7 @@ const Navbar = () => {
       </Link>
 
       {/** Navbar menu options */}
-      <ul className="list-none sm:flex hidden justify-center items-center flex-1 gap-x-2">
+      <ul className="list-none md:flex hidden justify-center items-center gap-x-2 ">
         {navLinks.map((nav, index) => (
           <NavLink
             key={nav.id}
@@ -74,7 +74,7 @@ const Navbar = () => {
       </ul>
 
       {/** Call to action */}
-      <div className="hidden sm:block">
+      <div className="hidden md:block">
         <ButtonCTAWhatsapp link="https://ref.checkmate.sg/add?utm_source=website&utm_medium=navbar" />
       </div>
 
@@ -87,7 +87,7 @@ const Navbar = () => {
       } 
       */}
 
-      <div className="sm:hidden flex flex-1 justify-end items-center">
+      <div className="md:hidden flex flex-1 justify-end items-center">
         <img
           src={toggle ? close : menu}
           alt="menu"
@@ -99,9 +99,9 @@ const Navbar = () => {
         <div
           className={`${
             !toggle ? "hidden" : "absolute"
-          } p-6 bg-checkBG opacity-95 top-24 left-0 w-full h-full`}
+          } p-6 bg-checkBG opacity-95 top-24 left-0 w-full`}
         >
-          <ul className="list-none flex justify-end items-center flex-1 flex-col">
+          <ul className="list-none flex justify-end items-center flex-col">
             {navLinks.map((nav, index) => (
               <NavLink
                 key={nav.id}

@@ -103,7 +103,6 @@ const SelectedBlog = ({
       setScrollProgress(scrolled);
     }
   };
-  console.log(scrollProgress);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -128,9 +127,9 @@ const SelectedBlog = ({
         </button>
       </div>
       {/* Progress bar */}
-      <div className="flex flex-col gap-y-6 px-4 sm:px-0 relative">
-        <div className="flex w-full space-between fixed right-0 mx-8 sm:mx-0 top-[22%] sm:sticky z-50 sm:top-28 bg-slate-200">
-          <div className="absolute right-0 bottom-2">
+      <div className="flex flex-col gap-y-6">
+        <div className="flex w-full xl:max-w-[1280px] fixed xl:right-[25%] space-between sm:z-50 top-28 bg-slate-200">
+          <div className="absolute right-0 top-2">
             {Math.round(scrollProgress)}% read
           </div>
           <div

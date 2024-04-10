@@ -37,8 +37,8 @@ const App = () => (
 function Layout() {
   return (
     <div className="flex flex-col min-h-screen justify-between overflow-x-hidden ss:overflow-visible">
-      <header className="lg:sticky top-0 z-50 sm:px-16 px-6 flex justify-center items-center bg-checkBG h-28">
-        <div className="xl:max-w-[1280px] w-full">
+      <header className="z-50 sm:px-16 px-6 flex justify-center items-center bg-checkBG h-28">
+        <div className="xl:max-w-[1280px] w-full fixed">
           <Navbar />
         </div>
       </header>
