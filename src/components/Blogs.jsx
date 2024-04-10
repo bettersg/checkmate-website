@@ -316,7 +316,7 @@ const Blogs = () => {
               >
                 {/* Author Name */}
                 <p className="w-20 lg:w-32">
-                  {component.summaryData.authorName.slice(0, 10)}
+                  {component.summaryData.authorName}
                 </p>
                 {/* Date */}
                 <p>
@@ -344,7 +344,7 @@ const Blogs = () => {
                     {component.summaryData.summary.length > 300 ? "..." : ""}
                   </p>
                 </div>
-                <div className="flex gap-x-1">
+                <div className="flex gap-x-1 overflow-x-scroll">
                   {component.summaryData.Tags.map((tag) => (
                     <span
                       key={`article-${index}-tag-${tag}`}
