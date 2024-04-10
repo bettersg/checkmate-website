@@ -113,49 +113,50 @@ const SelectedBlog = ({
   }, []);
 
   return (
-    <div
-      ref={blogRef}
-      className="min-h-screen flex flex-col xl:max-w-[1280px] w-full mx-auto px-6 md:px-12 py-10 md:py-20"
-    >
-      <div className="flex items-center mb-4">
-        <img src={arrowBack} alt="back" className="w-4 h-4 mr-2" />
+    <main className="min-h-screen flex flex-col xl:max-w-[1280px] w-full mx-auto px-6 md:px-12 md:py-20">
+      <aside className="bg-checkBG fixed w-full xl:max-w-[1240px] top-28 pt-10">
+        {/* Back button */}
         <button
-          className=" hover:bg-slate-300 rounded mr-auto"
+          className="flex items-center mb-4 hover:bg-slate-300 rounded py-2"
           onClick={() => setSelectedBlog(null)}
         >
-          Back
+          <img src={arrowBack} alt="back" className="w-4 h-4 mr-2" />
+          <span className="inline-block hover:bg-slate-300 rounded mr-auto">
+            Back
+          </span>
         </button>
-      </div>
-      {/* Progress bar */}
-      <div className="flex flex-col gap-y-6">
-        <div className="flex w-full xl:max-w-[1280px] fixed xl:right-[25%] space-between sm:z-50 top-28 bg-slate-200">
-          <div className="absolute right-0 top-2">
-            {Math.round(scrollProgress)}% read
-          </div>
-          <div
-            className="sticky z-50 h-2 top-24  bg-black "
-            style={{ width: `${scrollProgress}%` }}
-          ></div>
-        </div>
-        <div className="flex flex-col">
-          {/* Title */}
-          <h1 className="lg:text-6xl text-4xl font-bold my-5 sm:my-10">
-            {selectedBlogSummaryData.articleTitle}
-          </h1>
-          <div className="flex flex-col border-b border-t border-slate-300 py-2 sm:text-lg">
-            {/* Author name */}
-            <div className="inline-block">
-              {selectedBlogSummaryData.authorName}
+        {/* Progress bar */}
+        <div className="pr-12 ">
+          <div className="left-0 space-between bg-slate-200 relative">
+            <div
+              className="sticky z-50 h-2 bg-black "
+              style={{ width: `${scrollProgress}%` }}
+            ></div>
+            <div className="right-2 bottom-2 absolute">
+              {Math.round(scrollProgress)}% read
             </div>
-            <div className=" flex gap-x-2 text-slate-500">
-              {/* Min read */}
-              <div className="inline-block">
-                {selectedBlogSummaryData.duration} min read
-              </div>
-              {/* Date */}
-              <div className="inline-block">
-                {selectedBlogSummaryData.publishingDate}
-              </div>
+          </div>
+        </div>
+      </aside>
+
+      <article className="flex flex-col mt-28 md:mt-0 gap-y-6" ref={blogRef}>
+        {/* Title */}
+        <h1 className="lg:text-6xl text-4xl font-bold my-5 sm:my-10">
+          {selectedBlogSummaryData.articleTitle}
+        </h1>
+        <div className="flex flex-col border-b border-t border-slate-300 py-2 sm:text-lg">
+          {/* Author name */}
+          <div className="inline-block">
+            {selectedBlogSummaryData.authorName}
+          </div>
+          <div className=" flex gap-x-2 text-slate-500">
+            {/* Min read */}
+            <div className="inline-block">
+              {selectedBlogSummaryData.duration} min read
+            </div>
+            {/* Date */}
+            <div className="inline-block">
+              {selectedBlogSummaryData.publishingDate}
             </div>
           </div>
         </div>
@@ -194,7 +195,8 @@ const SelectedBlog = ({
             </React.Fragment>
           );
         })}
-      </div>
+      </article>
+
       <div
         className={`sticky bottom-0 right-[50%] flex justify-center sm:mt-20 transition-opacity duration-300 ${
           scrollProgress >= 50 ? "opacity-100" : "opacity-0"
@@ -209,7 +211,7 @@ const SelectedBlog = ({
           Top
         </button>
       </div>
-    </div>
+    </main>
   );
 };
 
