@@ -114,8 +114,7 @@ const SelectedBlog = ({
 
   return (
     <main className="min-h-screen flex flex-col xl:max-w-[1280px] w-full mx-auto px-6 md:px-12 md:py-20">
-      <aside className="bg-checkBG fixed w-full xl:max-w-[1240px] top-28 pt-10">
-        {/* Back button */}
+      <aside className="bg-checkBG fixed w-full xl:max-w-[1240px] top-28 ">
         <button
           className="flex items-center mb-4 hover:bg-slate-300 rounded py-2"
           onClick={() => setSelectedBlog(null)}
