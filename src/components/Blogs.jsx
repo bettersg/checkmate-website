@@ -4,6 +4,7 @@ import { mockNotionData } from "../utils";
 import purecss from "../purecss.module.css";
 import { delay } from "../utils/mockTime";
 import { chunk } from "lodash";
+import { arrowBack } from "../assets";
 
 const demoEndpoint = import.meta.env.VITE_FIREBASE_NOTION_ENDPOINT;
 
@@ -112,46 +113,49 @@ const SelectedBlog = ({
   }, []);
 
   return (
-    <div
-      ref={blogRef}
-      className="min-h-screen flex flex-col xl:max-w-[1280px] w-full mx-auto px-6 md:px-12 py-10 md:py-20"
-    >
-      <button
-        className="p-4 hover:bg-slate-300 mb-4 rounded border border-black mr-auto"
-        onClick={() => setSelectedBlog(null)}
-      >
-        Back
-      </button>
-      {/* Progress bar */}
-      <div className="flex flex-col gap-y-6 px-4 sm:px-0 relative">
-        <div className="hidden lg:flex space-between sticky z-50 top-28 bg-slate-200">
-          <div className="absolute right-0 bottom-2">
-            {Math.round(scrollProgress)}% read
-          </div>
-          <div
-            className="sticky z-50 h-2 top-24  bg-black "
-            style={{ width: `${scrollProgress}%` }}
-          ></div>
-        </div>
-        <div className="flex flex-col">
-          {/* Title */}
-          <h1 className="lg:text-6xl text-4xl font-bold my-5 sm:my-10">
-            {selectedBlogSummaryData.articleTitle}
-          </h1>
-          <div className="flex flex-col border-b border-t border-slate-300 py-2 sm:text-lg">
-            {/* Author name */}
-            <div className="inline-block">
-              {selectedBlogSummaryData.authorName}
+    <main className="min-h-screen flex flex-col xl:max-w-[1280px] w-full mx-auto px-6 md:px-12 md:py-20">
+      <aside className="bg-checkBG fixed w-full xl:max-w-[1240px] top-28 ">
+        <button
+          className="flex items-center mb-4 hover:bg-slate-300 rounded py-2"
+          onClick={() => setSelectedBlog(null)}
+        >
+          <img src={arrowBack} alt="back" className="w-4 h-4 mr-2" />
+          <span className="inline-block hover:bg-slate-300 rounded mr-auto">
+            Back
+          </span>
+        </button>
+        {/* Progress bar */}
+        <div className="pr-12 ">
+          <div className="left-0 space-between bg-slate-200 relative">
+            <div
+              className="sticky z-50 h-2 bg-black "
+              style={{ width: `${scrollProgress}%` }}
+            ></div>
+            <div className="right-2 bottom-2 absolute">
+              {Math.round(scrollProgress)}% read
             </div>
-            <div className=" flex gap-x-2 text-slate-500">
-              {/* Min read */}
-              <div className="inline-block">
-                {selectedBlogSummaryData.duration} min read
-              </div>
-              {/* Date */}
-              <div className="inline-block">
-                {selectedBlogSummaryData.publishingDate}
-              </div>
+          </div>
+        </div>
+      </aside>
+
+      <article className="flex flex-col mt-28 md:mt-0 gap-y-6" ref={blogRef}>
+        {/* Title */}
+        <h1 className="lg:text-6xl text-4xl font-bold my-5 sm:my-10">
+          {selectedBlogSummaryData.articleTitle}
+        </h1>
+        <div className="flex flex-col border-b border-t border-slate-300 py-2 sm:text-lg">
+          {/* Author name */}
+          <div className="inline-block">
+            {selectedBlogSummaryData.authorName}
+          </div>
+          <div className=" flex gap-x-2 text-slate-500">
+            {/* Min read */}
+            <div className="inline-block">
+              {selectedBlogSummaryData.duration} min read
+            </div>
+            {/* Date */}
+            <div className="inline-block">
+              {selectedBlogSummaryData.publishingDate}
             </div>
           </div>
         </div>
@@ -190,8 +194,13 @@ const SelectedBlog = ({
             </React.Fragment>
           );
         })}
-      </div>
-      <div className="flex justify-center mt- sm:mt-20">
+      </article>
+
+      <div
+        className={`sticky bottom-0 right-[50%] flex justify-center sm:mt-20 transition-opacity duration-300 ${
+          scrollProgress >= 50 ? "opacity-100" : "opacity-0"
+        }`}
+      >
         <button
           onClick={() => {
             window.scrollTo(0, 0);
@@ -201,7 +210,7 @@ const SelectedBlog = ({
           Top
         </button>
       </div>
-    </div>
+    </main>
   );
 };
 
@@ -258,8 +267,8 @@ const Blogs = () => {
           <ul className="flex gap-x-4">
             <li
               className={`${
-                activeTab === "all" ? "border-b border-black" : ""
-              }`}
+                activeTab === "all" ? "border-b-4  border-black" : ""
+              } pb-2`}
             >
               <button name="all" onClick={(e) => handleTabsClick(e)}>
                 All
@@ -267,8 +276,8 @@ const Blogs = () => {
             </li>
             <li
               className={`${
-                activeTab === "blogs" ? "border-b border-black" : ""
-              }`}
+                activeTab === "blogs" ? "border-b-4 border-black" : ""
+              } pb-2`}
             >
               <button name="blogs" onClick={(e) => handleTabsClick(e)}>
                 Blog Posts
@@ -276,8 +285,8 @@ const Blogs = () => {
             </li>
             <li
               className={`${
-                activeTab === "events" ? "border-b border-black" : ""
-              }`}
+                activeTab === "events" ? "border-b-4 border-black" : ""
+              } pb-2`}
             >
               <button
                 className="opacity-50"
@@ -307,7 +316,7 @@ const Blogs = () => {
               >
                 {/* Author Name */}
                 <p className="w-20 lg:w-32">
-                  {component.summaryData.authorName.slice(0, 10)}
+                  {component.summaryData.authorName}
                 </p>
                 {/* Date */}
                 <p>
@@ -335,7 +344,7 @@ const Blogs = () => {
                     {component.summaryData.summary.length > 300 ? "..." : ""}
                   </p>
                 </div>
-                <div className="flex gap-x-1">
+                <div className="flex gap-x-1 overflow-x-scroll">
                   {component.summaryData.Tags.map((tag) => (
                     <span
                       key={`article-${index}-tag-${tag}`}
@@ -362,7 +371,7 @@ const Blogs = () => {
             Prev
           </button>
           <button
-            className="p-4 bg-black text-white disabled:opacity-20 hover:opacity-50"
+            className="p-4 rounded bg-black text-white disabled:opacity-20 hover:opacity-50"
             disabled={paginationIndex === numChunks}
             onClick={() => {
               setPaginationIndex(Math.min(paginationIndex + 1), numChunks);
