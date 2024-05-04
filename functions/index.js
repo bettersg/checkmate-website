@@ -1,6 +1,6 @@
 const { request } = require("express");
-import { exportNotionToFirestore } from "./definitions/notion";
-import { getNotionJSON } from "./definitions/notion";
+const { exportNotionToFirestore } = require("./definitions/notion");
+const { getNotionJSON } = require("./definitions/notion");
 
 const functions = require("firebase-functions"),
       firebaseAdmin = require("firebase-admin").default,
@@ -348,4 +348,4 @@ exports.api = functions
                   .https
                   .onRequest(app);
 
-export { getNotionJSON, exportNotionToFirestore }
+// export { getNotionJSON, exportNotionToFirestore }

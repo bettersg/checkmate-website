@@ -1,8 +1,9 @@
-import { Client } from "@notionhq/client";
-import { onRequest } from "firebase-functions/v2/https";
-import { defineString } from "firebase-functions/params";
-import { getStorage } from "firebase-admin/storage";
-import { logger } from "firebase-functions/v2";
+const { Client } = require( "@notionhq/client" );
+const { onRequest } = require( "firebase-functions/v2/https" );
+const {onSchedule} = require("firebase-functions/v2/scheduler")
+const { defineString } = require( "firebase-functions/params" );
+const { getStorage } = require( "firebase-admin/storage" );
+const { logger } = require( "firebase-functions/v2" );
 
 const NOTION_INTEGRATION_SECRET = defineString("NOTION_INTEGRATION_SECRET");
 const NOTION_BLOGS_DATABASE_ID = defineString("NOTION_BLOGS_DATABASE_ID");
@@ -10,7 +11,7 @@ const NOTION_BLOGS_DATABASE_ID = defineString("NOTION_BLOGS_DATABASE_ID");
 const notion = new Client({ auth: NOTION_INTEGRATION_SECRET.value() });
 
 // Cloud Function Entry point to get Notion JSON from Firebase Storage
-export const getNotionJSON = onRequest(
+const getNotionJSON = onRequest(
   { cors: true },
   async (request, response) => {
     try {
@@ -26,7 +27,7 @@ export const getNotionJSON = onRequest(
 );
 
 // Clound Function Entry point to export Notion data to Firestore
-export const dailyExportNotionToFirestore = onSchedule(
+const dailyExportNotionToFirestore = onSchedule(
   {
     schedule: "0 0 * * *", // Run daily at midnight
     timeZone: "Asia/Singapore",
@@ -43,7 +44,7 @@ export const dailyExportNotionToFirestore = onSchedule(
   }
 );
 
-export const manualTriggerExportNotionToFirestore = onRequest(
+const manualTriggerExportNotionToFirestore = onRequest(
   async (request, response) => {
     try {
       await exportNotionPages();
@@ -99,3 +100,5 @@ async function getNotionBlocks(block_id) {
   }
   return children;
 }
+
+//export { getNotionJSON, exportNotionToFirestore, manualTriggerExportNotionToFirestore }
