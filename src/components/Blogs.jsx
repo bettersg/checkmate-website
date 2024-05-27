@@ -4,7 +4,8 @@ import purecss from "../purecss.module.css";
 import { chunk } from "lodash";
 import { arrowBack } from "../assets";
 
-const demoEndpoint = import.meta.env.VITE_FIREBASE_NOTION_ENDPOINT;
+const notionFirebaseJsonEndpoint = import.meta.env
+  .VITE_FIREBASE_NOTION_ENDPOINT;
 
 const blockMap = {
   heading_1: (block) => {
@@ -223,7 +224,7 @@ const Blogs = () => {
   useEffect(() => {
     setIsLoading(true);
     const fetchNotionData = async () => {
-      const data = (await axios.get(demoEndpoint)).data.reverse();
+      const data = (await axios.get(notionFirebaseJsonEndpoint)).data.reverse();
 
       const components = convertJSONToComponents(data);
       setBlogPosts(components); // Non-paginated option
