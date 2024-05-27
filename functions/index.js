@@ -1,7 +1,3 @@
-const { request } = require("express");
-const { exportNotionToFirestore } = require("./definitions/notion");
-const { getNotionJSON } = require("./definitions/notion");
-
 const NOTION_INTEGRATION_SECRET = defineString("NOTION_INTEGRATION_SECRET");
 const NOTION_BLOGS_DATABASE_ID = defineString("NOTION_BLOGS_DATABASE_ID");
 const notion = new Client({ auth: NOTION_INTEGRATION_SECRET.value() });
@@ -481,5 +477,3 @@ exports.api = functions
     timeoutSeconds: 300,
   })
   .https.onRequest(app);
-
-// export { getNotionJSON, exportNotionToFirestore }
