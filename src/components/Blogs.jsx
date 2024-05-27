@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { mockNotionData } from "../utils";
 import purecss from "../purecss.module.css";
-import { delay } from "../utils/mockTime";
 import { chunk } from "lodash";
 import { arrowBack } from "../assets";
 
@@ -225,13 +223,7 @@ const Blogs = () => {
   useEffect(() => {
     setIsLoading(true);
     const fetchNotionData = async () => {
-      let data;
-      if (import.meta.env.VITE_DEVELOPMENT === "TRUE") {
-        await delay(300);
-        data = mockNotionData;
-      } else {
-        data = (await axios.get(demoEndpoint)).data.reverse();
-      }
+      const data = (await axios.get(demoEndpoint)).data.reverse();
 
       const components = convertJSONToComponents(data);
       setBlogPosts(components); // Non-paginated option
