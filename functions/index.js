@@ -1,4 +1,5 @@
 const { Client } = require("@notionhq/client")
+const { getStorage } = require("firebase-admin/storage");
 
 const functions = require("firebase-functions"),
   firebaseAdmin = require("firebase-admin").default,
@@ -415,6 +416,19 @@ router.post("/export-notion", async (req, res) => {
   }
 });
 
+// Cloud Function Entry point to get Notion JSON from Firebase Storage
+router.get("/get-notion-json", async (_, res) => {
+  try {
+    const notionBlogsBucket = getStorage().bucket("checkmate-website.appspot.com");
+    const file = notionBlogsBucket.file("notion-blogs.json");
+
+    const data = await file.download();
+    res.send(data[0].toString());
+  } catch (error) {
+    console.error("Error getting Notion JSON", error);
+  }
+});
+
 // Helper function to recurisively get Notion blocks
 async function getNotionBlocks(block_id) {
   const { results: children } = await notion.blocks.children.list({
@@ -442,35 +456,23 @@ async function exportNotionPages() {
   for (const page of pages) {
     const blocks = await getNotionBlocks(page.id);
     page.children = blocks;
+    functions.logger.info({blocks})
   }
 
   // Convert pages to JSON string
   const json = JSON.stringify(pages, null, 2);
 
   // Upload JSON string to Firebase Storage
-  const notionBlogsBucket = getStorage().bucket("notion-blogs");
-  logger.info(notionBlogsBucket);
+  const notionBlogsBucket = getStorage().bucket("checkmate-website.appspot.com");
+  functions.logger.info(notionBlogsBucket);
   const file = notionBlogsBucket.file("notion-blogs.json");
   await file.save(json, {
     metadata: {
       contentType: "application/json",
     },
   });
-  console.log("Exported Notion pages to Firebase Storage");
+  functions.logger.info("Exported Notion pages to Firebase Storage");
 }
-
-// Cloud Function Entry point to get Notion JSON from Firebase Storage
-app.get("/get-notion-json", async (_, res) => {
-  try {
-    const notionBlogsBucket = getStorage().bucket("notion-blogs");
-    const file = notionBlogsBucket.file("notion-blogs.json");
-
-    const data = await file.download();
-    res.send(data[0].toString());
-  } catch (error) {
-    console.error("Error getting Notion JSON", error);
-  }
-});
 
 // Export the Express application as a single Firebase Function named "api" and add the vpc connector
 app.use("/api", router);
