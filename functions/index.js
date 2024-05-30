@@ -1,6 +1,4 @@
-const NOTION_INTEGRATION_SECRET = defineString("NOTION_INTEGRATION_SECRET");
-const NOTION_BLOGS_DATABASE_ID = defineString("NOTION_BLOGS_DATABASE_ID");
-const notion = new Client({ auth: NOTION_INTEGRATION_SECRET.value() });
+const { Client } = require("@notionhq/client")
 
 const functions = require("firebase-functions"),
   firebaseAdmin = require("firebase-admin").default,
@@ -11,6 +9,10 @@ const functions = require("firebase-functions"),
   bodyParser = require("body-parser"),
   Typesense = require("typesense"),
   ts_credentials = require("./typesense.json");
+
+const notion_secret = process.env.NOTION_INTEGRATION_SECRET;
+const NOTION_BLOGS_DATABASE_ID = process.env.NOTION_BLOGS_DATABASE_ID;
+const notion = new Client({ auth: notion_secret });
 
 // Initialise an instance of Express and a router
 const app = express(),
@@ -403,7 +405,7 @@ router.get("/publicmessages", async (req, res) => {
 /**
  * Export the Notion database to Firestore
  */
-router.post("/export-notion", async (_, res) => {
+router.post("/export-notion", async (req, res) => {
   try {
     await exportNotionPages();
     return res.sendStatus(200);
@@ -429,7 +431,7 @@ async function getNotionBlocks(block_id) {
 // Queries the Notion Database and exports the pages to Firebase Storage
 async function exportNotionPages() {
   const { results: pages } = await notion.databases.query({
-    database_id: NOTION_BLOGS_DATABASE_ID.value(),
+    database_id: NOTION_BLOGS_DATABASE_ID,
   });
 
   if (!pages || pages.length === 0) {
@@ -477,3 +479,4 @@ exports.api = functions
     timeoutSeconds: 300,
   })
   .https.onRequest(app);
+

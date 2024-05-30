@@ -13,7 +13,7 @@
   },
   "main": "index.js",
   "dependencies": {
-    "@notionhq/client": "^2.2.14",
+    "@notionhq/client": "^2.2.15",
     "axios": "^1.6.8",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
