@@ -68,13 +68,13 @@ const convertJSONToComponents = (entries) => {
 
     return {
       summaryData: {
-        articleTitle: entryProperties["Article Title"].title[0].plain_text,
-        summary: entryProperties["Summary"].rich_text[0].plain_text,
-        duration: entryProperties["Duration"].number,
+        articleTitle: entryProperties["Article Title"].title[0]?.plain_text ?? "No title",
+        summary: entryProperties["Summary"].rich_text[0]?.plain_text ?? "No summary",
+        duration: entryProperties["Duration"]?.number ?? 0,
         previewImageURL:
-          entryProperties["Preview Image"].rich_text[0].plain_text,
+          entryProperties["Preview Image"].rich_text[0]?.plain_text ?? "",
         Tags: entryProperties["Tags"].multi_select.map((tag) => tag["name"]),
-        authorName: entryProperties["Author Name"].rich_text[0].plain_text,
+        authorName: entryProperties["Author Name"].rich_text[0]?.plain_text ?? "No author",
         publishingDate: entryProperties["Publishing Date"].date.start,
       },
       children: tranformBlocks(children),
