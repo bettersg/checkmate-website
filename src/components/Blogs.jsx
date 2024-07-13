@@ -34,7 +34,7 @@ const blockMap = {
   image: (block) => {
     return {
       component: "Image",
-      imageURL: block.image?.external?.url || block.image?.file?.url,
+      imageURL: block.image?.external?.url || block.image?.file?.url, //support cases where user pastes image directly into notion page
     };
   },
   embed: (block) => {
