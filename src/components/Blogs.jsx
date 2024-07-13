@@ -34,7 +34,7 @@ const blockMap = {
   image: (block) => {
     return {
       component: "Image",
-      imageURL: block.image.external.url,
+      imageURL: block.image?.external?.url || block.image?.file?.url,
     };
   },
   embed: (block) => {
@@ -175,14 +175,14 @@ const SelectedBlog = ({
                 <img
                   src={component.url}
                   alt="preview"
-                  className="w-full max-h-[320px] object-cover rounded md"
+                  className="w-full object-cover rounded md"
                 />
               )) ||
                 (component.component === "Image" && (
                   <img
                     src={component.imageURL}
                     alt="preview"
-                    className="w-full max-h-[320px] object-cover rounded md"
+                    className="w-full object-cover rounded md"
                   />
                 ))}
               {component.component === "Quote" && (
@@ -196,9 +196,8 @@ const SelectedBlog = ({
       </article>
 
       <div
-        className={`sticky bottom-0 right-[50%] flex justify-center sm:mt-20 transition-opacity duration-300 ${
-          scrollProgress >= 50 ? "opacity-100" : "opacity-0"
-        }`}
+        className={`sticky bottom-0 right-[50%] flex justify-center sm:mt-20 transition-opacity duration-300 ${scrollProgress >= 50 ? "opacity-100" : "opacity-0"
+          }`}
       >
         <button
           onClick={() => {
@@ -259,27 +258,24 @@ const Blogs = () => {
         <nav className="">
           <ul className="flex gap-x-4">
             <li
-              className={`${
-                activeTab === "all" ? "border-b-4  border-black" : ""
-              } pb-2`}
+              className={`${activeTab === "all" ? "border-b-4  border-black" : ""
+                } pb-2`}
             >
               <button name="all" onClick={(e) => handleTabsClick(e)}>
                 All
               </button>
             </li>
             <li
-              className={`${
-                activeTab === "blogs" ? "border-b-4 border-black" : ""
-              } pb-2`}
+              className={`${activeTab === "blogs" ? "border-b-4 border-black" : ""
+                } pb-2`}
             >
               <button name="blogs" onClick={(e) => handleTabsClick(e)}>
                 Blog Posts
               </button>
             </li>
             <li
-              className={`${
-                activeTab === "events" ? "border-b-4 border-black" : ""
-              } pb-2`}
+              className={`${activeTab === "events" ? "border-b-4 border-black" : ""
+                } pb-2`}
             >
               <button
                 className="opacity-50"
