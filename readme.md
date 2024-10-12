@@ -37,8 +37,20 @@ npm run dev
 
 ## Commits
 
-The main branch is currently `webv2`. Push commits to feature branches, for example:
+The main branch is currently `main`. Push commits to feature branches, for example:
 
 ```
 git push origin webv2:feat/<your-feature-name>
+```
+
+## Deploy Staging
+
+```
+npm run preview <ChannelID>
+```
+
+## Deploy Proper
+
+```
+npm run deploy
 ```
